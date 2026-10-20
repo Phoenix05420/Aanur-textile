@@ -5461,7 +5461,7 @@
       "label": "sendOtpSms()",
       "file_type": "code",
       "source_file": "server/providers/fast2sms.js",
-      "source_location": "L31",
+      "source_location": "L26",
       "id": "providers_fast2sms_sendotpsms",
       "community": 25,
       "norm_label": "sendotpsms()"
@@ -5506,7 +5506,7 @@
       "label": "generateOtp()",
       "file_type": "code",
       "source_file": "server/services/otpService.js",
-      "source_location": "L22",
+      "source_location": "L25",
       "id": "services_otpservice_generateotp",
       "community": 25,
       "norm_label": "generateotp()"
@@ -5515,7 +5515,7 @@
       "label": "sendOtp()",
       "file_type": "code",
       "source_file": "server/services/otpService.js",
-      "source_location": "L45",
+      "source_location": "L48",
       "id": "services_otpservice_sendotp",
       "community": 25,
       "norm_label": "sendotp()"
@@ -5524,7 +5524,7 @@
       "label": "verifyOtp()",
       "file_type": "code",
       "source_file": "server/services/otpService.js",
-      "source_location": "L132",
+      "source_location": "L133",
       "id": "services_otpservice_verifyotp",
       "community": 25,
       "norm_label": "verifyotp()"
@@ -5767,7 +5767,7 @@
       "label": "AccountPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1676",
+      "source_location": "L1655",
       "id": "src_app_accountpage",
       "community": 0,
       "norm_label": "accountpage()"
@@ -5776,7 +5776,7 @@
       "label": "OrdersPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1680",
+      "source_location": "L1659",
       "id": "src_app_orderspage",
       "community": 0,
       "norm_label": "orderspage()"
@@ -5785,7 +5785,7 @@
       "label": "OrderDetail()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1684",
+      "source_location": "L1663",
       "id": "src_app_orderdetail",
       "community": 0,
       "norm_label": "orderdetail()"
@@ -5794,7 +5794,7 @@
       "label": "AboutPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1688",
+      "source_location": "L1667",
       "id": "src_app_aboutpage",
       "community": 0,
       "norm_label": "aboutpage()"
@@ -5803,7 +5803,7 @@
       "label": "ContactPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1692",
+      "source_location": "L1671",
       "id": "src_app_contactpage",
       "community": 0,
       "norm_label": "contactpage()"
@@ -5812,7 +5812,7 @@
       "label": "FaqPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1707",
+      "source_location": "L1686",
       "id": "src_app_faqpage",
       "community": 0,
       "norm_label": "faqpage()"
@@ -5821,7 +5821,7 @@
       "label": "NotFound()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1720",
+      "source_location": "L1699",
       "id": "src_app_notfound",
       "community": 0,
       "norm_label": "notfound()"
@@ -5830,7 +5830,7 @@
       "label": "QuickView()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1724",
+      "source_location": "L1703",
       "id": "src_app_quickview",
       "community": 0,
       "norm_label": "quickview()"
@@ -5839,7 +5839,7 @@
       "label": "Footer()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1828",
+      "source_location": "L1807",
       "id": "src_app_footer",
       "community": 0,
       "norm_label": "footer()"
@@ -18432,5 +18432,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d8ca96384df7f8bc47d8d5b81dfd523dfb8e7348"
+  "built_at_commit": "4baae0aa07d93ca2d1c9f0009eda3d4a123f7495"
 }

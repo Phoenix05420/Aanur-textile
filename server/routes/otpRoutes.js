@@ -17,7 +17,7 @@ const router = Router();
  * POST /api/otp/send
  * Body: { "phone": "9876543210" }
  *
- * Success 200: { ok: true, phone, expiresInSec, cooldownSec, dryRun?, code? }
+ * Success 200: { ok: true, phone, expiresInSec, cooldownSec }
  * Error   400: { ok: false, error, phone, cooldownSec? }
  */
 router.post("/send", async (req, res) => {

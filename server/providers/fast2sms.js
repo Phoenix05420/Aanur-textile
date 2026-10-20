@@ -1,120 +1,118 @@
 /**
- * Fast2SMS API client
- * -------------------
- * Sends OTP SMS to Indian mobile numbers via the Fast2SMS HTTP API.
- *
- * Docs: https://docs.fast2sms.com/
- * Free plan: limited daily credits, ad-supported, India only.
- *
- * If FAST2SMS_API_KEY is missing or invalid, the client falls back to
- * "dry-run" mode — it logs the OTP to the server console and returns
- * success. This lets you develop / test the full OTP flow without
- * burning SMS credits or having an account yet.
+ * Fast2SMS Live SMS Client
+ * ------------------------
+ * Real-world SMS delivery client using the Fast2SMS API (https://www.fast2sms.com/).
+ * Dispatches 6-digit verification codes to Indian mobile phone numbers (+91).
  */
 
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const FAST2SMS_URL = "https://www.fast2sms.com/dev/bulkV2";
+const FALLBACK_KEY = "ulbIwjA41n6a5r8oNKJfzEePG0SBvmyUYxc2FRZtpqgCs7iHWXrZ3WVmYOlRa4IvQokEtsi5ySDJGu2w";
 
 /**
- * Send an OTP message to the given phone number.
+ * Sends a real OTP SMS to an Indian mobile number.
  *
  * @param {object} opts
- * @param {string} opts.phone   — 10-digit Indian mobile number (no country code)
- * @param {string} opts.code    — the OTP code to deliver (e.g. "123456")
- * @param {string} opts.apiKey  — Fast2SMS API key
- * @param {string} [opts.sender] — sender ID (default FSTSMS)
- * @param {string} [opts.route]  — "q" (transactional OTP) or "p" (promotional)
- * @param {boolean} [opts.devMode] — when true, always log the OTP server-side
- * @returns {Promise<{ ok: boolean, provider?: string, dryRun?: boolean, raw?: any, error?: string }>}
+ * @param {string} opts.phone   — 10-digit Indian mobile number
+ * @param {string} opts.code    — 6-digit numeric OTP code
+ * @param {string} [opts.apiKey]  — Fast2SMS Authorization key
+ * @param {string} [opts.route]  — 'q' (Quick SMS, default) or 'otp'
+ * @returns {Promise<{ ok: boolean, provider?: string, error?: string, raw?: any }>}
  */
 export async function sendOtpSms({
   phone,
   code,
   apiKey,
-  sender = "FSTSMS",
   route = "q",
-  devMode = true,
 }) {
-  // Normalise phone: strip +91, spaces, dashes; keep last 10 digits.
   const normalized = String(phone || "").replace(/[^\d]/g, "").slice(-10);
 
   if (normalized.length !== 10) {
     return {
       ok: false,
-      error: "Phone number must be a 10-digit Indian mobile number.",
+      error: "Please enter a valid 10-digit Indian mobile number.",
     };
   }
 
-  // Dry-run mode: no API key, or dev mode without forcing real send.
-  if (!apiKey || apiKey === "YOUR_FAST2SMS_API_KEY_HERE") {
-    if (devMode) {
-      console.warn(
-        `\n[Fast2SMS] DRY-RUN — no API key configured.\n` +
-          `            OTP for ${normalized}: ${code}\n` +
-          `            Set FAST2SMS_API_KEY in .env to deliver real SMS.\n`
-      );
-    }
-    return { ok: true, dryRun: true, provider: "fast2sms-dryrun" };
+  const activeApiKey = apiKey || process.env.FAST2SMS_API_KEY || FALLBACK_KEY;
+
+  if (!activeApiKey || activeApiKey === "YOUR_FAST2SMS_API_KEY_HERE") {
+    return {
+      ok: false,
+      error: "Fast2SMS API key is not configured. Please add FAST2SMS_API_KEY in server .env",
+    };
   }
 
-  // Message variables for Fast2SMS variable template.
-  const message = `${code} is your login verification code for Aanur Textile. Do not share it with anyone. Valid for 5 minutes.`;
+  // Construct payload based on selected Fast2SMS route
+  let payload;
+  if (route === "otp") {
+    payload = {
+      route: "otp",
+      variables_values: String(code),
+      numbers: normalized,
+    };
+  } else {
+    // Route 'q' (Quick SMS) - reliable transactional dispatch
+    payload = {
+      route: "q",
+      message: `${code} is your Aanur Textile login verification code. Valid for 5 minutes. Do not share this OTP with anyone.`,
+      numbers: normalized,
+      language: "english",
+    };
+  }
 
   try {
-    const response = await axios.post(
-      FAST2SMS_URL,
-      {
-        variables_values: message,
-        route: route,
-        numbers: normalized,
-        sender_id: sender,
-        message: message,
-        language: "english",
+    const response = await axios.post(FAST2SMS_URL, payload, {
+      headers: {
+        authorization: activeApiKey,
+        "Content-Type": "application/json",
       },
-      {
-        headers: {
-          authorization: apiKey,
-          "Content-Type": "application/json",
-        },
-        timeout: 10_000,
-      }
-    );
+      timeout: 12000,
+    });
 
     const data = response.data || {};
-    const ok = data.return === true || data.status === "success" || (response.status === 200 && !data.error);
+    const isSuccess =
+      data.return === true ||
+      data.status === "success" ||
+      (response.status === 200 && !data.error && data.status_code !== 999 && data.status_code !== 996);
 
-    if (devMode) {
-      console.info(
-        `[Fast2SMS] Sent OTP to ${normalized} — provider response:`,
-        JSON.stringify(data)
-      );
+    if (isSuccess) {
+      console.info(`[Fast2SMS] Successfully dispatched live OTP to +91 ${normalized}`);
+      return { ok: true, provider: "fast2sms", raw: data };
     }
 
-    return { ok, provider: "fast2sms", raw: data };
+    const errorMsg = Array.isArray(data.message) ? data.message.join(" ") : (data.message || "Fast2SMS rejected dispatch.");
+    return { ok: false, error: errorMsg, raw: data };
   } catch (err) {
     const status = err.response?.status;
     const body = err.response?.data;
+
     console.error(
-      `[Fast2SMS] Request failed (status=${status}):`,
+      `[Fast2SMS] Gateway error (HTTP ${status}):`,
       JSON.stringify(body || err.message)
     );
 
-    // Fast2SMS activation fallback in dev mode:
-    // Fast2SMS requires 1 transaction of ₹100 or website verification before live API dispatch.
-    // If DEV_MODE is on, fallback to dev mode with the generated code so login testing is never blocked.
-    if (devMode && (body?.status_code === 999 || body?.status_code === 996 || body?.status_code === 997)) {
-      console.warn(
-        `\n[Fast2SMS Notice] Fast2SMS policy: "${body.message}".\n` +
-          `                  Falling back to DEV MODE — OTP for ${normalized}: ${code}\n` +
-          `                  Recharge ₹100 on Fast2SMS dashboard to enable live SMS dispatch.\n`
-      );
-      return { ok: true, dryRun: true, provider: "fast2sms-dev", raw: body, notice: body.message };
+    let friendlyError = "Unable to send SMS. Please verify your mobile number and try again.";
+
+    if (body?.status_code === 999) {
+      friendlyError =
+        "Fast2SMS API requires an active account with a minimum ₹100 transaction. Please recharge your Fast2SMS wallet at fast2sms.com to enable live SMS delivery.";
+    } else if (body?.status_code === 996) {
+      friendlyError =
+        "Fast2SMS website verification required for OTP route. Please complete website verification on fast2sms.com or use route 'q'.";
+    } else if (body?.message) {
+      friendlyError = Array.isArray(body.message) ? body.message.join(" ") : body.message;
+    } else if (err.message) {
+      friendlyError = err.message;
     }
 
     return {
       ok: false,
-      error: body?.message || err.message || "Fast2SMS request failed",
+      error: friendlyError,
       raw: body,
     };
   }

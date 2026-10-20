@@ -3543,37 +3543,6 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--clay); width: 
   margin-bottom: 16px;
 }
 
-.auth-dev-hint {
-  background: #fdf5ea;
-  border: 1px dashed #d97706;
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 12.5px;
-  color: #92400e;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.auth-auto-fill-btn {
-  background: #b45309;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 11.5px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.15s ease;
-  white-space: nowrap;
-}
-
-.auth-auto-fill-btn:hover {
-  background: #92400e;
-}
-
 .auth-otp-row {
   display: grid;
   grid-template-columns: repeat(6, 1fr);

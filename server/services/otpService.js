@@ -6,6 +6,9 @@
  * in-memory store.
  */
 
+import dotenv from "dotenv";
+dotenv.config();
+
 import { sendOtpSms } from "../providers/fast2sms.js";
 import {
   getRecord,
@@ -36,11 +39,11 @@ export function generateOtp() {
 /**
  * Send (or resend) an OTP to the given phone.
  *
- * Validates the phone, enforces the resend cooldown, generates a fresh code,
- * stores it, then dispatches via Fast2SMS (or dry-run logs it).
+ * Validates the phone, enforces the resend cooldown, generates a fresh 6-digit code,
+ * stores it, then dispatches live SMS via Fast2SMS.
  *
  * @param {string} phoneRaw — user input (may include +91, spaces, dashes)
- * @returns {Promise<{ ok: boolean, phone: string, expiresInSec: number, cooldownSec: number, dryRun?: boolean, code?: string, error?: string }>}
+ * @returns {Promise<{ ok: boolean, phone: string, expiresInSec: number, cooldownSec: number, error?: string }>}
  */
 export async function sendOtp(phoneRaw) {
   const phone = normalizePhone(phoneRaw);
@@ -85,16 +88,16 @@ export async function sendOtp(phoneRaw) {
     verified: false,
   });
 
-  const devMode = String(process.env.DEV_MODE || "true").toLowerCase() === "true";
+  // Dispatch real SMS via Fast2SMS.
+  const apiKey =
+    process.env.FAST2SMS_API_KEY ||
+    "ulbIwjA41n6a5r8oNKJfzEePG0SBvmyUYxc2FRZtpqgCs7iHWXrZ3WVmYOlRa4IvQokEtsi5ySDJGu2w";
 
-  // Dispatch via Fast2SMS (or dry-run).
   const result = await sendOtpSms({
     phone,
     code,
-    apiKey: process.env.FAST2SMS_API_KEY,
-    sender: process.env.FAST2SMS_SENDER_ID || "FSTSMS",
+    apiKey,
     route: process.env.FAST2SMS_ROUTE || "q",
-    devMode,
   });
 
   if (!result.ok) {
@@ -103,18 +106,16 @@ export async function sendOtp(phoneRaw) {
       phone,
       expiresInSec: Math.ceil(ttlMs / 1000),
       cooldownSec: Math.ceil(cooldownMs / 1000),
-      error: result.error || "Failed to send OTP via SMS provider.",
+      error: result.error || "Failed to deliver OTP SMS via Fast2SMS gateway.",
     };
   }
 
+  // Real-world production security: NEVER return the OTP code in the response body!
   return {
     ok: true,
     phone,
     expiresInSec: Math.ceil(ttlMs / 1000),
     cooldownSec: Math.ceil(cooldownMs / 1000),
-    dryRun: !!result.dryRun,
-    // In dev mode, return code in response so user can test locally easily if needed
-    code: devMode ? code : undefined,
   };
 }
 

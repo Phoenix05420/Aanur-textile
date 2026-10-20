@@ -1328,7 +1328,6 @@ function AuthPage({ signup, setToast, navigate }) {
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const [loading, setLoading] = useState(false);
   const [cooldown, setCooldown] = useState(60);
-  const [devCode, setDevCode] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
   const otpInputsRef = useRef([]);
 
@@ -1365,11 +1364,8 @@ function AuthPage({ signup, setToast, navigate }) {
       if (data.ok) {
         setStep('otp');
         setCooldown(data.cooldownSec || 60);
-        if (data.code) {
-          setDevCode(data.code);
-        }
         if (setToast) {
-          setToast(data.dryRun ? `OTP generated in dev mode: ${data.code}` : `OTP sent to +91 ${cleanPhone}`);
+          setToast(`Verification code sent to +91 ${cleanPhone}`);
         }
         setTimeout(() => {
           otpInputsRef.current[0]?.focus();
@@ -1582,25 +1578,8 @@ function AuthPage({ signup, setToast, navigate }) {
             <span className="eyebrow">VERIFY YOUR NUMBER</span>
             <h1>Enter 6-digit code.</h1>
             <p>
-              We sent a verification code to <strong>{maskedPhone}</strong>. It expires in 5 minutes.
+              We sent a verification code via SMS to <strong>{maskedPhone}</strong>. It expires in 5 minutes.
             </p>
-
-            {devCode && (
-              <div className="auth-dev-hint">
-                <span><strong>Test Mode Code:</strong> {devCode}</span>
-                <button
-                  type="button"
-                  className="auth-auto-fill-btn"
-                  onClick={() => {
-                    const digits = devCode.split('');
-                    setOtp(digits);
-                    otpInputsRef.current[5]?.focus();
-                  }}
-                >
-                  Auto-fill
-                </button>
-              </div>
-            )}
 
             {errorMsg && <div className="auth-error-banner">{errorMsg}</div>}
 
