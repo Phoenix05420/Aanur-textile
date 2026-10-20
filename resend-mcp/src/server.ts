@@ -1,0 +1,75 @@
+import { McpServer } from '@modelcontextprotocol/server';
+import type { Resend } from 'resend';
+import packageJson from '../package.json' with { type: 'json' };
+import { DashboardClient } from './lib/dashboard-client.js';
+import { ResendEditorClient } from './lib/resend-editor-client.js';
+import {
+  addApiKeyTools,
+  addAutomationTools,
+  addBroadcastTools,
+  addContactImportTools,
+  addContactPropertyTools,
+  addContactTools,
+  addDomainTools,
+  addEditorTools,
+  addEmailTools,
+  addEventTools,
+  addLogTools,
+  addOAuthGrantTools,
+  addSegmentTools,
+  addSuppressionTools,
+  addTemplateTools,
+  addTopicTools,
+  addUsageTools,
+  addWebhookTools,
+} from './tools/index.js';
+import type { ServerOptions } from './types.js';
+
+export type { ServerOptions } from './types.js';
+
+export function createMcpServer(
+  resend: Resend,
+  options: ServerOptions,
+  apiKey: string,
+): McpServer {
+  const {
+    senderEmailAddress,
+    replierEmailAddresses = [],
+    allowedFileDirs,
+  } = options;
+  const server = new McpServer({
+    name: 'resend',
+    version: packageJson.version,
+  });
+
+  const dashboard = new DashboardClient();
+  const apiClient = new ResendEditorClient(apiKey);
+
+  const { withEditorSession } = addEditorTools(server, dashboard, apiClient);
+  addApiKeyTools(server, resend);
+  addAutomationTools(server, resend);
+  addBroadcastTools(server, resend, apiClient, {
+    senderEmailAddress,
+    replierEmailAddresses,
+    withEditorSession,
+  });
+  addContactImportTools(server, resend, { allowedFileDirs });
+  addContactPropertyTools(server, resend);
+  addContactTools(server, resend);
+  addDomainTools(server, resend);
+  addEmailTools(server, resend, {
+    senderEmailAddress,
+    replierEmailAddresses,
+    allowedFileDirs,
+  });
+  addEventTools(server, resend);
+  addLogTools(server, resend);
+  addOAuthGrantTools(server, resend);
+  addSegmentTools(server, resend);
+  addSuppressionTools(server, resend);
+  addTemplateTools(server, resend, apiClient, { withEditorSession });
+  addTopicTools(server, resend);
+  addUsageTools(server, resend);
+  addWebhookTools(server, resend);
+  return server;
+}
