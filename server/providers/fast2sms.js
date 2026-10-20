@@ -99,6 +99,19 @@ export async function sendOtpSms({
       `[Fast2SMS] Request failed (status=${status}):`,
       JSON.stringify(body || err.message)
     );
+
+    // Fast2SMS activation fallback in dev mode:
+    // Fast2SMS requires 1 transaction of ₹100 or website verification before live API dispatch.
+    // If DEV_MODE is on, fallback to dev mode with the generated code so login testing is never blocked.
+    if (devMode && (body?.status_code === 999 || body?.status_code === 996 || body?.status_code === 997)) {
+      console.warn(
+        `\n[Fast2SMS Notice] Fast2SMS policy: "${body.message}".\n` +
+          `                  Falling back to DEV MODE — OTP for ${normalized}: ${code}\n` +
+          `                  Recharge ₹100 on Fast2SMS dashboard to enable live SMS dispatch.\n`
+      );
+      return { ok: true, dryRun: true, provider: "fast2sms-dev", raw: body, notice: body.message };
+    }
+
     return {
       ok: false,
       error: body?.message || err.message || "Fast2SMS request failed",
