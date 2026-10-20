@@ -50,8 +50,16 @@ const otpStore = new Map(); // email.toLowerCase() -> { otp, expiresAt, name, ph
 const localOrdersStore = new Map(); // orderRef -> orderObject
 
 // =============================================================================
-// 1. HEALTH & STATUS CHECK
+// 1. HEALTH & STATUS CHECK (For Render, Railway & Monitoring)
 // =============================================================================
+app.get('/health', (req, res) => {
+  return res.status(200).json({ status: 'ok', uptime: process.uptime(), timestamp: new Date() });
+});
+
+app.get('/api/health', (req, res) => {
+  return res.status(200).json({ status: 'ok', uptime: process.uptime(), timestamp: new Date() });
+});
+
 app.get('/api/status', async (req, res) => {
   const configured = isMongoConfigured();
   if (!configured) {

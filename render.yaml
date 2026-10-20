@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: aanur-textile-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: RESEND_FROM_EMAIL
+        value: Aanur Textile <onboarding@resend.dev>
+      - key: STORE_ADMIN_EMAIL
+        sync: false
