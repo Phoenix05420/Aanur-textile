@@ -166,20 +166,29 @@ app.post('/api/auth/verify-otp', async (req, res) => {
   // OTP verified successfully
   otpStore.delete(cleanEmail);
 
-  const displayName = name || entry.name || cleanEmail.split('@')[0];
+  const adminEmail = (process.env.STORE_ADMIN_EMAIL || process.env.VITE_STORE_ADMIN_EMAIL || '').trim().toLowerCase();
+  const isAdmin = Boolean(adminEmail && cleanEmail === adminEmail);
+
+  const displayName = isAdmin ? 'Aanur Admin' : (name || entry.name || cleanEmail.split('@')[0]);
   const user = {
     name: displayName,
     email: cleanEmail,
+    role: isAdmin ? 'admin' : 'customer',
+    isAdmin,
     phone: phone || entry.phone || '+91 98427 51234',
     city: 'Tiruppur',
     state: 'Tamil Nadu',
-    avatarBg: '#b76b52',
+    avatarBg: isAdmin ? '#8B1E0F' : '#b76b52',
   };
 
   return res.json({
     success: true,
-    message: 'Verification successful. Welcome to Aanur Textile!',
+    message: isAdmin
+      ? 'Admin verification successful! Accessing Artisan Admin Control Center...'
+      : 'Verification successful. Welcome to Aanur Textile!',
     user,
+    isAdmin,
+    redirect: isAdmin ? '/admin' : '/profile',
   });
 });
 
@@ -519,6 +528,143 @@ app.get('/api/orders/status/:orderRef', async (req, res) => {
     autoVerifyAt: order.autoVerifyAt,
     remainingMinutes,
   });
+});
+
+// =============================================================================
+// 5. ADMIN CONTROL CENTER (Orders & Store Management)
+// =============================================================================
+
+/**
+ * Fetch all orders for Admin Dashboard (MongoDB + In-Memory)
+ */
+app.get('/api/admin/orders', async (req, res) => {
+  try {
+    let ordersList = [];
+    if (isMongoConfigured() && mongoose.connection.readyState === 1) {
+      try {
+        ordersList = await Order.find({}).sort({ createdAt: -1 }).lean();
+      } catch (e) {
+        console.warn('MongoDB orders fetch failed, falling back to local memory:', e.message);
+      }
+    }
+
+    const inMemoryOrders = Array.from(localOrdersStore.values());
+    const existingRefs = new Set(ordersList.map((o) => o.orderRef));
+    for (const memOrder of inMemoryOrders) {
+      if (!existingRefs.has(memOrder.orderRef)) {
+        ordersList.push(memOrder);
+      }
+    }
+
+    ordersList.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+
+    return res.json({
+      success: true,
+      orders: ordersList,
+      total: ordersList.length,
+    });
+  } catch (err) {
+    console.error('Error fetching admin orders:', err);
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * Update Order Status (Processing, Shipped, Delivered, Cancelled)
+ */
+app.patch('/api/admin/orders/:orderRef/status', async (req, res) => {
+  const { orderRef } = req.params;
+  const { deliveryStatus, isVerified, notes } = req.body || {};
+
+  try {
+    let updatedOrder = null;
+
+    if (localOrdersStore.has(orderRef)) {
+      const order = localOrdersStore.get(orderRef);
+      if (deliveryStatus) order.deliveryStatus = deliveryStatus;
+      if (typeof isVerified === 'boolean') order.isVerified = isVerified;
+      if (notes) order.notes = notes;
+      localOrdersStore.set(orderRef, order);
+      updatedOrder = order;
+    }
+
+    if (isMongoConfigured() && mongoose.connection.readyState === 1) {
+      const doc = await Order.findOne({ orderRef });
+      if (doc) {
+        if (deliveryStatus) doc.deliveryStatus = deliveryStatus;
+        if (typeof isVerified === 'boolean') doc.isVerified = isVerified;
+        if (notes) doc.notes = notes;
+        await doc.save();
+        updatedOrder = doc.toObject();
+      }
+    }
+
+    if (!updatedOrder) {
+      return res.status(404).json({ success: false, error: `Order #${orderRef} not found.` });
+    }
+
+    return res.json({
+      success: true,
+      message: `Order #${orderRef} status updated to "${deliveryStatus || updatedOrder.deliveryStatus}".`,
+      order: updatedOrder,
+    });
+  } catch (err) {
+    console.error('Error updating order status:', err);
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * Get Admin Overview Statistics
+ */
+app.get('/api/admin/stats', async (req, res) => {
+  try {
+    let ordersList = [];
+    if (isMongoConfigured() && mongoose.connection.readyState === 1) {
+      try {
+        ordersList = await Order.find({}).lean();
+      } catch (e) {
+        ordersList = [];
+      }
+    }
+    const inMemoryOrders = Array.from(localOrdersStore.values());
+    const existingRefs = new Set(ordersList.map((o) => o.orderRef));
+    for (const memOrder of inMemoryOrders) {
+      if (!existingRefs.has(memOrder.orderRef)) {
+        ordersList.push(memOrder);
+      }
+    }
+
+    const totalOrders = ordersList.length;
+    const totalRevenue = ordersList.reduce((acc, o) => acc + (Number(o.total) || 0), 0);
+    const verifiedOrders = ordersList.filter((o) => o.isVerified).length;
+    const pendingOrders = ordersList.filter((o) => !o.isVerified).length;
+    const processingOrders = ordersList.filter((o) =>
+      (o.deliveryStatus || '').toLowerCase().includes('process') ||
+      (o.deliveryStatus || '').toLowerCase().includes('loom')
+    ).length;
+    const shippedOrders = ordersList.filter((o) =>
+      (o.deliveryStatus || '').toLowerCase().includes('ship')
+    ).length;
+    const deliveredOrders = ordersList.filter((o) =>
+      (o.deliveryStatus || '').toLowerCase().includes('deliver')
+    ).length;
+
+    return res.json({
+      success: true,
+      stats: {
+        totalOrders,
+        totalRevenue,
+        verifiedOrders,
+        pendingOrders,
+        processingOrders,
+        shippedOrders,
+        deliveredOrders,
+      },
+    });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 /**

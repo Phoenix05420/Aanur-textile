@@ -405,8 +405,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\app.js": {
-    "mtime": 1792517242.1632915,
-    "ast_hash": "c965daf838fd8174df2a0d796a45b6ee",
+    "mtime": 1792519178.5869184,
+    "ast_hash": "00a11ff28b64730b63aceb2eac17055c",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\db.js": {
@@ -439,9 +439,14 @@
     "ast_hash": "0538a98e348a20cae1599d7d40bfa430",
     "semantic_hash": ""
   },
+  "X:\\New folder (2)\\src\\AdminPage.jsx": {
+    "mtime": 1792519254.852178,
+    "ast_hash": "a0cd60cbc63e3d07cd1bf73dce4ae819",
+    "semantic_hash": ""
+  },
   "X:\\New folder (2)\\src\\App.jsx": {
-    "mtime": 1792517374.6732118,
-    "ast_hash": "1f7b799dff0992fc9dec354661571ea3",
+    "mtime": 1792519500.6979325,
+    "ast_hash": "e54ae0625e4b440216f0e82c9af69e4f",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\data.js": {

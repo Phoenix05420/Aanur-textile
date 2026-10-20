@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { categories, products as initialProducts, store } from './data.js';
 import ProfilePage from './ProfilePage.jsx';
+import AdminPage from './AdminPage.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -286,6 +287,72 @@ function App() {
     if (path === '/checkout') return <Checkout cart={cart} setCart={setCart} navigate={navigate} products={products} coupon={coupon} setCoupon={setCoupon} />;
     if (path === '/wishlist') return <WishlistPage wishlist={wishlist} onWish={toggleWishlist} onAdd={addToCart} navigate={navigate} products={products} />;
     if (path === '/verify-order') return <VerifyOrderPage navigate={navigate} setToast={setToast} />;
+    if (path === '/admin') {
+      const adminEmail = (import.meta.env.VITE_STORE_ADMIN_EMAIL || import.meta.env.STORE_ADMIN_EMAIL || '').trim().toLowerCase();
+      const isUserAdmin = Boolean(
+        currentUser &&
+        (currentUser.isAdmin || currentUser.role === 'admin' || (adminEmail && currentUser.email?.toLowerCase() === adminEmail))
+      );
+
+      if (!currentUser) {
+        return (
+          <AuthPage
+            signup={false}
+            setToast={setToast}
+            navigate={navigate}
+            redirect="/admin"
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
+            notice="Aanur Textile Admin: Please sign in with your Admin Gmail to access the Artisan Control Center."
+          />
+        );
+      }
+
+      if (!isUserAdmin) {
+        return (
+          <div className="admin-access-denied page-pad container">
+            <div className="access-denied-card">
+              <Icon name="shield" size={48} />
+              <h2>Admin Access Required</h2>
+              <p>
+                Account <strong>{currentUser.email}</strong> is not recognized as a store administrator.
+                Please sign in with your verified Admin Gmail.
+              </p>
+              <div className="access-denied-actions">
+                <button
+                  type="button"
+                  className="button button-dark"
+                  onClick={() => {
+                    handleQuickLogout('button');
+                    navigate('/login');
+                  }}
+                >
+                  Sign In with Admin Gmail
+                </button>
+                <button
+                  type="button"
+                  className="button button-soft"
+                  onClick={() => navigate('/shop')}
+                >
+                  Return to Storefront
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <AdminPage
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+          navigate={navigate}
+          products={products}
+          setProducts={setProducts}
+          setToast={setToast}
+        />
+      );
+    }
     if (path === '/logout') {
       try {
         localStorage.removeItem('aanur_is_logged_in');
@@ -449,6 +516,19 @@ function App() {
           >
             <Icon name={mobileSearchOpen ? 'close' : 'search'} />
           </button>
+
+          {/* Admin Dashboard Action */}
+          {(currentUser?.isAdmin || currentUser?.role === 'admin') && (
+            <button
+              type="button"
+              className={`header-admin-btn ${path === '/admin' ? 'is-current' : ''}`}
+              onClick={() => navigate('/admin')}
+              title="Aanur Textile Artisan Control Center"
+            >
+              <Icon name="shield" size={13} />
+              <span>Admin</span>
+            </button>
+          )}
 
           {/* Account Button & Sign In Action */}
           <button
@@ -681,6 +761,19 @@ function App() {
         <div className="drawer-section">
           <span className="drawer-section-title">ACCOUNT & SERVICES</span>
           <nav className="drawer-links">
+            {(currentUser?.isAdmin || currentUser?.role === 'admin') && (
+              <button
+                className={`drawer-link ${path === '/admin' ? 'is-active' : ''}`}
+                style={{ color: '#8B1E0F', fontWeight: 600 }}
+                onClick={() => { setMobileOpen(false); navigate('/admin'); }}
+              >
+                <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Icon name="shield" size={15} />
+                  <span>Admin Dashboard</span>
+                </span>
+                <span className="drawer-badge" style={{ background: '#8B1E0F', color: '#fff' }}>Admin</span>
+              </button>
+            )}
             {currentUser && (
               <button
                 type="button"
@@ -1684,10 +1777,27 @@ function AuthPage({
 
         if (setCurrentUser) setCurrentUser(user);
         setIsSuccess(true);
-        if (setToast) setToast(`Welcome, ${user.name}!`);
+
+        const adminEnvEmail = (import.meta.env.VITE_STORE_ADMIN_EMAIL || import.meta.env.STORE_ADMIN_EMAIL || '').trim().toLowerCase();
+        const isAdmin = Boolean(
+          data.isAdmin ||
+          user.role === 'admin' ||
+          user.isAdmin ||
+          (adminEnvEmail && user.email?.toLowerCase() === adminEnvEmail)
+        );
+
+        if (setToast) {
+          setToast(
+            isAdmin
+              ? 'Admin verified! Entering Artisan Control Center...'
+              : `Welcome, ${user.name}!`
+          );
+        }
+
+        const targetDestination = data.redirect || (isAdmin ? '/admin' : (redirect || '/profile'));
 
         setTimeout(() => {
-          navigate(redirect || '/profile');
+          navigate(targetDestination);
         }, 800);
       } else {
         setErrorMsg(data.error || 'Invalid verification code. Please check your email and try again.');
