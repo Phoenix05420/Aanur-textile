@@ -1116,7 +1116,7 @@
       "source_file": "resend-mcp/package.json",
       "source_location": "L38",
       "id": "resend_mcp_package_dependencies_minimist",
-      "community": 2,
+      "community": 1,
       "norm_label": "minimist"
     },
     {
@@ -1548,7 +1548,7 @@
       "source_file": "resend-mcp/src/server.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_server_ts",
-      "community": 54,
+      "community": 25,
       "norm_label": "server.ts"
     },
     {
@@ -1566,7 +1566,7 @@
       "source_file": "resend-mcp/src/types.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_types_ts",
-      "community": 54,
+      "community": 25,
       "norm_label": "types.ts"
     },
     {
@@ -1575,7 +1575,7 @@
       "source_file": "resend-mcp/src/types.ts",
       "source_location": "L1",
       "id": "src_types_serveroptions",
-      "community": 54,
+      "community": 25,
       "norm_label": "serveroptions"
     },
     {
@@ -2592,7 +2592,7 @@
       "source_file": "resend-mcp/src/tools/contacts.ts",
       "source_location": "L247",
       "id": "tools_contacts_addcontacttools",
-      "community": 25,
+      "community": 24,
       "norm_label": "addcontacttools()"
     },
     {
@@ -2934,7 +2934,7 @@
       "source_file": "resend-mcp/src/tools/events.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_tools_events_ts",
-      "community": 25,
+      "community": 8,
       "norm_label": "events.ts"
     },
     {
@@ -2943,7 +2943,7 @@
       "source_file": "resend-mcp/src/tools/events.ts",
       "source_location": "L5",
       "id": "tools_events_send_event_tool",
-      "community": 25,
+      "community": 8,
       "norm_label": "send_event_tool"
     },
     {
@@ -2952,7 +2952,7 @@
       "source_file": "resend-mcp/src/tools/events.ts",
       "source_location": "L45",
       "id": "tools_events_manage_events_tool",
-      "community": 25,
+      "community": 8,
       "norm_label": "manage_events_tool"
     },
     {
@@ -2961,7 +2961,7 @@
       "source_file": "resend-mcp/src/tools/events.ts",
       "source_location": "L99",
       "id": "tools_events_addeventtools",
-      "community": 25,
+      "community": 8,
       "norm_label": "addeventtools()"
     },
     {
@@ -2970,7 +2970,7 @@
       "source_file": "resend-mcp/src/tools/index.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_tools_index_ts",
-      "community": 54,
+      "community": 25,
       "norm_label": "index.ts"
     },
     {
@@ -3348,7 +3348,7 @@
       "source_file": "resend-mcp/src/tools/topics.ts",
       "source_location": "L74",
       "id": "tools_topics_addtopictools",
-      "community": 25,
+      "community": 33,
       "norm_label": "addtopictools()"
     },
     {
@@ -3573,7 +3573,7 @@
       "source_file": "resend-mcp/src/transports/http.ts",
       "source_location": "L83",
       "id": "transports_http_runhttp",
-      "community": 60,
+      "community": 54,
       "norm_label": "runhttp()"
     },
     {
@@ -3582,7 +3582,7 @@
       "source_file": "resend-mcp/src/transports/stdio.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_transports_stdio_ts",
-      "community": 54,
+      "community": 25,
       "norm_label": "stdio.ts"
     },
     {
@@ -3591,7 +3591,7 @@
       "source_file": "resend-mcp/src/transports/stdio.ts",
       "source_location": "L6",
       "id": "transports_stdio_runstdio",
-      "community": 57,
+      "community": 36,
       "norm_label": "runstdio()"
     },
     {
@@ -4932,7 +4932,7 @@
       "source_file": "resend-mcp/tests/transports/http-file-access.test.ts",
       "source_location": "L1",
       "id": "resend_mcp_tests_transports_http_file_access_test_ts",
-      "community": 60,
+      "community": 54,
       "norm_label": "http-file-access.test.ts"
     },
     {
@@ -4941,7 +4941,7 @@
       "source_file": "resend-mcp/tests/transports/http-file-access.test.ts",
       "source_location": "L13",
       "id": "transports_http_file_access_test_send",
-      "community": 60,
+      "community": 54,
       "norm_label": "send"
     },
     {
@@ -4950,7 +4950,7 @@
       "source_file": "resend-mcp/tests/transports/http-file-access.test.ts",
       "source_location": "L45",
       "id": "transports_http_file_access_test_connect",
-      "community": 60,
+      "community": 54,
       "norm_label": "connect()"
     },
     {
@@ -4959,7 +4959,7 @@
       "source_file": "resend-mcp/tests/transports/http-file-access.test.ts",
       "source_location": "L66",
       "id": "transports_http_file_access_test_sendwithattachment",
-      "community": 60,
+      "community": 54,
       "norm_label": "sendwithattachment()"
     },
     {
@@ -5013,7 +5013,7 @@
       "source_file": "resend-mcp/tests/transports/stdio.test.ts",
       "source_location": "L1",
       "id": "resend_mcp_tests_transports_stdio_test_ts",
-      "community": 57,
+      "community": 36,
       "norm_label": "stdio.test.ts"
     },
     {
@@ -5022,7 +5022,7 @@
       "source_file": "resend-mcp/tests/transports/stdio.test.ts",
       "source_location": "L5",
       "id": "transports_stdio_test_mockservestdio",
-      "community": 57,
+      "community": 36,
       "norm_label": "{ mockservestdio }"
     },
     {
@@ -5031,7 +5031,7 @@
       "source_file": "resend-mcp/tests/transports/stdio.test.ts",
       "source_location": "L30",
       "id": "transports_stdio_test_resend",
-      "community": 57,
+      "community": 36,
       "norm_label": "resend"
     },
     {
@@ -5452,7 +5452,7 @@
       "label": "money()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "id": "src_app_money",
       "community": 0,
       "norm_label": "money()"
@@ -5461,7 +5461,7 @@
       "label": "saved()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "id": "src_app_saved",
       "community": 0,
       "norm_label": "saved()"
@@ -5470,7 +5470,7 @@
       "label": "validateCoupon()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L21",
+      "source_location": "L22",
       "id": "src_app_validatecoupon",
       "community": 0,
       "norm_label": "validatecoupon()"
@@ -5479,7 +5479,7 @@
       "label": "Icon()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L36",
+      "source_location": "L37",
       "id": "src_app_icon",
       "community": 0,
       "norm_label": "icon()"
@@ -5488,7 +5488,7 @@
       "label": "App()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L61",
+      "source_location": "L70",
       "id": "src_app_app",
       "community": 0,
       "norm_label": "app()"
@@ -5497,7 +5497,7 @@
       "label": "SectionTitle()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L582",
+      "source_location": "L591",
       "id": "src_app_sectiontitle",
       "community": 0,
       "norm_label": "sectiontitle()"
@@ -5506,7 +5506,7 @@
       "label": "ProductCard()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L586",
+      "source_location": "L595",
       "id": "src_app_productcard",
       "community": 0,
       "norm_label": "productcard()"
@@ -5515,7 +5515,7 @@
       "label": "ProductGrid()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L632",
+      "source_location": "L641",
       "id": "src_app_productgrid",
       "community": 0,
       "norm_label": "productgrid()"
@@ -5524,7 +5524,7 @@
       "label": "Home()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L636",
+      "source_location": "L645",
       "id": "src_app_home",
       "community": 0,
       "norm_label": "home()"
@@ -5533,7 +5533,7 @@
       "label": "BestOffersPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L680",
+      "source_location": "L689",
       "id": "src_app_bestofferspage",
       "community": 0,
       "norm_label": "bestofferspage()"
@@ -5542,7 +5542,7 @@
       "label": "Catalog()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L795",
+      "source_location": "L804",
       "id": "src_app_catalog",
       "community": 0,
       "norm_label": "catalog()"
@@ -5551,7 +5551,7 @@
       "label": "ProductDetail()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L808",
+      "source_location": "L817",
       "id": "src_app_productdetail",
       "community": 0,
       "norm_label": "productdetail()"
@@ -5560,7 +5560,7 @@
       "label": "CartPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L993",
+      "source_location": "L1002",
       "id": "src_app_cartpage",
       "community": 0,
       "norm_label": "cartpage()"
@@ -5569,7 +5569,7 @@
       "label": "Checkout()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1101",
+      "source_location": "L1110",
       "id": "src_app_checkout",
       "community": 0,
       "norm_label": "checkout()"
@@ -5578,7 +5578,7 @@
       "label": "WishlistPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1202",
+      "source_location": "L1211",
       "id": "src_app_wishlistpage",
       "community": 0,
       "norm_label": "wishlistpage()"
@@ -5587,7 +5587,7 @@
       "label": "AuthPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1207",
+      "source_location": "L1216",
       "id": "src_app_authpage",
       "community": 0,
       "norm_label": "authpage()"
@@ -5596,7 +5596,7 @@
       "label": "AccountPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1211",
+      "source_location": "L1220",
       "id": "src_app_accountpage",
       "community": 0,
       "norm_label": "accountpage()"
@@ -5605,7 +5605,7 @@
       "label": "OrdersPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1215",
+      "source_location": "L1224",
       "id": "src_app_orderspage",
       "community": 0,
       "norm_label": "orderspage()"
@@ -5614,7 +5614,7 @@
       "label": "OrderDetail()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1219",
+      "source_location": "L1228",
       "id": "src_app_orderdetail",
       "community": 0,
       "norm_label": "orderdetail()"
@@ -5623,7 +5623,7 @@
       "label": "AboutPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1223",
+      "source_location": "L1232",
       "id": "src_app_aboutpage",
       "community": 0,
       "norm_label": "aboutpage()"
@@ -5632,7 +5632,7 @@
       "label": "ContactPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1227",
+      "source_location": "L1236",
       "id": "src_app_contactpage",
       "community": 0,
       "norm_label": "contactpage()"
@@ -5641,7 +5641,7 @@
       "label": "FaqPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1242",
+      "source_location": "L1251",
       "id": "src_app_faqpage",
       "community": 0,
       "norm_label": "faqpage()"
@@ -5650,7 +5650,7 @@
       "label": "NotFound()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1255",
+      "source_location": "L1264",
       "id": "src_app_notfound",
       "community": 0,
       "norm_label": "notfound()"
@@ -5659,7 +5659,7 @@
       "label": "QuickView()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1259",
+      "source_location": "L1268",
       "id": "src_app_quickview",
       "community": 0,
       "norm_label": "quickview()"
@@ -5668,7 +5668,7 @@
       "label": "Footer()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1363",
+      "source_location": "L1372",
       "id": "src_app_footer",
       "community": 0,
       "norm_label": "footer()"
@@ -5719,6 +5719,51 @@
       "norm_label": "main.jsx"
     },
     {
+      "label": "ProfilePage.jsx",
+      "file_type": "code",
+      "source_file": "src/ProfilePage.jsx",
+      "source_location": "L1",
+      "id": "src_profilepage_jsx",
+      "community": 51,
+      "norm_label": "profilepage.jsx"
+    },
+    {
+      "label": "money()",
+      "file_type": "code",
+      "source_file": "src/ProfilePage.jsx",
+      "source_location": "L4",
+      "id": "src_profilepage_money",
+      "community": 51,
+      "norm_label": "money()"
+    },
+    {
+      "label": "saved()",
+      "file_type": "code",
+      "source_file": "src/ProfilePage.jsx",
+      "source_location": "L6",
+      "id": "src_profilepage_saved",
+      "community": 51,
+      "norm_label": "saved()"
+    },
+    {
+      "label": "ProfileIcon()",
+      "file_type": "code",
+      "source_file": "src/ProfilePage.jsx",
+      "source_location": "L15",
+      "id": "src_profilepage_profileicon",
+      "community": 51,
+      "norm_label": "profileicon()"
+    },
+    {
+      "label": "ProfilePage()",
+      "file_type": "code",
+      "source_file": "src/ProfilePage.jsx",
+      "source_location": "L56",
+      "id": "src_profilepage_profilepage",
+      "community": 51,
+      "norm_label": "profilepage()"
+    },
+    {
       "label": "graphify.md",
       "file_type": "document",
       "source_file": ".agents/rules/graphify.md",
@@ -5739,9 +5784,9 @@
     {
       "label": "SKILL.md",
       "file_type": "document",
-      "source_file": ".agent/skills/graphify/SKILL.md",
+      "source_file": ".agents/skills/graphify/SKILL.md",
       "source_location": "L1",
-      "id": "agent_skills_graphify_skill_md",
+      "id": "agents_skills_graphify_skill_md",
       "community": 29,
       "norm_label": "skill.md"
     },
@@ -5856,9 +5901,9 @@
     {
       "label": "aanur_architecture_report.md",
       "file_type": "document",
-      "source_file": ".agent/skills/graphify/examples/aanur_architecture_report.md",
+      "source_file": ".agents/skills/graphify/examples/aanur_architecture_report.md",
       "source_location": "L1",
-      "id": "agent_skills_graphify_examples_aanur_architecture_report_md",
+      "id": "agents_skills_graphify_examples_aanur_architecture_report_md",
       "community": 30,
       "norm_label": "aanur_architecture_report.md"
     },
@@ -5928,9 +5973,9 @@
     {
       "label": "architecture.md",
       "file_type": "document",
-      "source_file": ".agent/skills/graphify/references/architecture.md",
+      "source_file": ".agents/skills/graphify/references/architecture.md",
       "source_location": "L1",
-      "id": "agent_skills_graphify_references_architecture_md",
+      "id": "agents_skills_graphify_references_architecture_md",
       "community": 27,
       "norm_label": "architecture.md"
     },
@@ -6063,9 +6108,9 @@
     {
       "label": "mermaid_styles.md",
       "file_type": "document",
-      "source_file": ".agent/skills/graphify/references/mermaid_styles.md",
+      "source_file": ".agents/skills/graphify/references/mermaid_styles.md",
       "source_location": "L1",
-      "id": "agent_skills_graphify_references_mermaid_styles_md",
+      "id": "agents_skills_graphify_references_mermaid_styles_md",
       "community": 34,
       "norm_label": "mermaid_styles.md"
     },
@@ -6126,9 +6171,9 @@
     {
       "label": "query_cookbook.md",
       "file_type": "document",
-      "source_file": ".agent/skills/graphify/references/query_cookbook.md",
+      "source_file": ".agents/skills/graphify/references/query_cookbook.md",
       "source_location": "L1",
-      "id": "agent_skills_graphify_references_query_cookbook_md",
+      "id": "agents_skills_graphify_references_query_cookbook_md",
       "community": 32,
       "norm_label": "query_cookbook.md"
     },
@@ -6239,51 +6284,6 @@
       "id": "workflows_graphify_quick_actions",
       "community": 35,
       "norm_label": "quick actions:"
-    },
-    {
-      "label": "SKILL.md",
-      "file_type": "document",
-      "source_file": ".agents/skills/graphify/SKILL.md",
-      "source_location": "L1",
-      "id": "agents_skills_graphify_skill_md",
-      "community": 29,
-      "norm_label": "skill.md"
-    },
-    {
-      "label": "aanur_architecture_report.md",
-      "file_type": "document",
-      "source_file": ".agents/skills/graphify/examples/aanur_architecture_report.md",
-      "source_location": "L1",
-      "id": "agents_skills_graphify_examples_aanur_architecture_report_md",
-      "community": 30,
-      "norm_label": "aanur_architecture_report.md"
-    },
-    {
-      "label": "architecture.md",
-      "file_type": "document",
-      "source_file": ".agents/skills/graphify/references/architecture.md",
-      "source_location": "L1",
-      "id": "agents_skills_graphify_references_architecture_md",
-      "community": 27,
-      "norm_label": "architecture.md"
-    },
-    {
-      "label": "mermaid_styles.md",
-      "file_type": "document",
-      "source_file": ".agents/skills/graphify/references/mermaid_styles.md",
-      "source_location": "L1",
-      "id": "agents_skills_graphify_references_mermaid_styles_md",
-      "community": 34,
-      "norm_label": "mermaid_styles.md"
-    },
-    {
-      "label": "query_cookbook.md",
-      "file_type": "document",
-      "source_file": ".agents/skills/graphify/references/query_cookbook.md",
-      "source_location": "L1",
-      "id": "agents_skills_graphify_references_query_cookbook_md",
-      "community": 32,
-      "norm_label": "query_cookbook.md"
     },
     {
       "label": "profile.md",
@@ -7238,6 +7238,51 @@
       "id": "resend_mcp_readme_codeblock_38",
       "community": 31,
       "norm_label": "code:bash (pnpm inspector)"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": ".agent/skills/graphify/SKILL.md",
+      "source_location": "L1",
+      "community": 29,
+      "norm_label": "skill.md",
+      "id": "agent_skills_graphify_skill_md"
+    },
+    {
+      "label": "aanur_architecture_report.md",
+      "file_type": "document",
+      "source_file": ".agent/skills/graphify/examples/aanur_architecture_report.md",
+      "source_location": "L1",
+      "community": 30,
+      "norm_label": "aanur_architecture_report.md",
+      "id": "agent_skills_graphify_examples_aanur_architecture_report_md"
+    },
+    {
+      "label": "architecture.md",
+      "file_type": "document",
+      "source_file": ".agent/skills/graphify/references/architecture.md",
+      "source_location": "L1",
+      "community": 27,
+      "norm_label": "architecture.md",
+      "id": "agent_skills_graphify_references_architecture_md"
+    },
+    {
+      "label": "mermaid_styles.md",
+      "file_type": "document",
+      "source_file": ".agent/skills/graphify/references/mermaid_styles.md",
+      "source_location": "L1",
+      "community": 34,
+      "norm_label": "mermaid_styles.md",
+      "id": "agent_skills_graphify_references_mermaid_styles_md"
+    },
+    {
+      "label": "query_cookbook.md",
+      "file_type": "document",
+      "source_file": ".agent/skills/graphify/references/query_cookbook.md",
+      "source_location": "L1",
+      "community": 32,
+      "norm_label": "query_cookbook.md",
+      "id": "agent_skills_graphify_references_query_cookbook_md"
     },
     {
       "label": "neon.js",
@@ -15538,6 +15583,17 @@
       "target": "src_data_store"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_app_jsx",
+      "target": "src_profilepage_jsx",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/App.jsx",
@@ -15897,6 +15953,17 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/ProfilePage.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_profilepage_jsx",
+      "target": "src_data_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "scripts/init-db.js",
       "source_location": "L3",
       "weight": 1.0,
@@ -15926,6 +15993,68 @@
       "target": "src_data_products"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ProfilePage.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_profilepage_jsx",
+      "target": "src_data_store",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ProfilePage.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_profilepage_jsx",
+      "target": "src_profilepage_money",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ProfilePage.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_profilepage_jsx",
+      "target": "src_profilepage_saved",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ProfilePage.jsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "src_profilepage_jsx",
+      "target": "src_profilepage_profileicon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ProfilePage.jsx",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "src_profilepage_jsx",
+      "target": "src_profilepage_profilepage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/ProfilePage.jsx",
+      "source_location": "L744",
+      "weight": 1.0,
+      "source": "src_profilepage_profilepage",
+      "target": "src_profilepage_money",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".agents/rules/graphify.md",
@@ -15948,11 +16077,11 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".agent/skills/graphify/SKILL.md",
+      "source_file": ".agents/skills/graphify/SKILL.md",
       "source_location": "L6",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "agent_skills_graphify_skill_md",
+      "source": "agents_skills_graphify_skill_md",
       "target": "graphify_skill_graphify_aanur_textile_knowledge_graph_architecture_skill"
     },
     {
@@ -15998,11 +16127,11 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".agents/skills/graphify/SKILL.md",
+      "source_file": ".agent/skills/graphify/SKILL.md",
       "source_location": "L6",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "agents_skills_graphify_skill_md",
+      "source": "agent_skills_graphify_skill_md",
       "target": "graphify_skill_graphify_aanur_textile_knowledge_graph_architecture_skill"
     },
     {
@@ -16078,11 +16207,11 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".agent/skills/graphify/examples/aanur_architecture_report.md",
+      "source_file": ".agents/skills/graphify/examples/aanur_architecture_report.md",
       "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "agent_skills_graphify_examples_aanur_architecture_report_md",
+      "source": "agents_skills_graphify_examples_aanur_architecture_report_md",
       "target": "examples_aanur_architecture_report_aanur_textile_architecture_system_audit_report"
     },
     {
@@ -16121,18 +16250,18 @@
       "source_file": ".agents/skills/graphify/examples/aanur_architecture_report.md",
       "source_location": "L116",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "examples_aanur_architecture_report_aanur_textile_architecture_system_audit_report",
-      "target": "examples_aanur_architecture_report_4_key_performance_metrics",
-      "confidence_score": 1.0
+      "target": "examples_aanur_architecture_report_4_key_performance_metrics"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".agents/skills/graphify/examples/aanur_architecture_report.md",
+      "source_file": ".agent/skills/graphify/examples/aanur_architecture_report.md",
       "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "agents_skills_graphify_examples_aanur_architecture_report_md",
+      "source": "agent_skills_graphify_examples_aanur_architecture_report_md",
       "target": "examples_aanur_architecture_report_aanur_textile_architecture_system_audit_report"
     },
     {
@@ -16188,11 +16317,11 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".agent/skills/graphify/references/architecture.md",
+      "source_file": ".agents/skills/graphify/references/architecture.md",
       "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "agent_skills_graphify_references_architecture_md",
+      "source": "agents_skills_graphify_references_architecture_md",
       "target": "references_architecture_aanur_textile_codebase_architecture_reference"
     },
     {
@@ -16221,9 +16350,9 @@
       "source_file": ".agents/skills/graphify/references/architecture.md",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "references_architecture_aanur_textile_codebase_architecture_reference",
-      "target": "references_architecture_3_server_api_routes_server_app_js",
-      "confidence_score": 1.0
+      "target": "references_architecture_3_server_api_routes_server_app_js"
     },
     {
       "relation": "contains",
@@ -16231,18 +16360,18 @@
       "source_file": ".agents/skills/graphify/references/architecture.md",
       "source_location": "L107",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "references_architecture_aanur_textile_codebase_architecture_reference",
-      "target": "references_architecture_4_mongodb_atlas_mongoose_schemas_server_models",
-      "confidence_score": 1.0
+      "target": "references_architecture_4_mongodb_atlas_mongoose_schemas_server_models"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".agents/skills/graphify/references/architecture.md",
+      "source_file": ".agent/skills/graphify/references/architecture.md",
       "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "agents_skills_graphify_references_architecture_md",
+      "source": "agent_skills_graphify_references_architecture_md",
       "target": "references_architecture_aanur_textile_codebase_architecture_reference"
     },
     {
@@ -16281,9 +16410,9 @@
       "source_file": ".agents/skills/graphify/references/architecture.md",
       "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "references_architecture_3_server_api_routes_server_app_js",
-      "target": "references_architecture_get_api_status",
-      "confidence_score": 1.0
+      "target": "references_architecture_get_api_status"
     },
     {
       "relation": "contains",
@@ -16291,9 +16420,9 @@
       "source_file": ".agents/skills/graphify/references/architecture.md",
       "source_location": "L88",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "references_architecture_3_server_api_routes_server_app_js",
-      "target": "references_architecture_get_api_products",
-      "confidence_score": 1.0
+      "target": "references_architecture_get_api_products"
     },
     {
       "relation": "contains",
@@ -16301,9 +16430,9 @@
       "source_file": ".agents/skills/graphify/references/architecture.md",
       "source_location": "L92",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "references_architecture_3_server_api_routes_server_app_js",
-      "target": "references_architecture_post_api_orders",
-      "confidence_score": 1.0
+      "target": "references_architecture_post_api_orders"
     },
     {
       "relation": "contains",
@@ -16311,9 +16440,9 @@
       "source_file": ".agents/skills/graphify/references/architecture.md",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "references_architecture_3_server_api_routes_server_app_js",
-      "target": "references_architecture_post_api_enquiries",
-      "confidence_score": 1.0
+      "target": "references_architecture_post_api_enquiries"
     },
     {
       "relation": "contains",
@@ -16371,9 +16500,9 @@
       "source_file": ".agents/skills/graphify/references/architecture.md",
       "source_location": "L109",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "references_architecture_4_mongodb_atlas_mongoose_schemas_server_models",
-      "target": "references_architecture_products_collection_server_models_product_js",
-      "confidence_score": 1.0
+      "target": "references_architecture_products_collection_server_models_product_js"
     },
     {
       "relation": "contains",
@@ -16381,9 +16510,9 @@
       "source_file": ".agents/skills/graphify/references/architecture.md",
       "source_location": "L125",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "references_architecture_4_mongodb_atlas_mongoose_schemas_server_models",
-      "target": "references_architecture_orders_collection_server_models_order_js",
-      "confidence_score": 1.0
+      "target": "references_architecture_orders_collection_server_models_order_js"
     },
     {
       "relation": "contains",
@@ -16391,18 +16520,18 @@
       "source_file": ".agents/skills/graphify/references/architecture.md",
       "source_location": "L140",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "references_architecture_4_mongodb_atlas_mongoose_schemas_server_models",
-      "target": "references_architecture_enquiries_collection_server_models_enquiry_js",
-      "confidence_score": 1.0
+      "target": "references_architecture_enquiries_collection_server_models_enquiry_js"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".agent/skills/graphify/references/mermaid_styles.md",
+      "source_file": ".agents/skills/graphify/references/mermaid_styles.md",
       "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "agent_skills_graphify_references_mermaid_styles_md",
+      "source": "agents_skills_graphify_references_mermaid_styles_md",
       "target": "references_mermaid_styles_aanur_textile_mermaid_diagram_style_guide"
     },
     {
@@ -16438,11 +16567,11 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".agents/skills/graphify/references/mermaid_styles.md",
+      "source_file": ".agent/skills/graphify/references/mermaid_styles.md",
       "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "agents_skills_graphify_references_mermaid_styles_md",
+      "source": "agent_skills_graphify_references_mermaid_styles_md",
       "target": "references_mermaid_styles_aanur_textile_mermaid_diagram_style_guide"
     },
     {
@@ -16468,11 +16597,11 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".agent/skills/graphify/references/query_cookbook.md",
+      "source_file": ".agents/skills/graphify/references/query_cookbook.md",
       "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "agent_skills_graphify_references_query_cookbook_md",
+      "source": "agents_skills_graphify_references_query_cookbook_md",
       "target": "references_query_cookbook_aanur_textile_graphify_query_cookbook"
     },
     {
@@ -16511,18 +16640,18 @@
       "source_file": ".agents/skills/graphify/references/query_cookbook.md",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "references_query_cookbook_aanur_textile_graphify_query_cookbook",
-      "target": "references_query_cookbook_4_graph_updating",
-      "confidence_score": 1.0
+      "target": "references_query_cookbook_4_graph_updating"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".agents/skills/graphify/references/query_cookbook.md",
+      "source_file": ".agent/skills/graphify/references/query_cookbook.md",
       "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "agents_skills_graphify_references_query_cookbook_md",
+      "source": "agent_skills_graphify_references_query_cookbook_md",
       "target": "references_query_cookbook_aanur_textile_graphify_query_cookbook"
     },
     {
@@ -16571,9 +16700,9 @@
       "source_file": ".agents/skills/graphify/references/query_cookbook.md",
       "source_location": "L65",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "references_query_cookbook_4_graph_updating",
-      "target": "references_query_cookbook_codeblock_4",
-      "confidence_score": 1.0
+      "target": "references_query_cookbook_codeblock_4"
     },
     {
       "relation": "contains",
@@ -17761,5 +17890,6 @@
       "target": "server_api_isconfigured"
     }
   ],
-  "hyperedges": []
+  "hyperedges": [],
+  "built_at_commit": "c40d69b18fb4c97910d100a0702519dfb7e5c590"
 }

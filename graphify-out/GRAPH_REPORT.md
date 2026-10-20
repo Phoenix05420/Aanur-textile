@@ -1,13 +1,18 @@
 # Graph Report - New folder (2)  (2026-10-20)
 
 ## Corpus Check
-- 111 files · ~585,509 words
+- 112 files · ~591,255 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 837 nodes · 996 edges · 60 communities (50 shown, 10 thin omitted)
+- 842 nodes · 1004 edges · 62 communities (51 shown, 11 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `c40d69b1`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_Community 0|Community 0]]
@@ -18,6 +23,7 @@
 - [[_COMMUNITY_Community 5|Community 5]]
 - [[_COMMUNITY_Community 6|Community 6]]
 - [[_COMMUNITY_Community 7|Community 7]]
+- [[_COMMUNITY_Community 8|Community 8]]
 - [[_COMMUNITY_Community 9|Community 9]]
 - [[_COMMUNITY_Community 10|Community 10]]
 - [[_COMMUNITY_Community 11|Community 11]]
@@ -45,6 +51,7 @@
 - [[_COMMUNITY_Community 33|Community 33]]
 - [[_COMMUNITY_Community 34|Community 34]]
 - [[_COMMUNITY_Community 35|Community 35]]
+- [[_COMMUNITY_Community 36|Community 36]]
 - [[_COMMUNITY_Community 37|Community 37]]
 - [[_COMMUNITY_Community 38|Community 38]]
 - [[_COMMUNITY_Community 39|Community 39]]
@@ -79,18 +86,18 @@
 10. `resolveConfig()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `parseArgs()` --calls--> `minimist`  [INFERRED]
+  resend-mcp/src/cli/parse.ts → resend-mcp/package.json
 - `createMcpServer()` --calls--> `addContactPropertyTools()`  [INFERRED]
   resend-mcp/src/server.ts → resend-mcp/src/tools/contactProperties.ts
+- `createMcpServer()` --calls--> `addContactTools()`  [INFERRED]
+  resend-mcp/src/server.ts → resend-mcp/src/tools/contacts.ts
 - `createMcpServer()` --calls--> `addDomainTools()`  [INFERRED]
   resend-mcp/src/server.ts → resend-mcp/src/tools/domains.ts
-- `createMcpServer()` --calls--> `addLogTools()`  [INFERRED]
-  resend-mcp/src/server.ts → resend-mcp/src/tools/logs.ts
-- `checkMongo()` --calls--> `connectMongoDB()`  [EXTRACTED]
-  scripts/check-mongo.js → server/db.js
-- `seedMongo()` --calls--> `connectMongoDB()`  [EXTRACTED]
-  scripts/seed-mongo.js → server/db.js
+- `createMcpServer()` --calls--> `addEventTools()`  [INFERRED]
+  resend-mcp/src/server.ts → resend-mcp/src/tools/events.ts
 
-## Communities (60 total, 10 thin omitted)
+## Communities (62 total, 11 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.08
@@ -98,11 +105,11 @@ Nodes (6): CartPage(), Checkout(), money(), ProductCard(), ProductDetail(), Quic
 
 ### Community 1 - "Community 1"
 Cohesion: 0.05
-Nodes (42): bin, resend-mcp, default, dependencies, dotenv, express, @modelcontextprotocol/express, @modelcontextprotocol/node (+34 more)
+Nodes (43): bin, resend-mcp, default, dependencies, dotenv, express, minimist, @modelcontextprotocol/express (+35 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.09
-Nodes (29): CLI_STRING_OPTIONS, HELP_TEXT, printHelp(), stderr, getUnknownArgs(), KNOWN_ARG_KEYS, resolveConfigOrExit(), parseAllowedFileDirs() (+21 more)
+Cohesion: 0.1
+Nodes (28): CLI_STRING_OPTIONS, HELP_TEXT, printHelp(), stderr, getUnknownArgs(), KNOWN_ARG_KEYS, resolveConfigOrExit(), parseAllowedFileDirs() (+20 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.08
@@ -123,6 +130,10 @@ Nodes (24): addWebhookTools(), CREATE_WEBHOOK_TOOL, GET_WEBHOOK_EVENT_TOOL, GET_
 ### Community 7 - "Community 7"
 Cohesion: 0.06
 Nodes (32): dependencies, cors, dotenv, express, gsap, @gsap/react, mongoose, @neondatabase/serverless (+24 more)
+
+### Community 8 - "Community 8"
+Cohesion: 0.5
+Nodes (3): addEventTools(), MANAGE_EVENTS_TOOL, SEND_EVENT_TOOL
 
 ### Community 9 - "Community 9"
 Cohesion: 0.09
@@ -181,12 +192,12 @@ Cohesion: 0.18
 Nodes (10): RESEND_API_KEY, mcpServers, resend, resend-dev, args, command, args, command (+2 more)
 
 ### Community 24 - "Community 24"
-Cohesion: 0.18
-Nodes (10): ADD_CONTACT_TO_SEGMENT_TOOL, CREATE_CONTACT_TOOL, GET_CONTACT_TOOL, LIST_CONTACT_SEGMENTS_TOOL, LIST_CONTACT_TOPICS_TOOL, LIST_CONTACTS_TOOL, REMOVE_CONTACT_FROM_SEGMENT_TOOL, REMOVE_CONTACT_TOOL (+2 more)
+Cohesion: 0.17
+Nodes (11): ADD_CONTACT_TO_SEGMENT_TOOL, addContactTools(), CREATE_CONTACT_TOOL, GET_CONTACT_TOOL, LIST_CONTACT_SEGMENTS_TOOL, LIST_CONTACT_TOPICS_TOOL, LIST_CONTACTS_TOOL, REMOVE_CONTACT_FROM_SEGMENT_TOOL (+3 more)
 
 ### Community 25 - "Community 25"
-Cohesion: 0.2
-Nodes (8): createMcpServer(), resend, server, addContactTools(), addEventTools(), MANAGE_EVENTS_TOOL, SEND_EVENT_TOOL, addTopicTools()
+Cohesion: 0.36
+Nodes (4): createMcpServer(), ServerOptions, resend, server
 
 ### Community 26 - "Community 26"
 Cohesion: 0.22
@@ -217,12 +228,16 @@ Cohesion: 0.17
 Nodes (10): 1. High-Value Architecture Queries, 2. Shortest Path Traversals (`graphify path`), 3. Symbol Explanations (`graphify explain`), 4. Graph Navigation Tips, 4. Graph Updating, Aanur Textile — Graphify Query Cookbook, code:powershell (# Trace end-to-end checkout flow), code:powershell (# Find how checkout triggers email) (+2 more)
 
 ### Community 33 - "Community 33"
-Cohesion: 0.33
-Nodes (5): CREATE_TOPIC_TOOL, GET_TOPIC_TOOL, LIST_TOPICS_TOOL, REMOVE_TOPIC_TOOL, UPDATE_TOPIC_TOOL
+Cohesion: 0.29
+Nodes (6): addTopicTools(), CREATE_TOPIC_TOOL, GET_TOPIC_TOOL, LIST_TOPICS_TOOL, REMOVE_TOPIC_TOOL, UPDATE_TOPIC_TOOL
 
 ### Community 34 - "Community 34"
 Cohesion: 0.25
 Nodes (6): Aanur Textile — Mermaid Diagram Style Guide, code:mermaid (graph TB), code:mermaid (sequenceDiagram), Color Tokens, Sequence Diagram Guidelines, Standard Flowchart Template
+
+### Community 36 - "Community 36"
+Cohesion: 0.5
+Nodes (3): runStdio(), { mockServeStdio }, resend
 
 ### Community 37 - "Community 37"
 Cohesion: 0.83
@@ -233,8 +248,8 @@ Cohesion: 0.5
 Nodes (3): bcc: manager@example.com, cc: colleague1@example.com, colleague2@example.com, Example of using CC and BCC:
 
 ### Community 51 - "Community 51"
-Cohesion: 0.06
-Nodes (38): EnquirySchema, OrderItemSchema, OrderSchema, ProductSchema, VariantSchema, checkMongo(), initDatabase(), sql (+30 more)
+Cohesion: 0.05
+Nodes (40): EnquirySchema, OrderItemSchema, OrderSchema, ProductSchema, VariantSchema, checkMongo(), initDatabase(), sql (+32 more)
 
 ### Community 52 - "Community 52"
 Cohesion: 0.12
@@ -245,16 +260,16 @@ Cohesion: 0.18
 Nodes (10): EMAIL_HTML_RULES, COMPOSE_TEMPLATE_TOOL, CREATE_TEMPLATE_TOOL, DUPLICATE_TEMPLATE_TOOL, GET_TEMPLATE_TOOL, LIST_TEMPLATES_TOOL, PUBLISH_TEMPLATE_TOOL, REMOVE_TEMPLATE_TOOL (+2 more)
 
 ### Community 54 - "Community 54"
-Cohesion: 0.27
-Nodes (3): ServerOptions, HttpTransportOptions, sessions
+Cohesion: 0.22
+Nodes (5): connect(), send, HttpTransportOptions, runHttp(), sessions
 
 ### Community 55 - "Community 55"
 Cohesion: 0.2
 Nodes (9): addBroadcastTools(), apiClient, clickedLinks, duplicate, makeClient(), recipients, resend, text (+1 more)
 
 ### Community 57 - "Community 57"
-Cohesion: 0.18
-Nodes (7): config, parsed, resend, serverOptions, runStdio(), { mockServeStdio }, resend
+Cohesion: 0.29
+Nodes (4): config, parsed, resend, serverOptions
 
 ### Community 58 - "Community 58"
 Cohesion: 0.47
@@ -264,10 +279,6 @@ Nodes (4): allowedDashboardHosts(), DEFAULT_DASHBOARD_HOSTS, extractIdFromUrl(),
 Cohesion: 0.4
 Nodes (5): addTemplateTools(), create, makeClient(), resend, update
 
-### Community 60 - "Community 60"
-Cohesion: 0.22
-Nodes (5): connect(), send, runHttp(), { port }, server
-
 ### Community 61 - "Community 61"
 Cohesion: 0.5
 Nodes (3): addLogTools(), GET_LOG_TOOL, LIST_LOGS_TOOL
@@ -275,17 +286,17 @@ Nodes (3): addLogTools(), GET_LOG_TOOL, LIST_LOGS_TOOL
 ## Knowledge Gaps
 - **466 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+461 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `createMcpServer()` connect `Community 25` to `Community 3`, `Community 5`, `Community 6`, `Community 9`, `Community 12`, `Community 13`, `Community 16`, `Community 19`, `Community 20`, `Community 21`, `Community 54`, `Community 55`, `Community 26`, `Community 59`, `Community 61`?**
-  _High betweenness centrality (0.207) - this node is a cross-community bridge._
+- **Why does `createMcpServer()` connect `Community 25` to `Community 33`, `Community 3`, `Community 5`, `Community 6`, `Community 8`, `Community 9`, `Community 12`, `Community 13`, `Community 16`, `Community 19`, `Community 20`, `Community 21`, `Community 54`, `Community 55`, `Community 24`, `Community 26`, `Community 59`, `Community 61`?**
+  _High betweenness centrality (0.205) - this node is a cross-community bridge._
 - **Why does `addEmailTools()` connect `Community 5` to `Community 25`?**
-  _High betweenness centrality (0.035) - this node is a cross-community bridge._
+  _High betweenness centrality (0.034) - this node is a cross-community bridge._
 - **Why does `addWebhookTools()` connect `Community 6` to `Community 25`?**
-  _High betweenness centrality (0.032) - this node is a cross-community bridge._
+  _High betweenness centrality (0.031) - this node is a cross-community bridge._
 - **Are the 18 inferred relationships involving `createMcpServer()` (e.g. with `addEditorTools()` and `addApiKeyTools()`) actually correct?**
   _`createMcpServer()` has 18 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `private`, `version` to the rest of the system?**

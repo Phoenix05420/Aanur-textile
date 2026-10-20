@@ -440,8 +440,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\App.jsx": {
-    "mtime": 1792469360.9157548,
-    "ast_hash": "c70da706e65327f7beb2341f5c157b41",
+    "mtime": 1792481629.026026,
+    "ast_hash": "1fc32785710339230c8187303bc2e9b4",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\data.js": {
@@ -452,6 +452,11 @@
   "X:\\New folder (2)\\src\\main.jsx": {
     "mtime": 1791908507.5006492,
     "ast_hash": "5a641d8c449a25877818a460e603d573",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\ProfilePage.jsx": {
+    "mtime": 1792481527.9091163,
+    "ast_hash": "119dd844a6d8d9aa08ec1fb97c1ca857",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\index.html": {
