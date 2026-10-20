@@ -2943,7 +2943,7 @@
       "source_file": "resend-mcp/src/tools/events.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_tools_events_ts",
-      "community": 61,
+      "community": 8,
       "norm_label": "events.ts"
     },
     {
@@ -2952,7 +2952,7 @@
       "source_file": "resend-mcp/src/tools/events.ts",
       "source_location": "L5",
       "id": "tools_events_send_event_tool",
-      "community": 61,
+      "community": 8,
       "norm_label": "send_event_tool"
     },
     {
@@ -2961,7 +2961,7 @@
       "source_file": "resend-mcp/src/tools/events.ts",
       "source_location": "L45",
       "id": "tools_events_manage_events_tool",
-      "community": 61,
+      "community": 8,
       "norm_label": "manage_events_tool"
     },
     {
@@ -2970,7 +2970,7 @@
       "source_file": "resend-mcp/src/tools/events.ts",
       "source_location": "L99",
       "id": "tools_events_addeventtools",
-      "community": 61,
+      "community": 8,
       "norm_label": "addeventtools()"
     },
     {
@@ -5506,7 +5506,7 @@
       "label": "SectionTitle()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L738",
+      "source_location": "L825",
       "id": "src_app_sectiontitle",
       "community": 0,
       "norm_label": "sectiontitle()"
@@ -5515,7 +5515,7 @@
       "label": "ProductCard()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L742",
+      "source_location": "L829",
       "id": "src_app_productcard",
       "community": 0,
       "norm_label": "productcard()"
@@ -5524,7 +5524,7 @@
       "label": "ProductGrid()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L788",
+      "source_location": "L875",
       "id": "src_app_productgrid",
       "community": 0,
       "norm_label": "productgrid()"
@@ -5533,7 +5533,7 @@
       "label": "Home()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L792",
+      "source_location": "L879",
       "id": "src_app_home",
       "community": 0,
       "norm_label": "home()"
@@ -5542,7 +5542,7 @@
       "label": "BestOffersPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L836",
+      "source_location": "L923",
       "id": "src_app_bestofferspage",
       "community": 0,
       "norm_label": "bestofferspage()"
@@ -5551,7 +5551,7 @@
       "label": "Catalog()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L951",
+      "source_location": "L1038",
       "id": "src_app_catalog",
       "community": 0,
       "norm_label": "catalog()"
@@ -5560,7 +5560,7 @@
       "label": "ProductDetail()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L964",
+      "source_location": "L1051",
       "id": "src_app_productdetail",
       "community": 0,
       "norm_label": "productdetail()"
@@ -5569,7 +5569,7 @@
       "label": "CartPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1149",
+      "source_location": "L1236",
       "id": "src_app_cartpage",
       "community": 0,
       "norm_label": "cartpage()"
@@ -5578,7 +5578,7 @@
       "label": "Checkout()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1257",
+      "source_location": "L1344",
       "id": "src_app_checkout",
       "community": 0,
       "norm_label": "checkout()"
@@ -5587,7 +5587,7 @@
       "label": "WishlistPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1383",
+      "source_location": "L1470",
       "id": "src_app_wishlistpage",
       "community": 0,
       "norm_label": "wishlistpage()"
@@ -5596,7 +5596,7 @@
       "label": "AuthPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1388",
+      "source_location": "L1475",
       "id": "src_app_authpage",
       "community": 0,
       "norm_label": "authpage()"
@@ -5605,7 +5605,7 @@
       "label": "AccountPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1775",
+      "source_location": "L1862",
       "id": "src_app_accountpage",
       "community": 0,
       "norm_label": "accountpage()"
@@ -5614,7 +5614,7 @@
       "label": "OrdersPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1779",
+      "source_location": "L1866",
       "id": "src_app_orderspage",
       "community": 0,
       "norm_label": "orderspage()"
@@ -5623,7 +5623,7 @@
       "label": "OrderDetail()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1783",
+      "source_location": "L1870",
       "id": "src_app_orderdetail",
       "community": 0,
       "norm_label": "orderdetail()"
@@ -5632,7 +5632,7 @@
       "label": "AboutPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1787",
+      "source_location": "L1874",
       "id": "src_app_aboutpage",
       "community": 0,
       "norm_label": "aboutpage()"
@@ -5641,7 +5641,7 @@
       "label": "ContactPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1791",
+      "source_location": "L1878",
       "id": "src_app_contactpage",
       "community": 0,
       "norm_label": "contactpage()"
@@ -5650,7 +5650,7 @@
       "label": "FaqPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1806",
+      "source_location": "L1893",
       "id": "src_app_faqpage",
       "community": 0,
       "norm_label": "faqpage()"
@@ -5659,7 +5659,7 @@
       "label": "NotFound()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1819",
+      "source_location": "L1906",
       "id": "src_app_notfound",
       "community": 0,
       "norm_label": "notfound()"
@@ -5668,7 +5668,7 @@
       "label": "QuickView()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1823",
+      "source_location": "L1910",
       "id": "src_app_quickview",
       "community": 0,
       "norm_label": "quickview()"
@@ -5677,7 +5677,7 @@
       "label": "Footer()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1927",
+      "source_location": "L2014",
       "id": "src_app_footer",
       "community": 0,
       "norm_label": "footer()"
@@ -16702,9 +16702,9 @@
       "source_file": "README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "readme_md",
-      "target": "new_folder_2_readme_aanur_textile_enterprise_full_stack_textile_fabric_commerce_platform",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_aanur_textile_enterprise_full_stack_textile_fabric_commerce_platform"
     },
     {
       "relation": "contains",
@@ -16712,9 +16712,9 @@
       "source_file": "README.md",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_aanur_textile_enterprise_full_stack_textile_fabric_commerce_platform",
-      "target": "new_folder_2_readme_table_of_contents",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_table_of_contents"
     },
     {
       "relation": "contains",
@@ -16722,9 +16722,9 @@
       "source_file": "README.md",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_aanur_textile_enterprise_full_stack_textile_fabric_commerce_platform",
-      "target": "new_folder_2_readme_project_overview_value_proposition",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_project_overview_value_proposition"
     },
     {
       "relation": "contains",
@@ -16732,9 +16732,9 @@
       "source_file": "README.md",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_aanur_textile_enterprise_full_stack_textile_fabric_commerce_platform",
-      "target": "new_folder_2_readme_key_features",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_key_features"
     },
     {
       "relation": "contains",
@@ -16742,9 +16742,9 @@
       "source_file": "README.md",
       "source_location": "L89",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_aanur_textile_enterprise_full_stack_textile_fabric_commerce_platform",
-      "target": "new_folder_2_readme_tech_stack_architecture",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_tech_stack_architecture"
     },
     {
       "relation": "contains",
@@ -16752,9 +16752,9 @@
       "source_file": "README.md",
       "source_location": "L149",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_aanur_textile_enterprise_full_stack_textile_fabric_commerce_platform",
-      "target": "new_folder_2_readme_installation_local_setup",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_installation_local_setup"
     },
     {
       "relation": "contains",
@@ -16762,9 +16762,9 @@
       "source_file": "README.md",
       "source_location": "L263",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_aanur_textile_enterprise_full_stack_textile_fabric_commerce_platform",
-      "target": "new_folder_2_readme_api_architecture_endpoints",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_api_architecture_endpoints"
     },
     {
       "relation": "contains",
@@ -16772,9 +16772,9 @@
       "source_file": "README.md",
       "source_location": "L277",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_aanur_textile_enterprise_full_stack_textile_fabric_commerce_platform",
-      "target": "new_folder_2_readme_contributing_license",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_contributing_license"
     },
     {
       "relation": "contains",
@@ -16782,9 +16782,9 @@
       "source_file": "README.md",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_project_overview_value_proposition",
-      "target": "new_folder_2_readme_the_context",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_the_context"
     },
     {
       "relation": "contains",
@@ -16792,9 +16792,9 @@
       "source_file": "README.md",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_project_overview_value_proposition",
-      "target": "new_folder_2_readme_what_is_aanur_textile",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_what_is_aanur_textile"
     },
     {
       "relation": "contains",
@@ -16802,9 +16802,9 @@
       "source_file": "README.md",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_project_overview_value_proposition",
-      "target": "new_folder_2_readme_who_it_serves",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_who_it_serves"
     },
     {
       "relation": "contains",
@@ -16812,9 +16812,9 @@
       "source_file": "README.md",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_project_overview_value_proposition",
-      "target": "new_folder_2_readme_core_problems_solved",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_core_problems_solved"
     },
     {
       "relation": "contains",
@@ -16822,9 +16822,9 @@
       "source_file": "README.md",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_key_features",
-      "target": "new_folder_2_readme_user_authentication_account_management",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_user_authentication_account_management"
     },
     {
       "relation": "contains",
@@ -16832,9 +16832,9 @@
       "source_file": "README.md",
       "source_location": "L56",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_key_features",
-      "target": "new_folder_2_readme_catalog_fabric_variant_filtering",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_catalog_fabric_variant_filtering"
     },
     {
       "relation": "contains",
@@ -16842,9 +16842,9 @@
       "source_file": "README.md",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_key_features",
-      "target": "new_folder_2_readme_shopping_bag_dynamic_coupon_engine",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_shopping_bag_dynamic_coupon_engine"
     },
     {
       "relation": "contains",
@@ -16852,9 +16852,9 @@
       "source_file": "README.md",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_key_features",
-      "target": "new_folder_2_readme_order_management_logistics_pipeline",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_order_management_logistics_pipeline"
     },
     {
       "relation": "contains",
@@ -16862,9 +16862,9 @@
       "source_file": "README.md",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_key_features",
-      "target": "new_folder_2_readme_transactional_notifications_communication",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_transactional_notifications_communication"
     },
     {
       "relation": "contains",
@@ -16872,9 +16872,9 @@
       "source_file": "README.md",
       "source_location": "L78",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_key_features",
-      "target": "new_folder_2_readme_administrative_dashboard_architecture_telemetry",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_administrative_dashboard_architecture_telemetry"
     },
     {
       "relation": "contains",
@@ -16882,9 +16882,9 @@
       "source_file": "README.md",
       "source_location": "L83",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_key_features",
-      "target": "new_folder_2_readme_ai_ready_tooling_architecture_graph",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_ai_ready_tooling_architecture_graph"
     },
     {
       "relation": "contains",
@@ -16892,9 +16892,9 @@
       "source_file": "README.md",
       "source_location": "L91",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_tech_stack_architecture",
-      "target": "new_folder_2_readme_system_architecture_diagram",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_system_architecture_diagram"
     },
     {
       "relation": "contains",
@@ -16902,9 +16902,9 @@
       "source_file": "README.md",
       "source_location": "L132",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_tech_stack_architecture",
-      "target": "new_folder_2_readme_comprehensive_stack_specification",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_comprehensive_stack_specification"
     },
     {
       "relation": "contains",
@@ -16912,9 +16912,9 @@
       "source_file": "README.md",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_system_architecture_diagram",
-      "target": "new_folder_2_readme_codeblock_1",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_1"
     },
     {
       "relation": "contains",
@@ -16922,9 +16922,9 @@
       "source_file": "README.md",
       "source_location": "L153",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_installation_local_setup",
-      "target": "new_folder_2_readme_step_1_verify_prerequisites",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_step_1_verify_prerequisites"
     },
     {
       "relation": "contains",
@@ -16932,9 +16932,9 @@
       "source_file": "README.md",
       "source_location": "L170",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_installation_local_setup",
-      "target": "new_folder_2_readme_step_2_clone_repository_enter_directory",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_step_2_clone_repository_enter_directory"
     },
     {
       "relation": "contains",
@@ -16942,9 +16942,9 @@
       "source_file": "README.md",
       "source_location": "L178",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_installation_local_setup",
-      "target": "new_folder_2_readme_step_3_install_node_dependencies",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_step_3_install_node_dependencies"
     },
     {
       "relation": "contains",
@@ -16952,9 +16952,9 @@
       "source_file": "README.md",
       "source_location": "L190",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_installation_local_setup",
-      "target": "new_folder_2_readme_step_4_environment_variable_configuration",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_step_4_environment_variable_configuration"
     },
     {
       "relation": "contains",
@@ -16962,9 +16962,9 @@
       "source_file": "README.md",
       "source_location": "L222",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_installation_local_setup",
-      "target": "new_folder_2_readme_step_5_database_health_check_seeding",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_step_5_database_health_check_seeding"
     },
     {
       "relation": "contains",
@@ -16972,9 +16972,9 @@
       "source_file": "README.md",
       "source_location": "L238",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_installation_local_setup",
-      "target": "new_folder_2_readme_step_6_launch_the_development_server",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_step_6_launch_the_development_server"
     },
     {
       "relation": "contains",
@@ -16982,9 +16982,9 @@
       "source_file": "README.md",
       "source_location": "L162",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_step_1_verify_prerequisites",
-      "target": "new_folder_2_readme_codeblock_2",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_2"
     },
     {
       "relation": "contains",
@@ -16992,9 +16992,9 @@
       "source_file": "README.md",
       "source_location": "L171",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_step_2_clone_repository_enter_directory",
-      "target": "new_folder_2_readme_codeblock_3",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_3"
     },
     {
       "relation": "contains",
@@ -17002,9 +17002,9 @@
       "source_file": "README.md",
       "source_location": "L180",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_step_3_install_node_dependencies",
-      "target": "new_folder_2_readme_codeblock_4",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_4"
     },
     {
       "relation": "contains",
@@ -17012,9 +17012,9 @@
       "source_file": "README.md",
       "source_location": "L184",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_step_3_install_node_dependencies",
-      "target": "new_folder_2_readme_codeblock_5",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_5"
     },
     {
       "relation": "contains",
@@ -17022,9 +17022,9 @@
       "source_file": "README.md",
       "source_location": "L192",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_step_4_environment_variable_configuration",
-      "target": "new_folder_2_readme_codeblock_6",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_6"
     },
     {
       "relation": "contains",
@@ -17032,9 +17032,9 @@
       "source_file": "README.md",
       "source_location": "L198",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_step_4_environment_variable_configuration",
-      "target": "new_folder_2_readme_codeblock_7",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_7"
     },
     {
       "relation": "contains",
@@ -17042,9 +17042,9 @@
       "source_file": "README.md",
       "source_location": "L225",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_step_5_database_health_check_seeding",
-      "target": "new_folder_2_readme_codeblock_8",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_8"
     },
     {
       "relation": "contains",
@@ -17052,9 +17052,9 @@
       "source_file": "README.md",
       "source_location": "L240",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_step_6_launch_the_development_server",
-      "target": "new_folder_2_readme_option_a_unified_vite_dev_server_recommended",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_option_a_unified_vite_dev_server_recommended"
     },
     {
       "relation": "contains",
@@ -17062,9 +17062,9 @@
       "source_file": "README.md",
       "source_location": "L247",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_step_6_launch_the_development_server",
-      "target": "new_folder_2_readme_option_b_standalone_production_server",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_option_b_standalone_production_server"
     },
     {
       "relation": "contains",
@@ -17072,9 +17072,9 @@
       "source_file": "README.md",
       "source_location": "L258",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_step_6_launch_the_development_server",
-      "target": "new_folder_2_readme_option_c_windows_one_click_quick_launch",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_option_c_windows_one_click_quick_launch"
     },
     {
       "relation": "contains",
@@ -17082,9 +17082,9 @@
       "source_file": "README.md",
       "source_location": "L242",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_option_a_unified_vite_dev_server_recommended",
-      "target": "new_folder_2_readme_codeblock_9",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_9"
     },
     {
       "relation": "contains",
@@ -17092,9 +17092,9 @@
       "source_file": "README.md",
       "source_location": "L249",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_option_b_standalone_production_server",
-      "target": "new_folder_2_readme_codeblock_10",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_10"
     },
     {
       "relation": "contains",
@@ -17102,9 +17102,9 @@
       "source_file": "README.md",
       "source_location": "L279",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_contributing_license",
-      "target": "new_folder_2_readme_how_to_contribute",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_how_to_contribute"
     },
     {
       "relation": "contains",
@@ -17112,9 +17112,9 @@
       "source_file": "README.md",
       "source_location": "L313",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_contributing_license",
-      "target": "new_folder_2_readme_license",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_license"
     },
     {
       "relation": "contains",
@@ -17122,9 +17122,9 @@
       "source_file": "README.md",
       "source_location": "L335",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_contributing_license",
-      "target": "new_folder_2_readme_headquarters_store_contact",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_headquarters_store_contact"
     },
     {
       "relation": "contains",
@@ -17132,9 +17132,9 @@
       "source_file": "README.md",
       "source_location": "L284",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_how_to_contribute",
-      "target": "new_folder_2_readme_codeblock_11",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_11"
     },
     {
       "relation": "contains",
@@ -17142,9 +17142,9 @@
       "source_file": "README.md",
       "source_location": "L293",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_how_to_contribute",
-      "target": "new_folder_2_readme_codeblock_12",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_12"
     },
     {
       "relation": "contains",
@@ -17152,9 +17152,9 @@
       "source_file": "README.md",
       "source_location": "L297",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_how_to_contribute",
-      "target": "new_folder_2_readme_codeblock_13",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_13"
     },
     {
       "relation": "contains",
@@ -17162,9 +17162,9 @@
       "source_file": "README.md",
       "source_location": "L302",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_how_to_contribute",
-      "target": "new_folder_2_readme_codeblock_14",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_14"
     },
     {
       "relation": "contains",
@@ -17172,9 +17172,9 @@
       "source_file": "README.md",
       "source_location": "L306",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_how_to_contribute",
-      "target": "new_folder_2_readme_codeblock_15",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_15"
     },
     {
       "relation": "contains",
@@ -17182,9 +17182,9 @@
       "source_file": "README.md",
       "source_location": "L317",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_readme_license",
-      "target": "new_folder_2_readme_codeblock_16",
-      "confidence_score": 1.0
+      "target": "new_folder_2_readme_codeblock_16"
     },
     {
       "relation": "contains",
@@ -19372,5 +19372,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4a765f4f1669260247ad91f18ed846adce8b8a53"
+  "built_at_commit": "dcd4ade686fdfefa907a8aae85f78fa565888bfe"
 }

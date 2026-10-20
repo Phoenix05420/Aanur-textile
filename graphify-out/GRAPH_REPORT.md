@@ -1,16 +1,16 @@
 # Graph Report - New folder (2)  (2026-10-20)
 
 ## Corpus Check
-- 113 files · ~594,425 words
+- 113 files · ~594,730 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 911 nodes · 1088 edges · 62 communities (52 shown, 10 thin omitted)
+- 911 nodes · 1088 edges · 61 communities (51 shown, 10 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4a765f4f`
+- Built from commit: `dcd4ade6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -71,7 +71,6 @@
 - [[_COMMUNITY_Community 58|Community 58]]
 - [[_COMMUNITY_Community 59|Community 59]]
 - [[_COMMUNITY_Community 60|Community 60]]
-- [[_COMMUNITY_Community 61|Community 61]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `createMcpServer()` - 22 edges
@@ -90,14 +89,14 @@
   resend-mcp/src/server.ts → resend-mcp/src/tools/contactProperties.ts
 - `createMcpServer()` --calls--> `addDomainTools()`  [INFERRED]
   resend-mcp/src/server.ts → resend-mcp/src/tools/domains.ts
-- `createMcpServer()` --calls--> `addEventTools()`  [INFERRED]
-  resend-mcp/src/server.ts → resend-mcp/src/tools/events.ts
 - `createMcpServer()` --calls--> `addTopicTools()`  [INFERRED]
   resend-mcp/src/server.ts → resend-mcp/src/tools/topics.ts
 - `checkMongo()` --calls--> `connectMongoDB()`  [EXTRACTED]
   scripts/check-mongo.js → server/db.js
+- `seedMongo()` --calls--> `connectMongoDB()`  [EXTRACTED]
+  scripts/seed-mongo.js → server/db.js
 
-## Communities (62 total, 10 thin omitted)
+## Communities (61 total, 10 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.08
@@ -132,8 +131,8 @@ Cohesion: 0.06
 Nodes (33): dependencies, axios, cors, dotenv, express, gsap, @gsap/react, mongoose (+25 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.22
-Nodes (7): createMcpServer(), resend, server, addContactTools(), addLogTools(), GET_LOG_TOOL, LIST_LOGS_TOOL
+Cohesion: 0.15
+Nodes (10): createMcpServer(), resend, server, addContactTools(), addEventTools(), MANAGE_EVENTS_TOOL, SEND_EVENT_TOOL, addLogTools() (+2 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.09
@@ -283,10 +282,6 @@ Nodes (5): addTemplateTools(), create, makeClient(), resend, update
 Cohesion: 0.22
 Nodes (5): connect(), send, runHttp(), { port }, server
 
-### Community 61 - "Community 61"
-Cohesion: 0.5
-Nodes (3): addEventTools(), MANAGE_EVENTS_TOOL, SEND_EVENT_TOOL
-
 ## Knowledge Gaps
 - **503 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+498 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -295,7 +290,7 @@ Nodes (3): addEventTools(), MANAGE_EVENTS_TOOL, SEND_EVENT_TOOL
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `createMcpServer()` connect `Community 8` to `Community 33`, `Community 3`, `Community 5`, `Community 6`, `Community 9`, `Community 12`, `Community 13`, `Community 16`, `Community 19`, `Community 20`, `Community 21`, `Community 54`, `Community 55`, `Community 57`, `Community 26`, `Community 59`, `Community 61`?**
+- **Why does `createMcpServer()` connect `Community 8` to `Community 33`, `Community 3`, `Community 5`, `Community 6`, `Community 9`, `Community 12`, `Community 13`, `Community 16`, `Community 19`, `Community 20`, `Community 21`, `Community 54`, `Community 55`, `Community 57`, `Community 26`, `Community 59`?**
   _High betweenness centrality (0.175) - this node is a cross-community bridge._
 - **Why does `addEmailTools()` connect `Community 5` to `Community 8`?**
   _High betweenness centrality (0.029) - this node is a cross-community bridge._

@@ -229,6 +229,39 @@ function App() {
     }
   }, [route]);
 
+  const handleQuickLogout = (source = 'button') => {
+    try {
+      localStorage.removeItem('aanur_is_logged_in');
+    } catch {}
+    setCurrentUser(null);
+    setToast(
+      source === 'shortcut'
+        ? 'Shortcut (Alt+L): You have been signed out.'
+        : 'You have been securely signed out.'
+    );
+    navigate('/login');
+  };
+
+  // Global Keyboard Shortcut: Alt + L or Ctrl + Shift + L or Alt + Q
+  useEffect(() => {
+    const handleLogoutShortcut = (e) => {
+      const isAltL = e.altKey && (e.key === 'l' || e.key === 'L');
+      const isCtrlShiftL = e.ctrlKey && e.shiftKey && (e.key === 'l' || e.key === 'L');
+      const isAltQ = e.altKey && (e.key === 'q' || e.key === 'Q');
+      if (isAltL || isCtrlShiftL || isAltQ) {
+        e.preventDefault();
+        try {
+          localStorage.removeItem('aanur_is_logged_in');
+        } catch {}
+        setCurrentUser(null);
+        setToast('Shortcut (Alt+L): You have been signed out.');
+        navigate('/login');
+      }
+    };
+    window.addEventListener('keydown', handleLogoutShortcut);
+    return () => window.removeEventListener('keydown', handleLogoutShortcut);
+  }, []);
+
   const navLinks = [
     { label: 'Collections', href: '/shop', isActive: path === '/shop' },
     { label: 'Best Offers', href: '/sale', isActive: path === '/sale' || path === '/offers' },
@@ -252,6 +285,17 @@ function App() {
     if (path === '/cart') return <CartPage cart={cart} setCart={setCart} onAdd={addToCart} navigate={navigate} products={products} coupon={coupon} setCoupon={setCoupon} setToast={setToast} />;
     if (path === '/checkout') return <Checkout cart={cart} setCart={setCart} navigate={navigate} products={products} coupon={coupon} setCoupon={setCoupon} />;
     if (path === '/wishlist') return <WishlistPage wishlist={wishlist} onWish={toggleWishlist} onAdd={addToCart} navigate={navigate} products={products} />;
+    if (path === '/logout') {
+      try {
+        localStorage.removeItem('aanur_is_logged_in');
+      } catch {}
+      if (currentUser) setCurrentUser(null);
+      setTimeout(() => {
+        setToast('You have been securely signed out.');
+        navigate('/login');
+      }, 0);
+      return null;
+    }
     if (path === '/login' || path === '/signup') {
       return (
         <AuthPage
@@ -424,6 +468,18 @@ function App() {
             {currentUser ? (currentUser.name ? currentUser.name.split(' ')[0] : 'Account') : 'Sign In'}
           </button>
 
+          {currentUser && (
+            <button
+              type="button"
+              className="icon-button header-logout-btn"
+              onClick={() => handleQuickLogout('header')}
+              title="Sign out of account (Shortcut: Alt+L)"
+              aria-label="Sign out of account (Shortcut: Alt+L)"
+            >
+              <Icon name="logout" size={17} />
+            </button>
+          )}
+
           {/* Wishlist Button with Badge Counter */}
           <button
             className={`icon-button wish-action ${path === '/wishlist' ? 'is-current' : ''}`}
@@ -574,20 +630,35 @@ function App() {
         {/* Drawer User Card */}
         <div className="drawer-user-card-wrap">
           {currentUser ? (
-            <div
-              className="drawer-user-box"
-              onClick={() => { setMobileOpen(false); navigate('/account'); }}
-              role="button"
-              tabIndex={0}
-            >
-              <div className="drawer-user-avatar-circle">
-                {(currentUser.name || 'A')[0].toUpperCase()}
+            <div className="drawer-user-box-container">
+              <div
+                className="drawer-user-box"
+                onClick={() => { setMobileOpen(false); navigate('/account'); }}
+                role="button"
+                tabIndex={0}
+              >
+                <div className="drawer-user-avatar-circle">
+                  {(currentUser.name || 'A')[0].toUpperCase()}
+                </div>
+                <div className="drawer-user-meta">
+                  <strong>{currentUser.name || 'Artisan Customer'}</strong>
+                  <small>{currentUser.phone || 'Member'}</small>
+                </div>
+                <Icon name="arrow" size={14} />
               </div>
-              <div className="drawer-user-meta">
-                <strong>{currentUser.name || 'Artisan Customer'}</strong>
-                <small>{currentUser.phone || 'Member'}</small>
-              </div>
-              <Icon name="arrow" size={14} />
+              <button
+                type="button"
+                className="drawer-quick-logout-btn"
+                onClick={() => {
+                  setMobileOpen(false);
+                  handleQuickLogout('drawer');
+                }}
+                title="Sign out of account (Shortcut: Alt+L)"
+              >
+                <Icon name="logout" size={14} />
+                <span>Sign Out Shortcut</span>
+                <kbd>Alt+L</kbd>
+              </button>
             </div>
           ) : (
             <div className="drawer-guest-box">
@@ -609,6 +680,22 @@ function App() {
         <div className="drawer-section">
           <span className="drawer-section-title">ACCOUNT & SERVICES</span>
           <nav className="drawer-links">
+            {currentUser && (
+              <button
+                type="button"
+                className="drawer-link drawer-logout-link"
+                onClick={() => {
+                  setMobileOpen(false);
+                  handleQuickLogout('drawer');
+                }}
+              >
+                <span className="drawer-link-logout-inner">
+                  <Icon name="logout" size={16} />
+                  <span>Sign Out</span>
+                </span>
+                <kbd className="drawer-kbd-hint">Alt+L</kbd>
+              </button>
+            )}
             <button
               className={`drawer-link ${path === '/login' || path === '/signup' ? 'is-active' : ''}`}
               onClick={() => { setMobileOpen(false); navigate('/login'); }}

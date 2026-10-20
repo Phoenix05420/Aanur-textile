@@ -478,6 +478,16 @@ export default function ProfilePage({
             <ProfileIcon name="edit" size={15} />
             <span>Edit Profile</span>
           </button>
+          <button
+            type="button"
+            className="button button-outline profile-hero-logout-btn"
+            onClick={handleLogout}
+            title="Sign out of account (Shortcut: Alt+L)"
+          >
+            <ProfileIcon name="logout" size={15} />
+            <span>Sign Out</span>
+            <kbd className="profile-kbd-hint">Alt+L</kbd>
+          </button>
         </div>
       </div>
 
@@ -531,6 +541,19 @@ export default function ProfilePage({
           >
             <ProfileIcon name="settings" size={17} />
             <span>05. Account Settings</span>
+          </button>
+
+          <div className="profile-nav-divider" />
+
+          <button
+            type="button"
+            className="profile-nav-btn profile-nav-logout-btn"
+            onClick={handleLogout}
+            title="Sign out of account (Shortcut: Alt+L)"
+          >
+            <ProfileIcon name="logout" size={17} />
+            <span>Sign Out</span>
+            <kbd className="profile-kbd-hint">Alt+L</kbd>
           </button>
         </nav>
 
@@ -1133,8 +1156,11 @@ export default function ProfilePage({
                   <div className="settings-card-header">
                     <ProfileIcon name="logout" size={20} />
                     <div>
-                      <h3>Sign Out</h3>
-                      <p>Sign out of your Aanur Textile account on this browser.</p>
+                      <div className="settings-card-title-row">
+                        <h3>Sign Out</h3>
+                        <kbd className="settings-kbd-hint">Alt+L</kbd>
+                      </div>
+                      <p>Sign out of your Aanur Textile account on this browser. Shortcut: Press Alt+L from any page.</p>
                     </div>
                   </div>
                   <button

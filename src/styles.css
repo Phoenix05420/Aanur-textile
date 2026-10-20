@@ -3734,3 +3734,156 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--clay); width: 
   font-size: 12.5px;
   padding: 8px 14px;
 }
+
+/* ========================================================================== */
+/* LOGOUT SHORTCUT & QUICK ACTION STYLING                                    */
+/* ========================================================================== */
+
+/* Header Logout Button */
+.header-logout-btn {
+  color: var(--clay, #292721);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.header-logout-btn:hover {
+  background: rgba(199, 74, 52, 0.1);
+  color: #c74a34;
+}
+
+@media (max-width: 760px) {
+  .header-logout-btn {
+    display: none !important;
+  }
+}
+
+/* Profile Hero Banner Logout Button */
+.profile-hero-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-color: rgba(41, 39, 33, 0.22);
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.profile-hero-logout-btn:hover {
+  border-color: #c74a34;
+  color: #c74a34;
+  background: rgba(199, 74, 52, 0.06);
+}
+
+.profile-kbd-hint {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(41, 39, 33, 0.08);
+  border: 1px solid rgba(41, 39, 33, 0.15);
+  color: var(--clay, #292721);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.profile-hero-logout-btn:hover .profile-kbd-hint {
+  border-color: rgba(199, 74, 52, 0.3);
+  color: #c74a34;
+  background: rgba(199, 74, 52, 0.12);
+}
+
+/* Profile Sidebar Navigation Divider & Logout Shortcut */
+.profile-nav-divider {
+  height: 1px;
+  background: var(--line, #e6ded3);
+  margin: 10px 0;
+}
+
+.profile-nav-logout-btn {
+  color: #7c7467;
+  transition: all 0.2s ease;
+}
+
+.profile-nav-logout-btn:hover {
+  background: rgba(199, 74, 52, 0.08);
+  color: #c74a34;
+}
+
+.profile-nav-logout-btn .profile-kbd-hint {
+  margin-left: auto;
+}
+
+/* Settings Card Shortcut Key Header */
+.settings-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settings-kbd-hint {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(199, 74, 52, 0.08);
+  border: 1px solid rgba(199, 74, 52, 0.25);
+  color: #c74a34;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Mobile Drawer Shortcuts */
+.drawer-user-box-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.drawer-quick-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: #c74a34;
+  background: rgba(199, 74, 52, 0.07);
+  border: 1px solid rgba(199, 74, 52, 0.22);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.drawer-quick-logout-btn:hover {
+  background: rgba(199, 74, 52, 0.14);
+}
+
+.drawer-quick-logout-btn kbd,
+.drawer-kbd-hint {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(199, 74, 52, 0.12);
+  border: 1px solid rgba(199, 74, 52, 0.25);
+  color: #c74a34;
+  line-height: 1;
+  margin-left: auto;
+}
+
+.drawer-logout-link {
+  color: #c74a34 !important;
+}
+
+.drawer-link-logout-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
