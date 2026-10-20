@@ -77,10 +77,10 @@ export default function ProfilePage({
       state: 'Tamil Nadu',
       joinedDate: 'October 2024',
       avatarBg: '#b76b52',
-      loomCredits: 450,
     });
-    if (data && data.membership) {
+    if (data) {
       delete data.membership;
+      delete data.loomCredits;
     }
     return data;
   });
@@ -523,24 +523,6 @@ export default function ProfilePage({
           {/* ================================================================= */}
           {activeTab === 'overview' && (
             <div className="tab-pane tab-overview">
-              <div className="welcome-guild-card">
-                <div className="guild-card-left">
-                  <span className="eyebrow">AANUR ARTISAN GUILD · MEMBER REWARDS</span>
-                  <h2>Welcome back, {profile.name.split(' ')[0]}!</h2>
-                  <p>
-                    Your account is directly linked to our workshop in Nathakadaiyur, Tamil Nadu. You have{' '}
-                    <strong>₹{profile.loomCredits} Loom Reward Credits</strong> available for factory-direct savings, plus priority loom
-                    scheduling on all pure cotton weaves.
-                  </p>
-                </div>
-                <div className="guild-card-right">
-                  <div className="credits-badge">
-                    <span className="credits-num">₹{profile.loomCredits}</span>
-                    <span className="credits-lbl">Loom Credits</span>
-                  </div>
-                </div>
-              </div>
-
               {/* 3 Stats Cards */}
               <div className="profile-stats-grid">
                 <div className="stat-card" onClick={() => setActiveTab('orders')}>
