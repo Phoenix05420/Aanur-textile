@@ -19,8 +19,15 @@ dotenv.config();
 
 export const app = express();
 
-// Core Express middleware
-app.use(cors());
+// Core Express middleware (CORS enabled for Vercel, Railway, and localhost)
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

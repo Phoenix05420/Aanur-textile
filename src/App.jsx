@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 import { categories, products as initialProducts, store } from './data.js';
 import ProfilePage from './ProfilePage.jsx';
 import AdminPage from './AdminPage.jsx';
+import { apiUrl } from './api.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -84,7 +85,7 @@ function App() {
   const mainRef = useRef(null);
 
   useEffect(() => {
-    fetch('/api/products')
+    fetch(apiUrl('/api/products'))
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (data?.products?.length > 0) {
@@ -1495,7 +1496,7 @@ function Checkout({ cart, setCart, navigate, products = initialProducts, coupon,
         localStorage.setItem('aanur_profile_orders', JSON.stringify([newOrder, ...cleanPrev]));
       } catch (e) {}
       setStep(4);
-      fetch('/api/orders', {
+      fetch(apiUrl('/api/orders'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1582,7 +1583,7 @@ function VerifyOrderPage({ navigate, setToast }) {
       return;
     }
 
-    fetch(`/api/orders/verify?orderRef=${encodeURIComponent(orderRef)}&token=${encodeURIComponent(token)}`)
+    fetch(apiUrl(`/api/orders/verify?orderRef=${encodeURIComponent(orderRef)}&token=${encodeURIComponent(token)}`))
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
@@ -1590,7 +1591,7 @@ function VerifyOrderPage({ navigate, setToast }) {
           setStatus(data);
           if (setToast) setToast(`Order #${orderRef} successfully confirmed!`);
         } else {
-          return fetch(`/api/orders/status/${encodeURIComponent(orderRef)}`)
+          return fetch(apiUrl(`/api/orders/status/${encodeURIComponent(orderRef)}`))
             .then((res) => res.json())
             .then((stat) => {
               if (stat.success) {
@@ -1709,7 +1710,7 @@ function AuthPage({
     setLoading(true);
 
     try {
-      const res = await fetch('/api/auth/send-otp', {
+      const res = await fetch(apiUrl('/api/auth/send-otp'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1748,7 +1749,7 @@ function AuthPage({
     setLoading(true);
 
     try {
-      const res = await fetch('/api/auth/verify-otp', {
+      const res = await fetch(apiUrl('/api/auth/verify-otp'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1992,6 +1993,27 @@ function AuthPage({
             <small>
               By continuing, you agree to our <a href="/faq" onClick={(e) => { e.preventDefault(); navigate('/faq'); }}>Terms & Privacy.</a>
             </small>
+
+            <div style={{ marginTop: '16px', paddingTop: '12px', borderTop: '1px dashed #e5e1d8', textAlign: 'center' }}>
+              <button
+                type="button"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: '#8B1E0F',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                }}
+                onClick={() => navigate('/admin')}
+              >
+                <Icon name="shield" size={12} />
+                <span>Store Administrator Portal &rarr;</span>
+              </button>
+            </div>
           </div>
         )}
       </div>
@@ -2020,7 +2042,7 @@ function ContactPage({ setToast }) {
   event.preventDefault();
   const form = event.currentTarget;
   const data = Object.fromEntries(new FormData(form));
-  fetch('/api/enquiries', {
+  fetch(apiUrl('/api/enquiries'), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -2152,7 +2174,7 @@ function QuickView({ product, initialVariant = 0, onClose, onAdd, onDetails }) {
 }
 
 function Footer({ navigate }) {
-  return <footer className="site-footer"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href="/" onClick={(event) => { event.preventDefault(); navigate('/'); }}><span>Aanur <i>Textile</i></span><small>COMFORT, CONSIDERED.</small></a><p>Home textiles made by Aanur Textile<br />in Nathakadaiyur, Tamil Nadu.<br /><small style={{ opacity: 0.85, display: 'block', marginTop: '0.4rem' }}>Doorstep delivery in 7 to 14 days</small></p><a className="social-link" href={store.phone} aria-label="Call Aanur Textile"><Icon name="phone" /></a></div><div className="footer-links"><div><h3>Find your comfort</h3><button onClick={() => navigate('/shop')}>Collections</button><button onClick={() => navigate('/category/Bedsheets')}>Bedsheets</button><button onClick={() => navigate('/sale')}>Best offers</button></div><div><h3>The useful bits</h3><button onClick={() => navigate('/login')}>Sign In / Register</button><button onClick={() => navigate('/account')}>Your account</button><button onClick={() => navigate('/orders')}>Track orders</button><button onClick={() => navigate('/contact')}>Contact the maker</button><button onClick={() => navigate('/faq')}>FAQs & Delivery</button></div><div><h3>A little more</h3><button onClick={() => navigate('/about')}>Our story</button><button onClick={() => navigate('/wishlist')}>Saved pieces</button><button onClick={() => navigate('/contact')}>Wholesale enquiries</button></div></div><div className="footer-news"><span className="eyebrow">AANUR TEXTILE · EST. 2013</span><h3>Made by skilled<br />local hands.</h3><p>{store.artisans} artisans in Nathakadaiyur. Factory-direct household, wholesale, hotel, and hospital orders welcome. Delivery in 7 to 14 days.</p><a className="text-link" href={store.phone}>Call {store.phoneDisplay} <Icon name="arrow" size={15} /></a></div></div><div className="footer-bottom"><span>© 2026 Aanur Textile, Nathakadaiyur.</span><span>{store.address} · Delivery: 7 to 14 days</span><div><a href={store.map} target="_blank" rel="noreferrer">Find us</a><a href={`mailto:${store.email}`}>Email</a><a href={store.phone}>Call</a></div></div></footer>;
+  return <footer className="site-footer"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href="/" onClick={(event) => { event.preventDefault(); navigate('/'); }}><span>Aanur <i>Textile</i></span><small>COMFORT, CONSIDERED.</small></a><p>Home textiles made by Aanur Textile<br />in Nathakadaiyur, Tamil Nadu.<br /><small style={{ opacity: 0.85, display: 'block', marginTop: '0.4rem' }}>Doorstep delivery in 7 to 14 days</small></p><a className="social-link" href={store.phone} aria-label="Call Aanur Textile"><Icon name="phone" /></a></div><div className="footer-links"><div><h3>Find your comfort</h3><button onClick={() => navigate('/shop')}>Collections</button><button onClick={() => navigate('/category/Bedsheets')}>Bedsheets</button><button onClick={() => navigate('/sale')}>Best offers</button></div><div><h3>The useful bits</h3><button onClick={() => navigate('/login')}>Sign In / Register</button><button onClick={() => navigate('/account')}>Your account</button><button onClick={() => navigate('/orders')}>Track orders</button><button onClick={() => navigate('/contact')}>Contact the maker</button><button onClick={() => navigate('/faq')}>FAQs & Delivery</button><button onClick={() => navigate('/admin')} style={{ color: '#8B1E0F', fontWeight: 600 }}>Admin Portal</button></div><div><h3>A little more</h3><button onClick={() => navigate('/about')}>Our story</button><button onClick={() => navigate('/wishlist')}>Saved pieces</button><button onClick={() => navigate('/contact')}>Wholesale enquiries</button></div></div><div className="footer-news"><span className="eyebrow">AANUR TEXTILE · EST. 2013</span><h3>Made by skilled<br />local hands.</h3><p>{store.artisans} artisans in Nathakadaiyur. Factory-direct household, wholesale, hotel, and hospital orders welcome. Delivery in 7 to 14 days.</p><a className="text-link" href={store.phone}>Call {store.phoneDisplay} <Icon name="arrow" size={15} /></a></div></div><div className="footer-bottom"><span>© 2026 Aanur Textile, Nathakadaiyur.</span><span>{store.address} · Delivery: 7 to 14 days</span><div><a href={store.map} target="_blank" rel="noreferrer">Find us</a><a href={`mailto:${store.email}`}>Email</a><a href={store.phone}>Call</a></div></div></footer>;
 }
 
 export default App;

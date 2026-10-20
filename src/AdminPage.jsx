@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { apiUrl } from './api.js';
 
 // Format INR currency
 const money = (val) =>
@@ -158,7 +159,7 @@ export default function AdminPage({
     setRefreshing(true);
     try {
       // 1. Fetch Orders
-      const ordRes = await fetch('/api/admin/orders');
+      const ordRes = await fetch(apiUrl('/api/admin/orders'));
       if (ordRes.ok) {
         const ordData = await ordRes.json();
         if (ordData.success && Array.isArray(ordData.orders)) {
@@ -171,7 +172,7 @@ export default function AdminPage({
       }
 
       // 2. Fetch Stats
-      const statRes = await fetch('/api/admin/stats');
+      const statRes = await fetch(apiUrl('/api/admin/stats'));
       if (statRes.ok) {
         const statData = await statRes.json();
         if (statData.success && statData.stats) {
@@ -203,7 +204,7 @@ export default function AdminPage({
   const handleUpdateOrderStatus = async (orderRef, newStatus) => {
     setStatusUpdating(true);
     try {
-      const res = await fetch(`/api/admin/orders/${orderRef}/status`, {
+      const res = await fetch(apiUrl(`/api/admin/orders/${orderRef}/status`), {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ deliveryStatus: newStatus }),
