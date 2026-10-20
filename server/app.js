@@ -8,6 +8,7 @@ import { Order } from './models/Order.js';
 import { Enquiry } from './models/Enquiry.js';
 import { products as fallbackProducts } from '../src/data.js';
 import { sendOrderEmail, isResendConfigured } from './email.js';
+import otpRoutes from './routes/otpRoutes.js';
 
 dotenv.config();
 
@@ -29,6 +30,9 @@ app.use('/api', async (req, res, next) => {
   }
   next();
 });
+
+// Fast2SMS Phone OTP Authentication Routes
+app.use('/api/otp', otpRoutes);
 
 // 1. Health & status check
 app.get('/api/status', async (req, res) => {

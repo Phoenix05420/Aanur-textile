@@ -184,10 +184,19 @@
       "norm_label": "@gsap/react"
     },
     {
-      "label": "cors",
+      "label": "axios",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L22",
+      "id": "new_folder_2_package_dependencies_axios",
+      "community": 7,
+      "norm_label": "axios"
+    },
+    {
+      "label": "cors",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L23",
       "id": "new_folder_2_package_dependencies_cors",
       "community": 7,
       "norm_label": "cors"
@@ -196,7 +205,7 @@
       "label": "dotenv",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L24",
       "id": "new_folder_2_package_dependencies_dotenv",
       "community": 7,
       "norm_label": "dotenv"
@@ -205,7 +214,7 @@
       "label": "express",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L24",
+      "source_location": "L25",
       "id": "new_folder_2_package_dependencies_express",
       "community": 7,
       "norm_label": "express"
@@ -214,7 +223,7 @@
       "label": "gsap",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L25",
+      "source_location": "L26",
       "id": "new_folder_2_package_dependencies_gsap",
       "community": 7,
       "norm_label": "gsap"
@@ -223,7 +232,7 @@
       "label": "mongoose",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L27",
       "id": "new_folder_2_package_dependencies_mongoose",
       "community": 7,
       "norm_label": "mongoose"
@@ -232,7 +241,7 @@
       "label": "react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L27",
+      "source_location": "L28",
       "id": "new_folder_2_package_dependencies_react",
       "community": 7,
       "norm_label": "react"
@@ -241,7 +250,7 @@
       "label": "react-dom",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L28",
+      "source_location": "L29",
       "id": "new_folder_2_package_dependencies_react_dom",
       "community": 7,
       "norm_label": "react-dom"
@@ -250,7 +259,7 @@
       "label": "resend",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L29",
+      "source_location": "L30",
       "id": "new_folder_2_package_dependencies_resend",
       "community": 7,
       "norm_label": "resend"
@@ -259,7 +268,7 @@
       "label": "resend-mcp",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L30",
+      "source_location": "L31",
       "id": "new_folder_2_package_dependencies_resend_mcp",
       "community": 7,
       "norm_label": "resend-mcp"
@@ -268,7 +277,7 @@
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L32",
+      "source_location": "L33",
       "id": "new_folder_2_package_devdependencies",
       "community": 7,
       "norm_label": "devdependencies"
@@ -277,7 +286,7 @@
       "label": "@vitejs/plugin-react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L33",
+      "source_location": "L34",
       "id": "new_folder_2_package_devdependencies_vitejs_plugin_react",
       "community": 7,
       "norm_label": "@vitejs/plugin-react"
@@ -286,7 +295,7 @@
       "label": "vite",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L34",
+      "source_location": "L35",
       "id": "new_folder_2_package_devdependencies_vite",
       "community": 7,
       "norm_label": "vite"
@@ -432,7 +441,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L1",
       "id": "resend_mcp_biome_json",
-      "community": 52,
+      "community": 4,
       "norm_label": "biome.json"
     },
     {
@@ -441,7 +450,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L2",
       "id": "resend_mcp_biome_schema",
-      "community": 52,
+      "community": 4,
       "norm_label": "$schema"
     },
     {
@@ -450,7 +459,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L3",
       "id": "resend_mcp_biome_assist",
-      "community": 52,
+      "community": 4,
       "norm_label": "assist"
     },
     {
@@ -459,7 +468,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L4",
       "id": "resend_mcp_biome_assist_actions",
-      "community": 52,
+      "community": 4,
       "norm_label": "actions"
     },
     {
@@ -468,7 +477,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L5",
       "id": "resend_mcp_biome_actions_source",
-      "community": 52,
+      "community": 4,
       "norm_label": "source"
     },
     {
@@ -477,7 +486,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L6",
       "id": "resend_mcp_biome_source_organizeimports",
-      "community": 52,
+      "community": 4,
       "norm_label": "organizeimports"
     },
     {
@@ -486,7 +495,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L10",
       "id": "resend_mcp_biome_formatter",
-      "community": 52,
+      "community": 4,
       "norm_label": "formatter"
     },
     {
@@ -495,7 +504,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L11",
       "id": "resend_mcp_biome_formatter_indentstyle",
-      "community": 52,
+      "community": 4,
       "norm_label": "indentstyle"
     },
     {
@@ -504,7 +513,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L12",
       "id": "resend_mcp_biome_formatter_indentwidth",
-      "community": 52,
+      "community": 4,
       "norm_label": "indentwidth"
     },
     {
@@ -513,7 +522,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L13",
       "id": "resend_mcp_biome_formatter_linewidth",
-      "community": 52,
+      "community": 4,
       "norm_label": "linewidth"
     },
     {
@@ -522,7 +531,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L15",
       "id": "resend_mcp_biome_javascript",
-      "community": 52,
+      "community": 4,
       "norm_label": "javascript"
     },
     {
@@ -531,7 +540,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L16",
       "id": "resend_mcp_biome_javascript_formatter",
-      "community": 52,
+      "community": 4,
       "norm_label": "formatter"
     },
     {
@@ -540,7 +549,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L17",
       "id": "resend_mcp_biome_formatter_quotestyle",
-      "community": 52,
+      "community": 4,
       "norm_label": "quotestyle"
     },
     {
@@ -549,7 +558,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L20",
       "id": "resend_mcp_biome_linter",
-      "community": 52,
+      "community": 4,
       "norm_label": "linter"
     },
     {
@@ -558,7 +567,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L21",
       "id": "resend_mcp_biome_linter_enabled",
-      "community": 52,
+      "community": 4,
       "norm_label": "enabled"
     },
     {
@@ -846,7 +855,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L60",
       "id": "resend_mcp_biome_files",
-      "community": 52,
+      "community": 4,
       "norm_label": "files"
     },
     {
@@ -855,7 +864,7 @@
       "source_file": "resend-mcp/biome.json",
       "source_location": "L61",
       "id": "resend_mcp_biome_files_includes",
-      "community": 52,
+      "community": 4,
       "norm_label": "includes"
     },
     {
@@ -1116,7 +1125,7 @@
       "source_file": "resend-mcp/package.json",
       "source_location": "L38",
       "id": "resend_mcp_package_dependencies_minimist",
-      "community": 1,
+      "community": 2,
       "norm_label": "minimist"
     },
     {
@@ -1548,7 +1557,7 @@
       "source_file": "resend-mcp/src/server.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_server_ts",
-      "community": 25,
+      "community": 54,
       "norm_label": "server.ts"
     },
     {
@@ -1557,7 +1566,7 @@
       "source_file": "resend-mcp/src/server.ts",
       "source_location": "L30",
       "id": "src_server_createmcpserver",
-      "community": 25,
+      "community": 8,
       "norm_label": "createmcpserver()"
     },
     {
@@ -1566,7 +1575,7 @@
       "source_file": "resend-mcp/src/types.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_types_ts",
-      "community": 25,
+      "community": 54,
       "norm_label": "types.ts"
     },
     {
@@ -1575,7 +1584,7 @@
       "source_file": "resend-mcp/src/types.ts",
       "source_location": "L1",
       "id": "src_types_serveroptions",
-      "community": 25,
+      "community": 54,
       "norm_label": "serveroptions"
     },
     {
@@ -2592,7 +2601,7 @@
       "source_file": "resend-mcp/src/tools/contacts.ts",
       "source_location": "L247",
       "id": "tools_contacts_addcontacttools",
-      "community": 24,
+      "community": 8,
       "norm_label": "addcontacttools()"
     },
     {
@@ -2970,7 +2979,7 @@
       "source_file": "resend-mcp/src/tools/index.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_tools_index_ts",
-      "community": 25,
+      "community": 54,
       "norm_label": "index.ts"
     },
     {
@@ -2979,7 +2988,7 @@
       "source_file": "resend-mcp/src/tools/logs.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_tools_logs_ts",
-      "community": 61,
+      "community": 8,
       "norm_label": "logs.ts"
     },
     {
@@ -2988,7 +2997,7 @@
       "source_file": "resend-mcp/src/tools/logs.ts",
       "source_location": "L5",
       "id": "tools_logs_list_logs_tool",
-      "community": 61,
+      "community": 8,
       "norm_label": "list_logs_tool"
     },
     {
@@ -2997,7 +3006,7 @@
       "source_file": "resend-mcp/src/tools/logs.ts",
       "source_location": "L38",
       "id": "tools_logs_get_log_tool",
-      "community": 61,
+      "community": 8,
       "norm_label": "get_log_tool"
     },
     {
@@ -3006,7 +3015,7 @@
       "source_file": "resend-mcp/src/tools/logs.ts",
       "source_location": "L54",
       "id": "tools_logs_addlogtools",
-      "community": 61,
+      "community": 8,
       "norm_label": "addlogtools()"
     },
     {
@@ -3573,7 +3582,7 @@
       "source_file": "resend-mcp/src/transports/http.ts",
       "source_location": "L83",
       "id": "transports_http_runhttp",
-      "community": 54,
+      "community": 60,
       "norm_label": "runhttp()"
     },
     {
@@ -3582,7 +3591,7 @@
       "source_file": "resend-mcp/src/transports/stdio.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_transports_stdio_ts",
-      "community": 25,
+      "community": 57,
       "norm_label": "stdio.ts"
     },
     {
@@ -3591,7 +3600,7 @@
       "source_file": "resend-mcp/src/transports/stdio.ts",
       "source_location": "L6",
       "id": "transports_stdio_runstdio",
-      "community": 36,
+      "community": 57,
       "norm_label": "runstdio()"
     },
     {
@@ -3600,7 +3609,7 @@
       "source_file": "resend-mcp/tests/server.test.ts",
       "source_location": "L1",
       "id": "resend_mcp_tests_server_test_ts",
-      "community": 25,
+      "community": 8,
       "norm_label": "server.test.ts"
     },
     {
@@ -3609,7 +3618,7 @@
       "source_file": "resend-mcp/tests/server.test.ts",
       "source_location": "L7",
       "id": "tests_server_test_resend",
-      "community": 25,
+      "community": 8,
       "norm_label": "resend"
     },
     {
@@ -3618,7 +3627,7 @@
       "source_file": "resend-mcp/tests/server.test.ts",
       "source_location": "L8",
       "id": "tests_server_test_server",
-      "community": 25,
+      "community": 8,
       "norm_label": "server"
     },
     {
@@ -4932,7 +4941,7 @@
       "source_file": "resend-mcp/tests/transports/http-file-access.test.ts",
       "source_location": "L1",
       "id": "resend_mcp_tests_transports_http_file_access_test_ts",
-      "community": 54,
+      "community": 60,
       "norm_label": "http-file-access.test.ts"
     },
     {
@@ -4941,7 +4950,7 @@
       "source_file": "resend-mcp/tests/transports/http-file-access.test.ts",
       "source_location": "L13",
       "id": "transports_http_file_access_test_send",
-      "community": 54,
+      "community": 60,
       "norm_label": "send"
     },
     {
@@ -4950,7 +4959,7 @@
       "source_file": "resend-mcp/tests/transports/http-file-access.test.ts",
       "source_location": "L45",
       "id": "transports_http_file_access_test_connect",
-      "community": 54,
+      "community": 60,
       "norm_label": "connect()"
     },
     {
@@ -4959,7 +4968,7 @@
       "source_file": "resend-mcp/tests/transports/http-file-access.test.ts",
       "source_location": "L66",
       "id": "transports_http_file_access_test_sendwithattachment",
-      "community": 54,
+      "community": 60,
       "norm_label": "sendwithattachment()"
     },
     {
@@ -5013,7 +5022,7 @@
       "source_file": "resend-mcp/tests/transports/stdio.test.ts",
       "source_location": "L1",
       "id": "resend_mcp_tests_transports_stdio_test_ts",
-      "community": 36,
+      "community": 57,
       "norm_label": "stdio.test.ts"
     },
     {
@@ -5022,7 +5031,7 @@
       "source_file": "resend-mcp/tests/transports/stdio.test.ts",
       "source_location": "L5",
       "id": "transports_stdio_test_mockservestdio",
-      "community": 36,
+      "community": 57,
       "norm_label": "{ mockservestdio }"
     },
     {
@@ -5031,7 +5040,7 @@
       "source_file": "resend-mcp/tests/transports/stdio.test.ts",
       "source_location": "L30",
       "id": "transports_stdio_test_resend",
-      "community": 36,
+      "community": 57,
       "norm_label": "resend"
     },
     {
@@ -5182,7 +5191,7 @@
       "label": "app",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L14",
+      "source_location": "L15",
       "id": "server_app_app",
       "community": 51,
       "norm_label": "app"
@@ -5191,7 +5200,7 @@
       "label": "configured",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L35",
+      "source_location": "L39",
       "id": "server_app_configured",
       "community": 51,
       "norm_label": "configured"
@@ -5200,7 +5209,7 @@
       "label": "mapped",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L79",
+      "source_location": "L83",
       "id": "server_app_mapped",
       "community": 51,
       "norm_label": "mapped"
@@ -5209,7 +5218,7 @@
       "label": "found",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L109",
+      "source_location": "L113",
       "id": "server_app_found",
       "community": 51,
       "norm_label": "found"
@@ -5218,7 +5227,7 @@
       "label": "product",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L117",
+      "source_location": "L121",
       "id": "server_app_product",
       "community": 51,
       "norm_label": "product"
@@ -5227,7 +5236,7 @@
       "label": "formattedItems",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L153",
+      "source_location": "L157",
       "id": "server_app_formatteditems",
       "community": 51,
       "norm_label": "formatteditems"
@@ -5236,7 +5245,7 @@
       "label": "newOrder",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L164",
+      "source_location": "L168",
       "id": "server_app_neworder",
       "community": 51,
       "norm_label": "neworder"
@@ -5245,7 +5254,7 @@
       "label": "enquiry",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L228",
+      "source_location": "L232",
       "id": "server_app_enquiry",
       "community": 51,
       "norm_label": "enquiry"
@@ -5440,6 +5449,168 @@
       "norm_label": "productschema"
     },
     {
+      "label": "fast2sms.js",
+      "file_type": "code",
+      "source_file": "server/providers/fast2sms.js",
+      "source_location": "L1",
+      "id": "server_providers_fast2sms_js",
+      "community": 25,
+      "norm_label": "fast2sms.js"
+    },
+    {
+      "label": "sendOtpSms()",
+      "file_type": "code",
+      "source_file": "server/providers/fast2sms.js",
+      "source_location": "L31",
+      "id": "providers_fast2sms_sendotpsms",
+      "community": 25,
+      "norm_label": "sendotpsms()"
+    },
+    {
+      "label": "otpRoutes.js",
+      "file_type": "code",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L1",
+      "id": "server_routes_otproutes_js",
+      "community": 25,
+      "norm_label": "otproutes.js"
+    },
+    {
+      "label": "router",
+      "file_type": "code",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L14",
+      "id": "routes_otproutes_router",
+      "community": 25,
+      "norm_label": "router"
+    },
+    {
+      "label": "result",
+      "file_type": "code",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L49",
+      "id": "routes_otproutes_result",
+      "community": 25,
+      "norm_label": "result"
+    },
+    {
+      "label": "otpService.js",
+      "file_type": "code",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L1",
+      "id": "server_services_otpservice_js",
+      "community": 25,
+      "norm_label": "otpservice.js"
+    },
+    {
+      "label": "generateOtp()",
+      "file_type": "code",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L22",
+      "id": "services_otpservice_generateotp",
+      "community": 25,
+      "norm_label": "generateotp()"
+    },
+    {
+      "label": "sendOtp()",
+      "file_type": "code",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L45",
+      "id": "services_otpservice_sendotp",
+      "community": 25,
+      "norm_label": "sendotp()"
+    },
+    {
+      "label": "verifyOtp()",
+      "file_type": "code",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L132",
+      "id": "services_otpservice_verifyotp",
+      "community": 25,
+      "norm_label": "verifyotp()"
+    },
+    {
+      "label": "otpStore.js",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L1",
+      "id": "server_store_otpstore_js",
+      "community": 25,
+      "norm_label": "otpstore.js"
+    },
+    {
+      "label": "store",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L11",
+      "id": "store_otpstore_store",
+      "community": 25,
+      "norm_label": "store"
+    },
+    {
+      "label": "normalizePhone()",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L19",
+      "id": "store_otpstore_normalizephone",
+      "community": 25,
+      "norm_label": "normalizephone()"
+    },
+    {
+      "label": "setRecord()",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L29",
+      "id": "store_otpstore_setrecord",
+      "community": 25,
+      "norm_label": "setrecord()"
+    },
+    {
+      "label": "getRecord()",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L47",
+      "id": "store_otpstore_getrecord",
+      "community": 25,
+      "norm_label": "getrecord()"
+    },
+    {
+      "label": "deleteRecord()",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L51",
+      "id": "store_otpstore_deleterecord",
+      "community": 25,
+      "norm_label": "deleterecord()"
+    },
+    {
+      "label": "purgeExpired()",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L59",
+      "id": "store_otpstore_purgeexpired",
+      "community": 25,
+      "norm_label": "purgeexpired()"
+    },
+    {
+      "label": "_debugSnapshot()",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L74",
+      "id": "store_otpstore_debugsnapshot",
+      "community": 25,
+      "norm_label": "_debugsnapshot()"
+    },
+    {
+      "label": "n",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L87",
+      "id": "store_otpstore_n",
+      "community": 25,
+      "norm_label": "n"
+    },
+    {
       "label": "App.jsx",
       "file_type": "code",
       "source_file": "src/App.jsx",
@@ -5596,7 +5767,7 @@
       "label": "AccountPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1245",
+      "source_location": "L1560",
       "id": "src_app_accountpage",
       "community": 0,
       "norm_label": "accountpage()"
@@ -5605,7 +5776,7 @@
       "label": "OrdersPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1249",
+      "source_location": "L1564",
       "id": "src_app_orderspage",
       "community": 0,
       "norm_label": "orderspage()"
@@ -5614,7 +5785,7 @@
       "label": "OrderDetail()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1253",
+      "source_location": "L1568",
       "id": "src_app_orderdetail",
       "community": 0,
       "norm_label": "orderdetail()"
@@ -5623,7 +5794,7 @@
       "label": "AboutPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1257",
+      "source_location": "L1572",
       "id": "src_app_aboutpage",
       "community": 0,
       "norm_label": "aboutpage()"
@@ -5632,7 +5803,7 @@
       "label": "ContactPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1261",
+      "source_location": "L1576",
       "id": "src_app_contactpage",
       "community": 0,
       "norm_label": "contactpage()"
@@ -5641,7 +5812,7 @@
       "label": "FaqPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1276",
+      "source_location": "L1591",
       "id": "src_app_faqpage",
       "community": 0,
       "norm_label": "faqpage()"
@@ -5650,7 +5821,7 @@
       "label": "NotFound()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1289",
+      "source_location": "L1604",
       "id": "src_app_notfound",
       "community": 0,
       "norm_label": "notfound()"
@@ -5659,7 +5830,7 @@
       "label": "QuickView()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1293",
+      "source_location": "L1608",
       "id": "src_app_quickview",
       "community": 0,
       "norm_label": "quickview()"
@@ -5668,7 +5839,7 @@
       "label": "Footer()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1397",
+      "source_location": "L1712",
       "id": "src_app_footer",
       "community": 0,
       "norm_label": "footer()"
@@ -6597,7 +6768,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L1",
       "id": "resend_mcp_readme_md",
-      "community": 28,
+      "community": 15,
       "norm_label": "readme.md"
     },
     {
@@ -6606,7 +6777,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L1",
       "id": "resend_mcp_readme_resend_mcp_server",
-      "community": 28,
+      "community": 15,
       "norm_label": "resend mcp server"
     },
     {
@@ -6786,7 +6957,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L123",
       "id": "resend_mcp_readme_local_mcp_server",
-      "community": 28,
+      "community": 15,
       "norm_label": "local mcp server"
     },
     {
@@ -6984,7 +7155,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L285",
       "id": "resend_mcp_readme_http_transport",
-      "community": 28,
+      "community": 15,
       "norm_label": "http transport"
     },
     {
@@ -6993,7 +7164,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L291",
       "id": "resend_mcp_readme_codeblock_21",
-      "community": 28,
+      "community": 15,
       "norm_label": "code:bash (npx -y resend-mcp --http --port 3000)"
     },
     {
@@ -7002,7 +7173,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L297",
       "id": "resend_mcp_readme_claude_code_297",
-      "community": 28,
+      "community": 15,
       "norm_label": "claude code"
     },
     {
@@ -7011,7 +7182,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L299",
       "id": "resend_mcp_readme_codeblock_22",
-      "community": 28,
+      "community": 15,
       "norm_label": "code:bash (claude mcp add resend --transport http http://127.0.0.1:3000)"
     },
     {
@@ -7020,7 +7191,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L303",
       "id": "resend_mcp_readme_cursor_303",
-      "community": 28,
+      "community": 15,
       "norm_label": "cursor"
     },
     {
@@ -7029,7 +7200,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L307",
       "id": "resend_mcp_readme_codeblock_23",
-      "community": 28,
+      "community": 15,
       "norm_label": "code:json ({)"
     },
     {
@@ -7038,7 +7209,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L322",
       "id": "resend_mcp_readme_codeblock_24",
-      "community": 28,
+      "community": 15,
       "norm_label": "code:bash (mcp_port=3000 npx -y resend-mcp --http)"
     },
     {
@@ -7047,7 +7218,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L326",
       "id": "resend_mcp_readme_use_as_a_library",
-      "community": 28,
+      "community": 15,
       "norm_label": "use as a library"
     },
     {
@@ -7056,7 +7227,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L330",
       "id": "resend_mcp_readme_codeblock_25",
-      "community": 28,
+      "community": 15,
       "norm_label": "code:ts (import { runhttp } from 'resend-mcp/http';)"
     },
     {
@@ -7065,7 +7236,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L345",
       "id": "resend_mcp_readme_codeblock_26",
-      "community": 28,
+      "community": 15,
       "norm_label": "code:ts (const server = await runhttp({}, 3000, { host: '0.0.0.0' });)"
     },
     {
@@ -7074,7 +7245,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L354",
       "id": "resend_mcp_readme_options",
-      "community": 28,
+      "community": 15,
       "norm_label": "options"
     },
     {
@@ -7083,7 +7254,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L383",
       "id": "resend_mcp_readme_mcp_server_tools",
-      "community": 28,
+      "community": 15,
       "norm_label": "mcp server tools"
     },
     {
@@ -7782,6 +7953,16 @@
       "confidence_score": 1.0,
       "source": "new_folder_2_package_dependencies",
       "target": "new_folder_2_package_dependencies_gsap_react"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "new_folder_2_package_dependencies",
+      "target": "new_folder_2_package_dependencies_axios",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15213,6 +15394,17 @@
       "target": "server_email_isresendconfigured"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_routes_otproutes_js",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server/app.js",
@@ -15537,6 +15729,355 @@
       "confidence_score": 1.0,
       "source": "server_models_product_js",
       "target": "models_product_productschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/providers/fast2sms.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "server_providers_fast2sms_js",
+      "target": "providers_fast2sms_sendotpsms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "server_providers_fast2sms_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "providers_fast2sms_sendotpsms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "services_otpservice_sendotp",
+      "target": "providers_fast2sms_sendotpsms"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "server_routes_otproutes_js",
+      "target": "server_services_otpservice_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "server_routes_otproutes_js",
+      "target": "services_otpservice_sendotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "server_routes_otproutes_js",
+      "target": "services_otpservice_verifyotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "server_routes_otproutes_js",
+      "target": "routes_otproutes_router",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "server_routes_otproutes_js",
+      "target": "routes_otproutes_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "server_store_otpstore_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "store_otpstore_getrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "store_otpstore_setrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "store_otpstore_deleterecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "store_otpstore_normalizephone",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "services_otpservice_generateotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "services_otpservice_sendotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "services_otpservice_verifyotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "services_otpservice_sendotp",
+      "target": "services_otpservice_generateotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "services_otpservice_sendotp",
+      "target": "store_otpstore_normalizephone"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "services_otpservice_sendotp",
+      "target": "store_otpstore_getrecord"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "services_otpservice_sendotp",
+      "target": "store_otpstore_setrecord"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "services_otpservice_verifyotp",
+      "target": "store_otpstore_normalizephone"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L143",
+      "weight": 1.0,
+      "source": "services_otpservice_verifyotp",
+      "target": "store_otpstore_getrecord"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L154",
+      "weight": 1.0,
+      "source": "services_otpservice_verifyotp",
+      "target": "store_otpstore_deleterecord"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L174",
+      "weight": 1.0,
+      "source": "services_otpservice_verifyotp",
+      "target": "store_otpstore_setrecord"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_store",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_normalizephone",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_setrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_getrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_deleterecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_purgeexpired",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_debugsnapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_n",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -17891,5 +18432,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1132a71e4b9f38f5220f0a054f1202275e939827"
+  "built_at_commit": "fb8fa59330ccdf10aca2b5b95436db8c6f7e7628"
 }

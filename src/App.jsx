@@ -1239,7 +1239,322 @@ function WishlistPage({ wishlist, onWish, onAdd, navigate, products = initialPro
 }
 
 function AuthPage({ signup, setToast, navigate }) {
-  return <div className="auth-page"><div className="auth-image"><img src="/products/olive-check-bed-set.jpg" alt="Olive and rust patterned bedding" /><div><span>COME ON IN</span><h2>A softer home<br />starts here.</h2></div></div><form className="auth-form" onSubmit={(event) => { event.preventDefault(); setToast('Account sign-in is not connected in this storefront preview.'); }}><span className="eyebrow">A GOOD PLACE TO BE</span><h1>{signup ? 'Let’s make it yours.' : 'Welcome back.'}</h1><p>{signup ? 'A little account makes looking after your comforts easy.' : 'Your softer things are right where you left them.'}</p>{signup && <label>Your name<input required autoComplete="name" placeholder="What should we call you?" /></label>}<label>Email address<input required type="email" autoComplete="email" placeholder="you@example.com" /></label><label>Password<input required type="password" minLength="6" autoComplete={signup ? 'new-password' : 'current-password'} placeholder="At least 6 characters" /></label><button className="button button-dark full-width">{signup ? 'Create your account' : 'Sign in'} <Icon name="arrow" size={16} /></button><small className="auth-demo-note">Accounts aren’t connected in this storefront preview. Saved items and bag contents stay in this browser.</small><div className="auth-change">{signup ? 'Already have an account?' : 'New to Aanur Textile?'} <button type="button" onClick={() => navigate(signup ? '/login' : '/signup')}>{signup ? 'Sign in' : 'Create an account'}</button></div><small>By continuing, you agree to our kind-of-important <a href="/faq" onClick={(event) => { event.preventDefault(); navigate('/faq'); }}>Terms & Privacy.</a></small></form></div>;
+  const [step, setStep] = useState('phone'); // 'phone' | 'otp' | 'done'
+  const [phone, setPhone] = useState('');
+  const [name, setName] = useState('');
+  const [otp, setOtp] = useState(['', '', '', '', '', '']);
+  const [loading, setLoading] = useState(false);
+  const [cooldown, setCooldown] = useState(60);
+  const [devCode, setDevCode] = useState(null);
+  const [errorMsg, setErrorMsg] = useState('');
+  const otpInputsRef = useRef([]);
+
+  // Resend countdown timer
+  useEffect(() => {
+    let timer;
+    if (step === 'otp' && cooldown > 0) {
+      timer = setInterval(() => {
+        setCooldown((prev) => Math.max(0, prev - 1));
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [step, cooldown]);
+
+  const handleSendOtp = async (e) => {
+    if (e) e.preventDefault();
+    const cleanPhone = phone.replace(/[^\d]/g, '').slice(-10);
+    if (cleanPhone.length !== 10) {
+      setErrorMsg('Please enter a valid 10-digit Indian mobile number.');
+      return;
+    }
+
+    setErrorMsg('');
+    setLoading(true);
+
+    try {
+      const res = await fetch('/api/otp/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: cleanPhone }),
+      });
+      const data = await res.json();
+
+      if (data.ok) {
+        setStep('otp');
+        setCooldown(data.cooldownSec || 60);
+        if (data.code) {
+          setDevCode(data.code);
+        }
+        if (setToast) {
+          setToast(data.dryRun ? `OTP generated in dev mode: ${data.code}` : `OTP sent to +91 ${cleanPhone}`);
+        }
+        setTimeout(() => {
+          otpInputsRef.current[0]?.focus();
+        }, 100);
+      } else {
+        setErrorMsg(data.error || 'Failed to send verification code. Please try again.');
+      }
+    } catch (err) {
+      setErrorMsg('Network error. Please make sure the server is reachable and try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleOtpChange = (index, value) => {
+    const digit = value.replace(/[^\d]/g, '').slice(-1);
+    const newOtp = [...otp];
+    newOtp[index] = digit;
+    setOtp(newOtp);
+
+    if (digit && index < 5) {
+      otpInputsRef.current[index + 1]?.focus();
+    }
+  };
+
+  const handleOtpKeyDown = (index, e) => {
+    if (e.key === 'Backspace' && !otp[index] && index > 0) {
+      otpInputsRef.current[index - 1]?.focus();
+    }
+  };
+
+  const handleOtpPaste = (e) => {
+    e.preventDefault();
+    const pasted = e.clipboardData.getData('text').replace(/[^\d]/g, '').slice(0, 6);
+    if (!pasted) return;
+
+    const newOtp = [...otp];
+    for (let i = 0; i < 6; i++) {
+      newOtp[i] = pasted[i] || '';
+    }
+    setOtp(newOtp);
+
+    const nextIndex = Math.min(pasted.length, 5);
+    otpInputsRef.current[nextIndex]?.focus();
+  };
+
+  const handleVerifyOtp = async (e) => {
+    if (e) e.preventDefault();
+    const cleanPhone = phone.replace(/[^\d]/g, '').slice(-10);
+    const code = otp.join('').trim();
+
+    if (code.length !== 6) {
+      setErrorMsg('Please enter the full 6-digit verification code.');
+      return;
+    }
+
+    setErrorMsg('');
+    setLoading(true);
+
+    try {
+      const res = await fetch('/api/otp/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: cleanPhone, code }),
+      });
+      const data = await res.json();
+
+      if (data.ok) {
+        try {
+          const raw = localStorage.getItem('aanur_profile_info');
+          const existing = raw ? JSON.parse(raw) : {};
+          const updated = {
+            ...existing,
+            name: name.trim() || existing.name || (signup ? 'Artisan Customer' : 'Priya Sharma'),
+            phone: `+91 ${cleanPhone}`,
+          };
+          delete updated.membership;
+          delete updated.loomCredits;
+          localStorage.setItem('aanur_profile_info', JSON.stringify(updated));
+        } catch (err) {}
+
+        setStep('done');
+        if (setToast) setToast('Mobile number verified! Welcome to Aanur Textile.');
+        setTimeout(() => {
+          navigate('/profile');
+        }, 1200);
+      } else {
+        setErrorMsg(data.error || 'Invalid verification code. Please check and re-try.');
+        setOtp(['', '', '', '', '', '']);
+        otpInputsRef.current[0]?.focus();
+      }
+    } catch (err) {
+      setErrorMsg('Network error. Unable to verify OTP. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const cleanPhoneDisplay = phone.replace(/[^\d]/g, '').slice(-10);
+  const maskedPhone = cleanPhoneDisplay.length === 10
+    ? `+91 ${cleanPhoneDisplay.slice(0, 2)}••••••${cleanPhoneDisplay.slice(-2)}`
+    : `+91 ${cleanPhoneDisplay}`;
+
+  return (
+    <div className="auth-page">
+      <div className="auth-image">
+        <img src="/products/olive-check-bed-set.jpg" alt="Olive and rust patterned bedding" />
+        <div>
+          <span>AANUR TEXTILE</span>
+          <h2>A softer home<br />starts here.</h2>
+        </div>
+      </div>
+
+      <div className="auth-form-card">
+        {step === 'phone' && (
+          <form className="auth-form" onSubmit={handleSendOtp}>
+            <span className="eyebrow">FAST & SECURE LOGIN</span>
+            <h1>{signup ? 'Let’s make it yours.' : 'Welcome back.'}</h1>
+            <p>
+              {signup
+                ? 'Create your account using your mobile phone. We will send a one-time SMS verification code.'
+                : 'Sign in to access your orders, saved addresses, and handcrafted bedsheet collection.'}
+            </p>
+
+            {errorMsg && <div className="auth-error-banner">{errorMsg}</div>}
+
+            {signup && (
+              <label>
+                Your name
+                <input
+                  required
+                  autoComplete="name"
+                  placeholder="What should we call you?"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </label>
+            )}
+
+            <label>
+              Mobile number
+              <div className="auth-phone-wrap">
+                <span className="auth-country-prefix">+91</span>
+                <input
+                  type="tel"
+                  required
+                  inputMode="numeric"
+                  autoComplete="tel-national"
+                  placeholder="10-digit mobile number"
+                  maxLength={10}
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value.replace(/[^\d]/g, '').slice(0, 10))}
+                />
+              </div>
+            </label>
+
+            <button type="submit" className="button button-dark full-width" disabled={loading || phone.replace(/[^\d]/g, '').length < 10}>
+              <span>{loading ? 'Sending code...' : 'Send OTP via SMS'}</span>
+              <Icon name="arrow" size={16} />
+            </button>
+
+            <div className="auth-change">
+              {signup ? 'Already have an account?' : 'New to Aanur Textile?'}{' '}
+              <button type="button" onClick={() => { setErrorMsg(''); navigate(signup ? '/login' : '/signup'); }}>
+                {signup ? 'Sign in' : 'Create an account'}
+              </button>
+            </div>
+
+            <small>
+              By continuing, you agree to our <a href="/faq" onClick={(e) => { e.preventDefault(); navigate('/faq'); }}>Terms & Privacy.</a>
+            </small>
+          </form>
+        )}
+
+        {step === 'otp' && (
+          <form className="auth-form" onSubmit={handleVerifyOtp}>
+            <span className="eyebrow">VERIFY YOUR NUMBER</span>
+            <h1>Enter 6-digit code.</h1>
+            <p>
+              We sent a verification code to <strong>{maskedPhone}</strong>. It expires in 5 minutes.
+            </p>
+
+            {devCode && (
+              <div className="auth-dev-hint">
+                <span><strong>Test Mode Code:</strong> {devCode}</span>
+                <button
+                  type="button"
+                  className="auth-auto-fill-btn"
+                  onClick={() => {
+                    const digits = devCode.split('');
+                    setOtp(digits);
+                    otpInputsRef.current[5]?.focus();
+                  }}
+                >
+                  Auto-fill
+                </button>
+              </div>
+            )}
+
+            {errorMsg && <div className="auth-error-banner">{errorMsg}</div>}
+
+            <label>Verification code</label>
+            <div className="auth-otp-row" onPaste={handleOtpPaste}>
+              {otp.map((digit, idx) => (
+                <input
+                  key={idx}
+                  ref={(el) => (otpInputsRef.current[idx] = el)}
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={1}
+                  className={`auth-otp-box ${digit ? 'is-filled' : ''}`}
+                  value={digit}
+                  onChange={(e) => handleOtpChange(idx, e.target.value)}
+                  onKeyDown={(e) => handleOtpKeyDown(idx, e)}
+                  autoComplete="one-time-code"
+                />
+              ))}
+            </div>
+
+            <button
+              type="submit"
+              className="button button-dark full-width"
+              disabled={loading || otp.join('').length !== 6}
+            >
+              <span>{loading ? 'Verifying...' : (signup ? 'Verify & Create Account' : 'Verify & Sign In')}</span>
+              <Icon name="arrow" size={16} />
+            </button>
+
+            <div className="auth-resend-row">
+              {cooldown > 0 ? (
+                <span className="resend-countdown">Resend code in ({cooldown}s)</span>
+              ) : (
+                <button type="button" className="resend-active-btn" onClick={() => handleSendOtp()}>
+                  Didn’t receive code? Resend OTP
+                </button>
+              )}
+            </div>
+
+            <button
+              type="button"
+              className="auth-back-number-btn"
+              onClick={() => {
+                setStep('phone');
+                setErrorMsg('');
+                setOtp(['', '', '', '', '', '']);
+              }}
+            >
+              ← Use a different mobile number
+            </button>
+          </form>
+        )}
+
+        {step === 'done' && (
+          <div className="auth-form auth-done-view">
+            <div className="auth-done-icon">
+              <Icon name="check" size={32} />
+            </div>
+            <span className="eyebrow">VERIFIED</span>
+            <h1>You’re all set.</h1>
+            <p>Your mobile number {maskedPhone} is verified. Redirecting you to your account...</p>
+            <button type="button" className="button button-dark" onClick={() => navigate('/profile')}>
+              Go to Account
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 function AccountPage({ navigate }) {
