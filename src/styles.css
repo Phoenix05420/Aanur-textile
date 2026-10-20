@@ -1911,15 +1911,56 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--clay); width: 
   margin-left: 0.25rem;
 }
 
-.edit-profile-btn {
+.profile-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.edit-profile-btn,
+.profile-hero-logout-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.35rem;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 1.35rem;
   border-radius: 10px;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 600;
+  font-family: inherit;
   white-space: nowrap;
+  line-height: 1;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.edit-profile-btn {
+  background: var(--clay, #292721);
+  color: #fff;
+  border: 1.5px solid var(--clay, #292721);
+}
+
+.edit-profile-btn:hover {
+  background: #3e3a32;
+  border-color: #3e3a32;
+  box-shadow: 0 4px 12px rgba(41, 39, 33, 0.15);
+}
+
+.profile-hero-logout-btn {
+  background: #fff;
+  color: #c74a34;
+  border: 1.5px solid rgba(199, 74, 52, 0.35);
+}
+
+.profile-hero-logout-btn:hover {
+  background: #c74a34;
+  color: #fff;
+  border-color: #c74a34;
+  box-shadow: 0 4px 12px rgba(199, 74, 52, 0.2);
 }
 
 /* Profile Main Layout */
@@ -3429,6 +3470,20 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--clay); width: 
     gap: 1.25rem;
   }
 
+  .profile-hero-actions {
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .edit-profile-btn,
+  .profile-hero-logout-btn {
+    flex: 1 1 130px;
+    max-width: 170px;
+    padding: 0 1rem;
+    font-size: 0.86rem;
+  }
+
   .profile-name-line {
     justify-content: center;
   }
@@ -3757,22 +3812,6 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--clay); width: 
   }
 }
 
-/* Profile Hero Banner Logout Button */
-.profile-hero-logout-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border-color: rgba(41, 39, 33, 0.22);
-  transition: all 0.2s ease;
-  font-weight: 500;
-}
-
-.profile-hero-logout-btn:hover {
-  border-color: #c74a34;
-  color: #c74a34;
-  background: rgba(199, 74, 52, 0.06);
-}
-
 .profile-kbd-hint {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 10px;
@@ -3786,12 +3825,6 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--clay); width: 
   letter-spacing: 0.04em;
   text-transform: uppercase;
   transition: all 0.2s ease;
-}
-
-.profile-hero-logout-btn:hover .profile-kbd-hint {
-  border-color: rgba(199, 74, 52, 0.3);
-  color: #c74a34;
-  background: rgba(199, 74, 52, 0.12);
 }
 
 /* Profile Sidebar Navigation Divider & Logout Shortcut */

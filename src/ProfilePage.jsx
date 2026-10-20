@@ -387,25 +387,6 @@ export default function ProfilePage({
     if (setToast) setToast('Fabric preferences saved! We will customize your recommendations.');
   };
 
-  const handleDownloadData = () => {
-    const dataDump = {
-      profile,
-      addresses,
-      orders,
-      preferences,
-      exportDate: new Date().toISOString(),
-      store: 'Aanur Textile (Nathakadaiyur, Tamil Nadu)',
-    };
-    const blob = new Blob([JSON.stringify(dataDump, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `aanur-textile-account-data-${profile.name.toLowerCase().replace(/\s+/g, '-')}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-    if (setToast) setToast('Account data export downloaded.');
-  };
-
   const handleLogout = () => {
     try {
       localStorage.removeItem('aanur_is_logged_in');
@@ -469,7 +450,7 @@ export default function ProfilePage({
         <div className="profile-hero-actions">
           <button
             type="button"
-            className="button button-dark edit-profile-btn"
+            className="edit-profile-btn"
             onClick={() => {
               setProfileForm({ ...profile });
               setEditProfileOpen(true);
@@ -480,13 +461,12 @@ export default function ProfilePage({
           </button>
           <button
             type="button"
-            className="button button-outline profile-hero-logout-btn"
+            className="profile-hero-logout-btn"
             onClick={handleLogout}
             title="Sign out of account (Shortcut: Alt+L)"
           >
             <ProfileIcon name="logout" size={15} />
             <span>Sign Out</span>
-            <kbd className="profile-kbd-hint">Alt+L</kbd>
           </button>
         </div>
       </div>
@@ -1134,23 +1114,7 @@ export default function ProfilePage({
                   </div>
                 </div>
 
-                {/* 2. Privacy & Data Export */}
-                <div className="settings-card">
-                  <div className="settings-card-header">
-                    <ProfileIcon name="download" size={20} />
-                    <div>
-                      <h3>Privacy & Data Controls</h3>
-                      <p>Export a portable copy of your account profile, addresses, and order history.</p>
-                    </div>
-                  </div>
-                  <div className="privacy-actions">
-                    <button type="button" className="button button-outline mini-btn" onClick={handleDownloadData}>
-                      <ProfileIcon name="download" size={14} />
-                      <span>Download Account Data (.JSON)</span>
-                    </button>
-                  </div>
-                </div>
-
+               
                 {/* 3. Logout */}
                 <div className="settings-card danger-card">
                   <div className="settings-card-header">
