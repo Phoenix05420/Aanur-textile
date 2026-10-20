@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { app as expressApp } from './server/app.js';
 
 function expressPlugin() {
   return {
     name: 'express-middleware',
-    configureServer(server) {
-      // Mount the real Express app into Vite's connect middleware
+    async configureServer(server) {
+      // Mount the real Express app into Vite's connect middleware only in dev mode
+      const { app: expressApp } = await import('./server/app.js');
       server.middlewares.use(expressApp);
     },
   };

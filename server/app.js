@@ -732,8 +732,11 @@ async function autoVerifyPendingOrders() {
   }
 }
 
-// Run 30-minute order verification automation check every 60 seconds
-setInterval(autoVerifyPendingOrders, 60 * 1000);
+// Run 30-minute order verification automation check every 60 seconds (unref prevents hanging build runners)
+const autoVerifyTimer = setInterval(autoVerifyPendingOrders, 60 * 1000);
+if (autoVerifyTimer.unref) {
+  autoVerifyTimer.unref();
+}
 
 // =============================================================================
 // 5. WHOLESALE / CONTACT ENQUIRIES
