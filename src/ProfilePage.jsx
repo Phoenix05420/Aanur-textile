@@ -61,6 +61,8 @@ export default function ProfilePage({
   onWish,
   onAdd,
   setToast,
+  currentUser,
+  setCurrentUser,
 }) {
   const [activeTab, setActiveTab] = useState(initialTab);
   const [orderFilter, setOrderFilter] = useState('all');
@@ -69,6 +71,7 @@ export default function ProfilePage({
   // 01. Profile Overview State
   // ---------------------------------------------------------------------------
   const [profile, setProfile] = useState(() => {
+    if (currentUser) return currentUser;
     const data = saved('aanur_profile_info', {
       name: 'Priya Sharma',
       email: 'priya.sharma@example.com',
@@ -84,6 +87,13 @@ export default function ProfilePage({
     }
     return data;
   });
+
+  useEffect(() => {
+    if (currentUser) {
+      setProfile(currentUser);
+      setProfileForm({ ...currentUser });
+    }
+  }, [currentUser]);
 
   useEffect(() => {
     localStorage.setItem('aanur_profile_info', JSON.stringify(profile));
@@ -227,7 +237,10 @@ export default function ProfilePage({
   // ---------------------------------------------------------------------------
   const handleEditProfileSubmit = (e) => {
     e.preventDefault();
-    setProfile({ ...profileForm });
+    const updated = { ...profile, ...profileForm };
+    setProfile(updated);
+    if (setCurrentUser) setCurrentUser(updated);
+    localStorage.setItem('aanur_profile_info', JSON.stringify(updated));
     setEditProfileOpen(false);
     if (setToast) setToast('Profile details successfully updated.');
   };
@@ -397,8 +410,9 @@ export default function ProfilePage({
     try {
       localStorage.removeItem('aanur_is_logged_in');
     } catch {}
+    if (setCurrentUser) setCurrentUser(null);
     setLogoutModalOpen(false);
-    if (setToast) setToast('You have been securely signed out. Please sign in with your mobile number.');
+    if (setToast) setToast('You have been securely signed out.');
     if (navigate) navigate('/login');
   };
 
@@ -422,8 +436,9 @@ export default function ProfilePage({
       <div className="profile-hero-banner">
         <div className="profile-avatar-wrap">
           <div className="profile-avatar" style={{ backgroundColor: profile.avatarBg || '#b76b52' }}>
-            {profile.name
+            {(profile.name || 'Artisan')
               .split(' ')
+              .filter(Boolean)
               .map((n) => n[0])
               .slice(0, 2)
               .join('')
@@ -462,15 +477,6 @@ export default function ProfilePage({
           >
             <ProfileIcon name="edit" size={15} />
             <span>Edit Profile</span>
-          </button>
-          <button
-            type="button"
-            className="button button-outline edit-profile-btn"
-            onClick={() => navigate('/login')}
-            title="Sign in to your account"
-          >
-            <ProfileIcon name="user" size={15} />
-            <span>Sign In / Switch Account</span>
           </button>
         </div>
       </div>

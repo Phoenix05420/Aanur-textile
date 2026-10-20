@@ -252,9 +252,73 @@ function App() {
     if (path === '/cart') return <CartPage cart={cart} setCart={setCart} onAdd={addToCart} navigate={navigate} products={products} coupon={coupon} setCoupon={setCoupon} setToast={setToast} />;
     if (path === '/checkout') return <Checkout cart={cart} setCart={setCart} navigate={navigate} products={products} coupon={coupon} setCoupon={setCoupon} />;
     if (path === '/wishlist') return <WishlistPage wishlist={wishlist} onWish={toggleWishlist} onAdd={addToCart} navigate={navigate} products={products} />;
-    if (path === '/login' || path === '/signup') return <AuthPage signup={path === '/signup'} setToast={setToast} navigate={navigate} />;
-    if (path === '/account' || path === '/profile') return <ProfilePage navigate={navigate} products={products} wishlist={wishlist} onWish={toggleWishlist} onAdd={addToCart} setToast={setToast} initialTab="overview" />;
-    if (path === '/orders' || path.startsWith('/orders/')) return <ProfilePage navigate={navigate} products={products} wishlist={wishlist} onWish={toggleWishlist} onAdd={addToCart} setToast={setToast} initialTab="orders" />;
+    if (path === '/login' || path === '/signup') {
+      return (
+        <AuthPage
+          signup={path === '/signup'}
+          setToast={setToast}
+          navigate={navigate}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+        />
+      );
+    }
+    if (path === '/account' || path === '/profile') {
+      if (!currentUser) {
+        return (
+          <AuthPage
+            signup={false}
+            setToast={setToast}
+            navigate={navigate}
+            redirect="/profile"
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
+            notice="Please sign in to view your profile and saved account details."
+          />
+        );
+      }
+      return (
+        <ProfilePage
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+          navigate={navigate}
+          products={products}
+          wishlist={wishlist}
+          onWish={toggleWishlist}
+          onAdd={addToCart}
+          setToast={setToast}
+          initialTab="overview"
+        />
+      );
+    }
+    if (path === '/orders' || path.startsWith('/orders/')) {
+      if (!currentUser) {
+        return (
+          <AuthPage
+            signup={false}
+            setToast={setToast}
+            navigate={navigate}
+            redirect="/orders"
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
+            notice="Please sign in to track and view your order history."
+          />
+        );
+      }
+      return (
+        <ProfilePage
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+          navigate={navigate}
+          products={products}
+          wishlist={wishlist}
+          onWish={toggleWishlist}
+          onAdd={addToCart}
+          setToast={setToast}
+          initialTab="orders"
+        />
+      );
+    }
 
     if (path === '/about') return <AboutPage navigate={navigate} />;
     if (path === '/contact') return <ContactPage setToast={setToast} />;
@@ -1321,78 +1385,185 @@ function WishlistPage({ wishlist, onWish, onAdd, navigate, products = initialPro
   return <div className="page-pad"><div className="page-heading"><div><span className="eyebrow">SAVED FOR A SOFTER DAY</span><h1>Your little list.</h1><p>All the things you’ve had your eye on, in one lovely place.</p></div><span className="saved-count">{items.length} pieces saved</span></div>{items.length ? <ProductGrid list={items} onAdd={onAdd} wishlist={wishlist} onWish={onWish} onQuick={(item) => navigate(`/product/${item.id}`)} /> : <div className="empty-state"><div className="empty-art"><Icon name="heart" size={35} /></div><h2>Keep the good ones close.</h2><p>Save the pieces you love and find them here whenever you’re ready.</p><button className="button button-dark" onClick={() => navigate('/shop')}>Find your favorites <Icon name="arrow" /></button></div>}</div>;
 }
 
-function AuthPage({ signup, setToast, navigate }) {
+function AuthPage({
+  signup,
+  setToast,
+  navigate,
+  redirect = '/profile',
+  currentUser,
+  setCurrentUser,
+  notice = '',
+}) {
+  const [isSignUp, setIsSignUp] = useState(signup);
   const [formData, setFormData] = useState({
     name: '',
-    phone: '',
+    identifier: '',
     email: '',
+    phone: '',
+    password: '',
     city: 'Tiruppur',
   });
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
 
+  useEffect(() => {
+    setIsSignUp(signup);
+    setErrorMsg('');
+  }, [signup]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const cleanPhone = formData.phone.replace(/[^\d]/g, '').slice(-10);
-
-    if (formData.phone && cleanPhone.length !== 10) {
-      setErrorMsg('Please enter a valid 10-digit mobile number.');
-      return;
-    }
-
-    if (signup && !formData.name.trim()) {
-      setErrorMsg('Please enter your full name.');
-      return;
-    }
-
     setErrorMsg('');
     setLoading(true);
 
     try {
-      const raw = localStorage.getItem('aanur_profile_info');
-      const existing = raw ? JSON.parse(raw) : {};
+      const usersRaw = localStorage.getItem('aanur_registered_users');
+      const registeredUsers = usersRaw ? JSON.parse(usersRaw) : [];
 
-      const customerName = formData.name.trim() || existing.name || (signup ? 'Artisan Customer' : 'Priya Sharma');
-      const customerPhone = cleanPhone ? `+91 ${cleanPhone}` : (existing.phone || '+91 98427 51234');
-      const customerEmail = formData.email.trim() || existing.email || (customerName.toLowerCase().replace(/\s+/g, '.') + '@example.com');
-      const customerCity = formData.city.trim() || existing.city || 'Tiruppur';
-
-      const updated = {
-        ...existing,
-        name: customerName,
-        phone: customerPhone,
-        email: customerEmail,
-        city: customerCity,
-        state: existing.state || 'Tamil Nadu',
-        joinedDate: existing.joinedDate || 'October 2026',
-        avatarBg: existing.avatarBg || '#b76b52',
-      };
-
-      delete updated.membership;
-      delete updated.loomCredits;
-
-      localStorage.setItem('aanur_profile_info', JSON.stringify(updated));
-      localStorage.setItem('aanur_is_logged_in', 'true');
-
-      setTimeout(() => {
-        setLoading(false);
-        setIsSuccess(true);
-        if (setToast) {
-          setToast(signup ? `Welcome to Aanur Textile, ${customerName}!` : `Welcome back, ${customerName}!`);
+      if (isSignUp) {
+        if (!formData.name.trim()) {
+          setErrorMsg('Please enter your full name.');
+          setLoading(false);
+          return;
         }
+
+        const cleanPhone = formData.phone.replace(/[^\d]/g, '').slice(-10);
+        if (cleanPhone.length !== 10) {
+          setErrorMsg('Please enter a valid 10-digit Indian mobile number.');
+          setLoading(false);
+          return;
+        }
+
+        if (!formData.email.trim() || !formData.email.includes('@')) {
+          setErrorMsg('Please enter a valid email address.');
+          setLoading(false);
+          return;
+        }
+
+        if (!formData.password || formData.password.length < 6) {
+          setErrorMsg('Password must be at least 6 characters long.');
+          setLoading(false);
+          return;
+        }
+
+        const exists = registeredUsers.find(
+          (u) =>
+            u.email.toLowerCase() === formData.email.trim().toLowerCase() ||
+            u.phone.replace(/[^\d]/g, '').slice(-10) === cleanPhone
+        );
+
+        if (exists) {
+          setErrorMsg('An account with this email or mobile number already exists. Please sign in below.');
+          setLoading(false);
+          return;
+        }
+
+        const newUser = {
+          name: formData.name.trim(),
+          email: formData.email.trim().toLowerCase(),
+          phone: `+91 ${cleanPhone}`,
+          city: formData.city.trim() || 'Tiruppur',
+          state: 'Tamil Nadu',
+          password: formData.password,
+          joinedDate: 'October 2026',
+          avatarBg: '#b76b52',
+        };
+
+        const updatedUsers = [...registeredUsers, newUser];
+        localStorage.setItem('aanur_registered_users', JSON.stringify(updatedUsers));
+        localStorage.setItem('aanur_profile_info', JSON.stringify(newUser));
+        localStorage.setItem('aanur_is_logged_in', 'true');
+
+        if (setCurrentUser) setCurrentUser(newUser);
+
         setTimeout(() => {
-          navigate('/profile');
-        }, 900);
-      }, 350);
+          setLoading(false);
+          setIsSuccess(true);
+          if (setToast) setToast(`Welcome to Aanur Textile, ${newUser.name}!`);
+          setTimeout(() => {
+            navigate(redirect || '/profile');
+          }, 800);
+        }, 300);
+      } else {
+        const id = formData.identifier.trim();
+        const pwd = formData.password.trim();
+
+        if (!id) {
+          setErrorMsg('Please enter your email address or 10-digit mobile number.');
+          setLoading(false);
+          return;
+        }
+
+        if (!pwd) {
+          setErrorMsg('Please enter your password.');
+          setLoading(false);
+          return;
+        }
+
+        const cleanIdPhone = id.replace(/[^\d]/g, '').slice(-10);
+        const isPhone = cleanIdPhone.length === 10;
+
+        let user = registeredUsers.find((u) => {
+          if (isPhone) {
+            return u.phone.replace(/[^\d]/g, '').slice(-10) === cleanIdPhone;
+          }
+          return u.email.toLowerCase() === id.toLowerCase();
+        });
+
+        if (!user) {
+          const rawProfile = localStorage.getItem('aanur_profile_info');
+          const defaultUser = rawProfile ? JSON.parse(rawProfile) : null;
+
+          if (
+            defaultUser &&
+            ((isPhone && defaultUser.phone.includes(cleanIdPhone)) ||
+              (!isPhone && defaultUser.email.toLowerCase() === id.toLowerCase()))
+          ) {
+            user = defaultUser;
+          } else {
+            user = {
+              name: isPhone ? `Customer (${cleanIdPhone.slice(-4)})` : id.split('@')[0],
+              email: isPhone ? `${cleanIdPhone}@aanurtextile.com` : id,
+              phone: isPhone ? `+91 ${cleanIdPhone}` : '+91 98427 51234',
+              city: 'Tiruppur',
+              state: 'Tamil Nadu',
+              joinedDate: 'October 2026',
+              avatarBg: '#b76b52',
+            };
+            localStorage.setItem('aanur_registered_users', JSON.stringify([...registeredUsers, user]));
+          }
+        }
+
+        if (user.password && user.password !== pwd) {
+          setErrorMsg('Incorrect password. Please verify and try again.');
+          setLoading(false);
+          return;
+        }
+
+        localStorage.setItem('aanur_profile_info', JSON.stringify(user));
+        localStorage.setItem('aanur_is_logged_in', 'true');
+
+        if (setCurrentUser) setCurrentUser(user);
+
+        setTimeout(() => {
+          setLoading(false);
+          setIsSuccess(true);
+          if (setToast) setToast(`Welcome back, ${user.name}!`);
+          setTimeout(() => {
+            navigate(redirect || '/profile');
+          }, 800);
+        }, 300);
+      }
     } catch (err) {
       setLoading(false);
-      setErrorMsg('Something went wrong. Please try again.');
+      setErrorMsg('Something went wrong during sign in. Please try again.');
     }
   };
 
   return (
-    <div className="auth-page">
+    <div className="auth-page page-pad">
       <div className="auth-image">
         <img src="/products/olive-check-bed-set.jpg" alt="Olive and rust patterned bedding" />
         <div>
@@ -1408,33 +1579,40 @@ function AuthPage({ signup, setToast, navigate }) {
               <Icon name="check" size={32} />
             </div>
             <span className="eyebrow">SUCCESS</span>
-            <h1>{signup ? 'Account Created!' : 'Signed In Successfully!'}</h1>
-            <p>Taking you to your personal account profile and orders...</p>
+            <h1>{isSignUp ? 'Account Created!' : 'Signed In Successfully!'}</h1>
+            <p>Taking you directly to your personal account profile...</p>
           </div>
         ) : (
           <form className="auth-form" onSubmit={handleSubmit}>
-            <span className="eyebrow">{signup ? 'NEW ARTISAN MEMBER' : 'RETURNING CUSTOMER'}</span>
-            <h1>{signup ? 'Let’s make it yours.' : 'Welcome back.'}</h1>
+            <span className="eyebrow">{isSignUp ? 'NEW ARTISAN MEMBER' : 'RETURNING CUSTOMER'}</span>
+            <h1>{isSignUp ? 'Let’s make it yours.' : 'Welcome back.'}</h1>
             <p>
-              {signup
+              {isSignUp
                 ? 'Create your account to save pieces, track handcrafted deliveries, and manage your delivery addresses.'
                 : 'Sign in to access your orders, saved addresses, and handcrafted bedsheet collection.'}
             </p>
 
-            {localStorage.getItem('aanur_is_logged_in') === 'true' && (
+            {notice && !currentUser && (
+              <div className="auth-gate-notice">
+                <Icon name="lock" size={15} />
+                <span>{notice}</span>
+              </div>
+            )}
+
+            {currentUser && (
               <div className="auth-already-logged" style={{
                 background: 'rgba(183, 107, 82, 0.08)',
                 border: '1px solid rgba(183, 107, 82, 0.25)',
-                padding: '0.75rem 1rem',
+                padding: '0.85rem 1rem',
                 borderRadius: '6px',
                 marginBottom: '1.25rem',
-                fontSize: '0.88rem',
+                fontSize: '0.9rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 gap: '0.75rem'
               }}>
-                <span>You are currently signed in.</span>
+                <span>Signed in as <strong>{currentUser.name}</strong></span>
                 <button
                   type="button"
                   style={{
@@ -1448,82 +1626,139 @@ function AuthPage({ signup, setToast, navigate }) {
                   }}
                   onClick={() => navigate('/profile')}
                 >
-                  View Profile &rarr;
+                  Go to Profile &rarr;
                 </button>
               </div>
             )}
 
             {errorMsg && <div className="auth-error-banner">{errorMsg}</div>}
 
-            {signup && (
-              <label>
-                Full name
-                <input
-                  required
-                  autoComplete="name"
-                  placeholder="e.g. Priya Sharma"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                />
-              </label>
-            )}
+            {isSignUp ? (
+              <>
+                <label>
+                  Full name
+                  <input
+                    required
+                    autoComplete="name"
+                    placeholder="e.g. Priya Sharma"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  />
+                </label>
 
-            <label>
-              Mobile number
-              <div className="auth-phone-wrap">
-                <span className="auth-country-prefix">+91</span>
-                <input
-                  type="tel"
-                  required
-                  inputMode="numeric"
-                  autoComplete="tel-national"
-                  placeholder="10-digit mobile number"
-                  maxLength={10}
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^\d]/g, '').slice(0, 10) })}
-                />
-              </div>
-            </label>
+                <label>
+                  Mobile number
+                  <div className="auth-phone-wrap">
+                    <span className="auth-country-prefix">+91</span>
+                    <input
+                      type="tel"
+                      required
+                      inputMode="numeric"
+                      autoComplete="tel-national"
+                      placeholder="10-digit mobile number"
+                      maxLength={10}
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^\d]/g, '').slice(0, 10) })}
+                    />
+                  </div>
+                </label>
 
-            <label>
-              Email address
-              <input
-                type="email"
-                required={signup}
-                autoComplete="email"
-                placeholder={signup ? 'you@example.com' : 'you@example.com (optional)'}
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              />
-            </label>
+                <label>
+                  Email address
+                  <input
+                    type="email"
+                    required
+                    autoComplete="email"
+                    placeholder="you@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  />
+                </label>
 
-            {signup && (
-              <label>
-                City / Town
-                <input
-                  autoComplete="address-level2"
-                  placeholder="e.g. Tiruppur, Coimbatore, Chennai"
-                  value={formData.city}
-                  onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                />
-              </label>
+                <label>
+                  Password
+                  <div className="auth-password-wrap">
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      required
+                      minLength={6}
+                      autoComplete="new-password"
+                      placeholder="At least 6 characters"
+                      value={formData.password}
+                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                    />
+                    <button
+                      type="button"
+                      className="auth-password-toggle"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? 'Hide' : 'Show'}
+                    </button>
+                  </div>
+                </label>
+
+                <label>
+                  City / Town
+                  <input
+                    autoComplete="address-level2"
+                    placeholder="e.g. Tiruppur, Coimbatore, Chennai"
+                    value={formData.city}
+                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                  />
+                </label>
+              </>
+            ) : (
+              <>
+                <label>
+                  Email or Mobile Number
+                  <input
+                    required
+                    autoComplete="username"
+                    placeholder="you@example.com or 10-digit number"
+                    value={formData.identifier}
+                    onChange={(e) => setFormData({ ...formData, identifier: e.target.value })}
+                  />
+                </label>
+
+                <label>
+                  Password
+                  <div className="auth-password-wrap">
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      required
+                      autoComplete="current-password"
+                      placeholder="Enter your account password"
+                      value={formData.password}
+                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                    />
+                    <button
+                      type="button"
+                      className="auth-password-toggle"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? 'Hide' : 'Show'}
+                    </button>
+                  </div>
+                </label>
+              </>
             )}
 
             <button type="submit" className="button button-dark full-width" disabled={loading}>
-              <span>{loading ? 'Signing in...' : (signup ? 'Create Account' : 'Sign In to Account')}</span>
+              <span>{loading ? 'Please wait...' : (isSignUp ? 'Create Account' : 'Sign In to Account')}</span>
               <Icon name="arrow" size={16} />
             </button>
 
             <div className="auth-change">
-              {signup ? 'Already have an account?' : 'New to Aanur Textile?'}{' '}
+              {isSignUp ? 'Already have an account?' : 'New to Aanur Textile?'}{' '}
               <button
                 type="button"
                 onClick={() => {
                   setErrorMsg('');
-                  navigate(signup ? '/login' : '/signup');
+                  setIsSignUp(!isSignUp);
+                  navigate(!isSignUp ? '/signup' : '/login');
                 }}
               >
-                {signup ? 'Sign in' : 'Create an account'}
+                {isSignUp ? 'Sign in' : 'Create an account'}
               </button>
             </div>
 

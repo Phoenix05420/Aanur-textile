@@ -3543,6 +3543,54 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--clay); width: 
   margin-bottom: 16px;
 }
 
+.auth-gate-notice {
+  background: rgba(183, 107, 82, 0.08);
+  border: 1px solid rgba(183, 107, 82, 0.25);
+  color: var(--terracotta, #b76b52);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.auth-password-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.auth-password-wrap input {
+  padding-right: 50px !important;
+}
+
+.auth-password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: inherit;
+  transition: color 0.15s ease;
+}
+
+.auth-password-toggle:hover {
+  color: var(--clay, #292721);
+}
+
 .auth-done-view {
   text-align: center;
   display: flex;
