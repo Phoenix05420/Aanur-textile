@@ -1557,7 +1557,7 @@
       "source_file": "resend-mcp/src/server.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_server_ts",
-      "community": 54,
+      "community": 8,
       "norm_label": "server.ts"
     },
     {
@@ -1575,7 +1575,7 @@
       "source_file": "resend-mcp/src/types.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_types_ts",
-      "community": 54,
+      "community": 8,
       "norm_label": "types.ts"
     },
     {
@@ -1584,7 +1584,7 @@
       "source_file": "resend-mcp/src/types.ts",
       "source_location": "L1",
       "id": "src_types_serveroptions",
-      "community": 54,
+      "community": 8,
       "norm_label": "serveroptions"
     },
     {
@@ -1872,7 +1872,7 @@
       "source_file": "resend-mcp/src/lib/email-html-rules.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_lib_email_html_rules_ts",
-      "community": 53,
+      "community": 18,
       "norm_label": "email-html-rules.ts"
     },
     {
@@ -1881,7 +1881,7 @@
       "source_file": "resend-mcp/src/lib/email-html-rules.ts",
       "source_location": "L1",
       "id": "lib_email_html_rules_email_html_rules",
-      "community": 53,
+      "community": 18,
       "norm_label": "email_html_rules"
     },
     {
@@ -2007,7 +2007,7 @@
       "source_file": "resend-mcp/src/lib/url-parser.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_lib_url_parser_ts",
-      "community": 58,
+      "community": 18,
       "norm_label": "url-parser.ts"
     },
     {
@@ -2016,7 +2016,7 @@
       "source_file": "resend-mcp/src/lib/url-parser.ts",
       "source_location": "L1",
       "id": "lib_url_parser_supported_resources",
-      "community": 58,
+      "community": 18,
       "norm_label": "supported_resources"
     },
     {
@@ -2025,7 +2025,7 @@
       "source_file": "resend-mcp/src/lib/url-parser.ts",
       "source_location": "L3",
       "id": "lib_url_parser_default_dashboard_hosts",
-      "community": 58,
+      "community": 18,
       "norm_label": "default_dashboard_hosts"
     },
     {
@@ -2034,7 +2034,7 @@
       "source_file": "resend-mcp/src/lib/url-parser.ts",
       "source_location": "L5",
       "id": "lib_url_parser_alloweddashboardhosts",
-      "community": 58,
+      "community": 18,
       "norm_label": "alloweddashboardhosts()"
     },
     {
@@ -2043,7 +2043,7 @@
       "source_file": "resend-mcp/src/lib/url-parser.ts",
       "source_location": "L39",
       "id": "lib_url_parser_extractidfromurl",
-      "community": 58,
+      "community": 18,
       "norm_label": "extractidfromurl()"
     },
     {
@@ -2385,7 +2385,7 @@
       "source_file": "resend-mcp/src/tools/broadcasts.ts",
       "source_location": "L400",
       "id": "tools_broadcasts_addbroadcasttools",
-      "community": 55,
+      "community": 18,
       "norm_label": "addbroadcasttools()"
     },
     {
@@ -2601,7 +2601,7 @@
       "source_file": "resend-mcp/src/tools/contacts.ts",
       "source_location": "L247",
       "id": "tools_contacts_addcontacttools",
-      "community": 8,
+      "community": 24,
       "norm_label": "addcontacttools()"
     },
     {
@@ -2943,7 +2943,7 @@
       "source_file": "resend-mcp/src/tools/events.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_tools_events_ts",
-      "community": 8,
+      "community": 53,
       "norm_label": "events.ts"
     },
     {
@@ -2952,7 +2952,7 @@
       "source_file": "resend-mcp/src/tools/events.ts",
       "source_location": "L5",
       "id": "tools_events_send_event_tool",
-      "community": 8,
+      "community": 53,
       "norm_label": "send_event_tool"
     },
     {
@@ -2961,7 +2961,7 @@
       "source_file": "resend-mcp/src/tools/events.ts",
       "source_location": "L45",
       "id": "tools_events_manage_events_tool",
-      "community": 8,
+      "community": 53,
       "norm_label": "manage_events_tool"
     },
     {
@@ -2970,7 +2970,7 @@
       "source_file": "resend-mcp/src/tools/events.ts",
       "source_location": "L99",
       "id": "tools_events_addeventtools",
-      "community": 8,
+      "community": 53,
       "norm_label": "addeventtools()"
     },
     {
@@ -2979,7 +2979,7 @@
       "source_file": "resend-mcp/src/tools/index.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_tools_index_ts",
-      "community": 54,
+      "community": 8,
       "norm_label": "index.ts"
     },
     {
@@ -2988,7 +2988,7 @@
       "source_file": "resend-mcp/src/tools/logs.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_tools_logs_ts",
-      "community": 8,
+      "community": 54,
       "norm_label": "logs.ts"
     },
     {
@@ -2997,7 +2997,7 @@
       "source_file": "resend-mcp/src/tools/logs.ts",
       "source_location": "L5",
       "id": "tools_logs_list_logs_tool",
-      "community": 8,
+      "community": 54,
       "norm_label": "list_logs_tool"
     },
     {
@@ -3006,7 +3006,7 @@
       "source_file": "resend-mcp/src/tools/logs.ts",
       "source_location": "L38",
       "id": "tools_logs_get_log_tool",
-      "community": 8,
+      "community": 54,
       "norm_label": "get_log_tool"
     },
     {
@@ -3015,7 +3015,7 @@
       "source_file": "resend-mcp/src/tools/logs.ts",
       "source_location": "L54",
       "id": "tools_logs_addlogtools",
-      "community": 8,
+      "community": 54,
       "norm_label": "addlogtools()"
     },
     {
@@ -3204,7 +3204,7 @@
       "source_file": "resend-mcp/src/tools/templates.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_tools_templates_ts",
-      "community": 53,
+      "community": 18,
       "norm_label": "templates.ts"
     },
     {
@@ -3213,7 +3213,7 @@
       "source_file": "resend-mcp/src/tools/templates.ts",
       "source_location": "L12",
       "id": "tools_templates_templatevariableschema",
-      "community": 53,
+      "community": 18,
       "norm_label": "templatevariableschema"
     },
     {
@@ -3222,7 +3222,7 @@
       "source_file": "resend-mcp/src/tools/templates.ts",
       "source_location": "L30",
       "id": "tools_templates_create_template_tool",
-      "community": 53,
+      "community": 18,
       "norm_label": "create_template_tool"
     },
     {
@@ -3231,7 +3231,7 @@
       "source_file": "resend-mcp/src/tools/templates.ts",
       "source_location": "L82",
       "id": "tools_templates_list_templates_tool",
-      "community": 53,
+      "community": 18,
       "norm_label": "list_templates_tool"
     },
     {
@@ -3240,7 +3240,7 @@
       "source_file": "resend-mcp/src/tools/templates.ts",
       "source_location": "L111",
       "id": "tools_templates_get_template_tool",
-      "community": 53,
+      "community": 18,
       "norm_label": "get_template_tool"
     },
     {
@@ -3249,7 +3249,7 @@
       "source_file": "resend-mcp/src/tools/templates.ts",
       "source_location": "L126",
       "id": "tools_templates_compose_template_tool",
-      "community": 53,
+      "community": 18,
       "norm_label": "compose_template_tool"
     },
     {
@@ -3258,7 +3258,7 @@
       "source_file": "resend-mcp/src/tools/templates.ts",
       "source_location": "L174",
       "id": "tools_templates_update_template_tool",
-      "community": 53,
+      "community": 18,
       "norm_label": "update_template_tool"
     },
     {
@@ -3267,7 +3267,7 @@
       "source_file": "resend-mcp/src/tools/templates.ts",
       "source_location": "L213",
       "id": "tools_templates_remove_template_tool",
-      "community": 53,
+      "community": 18,
       "norm_label": "remove_template_tool"
     },
     {
@@ -3276,7 +3276,7 @@
       "source_file": "resend-mcp/src/tools/templates.ts",
       "source_location": "L227",
       "id": "tools_templates_publish_template_tool",
-      "community": 53,
+      "community": 18,
       "norm_label": "publish_template_tool"
     },
     {
@@ -3285,7 +3285,7 @@
       "source_file": "resend-mcp/src/tools/templates.ts",
       "source_location": "L241",
       "id": "tools_templates_duplicate_template_tool",
-      "community": 53,
+      "community": 18,
       "norm_label": "duplicate_template_tool"
     },
     {
@@ -3294,7 +3294,7 @@
       "source_file": "resend-mcp/src/tools/templates.ts",
       "source_location": "L255",
       "id": "tools_templates_addtemplatetools",
-      "community": 59,
+      "community": 18,
       "norm_label": "addtemplatetools()"
     },
     {
@@ -3528,7 +3528,7 @@
       "source_file": "resend-mcp/src/transports/http.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_transports_http_ts",
-      "community": 54,
+      "community": 60,
       "norm_label": "http.ts"
     },
     {
@@ -3537,7 +3537,7 @@
       "source_file": "resend-mcp/src/transports/http.ts",
       "source_location": "L18",
       "id": "transports_http_sessions",
-      "community": 54,
+      "community": 60,
       "norm_label": "sessions"
     },
     {
@@ -3546,7 +3546,7 @@
       "source_file": "resend-mcp/src/transports/http.ts",
       "source_location": "L20",
       "id": "transports_http_sendjsonrpcerror",
-      "community": 54,
+      "community": 60,
       "norm_label": "sendjsonrpcerror()"
     },
     {
@@ -3555,7 +3555,7 @@
       "source_file": "resend-mcp/src/transports/http.ts",
       "source_location": "L40",
       "id": "transports_http_extractbearertoken",
-      "community": 54,
+      "community": 60,
       "norm_label": "extractbearertoken()"
     },
     {
@@ -3564,7 +3564,7 @@
       "source_file": "resend-mcp/src/transports/http.ts",
       "source_location": "L47",
       "id": "transports_http_extractbearertokenfromwebrequest",
-      "community": 54,
+      "community": 60,
       "norm_label": "extractbearertokenfromwebrequest()"
     },
     {
@@ -3573,7 +3573,7 @@
       "source_file": "resend-mcp/src/transports/http.ts",
       "source_location": "L54",
       "id": "transports_http_httptransportoptions",
-      "community": 54,
+      "community": 60,
       "norm_label": "httptransportoptions"
     },
     {
@@ -3591,7 +3591,7 @@
       "source_file": "resend-mcp/src/transports/stdio.ts",
       "source_location": "L1",
       "id": "resend_mcp_src_transports_stdio_ts",
-      "community": 57,
+      "community": 8,
       "norm_label": "stdio.ts"
     },
     {
@@ -3600,7 +3600,7 @@
       "source_file": "resend-mcp/src/transports/stdio.ts",
       "source_location": "L6",
       "id": "transports_stdio_runstdio",
-      "community": 57,
+      "community": 8,
       "norm_label": "runstdio()"
     },
     {
@@ -3816,7 +3816,7 @@
       "source_file": "resend-mcp/tests/lib/url-parser.test.ts",
       "source_location": "L1",
       "id": "resend_mcp_tests_lib_url_parser_test_ts",
-      "community": 58,
+      "community": 18,
       "norm_label": "url-parser.test.ts"
     },
     {
@@ -4068,7 +4068,7 @@
       "source_file": "resend-mcp/tests/tools/broadcasts.test.ts",
       "source_location": "L1",
       "id": "resend_mcp_tests_tools_broadcasts_test_ts",
-      "community": 55,
+      "community": 18,
       "norm_label": "broadcasts.test.ts"
     },
     {
@@ -4077,7 +4077,7 @@
       "source_file": "resend-mcp/tests/tools/broadcasts.test.ts",
       "source_location": "L8",
       "id": "tools_broadcasts_test_clickedlinks",
-      "community": 55,
+      "community": 18,
       "norm_label": "clickedlinks"
     },
     {
@@ -4086,7 +4086,7 @@
       "source_file": "resend-mcp/tests/tools/broadcasts.test.ts",
       "source_location": "L9",
       "id": "tools_broadcasts_test_recipients",
-      "community": 55,
+      "community": 18,
       "norm_label": "recipients"
     },
     {
@@ -4095,7 +4095,7 @@
       "source_file": "resend-mcp/tests/tools/broadcasts.test.ts",
       "source_location": "L10",
       "id": "tools_broadcasts_test_duplicate",
-      "community": 55,
+      "community": 18,
       "norm_label": "duplicate"
     },
     {
@@ -4104,7 +4104,7 @@
       "source_file": "resend-mcp/tests/tools/broadcasts.test.ts",
       "source_location": "L12",
       "id": "tools_broadcasts_test_resend",
-      "community": 55,
+      "community": 18,
       "norm_label": "resend"
     },
     {
@@ -4113,7 +4113,7 @@
       "source_file": "resend-mcp/tests/tools/broadcasts.test.ts",
       "source_location": "L16",
       "id": "tools_broadcasts_test_apiclient",
-      "community": 55,
+      "community": 18,
       "norm_label": "apiclient"
     },
     {
@@ -4122,7 +4122,7 @@
       "source_file": "resend-mcp/tests/tools/broadcasts.test.ts",
       "source_location": "L18",
       "id": "tools_broadcasts_test_makeclient",
-      "community": 55,
+      "community": 18,
       "norm_label": "makeclient()"
     },
     {
@@ -4131,7 +4131,7 @@
       "source_file": "resend-mcp/tests/tools/broadcasts.test.ts",
       "source_location": "L34",
       "id": "tools_broadcasts_test_textof",
-      "community": 55,
+      "community": 18,
       "norm_label": "textof()"
     },
     {
@@ -4140,7 +4140,7 @@
       "source_file": "resend-mcp/tests/tools/broadcasts.test.ts",
       "source_location": "L64",
       "id": "tools_broadcasts_test_tool",
-      "community": 55,
+      "community": 18,
       "norm_label": "tool"
     },
     {
@@ -4149,7 +4149,7 @@
       "source_file": "resend-mcp/tests/tools/broadcasts.test.ts",
       "source_location": "L258",
       "id": "tools_broadcasts_test_text",
-      "community": 55,
+      "community": 18,
       "norm_label": "text"
     },
     {
@@ -4707,7 +4707,7 @@
       "source_file": "resend-mcp/tests/tools/templates.test.ts",
       "source_location": "L1",
       "id": "resend_mcp_tests_tools_templates_test_ts",
-      "community": 59,
+      "community": 18,
       "norm_label": "templates.test.ts"
     },
     {
@@ -4716,7 +4716,7 @@
       "source_file": "resend-mcp/tests/tools/templates.test.ts",
       "source_location": "L8",
       "id": "tools_templates_test_create",
-      "community": 59,
+      "community": 18,
       "norm_label": "create"
     },
     {
@@ -4725,7 +4725,7 @@
       "source_file": "resend-mcp/tests/tools/templates.test.ts",
       "source_location": "L9",
       "id": "tools_templates_test_update",
-      "community": 59,
+      "community": 18,
       "norm_label": "update"
     },
     {
@@ -4734,7 +4734,7 @@
       "source_file": "resend-mcp/tests/tools/templates.test.ts",
       "source_location": "L11",
       "id": "tools_templates_test_resend",
-      "community": 59,
+      "community": 18,
       "norm_label": "resend"
     },
     {
@@ -4743,7 +4743,7 @@
       "source_file": "resend-mcp/tests/tools/templates.test.ts",
       "source_location": "L15",
       "id": "tools_templates_test_makeclient",
-      "community": 59,
+      "community": 18,
       "norm_label": "makeclient()"
     },
     {
@@ -5022,7 +5022,7 @@
       "source_file": "resend-mcp/tests/transports/stdio.test.ts",
       "source_location": "L1",
       "id": "resend_mcp_tests_transports_stdio_test_ts",
-      "community": 57,
+      "community": 8,
       "norm_label": "stdio.test.ts"
     },
     {
@@ -5031,7 +5031,7 @@
       "source_file": "resend-mcp/tests/transports/stdio.test.ts",
       "source_location": "L5",
       "id": "transports_stdio_test_mockservestdio",
-      "community": 57,
+      "community": 8,
       "norm_label": "{ mockservestdio }"
     },
     {
@@ -5040,7 +5040,7 @@
       "source_file": "resend-mcp/tests/transports/stdio.test.ts",
       "source_location": "L30",
       "id": "transports_stdio_test_resend",
-      "community": 57,
+      "community": 8,
       "norm_label": "resend"
     },
     {
@@ -5191,25 +5191,88 @@
       "label": "app",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L14",
+      "source_location": "L20",
       "id": "server_app_app",
       "community": 51,
       "norm_label": "app"
     },
     {
+      "label": "otpStore",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L42",
+      "id": "server_app_otpstore",
+      "community": 51,
+      "norm_label": "otpstore"
+    },
+    {
+      "label": "localOrdersStore",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L43",
+      "id": "server_app_localordersstore",
+      "community": 51,
+      "norm_label": "localordersstore"
+    },
+    {
       "label": "configured",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L36",
+      "source_location": "L49",
       "id": "server_app_configured",
       "community": 51,
       "norm_label": "configured"
     },
     {
+      "label": "cleanEmail",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L98",
+      "id": "server_app_cleanemail",
+      "community": 51,
+      "norm_label": "cleanemail"
+    },
+    {
+      "label": "otp",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L99",
+      "id": "server_app_otp",
+      "community": 51,
+      "norm_label": "otp"
+    },
+    {
+      "label": "cleanOtp",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L142",
+      "id": "server_app_cleanotp",
+      "community": 51,
+      "norm_label": "cleanotp"
+    },
+    {
+      "label": "entry",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L143",
+      "id": "server_app_entry",
+      "community": 51,
+      "norm_label": "entry"
+    },
+    {
+      "label": "user",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L171",
+      "id": "server_app_user",
+      "community": 51,
+      "norm_label": "user"
+    },
+    {
       "label": "mapped",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L80",
+      "source_location": "L199",
       "id": "server_app_mapped",
       "community": 51,
       "norm_label": "mapped"
@@ -5218,7 +5281,7 @@
       "label": "found",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L110",
+      "source_location": "L229",
       "id": "server_app_found",
       "community": 51,
       "norm_label": "found"
@@ -5227,34 +5290,97 @@
       "label": "product",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L118",
+      "source_location": "L237",
       "id": "server_app_product",
       "community": 51,
       "norm_label": "product"
     },
     {
+      "label": "verificationToken",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L271",
+      "id": "server_app_verificationtoken",
+      "community": 51,
+      "norm_label": "verificationtoken"
+    },
+    {
+      "label": "autoVerifyAt",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L272",
+      "id": "server_app_autoverifyat",
+      "community": 51,
+      "norm_label": "autoverifyat"
+    },
+    {
       "label": "formattedItems",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L154",
+      "source_location": "L275",
       "id": "server_app_formatteditems",
       "community": 51,
       "norm_label": "formatteditems"
     },
     {
+      "label": "orderData",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L286",
+      "id": "server_app_orderdata",
+      "community": 51,
+      "norm_label": "orderdata"
+    },
+    {
       "label": "newOrder",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L165",
+      "source_location": "L321",
       "id": "server_app_neworder",
       "community": 51,
       "norm_label": "neworder"
     },
     {
+      "label": "order",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L411",
+      "id": "server_app_order",
+      "community": 51,
+      "norm_label": "order"
+    },
+    {
+      "label": "remainingMs",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L510",
+      "id": "server_app_remainingms",
+      "community": 51,
+      "norm_label": "remainingms"
+    },
+    {
+      "label": "remainingMinutes",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L511",
+      "id": "server_app_remainingminutes",
+      "community": 51,
+      "norm_label": "remainingminutes"
+    },
+    {
+      "label": "autoVerifyPendingOrders()",
+      "file_type": "code",
+      "source_file": "server/app.js",
+      "source_location": "L528",
+      "id": "server_app_autoverifypendingorders",
+      "community": 51,
+      "norm_label": "autoverifypendingorders()"
+    },
+    {
       "label": "enquiry",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L229",
+      "source_location": "L587",
       "id": "server_app_enquiry",
       "community": 51,
       "norm_label": "enquiry"
@@ -5305,10 +5431,55 @@
       "norm_label": "isresendconfigured()"
     },
     {
-      "label": "sendOrderEmail()",
+      "label": "getResendClient()",
       "file_type": "code",
       "source_file": "server/email.js",
       "source_location": "L19",
+      "id": "server_email_getresendclient",
+      "community": 51,
+      "norm_label": "getresendclient()"
+    },
+    {
+      "label": "sendSafeEmail()",
+      "file_type": "code",
+      "source_file": "server/email.js",
+      "source_location": "L28",
+      "id": "server_email_sendsafeemail",
+      "community": 51,
+      "norm_label": "sendsafeemail()"
+    },
+    {
+      "label": "sendOtpEmail()",
+      "file_type": "code",
+      "source_file": "server/email.js",
+      "source_location": "L82",
+      "id": "server_email_sendotpemail",
+      "community": 51,
+      "norm_label": "sendotpemail()"
+    },
+    {
+      "label": "sendOrderCustomerEmail()",
+      "file_type": "code",
+      "source_file": "server/email.js",
+      "source_location": "L141",
+      "id": "server_email_sendordercustomeremail",
+      "community": 51,
+      "norm_label": "sendordercustomeremail()"
+    },
+    {
+      "label": "sendOrderOwnerEmail()",
+      "file_type": "code",
+      "source_file": "server/email.js",
+      "source_location": "L268",
+      "id": "server_email_sendorderowneremail",
+      "community": 51,
+      "norm_label": "sendorderowneremail()"
+    },
+    {
+      "label": "sendOrderEmail()",
+      "file_type": "code",
+      "source_file": "server/email.js",
+      "source_location": "L338",
       "id": "server_email_sendorderemail",
       "community": 51,
       "norm_label": "sendorderemail()"
@@ -5506,7 +5677,7 @@
       "label": "SectionTitle()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L825",
+      "source_location": "L826",
       "id": "src_app_sectiontitle",
       "community": 0,
       "norm_label": "sectiontitle()"
@@ -5515,7 +5686,7 @@
       "label": "ProductCard()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L829",
+      "source_location": "L830",
       "id": "src_app_productcard",
       "community": 0,
       "norm_label": "productcard()"
@@ -5524,7 +5695,7 @@
       "label": "ProductGrid()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L875",
+      "source_location": "L876",
       "id": "src_app_productgrid",
       "community": 0,
       "norm_label": "productgrid()"
@@ -5533,7 +5704,7 @@
       "label": "Home()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L879",
+      "source_location": "L880",
       "id": "src_app_home",
       "community": 0,
       "norm_label": "home()"
@@ -5542,7 +5713,7 @@
       "label": "BestOffersPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L923",
+      "source_location": "L924",
       "id": "src_app_bestofferspage",
       "community": 0,
       "norm_label": "bestofferspage()"
@@ -5551,7 +5722,7 @@
       "label": "Catalog()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1038",
+      "source_location": "L1039",
       "id": "src_app_catalog",
       "community": 0,
       "norm_label": "catalog()"
@@ -5560,7 +5731,7 @@
       "label": "ProductDetail()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1051",
+      "source_location": "L1052",
       "id": "src_app_productdetail",
       "community": 0,
       "norm_label": "productdetail()"
@@ -5569,7 +5740,7 @@
       "label": "CartPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1236",
+      "source_location": "L1237",
       "id": "src_app_cartpage",
       "community": 0,
       "norm_label": "cartpage()"
@@ -5578,7 +5749,7 @@
       "label": "Checkout()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1344",
+      "source_location": "L1345",
       "id": "src_app_checkout",
       "community": 0,
       "norm_label": "checkout()"
@@ -5587,16 +5758,25 @@
       "label": "WishlistPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1470",
+      "source_location": "L1471",
       "id": "src_app_wishlistpage",
       "community": 0,
       "norm_label": "wishlistpage()"
     },
     {
+      "label": "VerifyOrderPage()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L1476",
+      "id": "src_app_verifyorderpage",
+      "community": 0,
+      "norm_label": "verifyorderpage()"
+    },
+    {
       "label": "AuthPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1475",
+      "source_location": "L1563",
       "id": "src_app_authpage",
       "community": 0,
       "norm_label": "authpage()"
@@ -5605,7 +5785,7 @@
       "label": "AccountPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1862",
+      "source_location": "L2172",
       "id": "src_app_accountpage",
       "community": 0,
       "norm_label": "accountpage()"
@@ -5614,7 +5794,7 @@
       "label": "OrdersPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1866",
+      "source_location": "L2176",
       "id": "src_app_orderspage",
       "community": 0,
       "norm_label": "orderspage()"
@@ -5623,7 +5803,7 @@
       "label": "OrderDetail()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1870",
+      "source_location": "L2180",
       "id": "src_app_orderdetail",
       "community": 0,
       "norm_label": "orderdetail()"
@@ -5632,7 +5812,7 @@
       "label": "AboutPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1874",
+      "source_location": "L2184",
       "id": "src_app_aboutpage",
       "community": 0,
       "norm_label": "aboutpage()"
@@ -5641,7 +5821,7 @@
       "label": "ContactPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1878",
+      "source_location": "L2188",
       "id": "src_app_contactpage",
       "community": 0,
       "norm_label": "contactpage()"
@@ -5650,7 +5830,7 @@
       "label": "FaqPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1893",
+      "source_location": "L2203",
       "id": "src_app_faqpage",
       "community": 0,
       "norm_label": "faqpage()"
@@ -5659,7 +5839,7 @@
       "label": "NotFound()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1906",
+      "source_location": "L2216",
       "id": "src_app_notfound",
       "community": 0,
       "norm_label": "notfound()"
@@ -5668,7 +5848,7 @@
       "label": "QuickView()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1910",
+      "source_location": "L2220",
       "id": "src_app_quickview",
       "community": 0,
       "norm_label": "quickview()"
@@ -5677,7 +5857,7 @@
       "label": "Footer()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L2014",
+      "source_location": "L2324",
       "id": "src_app_footer",
       "community": 0,
       "norm_label": "footer()"
@@ -5688,7 +5868,7 @@
       "source_file": "src/data.js",
       "source_location": "L1",
       "id": "src_data_js",
-      "community": 51,
+      "community": 0,
       "norm_label": "data.js"
     },
     {
@@ -5697,7 +5877,7 @@
       "source_file": "src/data.js",
       "source_location": "L1",
       "id": "src_data_products",
-      "community": 51,
+      "community": 0,
       "norm_label": "products"
     },
     {
@@ -5706,7 +5886,7 @@
       "source_file": "src/data.js",
       "source_location": "L268",
       "id": "src_data_categories",
-      "community": 51,
+      "community": 0,
       "norm_label": "categories"
     },
     {
@@ -5715,7 +5895,7 @@
       "source_file": "src/data.js",
       "source_location": "L277",
       "id": "src_data_store",
-      "community": 51,
+      "community": 0,
       "norm_label": "store"
     },
     {
@@ -5733,7 +5913,7 @@
       "source_file": "src/ProfilePage.jsx",
       "source_location": "L1",
       "id": "src_profilepage_jsx",
-      "community": 51,
+      "community": 0,
       "norm_label": "profilepage.jsx"
     },
     {
@@ -5742,7 +5922,7 @@
       "source_file": "src/ProfilePage.jsx",
       "source_location": "L4",
       "id": "src_profilepage_money",
-      "community": 51,
+      "community": 0,
       "norm_label": "money()"
     },
     {
@@ -5751,7 +5931,7 @@
       "source_file": "src/ProfilePage.jsx",
       "source_location": "L6",
       "id": "src_profilepage_saved",
-      "community": 51,
+      "community": 0,
       "norm_label": "saved()"
     },
     {
@@ -5760,7 +5940,7 @@
       "source_file": "src/ProfilePage.jsx",
       "source_location": "L15",
       "id": "src_profilepage_profileicon",
-      "community": 51,
+      "community": 0,
       "norm_label": "profileicon()"
     },
     {
@@ -5769,7 +5949,7 @@
       "source_file": "src/ProfilePage.jsx",
       "source_location": "L56",
       "id": "src_profilepage_profilepage",
-      "community": 51,
+      "community": 0,
       "norm_label": "profilepage()"
     },
     {
@@ -7056,7 +7236,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L1",
       "id": "resend_mcp_readme_md",
-      "community": 15,
+      "community": 28,
       "norm_label": "readme.md"
     },
     {
@@ -7065,7 +7245,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L1",
       "id": "resend_mcp_readme_resend_mcp_server",
-      "community": 15,
+      "community": 28,
       "norm_label": "resend mcp server"
     },
     {
@@ -7245,7 +7425,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L123",
       "id": "resend_mcp_readme_local_mcp_server",
-      "community": 15,
+      "community": 28,
       "norm_label": "local mcp server"
     },
     {
@@ -7443,7 +7623,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L285",
       "id": "resend_mcp_readme_http_transport",
-      "community": 15,
+      "community": 28,
       "norm_label": "http transport"
     },
     {
@@ -7452,7 +7632,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L291",
       "id": "resend_mcp_readme_codeblock_21",
-      "community": 15,
+      "community": 28,
       "norm_label": "code:bash (npx -y resend-mcp --http --port 3000)"
     },
     {
@@ -7461,7 +7641,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L297",
       "id": "resend_mcp_readme_claude_code_297",
-      "community": 15,
+      "community": 28,
       "norm_label": "claude code"
     },
     {
@@ -7470,7 +7650,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L299",
       "id": "resend_mcp_readme_codeblock_22",
-      "community": 15,
+      "community": 28,
       "norm_label": "code:bash (claude mcp add resend --transport http http://127.0.0.1:3000)"
     },
     {
@@ -7479,7 +7659,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L303",
       "id": "resend_mcp_readme_cursor_303",
-      "community": 15,
+      "community": 28,
       "norm_label": "cursor"
     },
     {
@@ -7488,7 +7668,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L307",
       "id": "resend_mcp_readme_codeblock_23",
-      "community": 15,
+      "community": 28,
       "norm_label": "code:json ({)"
     },
     {
@@ -7497,7 +7677,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L322",
       "id": "resend_mcp_readme_codeblock_24",
-      "community": 15,
+      "community": 28,
       "norm_label": "code:bash (mcp_port=3000 npx -y resend-mcp --http)"
     },
     {
@@ -7506,7 +7686,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L326",
       "id": "resend_mcp_readme_use_as_a_library",
-      "community": 15,
+      "community": 28,
       "norm_label": "use as a library"
     },
     {
@@ -7515,7 +7695,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L330",
       "id": "resend_mcp_readme_codeblock_25",
-      "community": 15,
+      "community": 28,
       "norm_label": "code:ts (import { runhttp } from 'resend-mcp/http';)"
     },
     {
@@ -7524,7 +7704,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L345",
       "id": "resend_mcp_readme_codeblock_26",
-      "community": 15,
+      "community": 28,
       "norm_label": "code:ts (const server = await runhttp({}, 3000, { host: '0.0.0.0' });)"
     },
     {
@@ -7533,7 +7713,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L354",
       "id": "resend_mcp_readme_options",
-      "community": 15,
+      "community": 28,
       "norm_label": "options"
     },
     {
@@ -7542,7 +7722,7 @@
       "source_file": "resend-mcp/README.md",
       "source_location": "L383",
       "id": "resend_mcp_readme_mcp_server_tools",
-      "community": 15,
+      "community": 28,
       "norm_label": "mcp server tools"
     },
     {
@@ -8045,7 +8225,7 @@
       "file_type": "code",
       "source_file": "scripts/init-db.js",
       "source_location": "L1",
-      "community": 51,
+      "community": 0,
       "norm_label": "init-db.js",
       "id": "scripts_init_db_js"
     },
@@ -8054,7 +8234,7 @@
       "file_type": "code",
       "source_file": "scripts/init-db.js",
       "source_location": "L16",
-      "community": 51,
+      "community": 0,
       "norm_label": "sql",
       "id": "scripts_init_db_sql"
     },
@@ -8063,7 +8243,7 @@
       "file_type": "code",
       "source_file": "scripts/init-db.js",
       "source_location": "L18",
-      "community": 51,
+      "community": 0,
       "norm_label": "initdatabase()",
       "id": "scripts_init_db_initdatabase"
     },
@@ -8153,7 +8333,7 @@
       "file_type": "code",
       "source_file": "src/data.js",
       "source_location": "L1",
-      "community": 51,
+      "community": 0,
       "norm_label": "image()",
       "id": "src_data_image"
     },
@@ -15826,11 +16006,33 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "server/app.js",
-      "source_location": "L6",
+      "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "server_app_js",
-      "target": "server_email_sendorderemail"
+      "target": "server_email_sendotpemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_email_sendordercustomeremail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_email_sendorderowneremail",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -15857,11 +16059,81 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server/app.js",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_otpstore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_localordersstore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
       "source_location": "L35",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "server_app_js",
       "target": "server_app_configured"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L141",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_cleanemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_otp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L142",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_cleanotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L143",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L171",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_user",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15897,6 +16169,26 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server/app.js",
+      "source_location": "L271",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_verificationtoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L272",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_autoverifyat",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
       "source_location": "L153",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -15907,11 +16199,61 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server/app.js",
+      "source_location": "L286",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_orderdata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
       "source_location": "L164",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "server_app_js",
       "target": "server_app_neworder"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L488",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_order",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L510",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_remainingms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L511",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_remainingminutes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L528",
+      "weight": 1.0,
+      "source": "server_app_js",
+      "target": "server_app_autoverifypendingorders",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15933,6 +16275,17 @@
       "confidence_score": 1.0,
       "source": "server_server_js",
       "target": "server_app_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_app_js",
+      "target": "server_email_sendorderemail"
     },
     {
       "relation": "imports_from",
@@ -15985,6 +16338,28 @@
       "confidence_score": 1.0,
       "source": "server_server_js",
       "target": "server_app_app"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/app.js",
+      "source_location": "L541",
+      "weight": 1.0,
+      "source": "server_app_autoverifypendingorders",
+      "target": "server_email_sendorderowneremail"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/app.js",
+      "source_location": "L549",
+      "weight": 1.0,
+      "source": "server_app_autoverifypendingorders",
+      "target": "server_db_ismongoconfigured"
     },
     {
       "relation": "contains",
@@ -16055,6 +16430,56 @@
       "source_file": "server/email.js",
       "source_location": "L19",
       "weight": 1.0,
+      "source": "server_email_js",
+      "target": "server_email_getresendclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/email.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "server_email_js",
+      "target": "server_email_sendsafeemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/email.js",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "server_email_js",
+      "target": "server_email_sendotpemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/email.js",
+      "source_location": "L141",
+      "weight": 1.0,
+      "source": "server_email_js",
+      "target": "server_email_sendordercustomeremail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/email.js",
+      "source_location": "L268",
+      "weight": 1.0,
+      "source": "server_email_js",
+      "target": "server_email_sendorderowneremail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/email.js",
+      "source_location": "L19",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "server_email_js",
       "target": "server_email_sendorderemail"
@@ -16066,9 +16491,86 @@
       "source_file": "server/email.js",
       "source_location": "L20",
       "weight": 1.0,
+      "source": "server_email_getresendclient",
+      "target": "server_email_isresendconfigured",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "server/email.js",
+      "source_location": "L20",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "server_email_sendorderemail",
       "target": "server_email_isresendconfigured"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "server/email.js",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "server_email_sendsafeemail",
+      "target": "server_email_getresendclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "server/email.js",
+      "source_location": "L131",
+      "weight": 1.0,
+      "source": "server_email_sendotpemail",
+      "target": "server_email_sendsafeemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "server/email.js",
+      "source_location": "L258",
+      "weight": 1.0,
+      "source": "server_email_sendordercustomeremail",
+      "target": "server_email_sendsafeemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "server/email.js",
+      "source_location": "L328",
+      "weight": 1.0,
+      "source": "server_email_sendorderowneremail",
+      "target": "server_email_sendsafeemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "server/email.js",
+      "source_location": "L340",
+      "weight": 1.0,
+      "source": "server_email_sendorderemail",
+      "target": "server_email_sendordercustomeremail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "server/email.js",
+      "source_location": "L343",
+      "weight": 1.0,
+      "source": "server_email_sendorderemail",
+      "target": "server_email_sendorderowneremail",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16384,6 +16886,16 @@
       "confidence_score": 1.0,
       "source": "src_app_jsx",
       "target": "src_app_wishlistpage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L1476",
+      "weight": 1.0,
+      "source": "src_app_jsx",
+      "target": "src_app_verifyorderpage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19372,5 +19884,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "dcd4ade686fdfefa907a8aae85f78fa565888bfe"
+  "built_at_commit": "4c61548a75ece9656ccf4fa218f8aef04665b734"
 }

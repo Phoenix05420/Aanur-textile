@@ -285,6 +285,7 @@ function App() {
     if (path === '/cart') return <CartPage cart={cart} setCart={setCart} onAdd={addToCart} navigate={navigate} products={products} coupon={coupon} setCoupon={setCoupon} setToast={setToast} />;
     if (path === '/checkout') return <Checkout cart={cart} setCart={setCart} navigate={navigate} products={products} coupon={coupon} setCoupon={setCoupon} />;
     if (path === '/wishlist') return <WishlistPage wishlist={wishlist} onWish={toggleWishlist} onAdd={addToCart} navigate={navigate} products={products} />;
+    if (path === '/verify-order') return <VerifyOrderPage navigate={navigate} setToast={setToast} />;
     if (path === '/logout') {
       try {
         localStorage.removeItem('aanur_is_logged_in');
@@ -1472,6 +1473,93 @@ function WishlistPage({ wishlist, onWish, onAdd, navigate, products = initialPro
   return <div className="page-pad"><div className="page-heading"><div><span className="eyebrow">SAVED FOR A SOFTER DAY</span><h1>Your little list.</h1><p>All the things you’ve had your eye on, in one lovely place.</p></div><span className="saved-count">{items.length} pieces saved</span></div>{items.length ? <ProductGrid list={items} onAdd={onAdd} wishlist={wishlist} onWish={onWish} onQuick={(item) => navigate(`/product/${item.id}`)} /> : <div className="empty-state"><div className="empty-art"><Icon name="heart" size={35} /></div><h2>Keep the good ones close.</h2><p>Save the pieces you love and find them here whenever you’re ready.</p><button className="button button-dark" onClick={() => navigate('/shop')}>Find your favorites <Icon name="arrow" /></button></div>}</div>;
 }
 
+function VerifyOrderPage({ navigate, setToast }) {
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState(null);
+  const [error, setError] = useState('');
+
+  const params = new URLSearchParams(window.location.search);
+  const orderRef = params.get('orderRef') || '';
+  const token = params.get('token') || '';
+
+  useEffect(() => {
+    if (!orderRef) {
+      setError('No order reference specified.');
+      setLoading(false);
+      return;
+    }
+
+    fetch(`/api/orders/verify?orderRef=${encodeURIComponent(orderRef)}&token=${encodeURIComponent(token)}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setLoading(false);
+        if (data.success) {
+          setStatus(data);
+          if (setToast) setToast(`Order #${orderRef} successfully confirmed!`);
+        } else {
+          return fetch(`/api/orders/status/${encodeURIComponent(orderRef)}`)
+            .then((res) => res.json())
+            .then((stat) => {
+              if (stat.success) {
+                setStatus(stat);
+              } else {
+                setError(data.error || 'Failed to verify order.');
+              }
+            });
+        }
+      })
+      .catch(() => {
+        setLoading(false);
+        setError('Network error verifying order.');
+      });
+  }, [orderRef, token]);
+
+  return (
+    <div className="page-pad verify-order-page" style={{ maxWidth: '600px', margin: '40px auto', textAlign: 'center' }}>
+      {loading ? (
+        <div className="empty-state">
+          <div className="empty-art"><Icon name="refresh" size={35} /></div>
+          <h2>Verifying Your Order...</h2>
+          <p>Connecting with our Nathakadaiyur loom management system...</p>
+        </div>
+      ) : error ? (
+        <div className="empty-state">
+          <div className="empty-art"><Icon name="close" size={35} /></div>
+          <h2>Verification Notice</h2>
+          <p>{error}</p>
+          <button className="button button-dark" onClick={() => navigate('/orders')}>View Your Orders</button>
+        </div>
+      ) : (
+        <div className="order-verified-card" style={{ background: '#fff', borderRadius: '16px', border: '1px solid #e6ded3', padding: '36px 28px', boxShadow: '0 8px 30px rgba(0,0,0,0.05)' }}>
+          <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#eaf5eb', color: '#2e7d32', display: 'grid', placeItems: 'center', margin: '0 auto 20px' }}>
+            <Icon name="check" size={36} />
+          </div>
+          <span className="eyebrow" style={{ color: '#2e7d32', fontWeight: 700 }}>ORDER VERIFIED & CONFIRMED</span>
+          <h1 style={{ fontSize: '28px', margin: '8px 0 12px' }}>Order #{orderRef} Confirmed!</h1>
+          <p style={{ color: '#666', fontSize: '15px', lineHeight: 1.5, marginBottom: '24px' }}>
+            Thank you for confirming your order! Your pure cotton bedsheets are scheduled for priority loom weaving and factory-direct dispatch from our workshop in Nathakadaiyur, Tamil Nadu.
+          </p>
+
+          <div style={{ background: '#fbf9f5', border: '1px solid #eee5da', borderRadius: '10px', padding: '16px', marginBottom: '24px', textAlign: 'left', fontSize: '13.5px', lineHeight: 1.6 }}>
+            <div><strong>Status:</strong> <span style={{ color: '#2e7d32', fontWeight: 600 }}>✓ Verified & Scheduled for Dispatch</span></div>
+            <div><strong>Doorstep Delivery:</strong> 7 to 14 days across India</div>
+            <div><strong>Workshop:</strong> Aanur Textile · Nathakadaiyur, Tamil Nadu</div>
+          </div>
+
+          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button className="button button-dark" onClick={() => navigate('/orders')}>
+              View in My Orders <Icon name="arrow" size={15} />
+            </button>
+            <button className="button button-outline" onClick={() => navigate('/shop')}>
+              Browse Collections
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function AuthPage({
   signup,
   setToast,
@@ -1482,6 +1570,13 @@ function AuthPage({
   notice = '',
 }) {
   const [isSignUp, setIsSignUp] = useState(signup);
+  const [authMode, setAuthMode] = useState('otp'); // 'otp' or 'password'
+  const [otpStep, setOtpStep] = useState(1); // 1: enter email, 2: enter code
+  const [otpEmail, setOtpEmail] = useState('');
+  const [otpCode, setOtpCode] = useState('');
+  const [otpCountdown, setOtpCountdown] = useState(0);
+  const [devOtpHint, setDevOtpHint] = useState('');
+
   const [formData, setFormData] = useState({
     name: '',
     identifier: '',
@@ -1500,7 +1595,114 @@ function AuthPage({
     setErrorMsg('');
   }, [signup]);
 
-  const handleSubmit = (e) => {
+  // Countdown timer for resend OTP
+  useEffect(() => {
+    let timer = null;
+    if (otpCountdown > 0) {
+      timer = setTimeout(() => setOtpCountdown((c) => c - 1), 1000);
+    }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [otpCountdown]);
+
+  // Handle Send OTP to Gmail
+  const handleSendOtp = async (e) => {
+    if (e) e.preventDefault();
+    setErrorMsg('');
+
+    if (!otpEmail.trim() || !otpEmail.includes('@')) {
+      setErrorMsg('Please enter a valid Gmail / email address.');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await fetch('/api/auth/send-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: otpEmail.trim(),
+          name: formData.name.trim(),
+        }),
+      });
+
+      const data = await res.json();
+      setLoading(false);
+
+      if (data.success) {
+        setOtpStep(2);
+        setOtpCountdown(60);
+        if (data.devOtp) setDevOtpHint(data.devOtp);
+        if (setToast) setToast(data.message || `OTP sent to ${otpEmail}`);
+      } else {
+        setErrorMsg(data.error || 'Failed to send OTP. Please try again.');
+      }
+    } catch (err) {
+      setLoading(false);
+      setErrorMsg('Network error sending OTP. Please check your connection.');
+    }
+  };
+
+  // Handle Verify OTP
+  const handleVerifyOtp = async (e) => {
+    if (e) e.preventDefault();
+    setErrorMsg('');
+
+    if (!otpCode.trim() || otpCode.trim().length !== 6) {
+      setErrorMsg('Please enter the 6-digit verification code.');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await fetch('/api/auth/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: otpEmail.trim(),
+          otp: otpCode.trim(),
+          name: formData.name.trim(),
+        }),
+      });
+
+      const data = await res.json();
+      setLoading(false);
+
+      if (data.success && data.user) {
+        const user = data.user;
+        localStorage.setItem('aanur_profile_info', JSON.stringify(user));
+        localStorage.setItem('aanur_is_logged_in', 'true');
+
+        // Also add to registered users list
+        try {
+          const raw = localStorage.getItem('aanur_registered_users');
+          const users = raw ? JSON.parse(raw) : [];
+          if (!users.some((u) => u.email.toLowerCase() === user.email.toLowerCase())) {
+            localStorage.setItem('aanur_registered_users', JSON.stringify([...users, user]));
+          }
+        } catch {}
+
+        if (setCurrentUser) setCurrentUser(user);
+        setIsSuccess(true);
+        if (setToast) setToast(`Welcome, ${user.name}!`);
+
+        setTimeout(() => {
+          navigate(redirect || '/profile');
+        }, 800);
+      } else {
+        setErrorMsg(data.error || 'Invalid verification code. Please try again.');
+      }
+    } catch (err) {
+      setLoading(false);
+      setErrorMsg('Network error verifying code. Please try again.');
+    }
+  };
+
+  // Handle Password Submit
+  const handlePasswordSubmit = (e) => {
     e.preventDefault();
     setErrorMsg('');
     setLoading(true);
@@ -1670,14 +1872,40 @@ function AuthPage({
             <p>Taking you directly to your personal account profile...</p>
           </div>
         ) : (
-          <form className="auth-form" onSubmit={handleSubmit}>
-            <span className="eyebrow">{isSignUp ? 'NEW ARTISAN MEMBER' : 'RETURNING CUSTOMER'}</span>
+          <div className="auth-form">
+            <span className="eyebrow">{isSignUp ? 'NEW ARTISAN MEMBER' : 'AANUR TEXTILE SIGN IN'}</span>
             <h1>{isSignUp ? 'Let’s make it yours.' : 'Welcome back.'}</h1>
             <p>
               {isSignUp
                 ? 'Create your account to save pieces, track handcrafted deliveries, and manage your delivery addresses.'
-                : 'Sign in to access your orders, saved addresses, and handcrafted bedsheet collection.'}
+                : 'Sign in using your Gmail OTP or account password.'}
             </p>
+
+            {/* Authentication Mode Tabs: Gmail OTP vs Password */}
+            <div className="auth-method-tabs">
+              <button
+                type="button"
+                className={`auth-method-tab ${authMode === 'otp' ? 'is-active' : ''}`}
+                onClick={() => {
+                  setAuthMode('otp');
+                  setErrorMsg('');
+                }}
+              >
+                <Icon name="mail" size={15} />
+                <span>Gmail OTP</span>
+              </button>
+              <button
+                type="button"
+                className={`auth-method-tab ${authMode === 'password' ? 'is-active' : ''}`}
+                onClick={() => {
+                  setAuthMode('password');
+                  setErrorMsg('');
+                }}
+              >
+                <Icon name="lock" size={15} />
+                <span>Password</span>
+              </button>
+            </div>
 
             {notice && !currentUser && (
               <div className="auth-gate-notice">
@@ -1720,120 +1948,202 @@ function AuthPage({
 
             {errorMsg && <div className="auth-error-banner">{errorMsg}</div>}
 
-            {isSignUp ? (
-              <>
-                <label>
-                  Full name
-                  <input
-                    required
-                    autoComplete="name"
-                    placeholder="e.g. Priya Sharma"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  />
-                </label>
+            {/* ============================================================== */}
+            {/* METHOD 1: GMAIL OTP LOGIN & SIGNUP                            */}
+            {/* ============================================================== */}
+            {authMode === 'otp' ? (
+              otpStep === 1 ? (
+                <form onSubmit={handleSendOtp}>
+                  {isSignUp && (
+                    <label>
+                      Full name
+                      <input
+                        required
+                        placeholder="e.g. Priya Sharma"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      />
+                    </label>
+                  )}
 
-                <label>
-                  Mobile number
-                  <div className="auth-phone-wrap">
-                    <span className="auth-country-prefix">+91</span>
+                  <label>
+                    Gmail / Email Address
                     <input
-                      type="tel"
+                      type="email"
                       required
+                      autoComplete="email"
+                      placeholder="you@gmail.com"
+                      value={otpEmail}
+                      onChange={(e) => setOtpEmail(e.target.value)}
+                    />
+                  </label>
+
+                  <button type="submit" className="button button-dark full-width" disabled={loading}>
+                    <span>{loading ? 'Sending OTP...' : 'Send 6-Digit OTP to Gmail'}</span>
+                    <Icon name="arrow" size={16} />
+                  </button>
+                </form>
+              ) : (
+                <form onSubmit={handleVerifyOtp}>
+                  <div className="auth-otp-badge">
+                    <span>Code sent to <strong>{otpEmail}</strong></span>
+                    <button
+                      type="button"
+                      className="auth-change-email-btn"
+                      onClick={() => { setOtpStep(1); setErrorMsg(''); }}
+                    >
+                      Change
+                    </button>
+                  </div>
+
+                  <label>
+                    Enter 6-Digit Verification Code
+                    <input
+                      type="text"
+                      required
+                      autoFocus
                       inputMode="numeric"
-                      autoComplete="tel-national"
-                      placeholder="10-digit mobile number"
-                      maxLength={10}
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^\d]/g, '').slice(0, 10) })}
+                      maxLength={6}
+                      placeholder="• • • • • •"
+                      className="auth-otp-input"
+                      value={otpCode}
+                      onChange={(e) => setOtpCode(e.target.value.replace(/[^\d]/g, '').slice(0, 6))}
                     />
+                  </label>
+
+                  {devOtpHint && (
+                    <div style={{ fontSize: '11.5px', color: '#666', background: '#f5f5f5', padding: '6px 10px', borderRadius: '4px', marginBottom: '12px' }}>
+                      Test Hint (Sandbox): <strong>{devOtpHint}</strong>
+                    </div>
+                  )}
+
+                  <button type="submit" className="button button-dark full-width" disabled={loading || otpCode.length !== 6}>
+                    <span>{loading ? 'Verifying...' : 'Verify & Enter Account'}</span>
+                    <Icon name="arrow" size={16} />
+                  </button>
+
+                  <div className="auth-resend-row">
+                    {otpCountdown > 0 ? (
+                      <span className="auth-countdown">Resend code in {otpCountdown}s</span>
+                    ) : (
+                      <button type="button" className="auth-resend-btn" onClick={handleSendOtp} disabled={loading}>
+                        Resend OTP Code
+                      </button>
+                    )}
                   </div>
-                </label>
-
-                <label>
-                  Email address
-                  <input
-                    type="email"
-                    required
-                    autoComplete="email"
-                    placeholder="you@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
-                </label>
-
-                <label>
-                  Password
-                  <div className="auth-password-wrap">
-                    <input
-                      type={showPassword ? 'text' : 'password'}
-                      required
-                      minLength={6}
-                      autoComplete="new-password"
-                      placeholder="At least 6 characters"
-                      value={formData.password}
-                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    />
-                    <button
-                      type="button"
-                      className="auth-password-toggle"
-                      onClick={() => setShowPassword(!showPassword)}
-                    >
-                      {showPassword ? 'Hide' : 'Show'}
-                    </button>
-                  </div>
-                </label>
-
-                <label>
-                  City / Town
-                  <input
-                    autoComplete="address-level2"
-                    placeholder="e.g. Tiruppur, Coimbatore, Chennai"
-                    value={formData.city}
-                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                  />
-                </label>
-              </>
+                </form>
+              )
             ) : (
-              <>
-                <label>
-                  Email or Mobile Number
-                  <input
-                    required
-                    autoComplete="username"
-                    placeholder="you@example.com or 10-digit number"
-                    value={formData.identifier}
-                    onChange={(e) => setFormData({ ...formData, identifier: e.target.value })}
-                  />
-                </label>
+              /* ============================================================== */
+              /* METHOD 2: PASSWORD AUTHENTICATION                             */
+              /* ============================================================== */
+              <form onSubmit={handlePasswordSubmit}>
+                {isSignUp ? (
+                  <>
+                    <label>
+                      Full name
+                      <input
+                        required
+                        autoComplete="name"
+                        placeholder="e.g. Priya Sharma"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      />
+                    </label>
 
-                <label>
-                  Password
-                  <div className="auth-password-wrap">
-                    <input
-                      type={showPassword ? 'text' : 'password'}
-                      required
-                      autoComplete="current-password"
-                      placeholder="Enter your account password"
-                      value={formData.password}
-                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    />
-                    <button
-                      type="button"
-                      className="auth-password-toggle"
-                      onClick={() => setShowPassword(!showPassword)}
-                    >
-                      {showPassword ? 'Hide' : 'Show'}
-                    </button>
-                  </div>
-                </label>
-              </>
+                    <label>
+                      Mobile number
+                      <div className="auth-phone-wrap">
+                        <span className="auth-country-prefix">+91</span>
+                        <input
+                          type="tel"
+                          required
+                          inputMode="numeric"
+                          autoComplete="tel-national"
+                          placeholder="10-digit mobile number"
+                          maxLength={10}
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^\d]/g, '').slice(0, 10) })}
+                        />
+                      </div>
+                    </label>
+
+                    <label>
+                      Email address
+                      <input
+                        type="email"
+                        required
+                        autoComplete="email"
+                        placeholder="you@example.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      />
+                    </label>
+
+                    <label>
+                      Password
+                      <div className="auth-password-wrap">
+                        <input
+                          type={showPassword ? 'text' : 'password'}
+                          required
+                          minLength={6}
+                          autoComplete="new-password"
+                          placeholder="At least 6 characters"
+                          value={formData.password}
+                          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                        />
+                        <button
+                          type="button"
+                          className="auth-password-toggle"
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          {showPassword ? 'Hide' : 'Show'}
+                        </button>
+                      </div>
+                    </label>
+                  </>
+                ) : (
+                  <>
+                    <label>
+                      Email or Mobile Number
+                      <input
+                        required
+                        autoComplete="username"
+                        placeholder="you@example.com or 10-digit number"
+                        value={formData.identifier}
+                        onChange={(e) => setFormData({ ...formData, identifier: e.target.value })}
+                      />
+                    </label>
+
+                    <label>
+                      Password
+                      <div className="auth-password-wrap">
+                        <input
+                          type={showPassword ? 'text' : 'password'}
+                          required
+                          autoComplete="current-password"
+                          placeholder="Enter your account password"
+                          value={formData.password}
+                          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                        />
+                        <button
+                          type="button"
+                          className="auth-password-toggle"
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          {showPassword ? 'Hide' : 'Show'}
+                        </button>
+                      </div>
+                    </label>
+                  </>
+                )}
+
+                <button type="submit" className="button button-dark full-width" disabled={loading}>
+                  <span>{loading ? 'Please wait...' : (isSignUp ? 'Create Account' : 'Sign In to Account')}</span>
+                  <Icon name="arrow" size={16} />
+                </button>
+              </form>
             )}
-
-            <button type="submit" className="button button-dark full-width" disabled={loading}>
-              <span>{loading ? 'Please wait...' : (isSignUp ? 'Create Account' : 'Sign In to Account')}</span>
-              <Icon name="arrow" size={16} />
-            </button>
 
             <div className="auth-change">
               {isSignUp ? 'Already have an account?' : 'New to Aanur Textile?'}{' '}
@@ -1852,7 +2162,7 @@ function AuthPage({
             <small>
               By continuing, you agree to our <a href="/faq" onClick={(e) => { e.preventDefault(); navigate('/faq'); }}>Terms & Privacy.</a>
             </small>
-          </form>
+          </div>
         )}
       </div>
     </div>

@@ -71,7 +71,7 @@ Founded in **2013 by Velusamy R**, **Aanur Textile** has grown over 13+ years wi
 * **Order Tracking & Archival:** Archives completed purchases under the customer's profile with one-click re-ordering and invoice retrieval capabilities.
 
 ### 📨 Transactional Notifications & Communication
-* **Dual-Recipient Resend Email Dispatch:** Automatically compiles responsive HTML receipts dispatched simultaneously to the buyer and the store administrative inbox (`prvsamy@gmail.com`).
+* **Dual-Recipient Resend Email Dispatch:** Automatically compiles responsive HTML receipts dispatched simultaneously to the buyer and the store administrative inbox.
 * **Branded Clean HTML Templates:** Renders responsive email layouts displaying itemized tables, variant thumbnails, pricing summaries, and direct factory contact details.
 * **Wholesale & Enquiry Intake Pipeline:** Routes custom bulk fabric inquiries directly to backend MongoDB collections and store operators.
 
@@ -212,7 +212,7 @@ RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxx
 RESEND_FROM_EMAIL=Aanur Textile <onboarding@resend.dev>
 
 # Store Administrator Recipient Inbox (receives all order and enquiry copies)
-STORE_ADMIN_EMAIL=prvsamy@gmail.com
+STORE_ADMIN_EMAIL=your-admin-email@gmail.com
 ```
 
 > 💡 **Graceful Fallback Notice:** If `.env` is omitted or left unconfigured, the application automatically enters **Local Fallback Mode**. The catalog will load seamlessly from `src/data.js` and orders will log gracefully to the server console.
@@ -337,8 +337,8 @@ copies or substantial portions of the Software.
 * **Brand Enterprise:** Aanur Textile
 * **Proprietor / Founder:** Velusamy R *(13+ Years Textile Mastery, Established 2013)*
 * **Mill & Weaving Unit:** 1/367 Merkuthottam, Palayakottai, Nathakadaiyur, Kangayam, Tiruppur 638108, Tamil Nadu, India
-* **Telephone Support:** [+91 97866 28035](tel:+919786628035)
-* **Administrative Email:** [prvsamy@gmail.com](mailto:prvsamy@gmail.com)
+* **Telephone Support:** [+91 4257 245000](tel:+914257245000)
+* **Administrative Email:** [contact@aanurtextile.com](mailto:contact@aanurtextile.com)
 * **Map Location:** [View on Google Maps](https://maps.app.goo.gl/hhfBisaJndVEUiuS8)
 * **Operating Hours:** Monday – Saturday, 9:00 AM – 8:00 PM IST (Sunday Closed)
 

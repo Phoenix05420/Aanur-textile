@@ -30,6 +30,15 @@ const OrderSchema = new mongoose.Schema({
   deliveryStatus: { type: String, default: 'Processing · 7-14 days' },
   paymentMethod: { type: String, default: 'Cash on Delivery (COD)' },
   paymentStatus: { type: String, default: 'Pending' },
+  isVerified: { type: Boolean, default: false },
+  verifiedAt: { type: Date },
+  verificationType: {
+    type: String,
+    enum: ['unverified', 'customer_confirmed', 'auto_verified_30m'],
+    default: 'unverified',
+  },
+  verificationToken: { type: String },
+  autoVerifyAt: { type: Date },
   notes: { type: String, default: 'Factory-direct dispatch from Nathakadaiyur, Tamil Nadu' },
 }, { timestamps: true });
 
