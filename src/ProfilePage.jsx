@@ -68,19 +68,22 @@ export default function ProfilePage({
   // ---------------------------------------------------------------------------
   // 01. Profile Overview State
   // ---------------------------------------------------------------------------
-  const [profile, setProfile] = useState(() =>
-    saved('aanur_profile_info', {
+  const [profile, setProfile] = useState(() => {
+    const data = saved('aanur_profile_info', {
       name: 'Priya Sharma',
       email: 'priya.sharma@example.com',
       phone: '+91 98427 51234',
       city: 'Tiruppur',
       state: 'Tamil Nadu',
-      membership: 'Artisan Guild Member · Gold Tier',
       joinedDate: 'October 2024',
       avatarBg: '#b76b52',
       loomCredits: 450,
-    })
-  );
+    });
+    if (data && data.membership) {
+      delete data.membership;
+    }
+    return data;
+  });
 
   useEffect(() => {
     localStorage.setItem('aanur_profile_info', JSON.stringify(profile));
@@ -429,10 +432,6 @@ export default function ProfilePage({
         <div className="profile-hero-info">
           <div className="profile-name-line">
             <h1>{profile.name}</h1>
-            <span className="guild-pill">
-              <ProfileIcon name="shield" size={13} />
-              {profile.membership}
-            </span>
           </div>
           <p className="profile-contact-meta">
             <span>
