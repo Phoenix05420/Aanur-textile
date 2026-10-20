@@ -3598,45 +3598,6 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--clay); width: 
   margin-bottom: 16px;
 }
 
-/* Auth Method Tabs (Gmail OTP vs Password) */
-.auth-method-tabs {
-  display: flex;
-  background: rgba(41, 39, 33, 0.05);
-  padding: 4px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  gap: 4px;
-}
-
-.auth-method-tab {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 8px 12px;
-  border: none;
-  background: transparent;
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 500;
-  color: #666;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.auth-method-tab:hover {
-  color: var(--clay, #292721);
-}
-
-.auth-method-tab.is-active {
-  background: #ffffff;
-  color: var(--clay, #292721);
-  font-weight: 600;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-}
-
 /* OTP Code Input & Email Badge */
 .auth-otp-badge {
   display: flex;

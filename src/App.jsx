@@ -1570,22 +1570,12 @@ function AuthPage({
   notice = '',
 }) {
   const [isSignUp, setIsSignUp] = useState(signup);
-  const [authMode, setAuthMode] = useState('otp'); // 'otp' or 'password'
-  const [otpStep, setOtpStep] = useState(1); // 1: enter email, 2: enter code
-  const [otpEmail, setOtpEmail] = useState('');
+  const [otpStep, setOtpStep] = useState(1); // 1: Enter email, 2: Enter 6-digit code
+  const [email, setEmail] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [phone, setPhone] = useState('');
   const [otpCode, setOtpCode] = useState('');
   const [otpCountdown, setOtpCountdown] = useState(0);
-  const [devOtpHint, setDevOtpHint] = useState('');
-
-  const [formData, setFormData] = useState({
-    name: '',
-    identifier: '',
-    email: '',
-    phone: '',
-    password: '',
-    city: 'Tiruppur',
-  });
-  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
@@ -1593,6 +1583,8 @@ function AuthPage({
   useEffect(() => {
     setIsSignUp(signup);
     setErrorMsg('');
+    setOtpStep(1);
+    setOtpCode('');
   }, [signup]);
 
   // Countdown timer for resend OTP
@@ -1606,12 +1598,17 @@ function AuthPage({
     };
   }, [otpCountdown]);
 
-  // Handle Send OTP to Gmail
+  // Handle Send 6-Digit OTP to Gmail
   const handleSendOtp = async (e) => {
     if (e) e.preventDefault();
     setErrorMsg('');
 
-    if (!otpEmail.trim() || !otpEmail.includes('@')) {
+    if (isSignUp && !fullName.trim()) {
+      setErrorMsg('Please enter your full name.');
+      return;
+    }
+
+    if (!email.trim() || !email.includes('@')) {
       setErrorMsg('Please enter a valid Gmail / email address.');
       return;
     }
@@ -1623,8 +1620,9 @@ function AuthPage({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: otpEmail.trim(),
-          name: formData.name.trim(),
+          email: email.trim(),
+          name: fullName.trim(),
+          phone: phone.trim(),
         }),
       });
 
@@ -1634,18 +1632,17 @@ function AuthPage({
       if (data.success) {
         setOtpStep(2);
         setOtpCountdown(60);
-        if (data.devOtp) setDevOtpHint(data.devOtp);
-        if (setToast) setToast(data.message || `OTP sent to ${otpEmail}`);
+        if (setToast) setToast(`Verification code sent to ${email.trim()}`);
       } else {
-        setErrorMsg(data.error || 'Failed to send OTP. Please try again.');
+        setErrorMsg(data.error || 'Failed to send verification code. Please try again.');
       }
     } catch (err) {
       setLoading(false);
-      setErrorMsg('Network error sending OTP. Please check your connection.');
+      setErrorMsg('Network error sending verification code. Please check your connection.');
     }
   };
 
-  // Handle Verify OTP
+  // Handle Verify 6-Digit OTP
   const handleVerifyOtp = async (e) => {
     if (e) e.preventDefault();
     setErrorMsg('');
@@ -1662,9 +1659,10 @@ function AuthPage({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: otpEmail.trim(),
+          email: email.trim(),
           otp: otpCode.trim(),
-          name: formData.name.trim(),
+          name: fullName.trim(),
+          phone: phone.trim(),
         }),
       });
 
@@ -1676,7 +1674,6 @@ function AuthPage({
         localStorage.setItem('aanur_profile_info', JSON.stringify(user));
         localStorage.setItem('aanur_is_logged_in', 'true');
 
-        // Also add to registered users list
         try {
           const raw = localStorage.getItem('aanur_registered_users');
           const users = raw ? JSON.parse(raw) : [];
@@ -1693,161 +1690,11 @@ function AuthPage({
           navigate(redirect || '/profile');
         }, 800);
       } else {
-        setErrorMsg(data.error || 'Invalid verification code. Please try again.');
+        setErrorMsg(data.error || 'Invalid verification code. Please check your email and try again.');
       }
     } catch (err) {
       setLoading(false);
       setErrorMsg('Network error verifying code. Please try again.');
-    }
-  };
-
-  // Handle Password Submit
-  const handlePasswordSubmit = (e) => {
-    e.preventDefault();
-    setErrorMsg('');
-    setLoading(true);
-
-    try {
-      const usersRaw = localStorage.getItem('aanur_registered_users');
-      const registeredUsers = usersRaw ? JSON.parse(usersRaw) : [];
-
-      if (isSignUp) {
-        if (!formData.name.trim()) {
-          setErrorMsg('Please enter your full name.');
-          setLoading(false);
-          return;
-        }
-
-        const cleanPhone = formData.phone.replace(/[^\d]/g, '').slice(-10);
-        if (cleanPhone.length !== 10) {
-          setErrorMsg('Please enter a valid 10-digit Indian mobile number.');
-          setLoading(false);
-          return;
-        }
-
-        if (!formData.email.trim() || !formData.email.includes('@')) {
-          setErrorMsg('Please enter a valid email address.');
-          setLoading(false);
-          return;
-        }
-
-        if (!formData.password || formData.password.length < 6) {
-          setErrorMsg('Password must be at least 6 characters long.');
-          setLoading(false);
-          return;
-        }
-
-        const exists = registeredUsers.find(
-          (u) =>
-            u.email.toLowerCase() === formData.email.trim().toLowerCase() ||
-            u.phone.replace(/[^\d]/g, '').slice(-10) === cleanPhone
-        );
-
-        if (exists) {
-          setErrorMsg('An account with this email or mobile number already exists. Please sign in below.');
-          setLoading(false);
-          return;
-        }
-
-        const newUser = {
-          name: formData.name.trim(),
-          email: formData.email.trim().toLowerCase(),
-          phone: `+91 ${cleanPhone}`,
-          city: formData.city.trim() || 'Tiruppur',
-          state: 'Tamil Nadu',
-          password: formData.password,
-          joinedDate: 'October 2026',
-          avatarBg: '#b76b52',
-        };
-
-        const updatedUsers = [...registeredUsers, newUser];
-        localStorage.setItem('aanur_registered_users', JSON.stringify(updatedUsers));
-        localStorage.setItem('aanur_profile_info', JSON.stringify(newUser));
-        localStorage.setItem('aanur_is_logged_in', 'true');
-
-        if (setCurrentUser) setCurrentUser(newUser);
-
-        setTimeout(() => {
-          setLoading(false);
-          setIsSuccess(true);
-          if (setToast) setToast(`Welcome to Aanur Textile, ${newUser.name}!`);
-          setTimeout(() => {
-            navigate(redirect || '/profile');
-          }, 800);
-        }, 300);
-      } else {
-        const id = formData.identifier.trim();
-        const pwd = formData.password.trim();
-
-        if (!id) {
-          setErrorMsg('Please enter your email address or 10-digit mobile number.');
-          setLoading(false);
-          return;
-        }
-
-        if (!pwd) {
-          setErrorMsg('Please enter your password.');
-          setLoading(false);
-          return;
-        }
-
-        const cleanIdPhone = id.replace(/[^\d]/g, '').slice(-10);
-        const isPhone = cleanIdPhone.length === 10;
-
-        let user = registeredUsers.find((u) => {
-          if (isPhone) {
-            return u.phone.replace(/[^\d]/g, '').slice(-10) === cleanIdPhone;
-          }
-          return u.email.toLowerCase() === id.toLowerCase();
-        });
-
-        if (!user) {
-          const rawProfile = localStorage.getItem('aanur_profile_info');
-          const defaultUser = rawProfile ? JSON.parse(rawProfile) : null;
-
-          if (
-            defaultUser &&
-            ((isPhone && defaultUser.phone.includes(cleanIdPhone)) ||
-              (!isPhone && defaultUser.email.toLowerCase() === id.toLowerCase()))
-          ) {
-            user = defaultUser;
-          } else {
-            user = {
-              name: isPhone ? `Customer (${cleanIdPhone.slice(-4)})` : id.split('@')[0],
-              email: isPhone ? `${cleanIdPhone}@aanurtextile.com` : id,
-              phone: isPhone ? `+91 ${cleanIdPhone}` : '+91 98427 51234',
-              city: 'Tiruppur',
-              state: 'Tamil Nadu',
-              joinedDate: 'October 2026',
-              avatarBg: '#b76b52',
-            };
-            localStorage.setItem('aanur_registered_users', JSON.stringify([...registeredUsers, user]));
-          }
-        }
-
-        if (user.password && user.password !== pwd) {
-          setErrorMsg('Incorrect password. Please verify and try again.');
-          setLoading(false);
-          return;
-        }
-
-        localStorage.setItem('aanur_profile_info', JSON.stringify(user));
-        localStorage.setItem('aanur_is_logged_in', 'true');
-
-        if (setCurrentUser) setCurrentUser(user);
-
-        setTimeout(() => {
-          setLoading(false);
-          setIsSuccess(true);
-          if (setToast) setToast(`Welcome back, ${user.name}!`);
-          setTimeout(() => {
-            navigate(redirect || '/profile');
-          }, 800);
-        }, 300);
-      }
-    } catch (err) {
-      setLoading(false);
-      setErrorMsg('Something went wrong during sign in. Please try again.');
     }
   };
 
@@ -1874,38 +1721,12 @@ function AuthPage({
         ) : (
           <div className="auth-form">
             <span className="eyebrow">{isSignUp ? 'NEW ARTISAN MEMBER' : 'AANUR TEXTILE SIGN IN'}</span>
-            <h1>{isSignUp ? 'Let’s make it yours.' : 'Welcome back.'}</h1>
+            <h1>{isSignUp ? 'Create your account.' : 'Welcome back.'}</h1>
             <p>
               {isSignUp
-                ? 'Create your account to save pieces, track handcrafted deliveries, and manage your delivery addresses.'
-                : 'Sign in using your Gmail OTP or account password.'}
+                ? 'Sign up with your email to receive a secure one-time verification code.'
+                : 'Enter your email to receive a secure 6-digit one-time verification code.'}
             </p>
-
-            {/* Authentication Mode Tabs: Gmail OTP vs Password */}
-            <div className="auth-method-tabs">
-              <button
-                type="button"
-                className={`auth-method-tab ${authMode === 'otp' ? 'is-active' : ''}`}
-                onClick={() => {
-                  setAuthMode('otp');
-                  setErrorMsg('');
-                }}
-              >
-                <Icon name="mail" size={15} />
-                <span>Gmail OTP</span>
-              </button>
-              <button
-                type="button"
-                className={`auth-method-tab ${authMode === 'password' ? 'is-active' : ''}`}
-                onClick={() => {
-                  setAuthMode('password');
-                  setErrorMsg('');
-                }}
-              >
-                <Icon name="lock" size={15} />
-                <span>Password</span>
-              </button>
-            </div>
 
             {notice && !currentUser && (
               <div className="auth-gate-notice">
@@ -1948,97 +1769,9 @@ function AuthPage({
 
             {errorMsg && <div className="auth-error-banner">{errorMsg}</div>}
 
-            {/* ============================================================== */}
-            {/* METHOD 1: GMAIL OTP LOGIN & SIGNUP                            */}
-            {/* ============================================================== */}
-            {authMode === 'otp' ? (
-              otpStep === 1 ? (
-                <form onSubmit={handleSendOtp}>
-                  {isSignUp && (
-                    <label>
-                      Full name
-                      <input
-                        required
-                        placeholder="e.g. Priya Sharma"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      />
-                    </label>
-                  )}
-
-                  <label>
-                    Gmail / Email Address
-                    <input
-                      type="email"
-                      required
-                      autoComplete="email"
-                      placeholder="you@gmail.com"
-                      value={otpEmail}
-                      onChange={(e) => setOtpEmail(e.target.value)}
-                    />
-                  </label>
-
-                  <button type="submit" className="button button-dark full-width" disabled={loading}>
-                    <span>{loading ? 'Sending OTP...' : 'Send 6-Digit OTP to Gmail'}</span>
-                    <Icon name="arrow" size={16} />
-                  </button>
-                </form>
-              ) : (
-                <form onSubmit={handleVerifyOtp}>
-                  <div className="auth-otp-badge">
-                    <span>Code sent to <strong>{otpEmail}</strong></span>
-                    <button
-                      type="button"
-                      className="auth-change-email-btn"
-                      onClick={() => { setOtpStep(1); setErrorMsg(''); }}
-                    >
-                      Change
-                    </button>
-                  </div>
-
-                  <label>
-                    Enter 6-Digit Verification Code
-                    <input
-                      type="text"
-                      required
-                      autoFocus
-                      inputMode="numeric"
-                      maxLength={6}
-                      placeholder="• • • • • •"
-                      className="auth-otp-input"
-                      value={otpCode}
-                      onChange={(e) => setOtpCode(e.target.value.replace(/[^\d]/g, '').slice(0, 6))}
-                    />
-                  </label>
-
-                  {devOtpHint && (
-                    <div style={{ fontSize: '11.5px', color: '#666', background: '#f5f5f5', padding: '6px 10px', borderRadius: '4px', marginBottom: '12px' }}>
-                      Test Hint (Sandbox): <strong>{devOtpHint}</strong>
-                    </div>
-                  )}
-
-                  <button type="submit" className="button button-dark full-width" disabled={loading || otpCode.length !== 6}>
-                    <span>{loading ? 'Verifying...' : 'Verify & Enter Account'}</span>
-                    <Icon name="arrow" size={16} />
-                  </button>
-
-                  <div className="auth-resend-row">
-                    {otpCountdown > 0 ? (
-                      <span className="auth-countdown">Resend code in {otpCountdown}s</span>
-                    ) : (
-                      <button type="button" className="auth-resend-btn" onClick={handleSendOtp} disabled={loading}>
-                        Resend OTP Code
-                      </button>
-                    )}
-                  </div>
-                </form>
-              )
-            ) : (
-              /* ============================================================== */
-              /* METHOD 2: PASSWORD AUTHENTICATION                             */
-              /* ============================================================== */
-              <form onSubmit={handlePasswordSubmit}>
-                {isSignUp ? (
+            {otpStep === 1 ? (
+              <form onSubmit={handleSendOtp}>
+                {isSignUp && (
                   <>
                     <label>
                       Full name
@@ -2046,102 +1779,87 @@ function AuthPage({
                         required
                         autoComplete="name"
                         placeholder="e.g. Priya Sharma"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
                       />
                     </label>
 
                     <label>
-                      Mobile number
+                      Mobile number <span style={{ fontSize: '11px', color: '#888', fontWeight: 400 }}>(Optional)</span>
                       <div className="auth-phone-wrap">
                         <span className="auth-country-prefix">+91</span>
                         <input
                           type="tel"
-                          required
                           inputMode="numeric"
-                          autoComplete="tel-national"
                           placeholder="10-digit mobile number"
                           maxLength={10}
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^\d]/g, '').slice(0, 10) })}
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value.replace(/[^\d]/g, '').slice(0, 10))}
                         />
-                      </div>
-                    </label>
-
-                    <label>
-                      Email address
-                      <input
-                        type="email"
-                        required
-                        autoComplete="email"
-                        placeholder="you@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      />
-                    </label>
-
-                    <label>
-                      Password
-                      <div className="auth-password-wrap">
-                        <input
-                          type={showPassword ? 'text' : 'password'}
-                          required
-                          minLength={6}
-                          autoComplete="new-password"
-                          placeholder="At least 6 characters"
-                          value={formData.password}
-                          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                        />
-                        <button
-                          type="button"
-                          className="auth-password-toggle"
-                          onClick={() => setShowPassword(!showPassword)}
-                        >
-                          {showPassword ? 'Hide' : 'Show'}
-                        </button>
-                      </div>
-                    </label>
-                  </>
-                ) : (
-                  <>
-                    <label>
-                      Email or Mobile Number
-                      <input
-                        required
-                        autoComplete="username"
-                        placeholder="you@example.com or 10-digit number"
-                        value={formData.identifier}
-                        onChange={(e) => setFormData({ ...formData, identifier: e.target.value })}
-                      />
-                    </label>
-
-                    <label>
-                      Password
-                      <div className="auth-password-wrap">
-                        <input
-                          type={showPassword ? 'text' : 'password'}
-                          required
-                          autoComplete="current-password"
-                          placeholder="Enter your account password"
-                          value={formData.password}
-                          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                        />
-                        <button
-                          type="button"
-                          className="auth-password-toggle"
-                          onClick={() => setShowPassword(!showPassword)}
-                        >
-                          {showPassword ? 'Hide' : 'Show'}
-                        </button>
                       </div>
                     </label>
                   </>
                 )}
 
+                <label>
+                  Gmail / Email Address
+                  <input
+                    type="email"
+                    required
+                    autoComplete="email"
+                    placeholder="you@gmail.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </label>
+
                 <button type="submit" className="button button-dark full-width" disabled={loading}>
-                  <span>{loading ? 'Please wait...' : (isSignUp ? 'Create Account' : 'Sign In to Account')}</span>
+                  <span>{loading ? 'Sending Verification Code...' : 'Send 6-Digit OTP to Gmail'}</span>
                   <Icon name="arrow" size={16} />
                 </button>
+              </form>
+            ) : (
+              <form onSubmit={handleVerifyOtp}>
+                <div className="auth-otp-badge">
+                  <span>Code sent to <strong>{email}</strong></span>
+                  <button
+                    type="button"
+                    className="auth-change-email-btn"
+                    onClick={() => { setOtpStep(1); setErrorMsg(''); setOtpCode(''); }}
+                  >
+                    Change
+                  </button>
+                </div>
+
+                <label>
+                  Enter 6-Digit Verification Code
+                  <input
+                    type="text"
+                    required
+                    autoFocus
+                    inputMode="numeric"
+                    maxLength={6}
+                    placeholder="• • • • • •"
+                    className="auth-otp-input"
+                    value={otpCode}
+                    onChange={(e) => setOtpCode(e.target.value.replace(/[^\d]/g, '').slice(0, 6))}
+                  />
+                </label>
+
+                <button type="submit" className="button button-dark full-width" disabled={loading || otpCode.length !== 6}>
+                  <span>{loading ? 'Verifying...' : 'Verify & Enter Account'}</span>
+                  <Icon name="arrow" size={16} />
+                </button>
+
+                <div className="auth-resend-row">
+                  {otpCountdown > 0 ? (
+                    <span className="auth-countdown">Resend code in {otpCountdown}s</span>
+                  ) : (
+                    <button type="button" className="auth-resend-btn" onClick={handleSendOtp} disabled={loading}>
+                      Resend OTP Code
+                    </button>
+                  )}
+                </div>
               </form>
             )}
 
@@ -2151,11 +1869,13 @@ function AuthPage({
                 type="button"
                 onClick={() => {
                   setErrorMsg('');
+                  setOtpStep(1);
+                  setOtpCode('');
                   setIsSignUp(!isSignUp);
                   navigate(!isSignUp ? '/signup' : '/login');
                 }}
               >
-                {isSignUp ? 'Sign in' : 'Create an account'}
+                {isSignUp ? 'Sign in with Gmail' : 'Create an account'}
               </button>
             </div>
 

@@ -121,9 +121,8 @@ app.post('/api/auth/send-otp', async (req, res) => {
     success: true,
     message: emailSent
       ? `Verification OTP sent to ${cleanEmail}`
-      : `OTP generated (Check server console or email): ${otp}`,
+      : `Verification code sent to ${cleanEmail}`,
     email: cleanEmail,
-    devOtp: otp, // For seamless testing fallback
     emailSent,
   });
 });
