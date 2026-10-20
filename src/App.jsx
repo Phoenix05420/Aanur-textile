@@ -346,7 +346,7 @@ function App() {
             className={`icon-button account-action ${path === '/account' || path === '/profile' || path === '/orders' || path === '/login' || path === '/signup' ? 'is-current' : ''}`}
             aria-label={currentUser ? "Your account" : "Sign in to Aanur Textile"}
             onClick={() => navigate(currentUser ? '/account' : '/login')}
-            title={currentUser ? `Signed in as ${currentUser.name || 'Artisan'}` : "Sign In with Mobile OTP"}
+            title={currentUser ? `Signed in as ${currentUser.name || 'Artisan'}` : "Sign In to Your Account"}
           >
             <Icon name="user" />
             {currentUser && <span className="account-dot-online" aria-hidden="true" />}
@@ -355,7 +355,7 @@ function App() {
             type="button"
             className={`header-auth-label-btn ${path === '/login' || path === '/signup' ? 'is-current' : ''}`}
             onClick={() => navigate(currentUser ? '/account' : '/login')}
-            title={currentUser ? "View your account & orders" : "Sign In with Mobile OTP"}
+            title={currentUser ? "View your account & orders" : "Sign In / Register"}
           >
             {currentUser ? (currentUser.name ? currentUser.name.split(' ')[0] : 'Account') : 'Sign In'}
           </button>
@@ -529,14 +529,14 @@ function App() {
             <div className="drawer-guest-box">
               <div className="drawer-guest-text">
                 <strong>Welcome to Aanur Textile</strong>
-                <p>Sign in with your mobile phone for instant order tracking and addresses.</p>
+                <p>Sign in to your account for order tracking, saved addresses, and faster checkout.</p>
               </div>
               <button
                 type="button"
                 className="button button-dark mini-btn"
                 onClick={() => { setMobileOpen(false); navigate('/login'); }}
               >
-                Sign In / OTP Login <Icon name="arrow" size={14} />
+                Sign In / Register <Icon name="arrow" size={14} />
               </button>
             </div>
           )}
@@ -549,7 +549,7 @@ function App() {
               className={`drawer-link ${path === '/login' || path === '/signup' ? 'is-active' : ''}`}
               onClick={() => { setMobileOpen(false); navigate('/login'); }}
             >
-              <span>{currentUser ? 'Switch Account / OTP Login' : 'Sign In / OTP Login'}</span>
+              <span>{currentUser ? 'Switch Account' : 'Sign In / Register'}</span>
               <Icon name="arrow" size={14} />
             </button>
             <button
@@ -1322,31 +1322,27 @@ function WishlistPage({ wishlist, onWish, onAdd, navigate, products = initialPro
 }
 
 function AuthPage({ signup, setToast, navigate }) {
-  const [step, setStep] = useState('phone'); // 'phone' | 'otp' | 'done'
-  const [phone, setPhone] = useState('');
-  const [name, setName] = useState('');
-  const [otp, setOtp] = useState(['', '', '', '', '', '']);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    city: 'Tiruppur',
+  });
   const [loading, setLoading] = useState(false);
-  const [cooldown, setCooldown] = useState(60);
   const [errorMsg, setErrorMsg] = useState('');
-  const otpInputsRef = useRef([]);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  // Resend countdown timer
-  useEffect(() => {
-    let timer;
-    if (step === 'otp' && cooldown > 0) {
-      timer = setInterval(() => {
-        setCooldown((prev) => Math.max(0, prev - 1));
-      }, 1000);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const cleanPhone = formData.phone.replace(/[^\d]/g, '').slice(-10);
+
+    if (formData.phone && cleanPhone.length !== 10) {
+      setErrorMsg('Please enter a valid 10-digit mobile number.');
+      return;
     }
-    return () => clearInterval(timer);
-  }, [step, cooldown]);
 
-  const handleSendOtp = async (e) => {
-    if (e) e.preventDefault();
-    const cleanPhone = phone.replace(/[^\d]/g, '').slice(-10);
-    if (cleanPhone.length !== 10) {
-      setErrorMsg('Please enter a valid 10-digit Indian mobile number.');
+    if (signup && !formData.name.trim()) {
+      setErrorMsg('Please enter your full name.');
       return;
     }
 
@@ -1354,121 +1350,46 @@ function AuthPage({ signup, setToast, navigate }) {
     setLoading(true);
 
     try {
-      const res = await fetch('/api/otp/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone: cleanPhone }),
-      });
-      const data = await res.json();
+      const raw = localStorage.getItem('aanur_profile_info');
+      const existing = raw ? JSON.parse(raw) : {};
 
-      if (data.ok) {
-        setStep('otp');
-        setCooldown(data.cooldownSec || 60);
+      const customerName = formData.name.trim() || existing.name || (signup ? 'Artisan Customer' : 'Priya Sharma');
+      const customerPhone = cleanPhone ? `+91 ${cleanPhone}` : (existing.phone || '+91 98427 51234');
+      const customerEmail = formData.email.trim() || existing.email || (customerName.toLowerCase().replace(/\s+/g, '.') + '@example.com');
+      const customerCity = formData.city.trim() || existing.city || 'Tiruppur';
+
+      const updated = {
+        ...existing,
+        name: customerName,
+        phone: customerPhone,
+        email: customerEmail,
+        city: customerCity,
+        state: existing.state || 'Tamil Nadu',
+        joinedDate: existing.joinedDate || 'October 2026',
+        avatarBg: existing.avatarBg || '#b76b52',
+      };
+
+      delete updated.membership;
+      delete updated.loomCredits;
+
+      localStorage.setItem('aanur_profile_info', JSON.stringify(updated));
+      localStorage.setItem('aanur_is_logged_in', 'true');
+
+      setTimeout(() => {
+        setLoading(false);
+        setIsSuccess(true);
         if (setToast) {
-          setToast(`Verification code sent to +91 ${cleanPhone}`);
+          setToast(signup ? `Welcome to Aanur Textile, ${customerName}!` : `Welcome back, ${customerName}!`);
         }
         setTimeout(() => {
-          otpInputsRef.current[0]?.focus();
-        }, 100);
-      } else {
-        setErrorMsg(data.error || 'Failed to send verification code. Please try again.');
-      }
-    } catch (err) {
-      setErrorMsg('Network error. Please make sure the server is reachable and try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleOtpChange = (index, value) => {
-    const digit = value.replace(/[^\d]/g, '').slice(-1);
-    const newOtp = [...otp];
-    newOtp[index] = digit;
-    setOtp(newOtp);
-
-    if (digit && index < 5) {
-      otpInputsRef.current[index + 1]?.focus();
-    }
-  };
-
-  const handleOtpKeyDown = (index, e) => {
-    if (e.key === 'Backspace' && !otp[index] && index > 0) {
-      otpInputsRef.current[index - 1]?.focus();
-    }
-  };
-
-  const handleOtpPaste = (e) => {
-    e.preventDefault();
-    const pasted = e.clipboardData.getData('text').replace(/[^\d]/g, '').slice(0, 6);
-    if (!pasted) return;
-
-    const newOtp = [...otp];
-    for (let i = 0; i < 6; i++) {
-      newOtp[i] = pasted[i] || '';
-    }
-    setOtp(newOtp);
-
-    const nextIndex = Math.min(pasted.length, 5);
-    otpInputsRef.current[nextIndex]?.focus();
-  };
-
-  const handleVerifyOtp = async (e) => {
-    if (e) e.preventDefault();
-    const cleanPhone = phone.replace(/[^\d]/g, '').slice(-10);
-    const code = otp.join('').trim();
-
-    if (code.length !== 6) {
-      setErrorMsg('Please enter the full 6-digit verification code.');
-      return;
-    }
-
-    setErrorMsg('');
-    setLoading(true);
-
-    try {
-      const res = await fetch('/api/otp/verify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone: cleanPhone, code }),
-      });
-      const data = await res.json();
-
-      if (data.ok) {
-        try {
-          const raw = localStorage.getItem('aanur_profile_info');
-          const existing = raw ? JSON.parse(raw) : {};
-          const updated = {
-            ...existing,
-            name: name.trim() || existing.name || (signup ? 'Artisan Customer' : 'Priya Sharma'),
-            phone: `+91 ${cleanPhone}`,
-          };
-          delete updated.membership;
-          delete updated.loomCredits;
-          localStorage.setItem('aanur_profile_info', JSON.stringify(updated));
-          localStorage.setItem('aanur_is_logged_in', 'true');
-        } catch (err) {}
-
-        setStep('done');
-        if (setToast) setToast('Mobile number verified! Welcome to Aanur Textile.');
-        setTimeout(() => {
           navigate('/profile');
-        }, 1200);
-      } else {
-        setErrorMsg(data.error || 'Invalid verification code. Please check and re-try.');
-        setOtp(['', '', '', '', '', '']);
-        otpInputsRef.current[0]?.focus();
-      }
+        }, 900);
+      }, 350);
     } catch (err) {
-      setErrorMsg('Network error. Unable to verify OTP. Please try again.');
-    } finally {
       setLoading(false);
+      setErrorMsg('Something went wrong. Please try again.');
     }
   };
-
-  const cleanPhoneDisplay = phone.replace(/[^\d]/g, '').slice(-10);
-  const maskedPhone = cleanPhoneDisplay.length === 10
-    ? `+91 ${cleanPhoneDisplay.slice(0, 2)}••••••${cleanPhoneDisplay.slice(-2)}`
-    : `+91 ${cleanPhoneDisplay}`;
 
   return (
     <div className="auth-page">
@@ -1481,13 +1402,22 @@ function AuthPage({ signup, setToast, navigate }) {
       </div>
 
       <div className="auth-form-card">
-        {step === 'phone' && (
-          <form className="auth-form" onSubmit={handleSendOtp}>
-            <span className="eyebrow">FAST & SECURE LOGIN</span>
+        {isSuccess ? (
+          <div className="auth-form auth-done-view">
+            <div className="auth-done-icon">
+              <Icon name="check" size={32} />
+            </div>
+            <span className="eyebrow">SUCCESS</span>
+            <h1>{signup ? 'Account Created!' : 'Signed In Successfully!'}</h1>
+            <p>Taking you to your personal account profile and orders...</p>
+          </div>
+        ) : (
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <span className="eyebrow">{signup ? 'NEW ARTISAN MEMBER' : 'RETURNING CUSTOMER'}</span>
             <h1>{signup ? 'Let’s make it yours.' : 'Welcome back.'}</h1>
             <p>
               {signup
-                ? 'Create your account using your mobile phone. We will send a one-time SMS verification code.'
+                ? 'Create your account to save pieces, track handcrafted deliveries, and manage your delivery addresses.'
                 : 'Sign in to access your orders, saved addresses, and handcrafted bedsheet collection.'}
             </p>
 
@@ -1527,13 +1457,13 @@ function AuthPage({ signup, setToast, navigate }) {
 
             {signup && (
               <label>
-                Your name
+                Full name
                 <input
                   required
                   autoComplete="name"
-                  placeholder="What should we call you?"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  placeholder="e.g. Priya Sharma"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
               </label>
             )}
@@ -1549,20 +1479,50 @@ function AuthPage({ signup, setToast, navigate }) {
                   autoComplete="tel-national"
                   placeholder="10-digit mobile number"
                   maxLength={10}
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value.replace(/[^\d]/g, '').slice(0, 10))}
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^\d]/g, '').slice(0, 10) })}
                 />
               </div>
             </label>
 
-            <button type="submit" className="button button-dark full-width" disabled={loading || phone.replace(/[^\d]/g, '').length < 10}>
-              <span>{loading ? 'Sending code...' : 'Send OTP via SMS'}</span>
+            <label>
+              Email address
+              <input
+                type="email"
+                required={signup}
+                autoComplete="email"
+                placeholder={signup ? 'you@example.com' : 'you@example.com (optional)'}
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+            </label>
+
+            {signup && (
+              <label>
+                City / Town
+                <input
+                  autoComplete="address-level2"
+                  placeholder="e.g. Tiruppur, Coimbatore, Chennai"
+                  value={formData.city}
+                  onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                />
+              </label>
+            )}
+
+            <button type="submit" className="button button-dark full-width" disabled={loading}>
+              <span>{loading ? 'Signing in...' : (signup ? 'Create Account' : 'Sign In to Account')}</span>
               <Icon name="arrow" size={16} />
             </button>
 
             <div className="auth-change">
               {signup ? 'Already have an account?' : 'New to Aanur Textile?'}{' '}
-              <button type="button" onClick={() => { setErrorMsg(''); navigate(signup ? '/login' : '/signup'); }}>
+              <button
+                type="button"
+                onClick={() => {
+                  setErrorMsg('');
+                  navigate(signup ? '/login' : '/signup');
+                }}
+              >
                 {signup ? 'Sign in' : 'Create an account'}
               </button>
             </div>
@@ -1571,81 +1531,6 @@ function AuthPage({ signup, setToast, navigate }) {
               By continuing, you agree to our <a href="/faq" onClick={(e) => { e.preventDefault(); navigate('/faq'); }}>Terms & Privacy.</a>
             </small>
           </form>
-        )}
-
-        {step === 'otp' && (
-          <form className="auth-form" onSubmit={handleVerifyOtp}>
-            <span className="eyebrow">VERIFY YOUR NUMBER</span>
-            <h1>Enter 6-digit code.</h1>
-            <p>
-              We sent a verification code via SMS to <strong>{maskedPhone}</strong>. It expires in 5 minutes.
-            </p>
-
-            {errorMsg && <div className="auth-error-banner">{errorMsg}</div>}
-
-            <label>Verification code</label>
-            <div className="auth-otp-row" onPaste={handleOtpPaste}>
-              {otp.map((digit, idx) => (
-                <input
-                  key={idx}
-                  ref={(el) => (otpInputsRef.current[idx] = el)}
-                  type="text"
-                  inputMode="numeric"
-                  maxLength={1}
-                  className={`auth-otp-box ${digit ? 'is-filled' : ''}`}
-                  value={digit}
-                  onChange={(e) => handleOtpChange(idx, e.target.value)}
-                  onKeyDown={(e) => handleOtpKeyDown(idx, e)}
-                  autoComplete="one-time-code"
-                />
-              ))}
-            </div>
-
-            <button
-              type="submit"
-              className="button button-dark full-width"
-              disabled={loading || otp.join('').length !== 6}
-            >
-              <span>{loading ? 'Verifying...' : (signup ? 'Verify & Create Account' : 'Verify & Sign In')}</span>
-              <Icon name="arrow" size={16} />
-            </button>
-
-            <div className="auth-resend-row">
-              {cooldown > 0 ? (
-                <span className="resend-countdown">Resend code in ({cooldown}s)</span>
-              ) : (
-                <button type="button" className="resend-active-btn" onClick={() => handleSendOtp()}>
-                  Didn’t receive code? Resend OTP
-                </button>
-              )}
-            </div>
-
-            <button
-              type="button"
-              className="auth-back-number-btn"
-              onClick={() => {
-                setStep('phone');
-                setErrorMsg('');
-                setOtp(['', '', '', '', '', '']);
-              }}
-            >
-              ← Use a different mobile number
-            </button>
-          </form>
-        )}
-
-        {step === 'done' && (
-          <div className="auth-form auth-done-view">
-            <div className="auth-done-icon">
-              <Icon name="check" size={32} />
-            </div>
-            <span className="eyebrow">VERIFIED</span>
-            <h1>You’re all set.</h1>
-            <p>Your mobile number {maskedPhone} is verified. Redirecting you to your account...</p>
-            <button type="button" className="button button-dark" onClick={() => navigate('/profile')}>
-              Go to Account
-            </button>
-          </div>
         )}
       </div>
     </div>
@@ -1805,7 +1690,7 @@ function QuickView({ product, initialVariant = 0, onClose, onAdd, onDetails }) {
 }
 
 function Footer({ navigate }) {
-  return <footer className="site-footer"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href="/" onClick={(event) => { event.preventDefault(); navigate('/'); }}><span>Aanur <i>Textile</i></span><small>COMFORT, CONSIDERED.</small></a><p>Home textiles made by Aanur Textile<br />in Nathakadaiyur, Tamil Nadu.<br /><small style={{ opacity: 0.85, display: 'block', marginTop: '0.4rem' }}>Doorstep delivery in 7 to 14 days</small></p><a className="social-link" href={store.phone} aria-label="Call Aanur Textile"><Icon name="phone" /></a></div><div className="footer-links"><div><h3>Find your comfort</h3><button onClick={() => navigate('/shop')}>Collections</button><button onClick={() => navigate('/category/Bedsheets')}>Bedsheets</button><button onClick={() => navigate('/sale')}>Best offers</button></div><div><h3>The useful bits</h3><button onClick={() => navigate('/login')}>Sign In / OTP Login</button><button onClick={() => navigate('/account')}>Your account</button><button onClick={() => navigate('/orders')}>Track orders</button><button onClick={() => navigate('/contact')}>Contact the maker</button><button onClick={() => navigate('/faq')}>FAQs & Delivery</button></div><div><h3>A little more</h3><button onClick={() => navigate('/about')}>Our story</button><button onClick={() => navigate('/wishlist')}>Saved pieces</button><button onClick={() => navigate('/contact')}>Wholesale enquiries</button></div></div><div className="footer-news"><span className="eyebrow">AANUR TEXTILE · EST. 2013</span><h3>Made by skilled<br />local hands.</h3><p>{store.artisans} artisans in Nathakadaiyur. Factory-direct household, wholesale, hotel, and hospital orders welcome. Delivery in 7 to 14 days.</p><a className="text-link" href={store.phone}>Call {store.phoneDisplay} <Icon name="arrow" size={15} /></a></div></div><div className="footer-bottom"><span>© 2026 Aanur Textile, Nathakadaiyur.</span><span>{store.address} · Delivery: 7 to 14 days</span><div><a href={store.map} target="_blank" rel="noreferrer">Find us</a><a href={`mailto:${store.email}`}>Email</a><a href={store.phone}>Call</a></div></div></footer>;
+  return <footer className="site-footer"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href="/" onClick={(event) => { event.preventDefault(); navigate('/'); }}><span>Aanur <i>Textile</i></span><small>COMFORT, CONSIDERED.</small></a><p>Home textiles made by Aanur Textile<br />in Nathakadaiyur, Tamil Nadu.<br /><small style={{ opacity: 0.85, display: 'block', marginTop: '0.4rem' }}>Doorstep delivery in 7 to 14 days</small></p><a className="social-link" href={store.phone} aria-label="Call Aanur Textile"><Icon name="phone" /></a></div><div className="footer-links"><div><h3>Find your comfort</h3><button onClick={() => navigate('/shop')}>Collections</button><button onClick={() => navigate('/category/Bedsheets')}>Bedsheets</button><button onClick={() => navigate('/sale')}>Best offers</button></div><div><h3>The useful bits</h3><button onClick={() => navigate('/login')}>Sign In / Register</button><button onClick={() => navigate('/account')}>Your account</button><button onClick={() => navigate('/orders')}>Track orders</button><button onClick={() => navigate('/contact')}>Contact the maker</button><button onClick={() => navigate('/faq')}>FAQs & Delivery</button></div><div><h3>A little more</h3><button onClick={() => navigate('/about')}>Our story</button><button onClick={() => navigate('/wishlist')}>Saved pieces</button><button onClick={() => navigate('/contact')}>Wholesale enquiries</button></div></div><div className="footer-news"><span className="eyebrow">AANUR TEXTILE · EST. 2013</span><h3>Made by skilled<br />local hands.</h3><p>{store.artisans} artisans in Nathakadaiyur. Factory-direct household, wholesale, hotel, and hospital orders welcome. Delivery in 7 to 14 days.</p><a className="text-link" href={store.phone}>Call {store.phoneDisplay} <Icon name="arrow" size={15} /></a></div></div><div className="footer-bottom"><span>© 2026 Aanur Textile, Nathakadaiyur.</span><span>{store.address} · Delivery: 7 to 14 days</span><div><a href={store.map} target="_blank" rel="noreferrer">Find us</a><a href={`mailto:${store.email}`}>Email</a><a href={store.phone}>Call</a></div></div></footer>;
 }
 
 export default App;

@@ -467,10 +467,10 @@ export default function ProfilePage({
             type="button"
             className="button button-outline edit-profile-btn"
             onClick={() => navigate('/login')}
-            title="Sign in with phone number OTP"
+            title="Sign in to your account"
           >
-            <ProfileIcon name="phone" size={15} />
-            <span>Sign In / Switch Number</span>
+            <ProfileIcon name="user" size={15} />
+            <span>Sign In / Switch Account</span>
           </button>
         </div>
       </div>

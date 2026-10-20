@@ -5191,7 +5191,7 @@
       "label": "app",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L15",
+      "source_location": "L14",
       "id": "server_app_app",
       "community": 51,
       "norm_label": "app"
@@ -5200,7 +5200,7 @@
       "label": "configured",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L39",
+      "source_location": "L36",
       "id": "server_app_configured",
       "community": 51,
       "norm_label": "configured"
@@ -5209,7 +5209,7 @@
       "label": "mapped",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L83",
+      "source_location": "L80",
       "id": "server_app_mapped",
       "community": 51,
       "norm_label": "mapped"
@@ -5218,7 +5218,7 @@
       "label": "found",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L113",
+      "source_location": "L110",
       "id": "server_app_found",
       "community": 51,
       "norm_label": "found"
@@ -5227,7 +5227,7 @@
       "label": "product",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L121",
+      "source_location": "L118",
       "id": "server_app_product",
       "community": 51,
       "norm_label": "product"
@@ -5236,7 +5236,7 @@
       "label": "formattedItems",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L157",
+      "source_location": "L154",
       "id": "server_app_formatteditems",
       "community": 51,
       "norm_label": "formatteditems"
@@ -5245,7 +5245,7 @@
       "label": "newOrder",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L168",
+      "source_location": "L165",
       "id": "server_app_neworder",
       "community": 51,
       "norm_label": "neworder"
@@ -5254,7 +5254,7 @@
       "label": "enquiry",
       "file_type": "code",
       "source_file": "server/app.js",
-      "source_location": "L232",
+      "source_location": "L229",
       "id": "server_app_enquiry",
       "community": 51,
       "norm_label": "enquiry"
@@ -5449,168 +5449,6 @@
       "norm_label": "productschema"
     },
     {
-      "label": "fast2sms.js",
-      "file_type": "code",
-      "source_file": "server/providers/fast2sms.js",
-      "source_location": "L1",
-      "id": "server_providers_fast2sms_js",
-      "community": 25,
-      "norm_label": "fast2sms.js"
-    },
-    {
-      "label": "sendOtpSms()",
-      "file_type": "code",
-      "source_file": "server/providers/fast2sms.js",
-      "source_location": "L26",
-      "id": "providers_fast2sms_sendotpsms",
-      "community": 25,
-      "norm_label": "sendotpsms()"
-    },
-    {
-      "label": "otpRoutes.js",
-      "file_type": "code",
-      "source_file": "server/routes/otpRoutes.js",
-      "source_location": "L1",
-      "id": "server_routes_otproutes_js",
-      "community": 25,
-      "norm_label": "otproutes.js"
-    },
-    {
-      "label": "router",
-      "file_type": "code",
-      "source_file": "server/routes/otpRoutes.js",
-      "source_location": "L14",
-      "id": "routes_otproutes_router",
-      "community": 25,
-      "norm_label": "router"
-    },
-    {
-      "label": "result",
-      "file_type": "code",
-      "source_file": "server/routes/otpRoutes.js",
-      "source_location": "L49",
-      "id": "routes_otproutes_result",
-      "community": 25,
-      "norm_label": "result"
-    },
-    {
-      "label": "otpService.js",
-      "file_type": "code",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L1",
-      "id": "server_services_otpservice_js",
-      "community": 25,
-      "norm_label": "otpservice.js"
-    },
-    {
-      "label": "generateOtp()",
-      "file_type": "code",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L25",
-      "id": "services_otpservice_generateotp",
-      "community": 25,
-      "norm_label": "generateotp()"
-    },
-    {
-      "label": "sendOtp()",
-      "file_type": "code",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L48",
-      "id": "services_otpservice_sendotp",
-      "community": 25,
-      "norm_label": "sendotp()"
-    },
-    {
-      "label": "verifyOtp()",
-      "file_type": "code",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L133",
-      "id": "services_otpservice_verifyotp",
-      "community": 25,
-      "norm_label": "verifyotp()"
-    },
-    {
-      "label": "otpStore.js",
-      "file_type": "code",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L1",
-      "id": "server_store_otpstore_js",
-      "community": 25,
-      "norm_label": "otpstore.js"
-    },
-    {
-      "label": "store",
-      "file_type": "code",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L11",
-      "id": "store_otpstore_store",
-      "community": 25,
-      "norm_label": "store"
-    },
-    {
-      "label": "normalizePhone()",
-      "file_type": "code",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L19",
-      "id": "store_otpstore_normalizephone",
-      "community": 25,
-      "norm_label": "normalizephone()"
-    },
-    {
-      "label": "setRecord()",
-      "file_type": "code",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L29",
-      "id": "store_otpstore_setrecord",
-      "community": 25,
-      "norm_label": "setrecord()"
-    },
-    {
-      "label": "getRecord()",
-      "file_type": "code",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L47",
-      "id": "store_otpstore_getrecord",
-      "community": 25,
-      "norm_label": "getrecord()"
-    },
-    {
-      "label": "deleteRecord()",
-      "file_type": "code",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L51",
-      "id": "store_otpstore_deleterecord",
-      "community": 25,
-      "norm_label": "deleterecord()"
-    },
-    {
-      "label": "purgeExpired()",
-      "file_type": "code",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L59",
-      "id": "store_otpstore_purgeexpired",
-      "community": 25,
-      "norm_label": "purgeexpired()"
-    },
-    {
-      "label": "_debugSnapshot()",
-      "file_type": "code",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L74",
-      "id": "store_otpstore_debugsnapshot",
-      "community": 25,
-      "norm_label": "_debugsnapshot()"
-    },
-    {
-      "label": "n",
-      "file_type": "code",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L87",
-      "id": "store_otpstore_n",
-      "community": 25,
-      "norm_label": "n"
-    },
-    {
       "label": "App.jsx",
       "file_type": "code",
       "source_file": "src/App.jsx",
@@ -5767,7 +5605,7 @@
       "label": "AccountPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1655",
+      "source_location": "L1540",
       "id": "src_app_accountpage",
       "community": 0,
       "norm_label": "accountpage()"
@@ -5776,7 +5614,7 @@
       "label": "OrdersPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1659",
+      "source_location": "L1544",
       "id": "src_app_orderspage",
       "community": 0,
       "norm_label": "orderspage()"
@@ -5785,7 +5623,7 @@
       "label": "OrderDetail()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1663",
+      "source_location": "L1548",
       "id": "src_app_orderdetail",
       "community": 0,
       "norm_label": "orderdetail()"
@@ -5794,7 +5632,7 @@
       "label": "AboutPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1667",
+      "source_location": "L1552",
       "id": "src_app_aboutpage",
       "community": 0,
       "norm_label": "aboutpage()"
@@ -5803,7 +5641,7 @@
       "label": "ContactPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1671",
+      "source_location": "L1556",
       "id": "src_app_contactpage",
       "community": 0,
       "norm_label": "contactpage()"
@@ -5812,7 +5650,7 @@
       "label": "FaqPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1686",
+      "source_location": "L1571",
       "id": "src_app_faqpage",
       "community": 0,
       "norm_label": "faqpage()"
@@ -5821,7 +5659,7 @@
       "label": "NotFound()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1699",
+      "source_location": "L1584",
       "id": "src_app_notfound",
       "community": 0,
       "norm_label": "notfound()"
@@ -5830,7 +5668,7 @@
       "label": "QuickView()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1703",
+      "source_location": "L1588",
       "id": "src_app_quickview",
       "community": 0,
       "norm_label": "quickview()"
@@ -5839,7 +5677,7 @@
       "label": "Footer()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1807",
+      "source_location": "L1692",
       "id": "src_app_footer",
       "community": 0,
       "norm_label": "footer()"
@@ -7409,6 +7247,168 @@
       "id": "resend_mcp_readme_codeblock_38",
       "community": 31,
       "norm_label": "code:bash (pnpm inspector)"
+    },
+    {
+      "label": "fast2sms.js",
+      "file_type": "code",
+      "source_file": "server/providers/fast2sms.js",
+      "source_location": "L1",
+      "community": 25,
+      "norm_label": "fast2sms.js",
+      "id": "server_providers_fast2sms_js"
+    },
+    {
+      "label": "sendOtpSms()",
+      "file_type": "code",
+      "source_file": "server/providers/fast2sms.js",
+      "source_location": "L26",
+      "community": 25,
+      "norm_label": "sendotpsms()",
+      "id": "providers_fast2sms_sendotpsms"
+    },
+    {
+      "label": "otpRoutes.js",
+      "file_type": "code",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L1",
+      "community": 25,
+      "norm_label": "otproutes.js",
+      "id": "server_routes_otproutes_js"
+    },
+    {
+      "label": "router",
+      "file_type": "code",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L14",
+      "community": 25,
+      "norm_label": "router",
+      "id": "routes_otproutes_router"
+    },
+    {
+      "label": "result",
+      "file_type": "code",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L49",
+      "community": 25,
+      "norm_label": "result",
+      "id": "routes_otproutes_result"
+    },
+    {
+      "label": "otpService.js",
+      "file_type": "code",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L1",
+      "community": 25,
+      "norm_label": "otpservice.js",
+      "id": "server_services_otpservice_js"
+    },
+    {
+      "label": "generateOtp()",
+      "file_type": "code",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L25",
+      "community": 25,
+      "norm_label": "generateotp()",
+      "id": "services_otpservice_generateotp"
+    },
+    {
+      "label": "sendOtp()",
+      "file_type": "code",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L48",
+      "community": 25,
+      "norm_label": "sendotp()",
+      "id": "services_otpservice_sendotp"
+    },
+    {
+      "label": "verifyOtp()",
+      "file_type": "code",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L133",
+      "community": 25,
+      "norm_label": "verifyotp()",
+      "id": "services_otpservice_verifyotp"
+    },
+    {
+      "label": "otpStore.js",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L1",
+      "community": 25,
+      "norm_label": "otpstore.js",
+      "id": "server_store_otpstore_js"
+    },
+    {
+      "label": "store",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L11",
+      "community": 25,
+      "norm_label": "store",
+      "id": "store_otpstore_store"
+    },
+    {
+      "label": "normalizePhone()",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L19",
+      "community": 25,
+      "norm_label": "normalizephone()",
+      "id": "store_otpstore_normalizephone"
+    },
+    {
+      "label": "setRecord()",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L29",
+      "community": 25,
+      "norm_label": "setrecord()",
+      "id": "store_otpstore_setrecord"
+    },
+    {
+      "label": "getRecord()",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L47",
+      "community": 25,
+      "norm_label": "getrecord()",
+      "id": "store_otpstore_getrecord"
+    },
+    {
+      "label": "deleteRecord()",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L51",
+      "community": 25,
+      "norm_label": "deleterecord()",
+      "id": "store_otpstore_deleterecord"
+    },
+    {
+      "label": "purgeExpired()",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L59",
+      "community": 25,
+      "norm_label": "purgeexpired()",
+      "id": "store_otpstore_purgeexpired"
+    },
+    {
+      "label": "_debugSnapshot()",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L74",
+      "community": 25,
+      "norm_label": "_debugsnapshot()",
+      "id": "store_otpstore_debugsnapshot"
+    },
+    {
+      "label": "n",
+      "file_type": "code",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L87",
+      "community": 25,
+      "norm_label": "n",
+      "id": "store_otpstore_n"
     },
     {
       "label": "SKILL.md",
@@ -15394,17 +15394,6 @@
       "target": "server_email_isresendconfigured"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server/app.js",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_app_js",
-      "target": "server_routes_otproutes_js"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server/app.js",
@@ -15494,6 +15483,17 @@
       "confidence_score": 1.0,
       "source": "server_server_js",
       "target": "server_app_js"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/app.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_app_js",
+      "target": "server_routes_otproutes_js"
     },
     {
       "relation": "contains",
@@ -15729,355 +15729,6 @@
       "confidence_score": 1.0,
       "source": "server_models_product_js",
       "target": "models_product_productschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/providers/fast2sms.js",
-      "source_location": "L31",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_providers_fast2sms_js",
-      "target": "providers_fast2sms_sendotpsms"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_services_otpservice_js",
-      "target": "server_providers_fast2sms_js"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_services_otpservice_js",
-      "target": "providers_fast2sms_sendotpsms"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server/services/otpService.js",
-      "source_location": "L91",
-      "weight": 1.0,
-      "source": "services_otpservice_sendotp",
-      "target": "providers_fast2sms_sendotpsms"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server/routes/otpRoutes.js",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_routes_otproutes_js",
-      "target": "server_services_otpservice_js"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server/routes/otpRoutes.js",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_routes_otproutes_js",
-      "target": "services_otpservice_sendotp"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server/routes/otpRoutes.js",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_routes_otproutes_js",
-      "target": "services_otpservice_verifyotp"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/routes/otpRoutes.js",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_routes_otproutes_js",
-      "target": "routes_otproutes_router"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/routes/otpRoutes.js",
-      "source_location": "L49",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_routes_otproutes_js",
-      "target": "routes_otproutes_result"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_services_otpservice_js",
-      "target": "server_store_otpstore_js"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_services_otpservice_js",
-      "target": "store_otpstore_getrecord"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_services_otpservice_js",
-      "target": "store_otpstore_setrecord"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_services_otpservice_js",
-      "target": "store_otpstore_deleterecord"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_services_otpservice_js",
-      "target": "store_otpstore_normalizephone"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_services_otpservice_js",
-      "target": "services_otpservice_generateotp"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L45",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_services_otpservice_js",
-      "target": "services_otpservice_sendotp"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L132",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_services_otpservice_js",
-      "target": "services_otpservice_verifyotp"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "server/services/otpService.js",
-      "source_location": "L77",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "services_otpservice_sendotp",
-      "target": "services_otpservice_generateotp"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server/services/otpService.js",
-      "source_location": "L46",
-      "weight": 1.0,
-      "source": "services_otpservice_sendotp",
-      "target": "store_otpstore_normalizephone"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server/services/otpService.js",
-      "source_location": "L58",
-      "weight": 1.0,
-      "source": "services_otpservice_sendotp",
-      "target": "store_otpstore_getrecord"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server/services/otpService.js",
-      "source_location": "L79",
-      "weight": 1.0,
-      "source": "services_otpservice_sendotp",
-      "target": "store_otpstore_setrecord"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server/services/otpService.js",
-      "source_location": "L133",
-      "weight": 1.0,
-      "source": "services_otpservice_verifyotp",
-      "target": "store_otpstore_normalizephone"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server/services/otpService.js",
-      "source_location": "L143",
-      "weight": 1.0,
-      "source": "services_otpservice_verifyotp",
-      "target": "store_otpstore_getrecord"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server/services/otpService.js",
-      "source_location": "L154",
-      "weight": 1.0,
-      "source": "services_otpservice_verifyotp",
-      "target": "store_otpstore_deleterecord"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server/services/otpService.js",
-      "source_location": "L174",
-      "weight": 1.0,
-      "source": "services_otpservice_verifyotp",
-      "target": "store_otpstore_setrecord"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_store_otpstore_js",
-      "target": "store_otpstore_store"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_store_otpstore_js",
-      "target": "store_otpstore_normalizephone"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L29",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_store_otpstore_js",
-      "target": "store_otpstore_setrecord"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L47",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_store_otpstore_js",
-      "target": "store_otpstore_getrecord"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L51",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_store_otpstore_js",
-      "target": "store_otpstore_deleterecord"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L59",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_store_otpstore_js",
-      "target": "store_otpstore_purgeexpired"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L74",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_store_otpstore_js",
-      "target": "store_otpstore_debugsnapshot"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server/store/otpStore.js",
-      "source_location": "L87",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_store_otpstore_js",
-      "target": "store_otpstore_n"
     },
     {
       "relation": "imports_from",
@@ -18288,6 +17939,355 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "server/providers/fast2sms.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_providers_fast2sms_js",
+      "target": "providers_fast2sms_sendotpsms"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "server_providers_fast2sms_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "providers_fast2sms_sendotpsms"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "services_otpservice_sendotp",
+      "target": "providers_fast2sms_sendotpsms"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_routes_otproutes_js",
+      "target": "server_services_otpservice_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_routes_otproutes_js",
+      "target": "services_otpservice_sendotp"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_routes_otproutes_js",
+      "target": "services_otpservice_verifyotp"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_routes_otproutes_js",
+      "target": "routes_otproutes_router"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/routes/otpRoutes.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_routes_otproutes_js",
+      "target": "routes_otproutes_result"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "server_store_otpstore_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "store_otpstore_getrecord"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "store_otpstore_setrecord"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "store_otpstore_deleterecord"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "store_otpstore_normalizephone"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "services_otpservice_generateotp"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "services_otpservice_sendotp"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L132",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_services_otpservice_js",
+      "target": "services_otpservice_verifyotp"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "server/services/otpService.js",
+      "source_location": "L77",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_otpservice_sendotp",
+      "target": "services_otpservice_generateotp"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "services_otpservice_sendotp",
+      "target": "store_otpstore_normalizephone"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "services_otpservice_sendotp",
+      "target": "store_otpstore_getrecord"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "services_otpservice_sendotp",
+      "target": "store_otpstore_setrecord"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "services_otpservice_verifyotp",
+      "target": "store_otpstore_normalizephone"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L143",
+      "weight": 1.0,
+      "source": "services_otpservice_verifyotp",
+      "target": "store_otpstore_getrecord"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L154",
+      "weight": 1.0,
+      "source": "services_otpservice_verifyotp",
+      "target": "store_otpstore_deleterecord"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/otpService.js",
+      "source_location": "L174",
+      "weight": 1.0,
+      "source": "services_otpservice_verifyotp",
+      "target": "store_otpstore_setrecord"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_store"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_normalizephone"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_setrecord"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_getrecord"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_deleterecord"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L59",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_purgeexpired"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_debugsnapshot"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/store/otpStore.js",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "server_store_otpstore_js",
+      "target": "store_otpstore_n"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/db/neon.js",
       "source_location": "L8",
       "weight": 1.0,
@@ -18432,5 +18432,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4baae0aa07d93ca2d1c9f0009eda3d4a123f7495"
+  "built_at_commit": "d822b65594e8ab9c4193a51e34ac5f7a3ed8c551"
 }

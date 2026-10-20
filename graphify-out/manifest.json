@@ -405,8 +405,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\app.js": {
-    "mtime": 1792490118.4814675,
-    "ast_hash": "1cfd8595f6838272cee768e5c492bab8",
+    "mtime": 1792492842.6812925,
+    "ast_hash": "eccd8dca7322839e36d5740674f5664f",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\db.js": {
@@ -439,29 +439,9 @@
     "ast_hash": "0538a98e348a20cae1599d7d40bfa430",
     "semantic_hash": ""
   },
-  "X:\\New folder (2)\\server\\providers\\fast2sms.js": {
-    "mtime": 1792492591.3137028,
-    "ast_hash": "de78983655d0832357f0ccf0008ea577",
-    "semantic_hash": ""
-  },
-  "X:\\New folder (2)\\server\\routes\\otpRoutes.js": {
-    "mtime": 1792492332.3051815,
-    "ast_hash": "d2829b9295d5a21f83900ea2120dc243",
-    "semantic_hash": ""
-  },
-  "X:\\New folder (2)\\server\\services\\otpService.js": {
-    "mtime": 1792492526.9467354,
-    "ast_hash": "dec73ff6bcb2d722ede9f433ca25d10b",
-    "semantic_hash": ""
-  },
-  "X:\\New folder (2)\\server\\store\\otpStore.js": {
-    "mtime": 1792490061.9983335,
-    "ast_hash": "2939c374c680e67f1fc7c62ff24b56c5",
-    "semantic_hash": ""
-  },
   "X:\\New folder (2)\\src\\App.jsx": {
-    "mtime": 1792492384.2688267,
-    "ast_hash": "98368588da11ecfb17060ff9d0f82b8a",
+    "mtime": 1792493104.9038763,
+    "ast_hash": "44e1d7e57f7415d5488937ae6cf33350",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\data.js": {
@@ -475,8 +455,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\ProfilePage.jsx": {
-    "mtime": 1792491541.3421125,
-    "ast_hash": "620c92fc4e87677e8040d94ee5288ba9",
+    "mtime": 1792492962.7294295,
+    "ast_hash": "58a68cacbf7ebd7d29f56c4320f0ac1c",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\index.html": {
