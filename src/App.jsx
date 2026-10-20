@@ -1141,6 +1141,31 @@ function Checkout({ cart, setCart, navigate, products = initialProducts, coupon,
       setPlacedTotal(total);
       if (setCart) setCart({});
       if (setCoupon) setCoupon(null);
+      try {
+        const newOrder = {
+          orderRef: generatedRef,
+          date: new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }),
+          status: 'processing',
+          statusLabel: 'Processing · On the Loom',
+          deliveryEstimate: '7 to 14 days',
+          total,
+          paymentMethod: 'Cash on Delivery',
+          courier: 'Aanur Factory Direct Express',
+          trackingNumber: `AANUR-${generatedRef}`,
+          items: items.map((i) => ({
+            id: i.product.id,
+            name: i.product.name,
+            size: i.size || i.product.sizes?.[0] || 'Standard',
+            color: i.color || 'Artisan Weave',
+            image: i.variantImage || i.product.image,
+            price: i.product.price,
+            quantity: i.quantity,
+          })),
+        };
+        const prev = JSON.parse(localStorage.getItem('aanur_profile_orders') || '[]');
+        const cleanPrev = Array.isArray(prev) ? prev.filter((o) => o && !['AT-892415', 'AT-742918', 'AT-619024', 'AT-501239'].includes(o.orderRef)) : [];
+        localStorage.setItem('aanur_profile_orders', JSON.stringify([newOrder, ...cleanPrev]));
+      } catch (e) {}
       setStep(4);
       fetch('/api/orders', {
         method: 'POST',

@@ -78,8 +78,6 @@ export default function ProfilePage({
       membership: 'Artisan Guild Member · Gold Tier',
       joinedDate: 'October 2024',
       avatarBg: '#b76b52',
-      emailVerified: true,
-      phoneVerified: true,
       loomCredits: 450,
     })
   );
@@ -91,107 +89,13 @@ export default function ProfilePage({
   // ---------------------------------------------------------------------------
   // 02. My Orders State
   // ---------------------------------------------------------------------------
-  const [orders, setOrders] = useState(() =>
-    saved('aanur_profile_orders', [
-      {
-        orderRef: 'AT-892415',
-        date: '19 Oct 2026',
-        status: 'processing',
-        statusLabel: 'Processing · On the Loom',
-        deliveryEstimate: '26 Oct – 29 Oct 2026',
-        total: 599,
-        paymentMethod: 'Cash on Delivery (COD)',
-        courier: 'Aanur Factory Direct Express',
-        trackingNumber: 'AANUR-LOM-89241',
-        items: [
-          {
-            id: 'p01',
-            name: 'Signature Check Bedsheet',
-            size: 'Queen (90" x 108")',
-            color: 'Midnight Navy',
-            image: '/products/p01/variant-1.jpeg',
-            price: 599,
-            quantity: 1,
-          },
-        ],
-      },
-      {
-        orderRef: 'AT-742918',
-        date: '15 Oct 2026',
-        status: 'shipped',
-        statusLabel: 'Shipped · In Transit',
-        deliveryEstimate: '22 Oct 2026',
-        total: 1379,
-        paymentMethod: 'UPI Pre-paid (GPay)',
-        courier: 'BlueDart Express',
-        trackingNumber: 'BD-982141528IN',
-        items: [
-          {
-            id: 'p10',
-            name: 'Terracotta Coastal Stripe Bedsheet',
-            size: 'King (108" x 108")',
-            color: 'Terracotta Rust',
-            image: '/products/p07/bed-4.jpeg',
-            price: 699,
-            quantity: 1,
-          },
-          {
-            id: 'p09',
-            name: 'Autumn Earth Block-Check Bedsheet',
-            size: 'Double (90" x 100")',
-            color: 'Warm Sienna',
-            image: '/products/p07/bed-3.jpeg',
-            price: 680,
-            quantity: 1,
-          },
-        ],
-      },
-      {
-        orderRef: 'AT-619024',
-        date: '02 Oct 2026',
-        status: 'delivered',
-        statusLabel: 'Delivered · 08 Oct 2026',
-        deliveryEstimate: 'Delivered to Doorstep',
-        total: 649,
-        paymentMethod: 'Cash on Delivery (COD)',
-        courier: 'DTDC Surface Logistics',
-        trackingNumber: 'DTDC-6291402IN',
-        items: [
-          {
-            id: 'p02',
-            name: 'Heritage Plaid Bedsheet',
-            size: 'Queen (90" x 108")',
-            color: 'Mustard Ochre',
-            image: '/products/p02/variant-1.jpeg',
-            price: 649,
-            quantity: 1,
-          },
-        ],
-      },
-      {
-        orderRef: 'AT-501239',
-        date: '20 Sep 2026',
-        status: 'cancelled',
-        statusLabel: 'Cancelled · 100% Refunded',
-        deliveryEstimate: 'Refund processed to original source account',
-        total: 599,
-        paymentMethod: 'UPI (PhonePe)',
-        courier: 'Cancelled prior to loom cutting',
-        trackingNumber: 'N/A',
-        items: [
-          {
-            id: 'p11',
-            name: 'Rustic Crimson Gingham Bedsheet',
-            size: 'Double (90" x 100")',
-            color: 'Rustic Crimson',
-            image: '/products/p07/bed-5.jpeg',
-            price: 599,
-            quantity: 1,
-          },
-        ],
-      },
-    ])
-  );
+  const FAKE_ORDER_REFS = ['AT-892415', 'AT-742918', 'AT-619024', 'AT-501239'];
+
+  const [orders, setOrders] = useState(() => {
+    const raw = saved('aanur_profile_orders', []);
+    if (!Array.isArray(raw)) return [];
+    return raw.filter((o) => o && o.orderRef && !FAKE_ORDER_REFS.includes(o.orderRef));
+  });
 
   useEffect(() => {
     localStorage.setItem('aanur_profile_orders', JSON.stringify(orders));
@@ -314,8 +218,6 @@ export default function ProfilePage({
   const [returnOrder, setReturnOrder] = useState(null);
   const [returnForm, setReturnForm] = useState({ reason: 'Size or Dimension Adjustment', note: '', action: 'Replace with another size/color' });
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
-
-  const [passwordForm, setPasswordForm] = useState({ current: '', next: '', confirm: '' });
 
   // ---------------------------------------------------------------------------
   // Handlers
@@ -469,24 +371,6 @@ export default function ProfilePage({
     if (setToast) setToast('Fabric preferences saved! We will customize your recommendations.');
   };
 
-  const handlePasswordSubmit = (e) => {
-    e.preventDefault();
-    if (!passwordForm.current || !passwordForm.next) {
-      if (setToast) setToast('Please enter your current and new password.');
-      return;
-    }
-    if (passwordForm.next.length < 6) {
-      if (setToast) setToast('New password must be at least 6 characters.');
-      return;
-    }
-    if (passwordForm.next !== passwordForm.confirm) {
-      if (setToast) setToast('New passwords do not match. Please re-check.');
-      return;
-    }
-    setPasswordForm({ current: '', next: '', confirm: '' });
-    if (setToast) setToast('Password updated successfully!');
-  };
-
   const handleDownloadData = () => {
     const dataDump = {
       profile,
@@ -552,11 +436,11 @@ export default function ProfilePage({
           </div>
           <p className="profile-contact-meta">
             <span>
-              <ProfileIcon name="mail" size={14} /> {profile.email} {profile.emailVerified && <span className="verified-tag">✓ Verified</span>}
+              <ProfileIcon name="mail" size={14} /> {profile.email}
             </span>
             <span className="dot-sep">·</span>
             <span>
-              <ProfileIcon name="phone" size={14} /> {profile.phone} {profile.phoneVerified && <span className="verified-tag">✓ Verified</span>}
+              <ProfileIcon name="phone" size={14} /> {profile.phone}
             </span>
             <span className="dot-sep">·</span>
             <span>
@@ -667,7 +551,7 @@ export default function ProfilePage({
                   <div className="stat-details">
                     <span className="stat-value">{orders.length}</span>
                     <span className="stat-title">Total Orders</span>
-                    <span className="stat-sub">{activeOrdersCount} in progress</span>
+                    <span className="stat-sub">{activeOrdersCount > 0 ? `${activeOrdersCount} in progress` : 'No active orders'}</span>
                   </div>
                   <ProfileIcon name="arrow" size={14} className="stat-arrow" />
                 </div>
@@ -698,16 +582,17 @@ export default function ProfilePage({
 
                 <div className="stat-card" onClick={() => setActiveTab('settings')}>
                   <span className="stat-icon">
-                    <ProfileIcon name="shield" size={20} />
+                    <ProfileIcon name="settings" size={20} />
                   </span>
                   <div className="stat-details">
                     <span className="stat-value">Active</span>
-                    <span className="stat-title">Security & Account</span>
-                    <span className="stat-sub">Phone & Email Verified</span>
+                    <span className="stat-title">Preferences</span>
+                    <span className="stat-sub">Notifications & Data</span>
                   </div>
                   <ProfileIcon name="arrow" size={14} className="stat-arrow" />
                 </div>
               </div>
+
 
               {/* Active Order Spotlight */}
               {orders.find((o) => o.status === 'processing') && (
@@ -764,8 +649,8 @@ export default function ProfilePage({
                     <span>Manage favorite fabrics & colors</span>
                   </button>
                   <button type="button" onClick={() => setActiveTab('settings')}>
-                    <ProfileIcon name="lock" size={16} />
-                    <span>Change password & privacy</span>
+                    <ProfileIcon name="settings" size={16} />
+                    <span>Notification & privacy preferences</span>
                   </button>
                 </div>
               </div>
@@ -814,10 +699,18 @@ export default function ProfilePage({
                 {filteredOrders.length === 0 ? (
                   <div className="empty-state">
                     <ProfileIcon name="box" size={32} />
-                    <h3>No {orderFilter} orders found</h3>
-                    <p>You don’t have any orders under this category at the moment.</p>
-                    <button type="button" className="button button-dark" onClick={() => setOrderFilter('all')}>
-                      View all orders
+                    <h3>{orderFilter === 'all' ? 'No orders placed yet' : `No ${orderFilter} orders found`}</h3>
+                    <p>
+                      {orderFilter === 'all'
+                        ? 'When you order handcrafted bedsheets or home textiles from our workshop, they will appear here with live tracking.'
+                        : `You don’t have any orders under ${orderFilter} at the moment.`}
+                    </p>
+                    <button
+                      type="button"
+                      className="button button-dark"
+                      onClick={() => (orderFilter === 'all' ? navigate('/shop') : setOrderFilter('all'))}
+                    >
+                      {orderFilter === 'all' ? 'Browse Collections' : 'View all orders'}
                     </button>
                   </div>
                 ) : (
@@ -1174,94 +1067,14 @@ export default function ProfilePage({
             <div className="tab-pane tab-settings">
               <div className="pane-header">
                 <div>
-                  <span className="eyebrow">SECURITY & PREFERENCES</span>
+                  <span className="eyebrow">PREFERENCES & PRIVACY</span>
                   <h2>Account Settings</h2>
-                  <p>Manage security credentials, communications, and privacy options.</p>
+                  <p>Manage communications, notification preferences, and privacy controls.</p>
                 </div>
               </div>
 
               <div className="settings-cards-stack">
-                {/* 1. Change Password */}
-                <div className="settings-card">
-                  <div className="settings-card-header">
-                    <ProfileIcon name="lock" size={20} />
-                    <div>
-                      <h3>Change Password</h3>
-                      <p>Ensure your account uses a secure password of at least 6 characters.</p>
-                    </div>
-                  </div>
-                  <form className="settings-form" onSubmit={handlePasswordSubmit}>
-                    <div className="form-row-2">
-                      <label>
-                        Current Password
-                        <input
-                          type="password"
-                          required
-                          value={passwordForm.current}
-                          onChange={(e) => setPasswordForm({ ...passwordForm, current: e.target.value })}
-                          placeholder="••••••••"
-                        />
-                      </label>
-                      <label>
-                        New Password
-                        <input
-                          type="password"
-                          required
-                          minLength={6}
-                          value={passwordForm.next}
-                          onChange={(e) => setPasswordForm({ ...passwordForm, next: e.target.value })}
-                          placeholder="At least 6 characters"
-                        />
-                      </label>
-                    </div>
-                    <label>
-                      Confirm New Password
-                      <input
-                        type="password"
-                        required
-                        value={passwordForm.confirm}
-                        onChange={(e) => setPasswordForm({ ...passwordForm, confirm: e.target.value })}
-                        placeholder="Re-type new password"
-                      />
-                    </label>
-                    <button type="submit" className="button button-dark mini-btn">
-                      <span>Update Password</span>
-                    </button>
-                  </form>
-                </div>
-
-                {/* 2. Verification Badges */}
-                <div className="settings-card">
-                  <div className="settings-card-header">
-                    <ProfileIcon name="shield" size={20} />
-                    <div>
-                      <h3>Email & Phone Verification</h3>
-                      <p>Your primary contact methods for receiving order tracking and delivery notices.</p>
-                    </div>
-                  </div>
-                  <div className="verification-rows">
-                    <div className="verify-item">
-                      <div>
-                        <strong>Email Address</strong>
-                        <span>{profile.email}</span>
-                      </div>
-                      <span className="verified-pill">
-                        <ProfileIcon name="check" size={13} /> Verified
-                      </span>
-                    </div>
-                    <div className="verify-item">
-                      <div>
-                        <strong>Mobile Phone</strong>
-                        <span>{profile.phone}</span>
-                      </div>
-                      <span className="verified-pill">
-                        <ProfileIcon name="check" size={13} /> Verified
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* 3. Notification Preferences */}
+                {/* 1. Notification Preferences */}
                 <div className="settings-card">
                   <div className="settings-card-header">
                     <ProfileIcon name="mail" size={20} />
@@ -1309,7 +1122,7 @@ export default function ProfilePage({
                   </div>
                 </div>
 
-                {/* 4. Privacy & Data Export */}
+                {/* 2. Privacy & Data Export */}
                 <div className="settings-card">
                   <div className="settings-card-header">
                     <ProfileIcon name="download" size={20} />
@@ -1326,7 +1139,7 @@ export default function ProfilePage({
                   </div>
                 </div>
 
-                {/* 5. Logout */}
+                {/* 3. Logout */}
                 <div className="settings-card danger-card">
                   <div className="settings-card-header">
                     <ProfileIcon name="logout" size={20} />
