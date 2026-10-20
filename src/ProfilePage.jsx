@@ -394,9 +394,12 @@ export default function ProfilePage({
   };
 
   const handleLogout = () => {
+    try {
+      localStorage.removeItem('aanur_is_logged_in');
+    } catch {}
     setLogoutModalOpen(false);
-    if (setToast) setToast('You have been securely signed out. Have a wonderful day!');
-    if (navigate) navigate('/');
+    if (setToast) setToast('You have been securely signed out. Please sign in with your mobile number.');
+    if (navigate) navigate('/login');
   };
 
   // Filtered orders
@@ -459,6 +462,15 @@ export default function ProfilePage({
           >
             <ProfileIcon name="edit" size={15} />
             <span>Edit Profile</span>
+          </button>
+          <button
+            type="button"
+            className="button button-outline edit-profile-btn"
+            onClick={() => navigate('/login')}
+            title="Sign in with phone number OTP"
+          >
+            <ProfileIcon name="phone" size={15} />
+            <span>Sign In / Switch Number</span>
           </button>
         </div>
       </div>

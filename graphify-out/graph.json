@@ -5668,7 +5668,7 @@
       "label": "SectionTitle()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L591",
+      "source_location": "L674",
       "id": "src_app_sectiontitle",
       "community": 0,
       "norm_label": "sectiontitle()"
@@ -5677,7 +5677,7 @@
       "label": "ProductCard()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L595",
+      "source_location": "L678",
       "id": "src_app_productcard",
       "community": 0,
       "norm_label": "productcard()"
@@ -5686,7 +5686,7 @@
       "label": "ProductGrid()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L641",
+      "source_location": "L724",
       "id": "src_app_productgrid",
       "community": 0,
       "norm_label": "productgrid()"
@@ -5695,7 +5695,7 @@
       "label": "Home()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L645",
+      "source_location": "L728",
       "id": "src_app_home",
       "community": 0,
       "norm_label": "home()"
@@ -5704,7 +5704,7 @@
       "label": "BestOffersPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L689",
+      "source_location": "L772",
       "id": "src_app_bestofferspage",
       "community": 0,
       "norm_label": "bestofferspage()"
@@ -5713,7 +5713,7 @@
       "label": "Catalog()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L804",
+      "source_location": "L887",
       "id": "src_app_catalog",
       "community": 0,
       "norm_label": "catalog()"
@@ -5722,7 +5722,7 @@
       "label": "ProductDetail()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L817",
+      "source_location": "L900",
       "id": "src_app_productdetail",
       "community": 0,
       "norm_label": "productdetail()"
@@ -5731,7 +5731,7 @@
       "label": "CartPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1002",
+      "source_location": "L1085",
       "id": "src_app_cartpage",
       "community": 0,
       "norm_label": "cartpage()"
@@ -5740,7 +5740,7 @@
       "label": "Checkout()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1110",
+      "source_location": "L1193",
       "id": "src_app_checkout",
       "community": 0,
       "norm_label": "checkout()"
@@ -5749,7 +5749,7 @@
       "label": "WishlistPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1236",
+      "source_location": "L1319",
       "id": "src_app_wishlistpage",
       "community": 0,
       "norm_label": "wishlistpage()"
@@ -5758,7 +5758,7 @@
       "label": "AuthPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1241",
+      "source_location": "L1324",
       "id": "src_app_authpage",
       "community": 0,
       "norm_label": "authpage()"
@@ -5767,7 +5767,7 @@
       "label": "AccountPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1560",
+      "source_location": "L1676",
       "id": "src_app_accountpage",
       "community": 0,
       "norm_label": "accountpage()"
@@ -5776,7 +5776,7 @@
       "label": "OrdersPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1564",
+      "source_location": "L1680",
       "id": "src_app_orderspage",
       "community": 0,
       "norm_label": "orderspage()"
@@ -5785,7 +5785,7 @@
       "label": "OrderDetail()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1568",
+      "source_location": "L1684",
       "id": "src_app_orderdetail",
       "community": 0,
       "norm_label": "orderdetail()"
@@ -5794,7 +5794,7 @@
       "label": "AboutPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1572",
+      "source_location": "L1688",
       "id": "src_app_aboutpage",
       "community": 0,
       "norm_label": "aboutpage()"
@@ -5803,7 +5803,7 @@
       "label": "ContactPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1576",
+      "source_location": "L1692",
       "id": "src_app_contactpage",
       "community": 0,
       "norm_label": "contactpage()"
@@ -5812,7 +5812,7 @@
       "label": "FaqPage()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1591",
+      "source_location": "L1707",
       "id": "src_app_faqpage",
       "community": 0,
       "norm_label": "faqpage()"
@@ -5821,7 +5821,7 @@
       "label": "NotFound()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1604",
+      "source_location": "L1720",
       "id": "src_app_notfound",
       "community": 0,
       "norm_label": "notfound()"
@@ -5830,7 +5830,7 @@
       "label": "QuickView()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1608",
+      "source_location": "L1724",
       "id": "src_app_quickview",
       "community": 0,
       "norm_label": "quickview()"
@@ -5839,7 +5839,7 @@
       "label": "Footer()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L1712",
+      "source_location": "L1828",
       "id": "src_app_footer",
       "community": 0,
       "norm_label": "footer()"
@@ -7960,9 +7960,9 @@
       "source_file": "package.json",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "new_folder_2_package_dependencies",
-      "target": "new_folder_2_package_dependencies_axios",
-      "confidence_score": 1.0
+      "target": "new_folder_2_package_dependencies_axios"
     },
     {
       "relation": "contains",
@@ -15400,9 +15400,9 @@
       "source_file": "server/app.js",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_app_js",
-      "target": "server_routes_otproutes_js",
-      "confidence_score": 1.0
+      "target": "server_routes_otproutes_js"
     },
     {
       "relation": "contains",
@@ -15736,9 +15736,9 @@
       "source_file": "server/providers/fast2sms.js",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_providers_fast2sms_js",
-      "target": "providers_fast2sms_sendotpsms",
-      "confidence_score": 1.0
+      "target": "providers_fast2sms_sendotpsms"
     },
     {
       "relation": "imports_from",
@@ -15747,9 +15747,9 @@
       "source_file": "server/services/otpService.js",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_services_otpservice_js",
-      "target": "server_providers_fast2sms_js",
-      "confidence_score": 1.0
+      "target": "server_providers_fast2sms_js"
     },
     {
       "relation": "imports",
@@ -15758,9 +15758,9 @@
       "source_file": "server/services/otpService.js",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_services_otpservice_js",
-      "target": "providers_fast2sms_sendotpsms",
-      "confidence_score": 1.0
+      "target": "providers_fast2sms_sendotpsms"
     },
     {
       "relation": "calls",
@@ -15780,9 +15780,9 @@
       "source_file": "server/routes/otpRoutes.js",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_routes_otproutes_js",
-      "target": "server_services_otpservice_js",
-      "confidence_score": 1.0
+      "target": "server_services_otpservice_js"
     },
     {
       "relation": "imports",
@@ -15791,9 +15791,9 @@
       "source_file": "server/routes/otpRoutes.js",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_routes_otproutes_js",
-      "target": "services_otpservice_sendotp",
-      "confidence_score": 1.0
+      "target": "services_otpservice_sendotp"
     },
     {
       "relation": "imports",
@@ -15802,9 +15802,9 @@
       "source_file": "server/routes/otpRoutes.js",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_routes_otproutes_js",
-      "target": "services_otpservice_verifyotp",
-      "confidence_score": 1.0
+      "target": "services_otpservice_verifyotp"
     },
     {
       "relation": "contains",
@@ -15812,9 +15812,9 @@
       "source_file": "server/routes/otpRoutes.js",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_routes_otproutes_js",
-      "target": "routes_otproutes_router",
-      "confidence_score": 1.0
+      "target": "routes_otproutes_router"
     },
     {
       "relation": "contains",
@@ -15822,9 +15822,9 @@
       "source_file": "server/routes/otpRoutes.js",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_routes_otproutes_js",
-      "target": "routes_otproutes_result",
-      "confidence_score": 1.0
+      "target": "routes_otproutes_result"
     },
     {
       "relation": "imports_from",
@@ -15833,9 +15833,9 @@
       "source_file": "server/services/otpService.js",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_services_otpservice_js",
-      "target": "server_store_otpstore_js",
-      "confidence_score": 1.0
+      "target": "server_store_otpstore_js"
     },
     {
       "relation": "imports",
@@ -15844,9 +15844,9 @@
       "source_file": "server/services/otpService.js",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_services_otpservice_js",
-      "target": "store_otpstore_getrecord",
-      "confidence_score": 1.0
+      "target": "store_otpstore_getrecord"
     },
     {
       "relation": "imports",
@@ -15855,9 +15855,9 @@
       "source_file": "server/services/otpService.js",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_services_otpservice_js",
-      "target": "store_otpstore_setrecord",
-      "confidence_score": 1.0
+      "target": "store_otpstore_setrecord"
     },
     {
       "relation": "imports",
@@ -15866,9 +15866,9 @@
       "source_file": "server/services/otpService.js",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_services_otpservice_js",
-      "target": "store_otpstore_deleterecord",
-      "confidence_score": 1.0
+      "target": "store_otpstore_deleterecord"
     },
     {
       "relation": "imports",
@@ -15877,9 +15877,9 @@
       "source_file": "server/services/otpService.js",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_services_otpservice_js",
-      "target": "store_otpstore_normalizephone",
-      "confidence_score": 1.0
+      "target": "store_otpstore_normalizephone"
     },
     {
       "relation": "contains",
@@ -15887,9 +15887,9 @@
       "source_file": "server/services/otpService.js",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_services_otpservice_js",
-      "target": "services_otpservice_generateotp",
-      "confidence_score": 1.0
+      "target": "services_otpservice_generateotp"
     },
     {
       "relation": "contains",
@@ -15897,9 +15897,9 @@
       "source_file": "server/services/otpService.js",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_services_otpservice_js",
-      "target": "services_otpservice_sendotp",
-      "confidence_score": 1.0
+      "target": "services_otpservice_sendotp"
     },
     {
       "relation": "contains",
@@ -15907,9 +15907,9 @@
       "source_file": "server/services/otpService.js",
       "source_location": "L132",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_services_otpservice_js",
-      "target": "services_otpservice_verifyotp",
-      "confidence_score": 1.0
+      "target": "services_otpservice_verifyotp"
     },
     {
       "relation": "calls",
@@ -15918,9 +15918,9 @@
       "source_file": "server/services/otpService.js",
       "source_location": "L77",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_otpservice_sendotp",
-      "target": "services_otpservice_generateotp",
-      "confidence_score": 1.0
+      "target": "services_otpservice_generateotp"
     },
     {
       "relation": "calls",
@@ -16005,9 +16005,9 @@
       "source_file": "server/store/otpStore.js",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_store_otpstore_js",
-      "target": "store_otpstore_store",
-      "confidence_score": 1.0
+      "target": "store_otpstore_store"
     },
     {
       "relation": "contains",
@@ -16015,9 +16015,9 @@
       "source_file": "server/store/otpStore.js",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_store_otpstore_js",
-      "target": "store_otpstore_normalizephone",
-      "confidence_score": 1.0
+      "target": "store_otpstore_normalizephone"
     },
     {
       "relation": "contains",
@@ -16025,9 +16025,9 @@
       "source_file": "server/store/otpStore.js",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_store_otpstore_js",
-      "target": "store_otpstore_setrecord",
-      "confidence_score": 1.0
+      "target": "store_otpstore_setrecord"
     },
     {
       "relation": "contains",
@@ -16035,9 +16035,9 @@
       "source_file": "server/store/otpStore.js",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_store_otpstore_js",
-      "target": "store_otpstore_getrecord",
-      "confidence_score": 1.0
+      "target": "store_otpstore_getrecord"
     },
     {
       "relation": "contains",
@@ -16045,9 +16045,9 @@
       "source_file": "server/store/otpStore.js",
       "source_location": "L51",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_store_otpstore_js",
-      "target": "store_otpstore_deleterecord",
-      "confidence_score": 1.0
+      "target": "store_otpstore_deleterecord"
     },
     {
       "relation": "contains",
@@ -16055,9 +16055,9 @@
       "source_file": "server/store/otpStore.js",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_store_otpstore_js",
-      "target": "store_otpstore_purgeexpired",
-      "confidence_score": 1.0
+      "target": "store_otpstore_purgeexpired"
     },
     {
       "relation": "contains",
@@ -16065,9 +16065,9 @@
       "source_file": "server/store/otpStore.js",
       "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_store_otpstore_js",
-      "target": "store_otpstore_debugsnapshot",
-      "confidence_score": 1.0
+      "target": "store_otpstore_debugsnapshot"
     },
     {
       "relation": "contains",
@@ -16075,9 +16075,9 @@
       "source_file": "server/store/otpStore.js",
       "source_location": "L87",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_store_otpstore_js",
-      "target": "store_otpstore_n",
-      "confidence_score": 1.0
+      "target": "store_otpstore_n"
     },
     {
       "relation": "imports_from",
@@ -18432,5 +18432,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "fb8fa59330ccdf10aca2b5b95436db8c6f7e7628"
+  "built_at_commit": "d8ca96384df7f8bc47d8d5b81dfd523dfb8e7348"
 }

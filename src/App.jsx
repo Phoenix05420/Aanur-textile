@@ -208,6 +208,27 @@ function App() {
   const productId = path.startsWith('/product/') ? path.slice(9) : '';
   const product = products.find((item) => item.id === productId);
 
+  // Authentication State
+  const [currentUser, setCurrentUser] = useState(() => {
+    try {
+      const isAuth = localStorage.getItem('aanur_is_logged_in') === 'true';
+      const raw = localStorage.getItem('aanur_profile_info');
+      return isAuth && raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      const isAuth = localStorage.getItem('aanur_is_logged_in') === 'true';
+      const raw = localStorage.getItem('aanur_profile_info');
+      setCurrentUser(isAuth && raw ? JSON.parse(raw) : null);
+    } catch {
+      setCurrentUser(null);
+    }
+  }, [route]);
+
   const navLinks = [
     { label: 'Collections', href: '/shop', isActive: path === '/shop' },
     { label: 'Best Offers', href: '/sale', isActive: path === '/sale' || path === '/offers' },
@@ -320,14 +341,23 @@ function App() {
             <Icon name={mobileSearchOpen ? 'close' : 'search'} />
           </button>
 
-          {/* Account Button */}
+          {/* Account Button & Sign In Action */}
           <button
-            className={`icon-button account-action ${path === '/account' || path === '/profile' || path === '/orders' ? 'is-current' : ''}`}
-            aria-label="Your account"
-            onClick={() => navigate('/account')}
-            title="Account & Orders"
+            className={`icon-button account-action ${path === '/account' || path === '/profile' || path === '/orders' || path === '/login' || path === '/signup' ? 'is-current' : ''}`}
+            aria-label={currentUser ? "Your account" : "Sign in to Aanur Textile"}
+            onClick={() => navigate(currentUser ? '/account' : '/login')}
+            title={currentUser ? `Signed in as ${currentUser.name || 'Artisan'}` : "Sign In with Mobile OTP"}
           >
             <Icon name="user" />
+            {currentUser && <span className="account-dot-online" aria-hidden="true" />}
+          </button>
+          <button
+            type="button"
+            className={`header-auth-label-btn ${path === '/login' || path === '/signup' ? 'is-current' : ''}`}
+            onClick={() => navigate(currentUser ? '/account' : '/login')}
+            title={currentUser ? "View your account & orders" : "Sign In with Mobile OTP"}
+          >
+            {currentUser ? (currentUser.name ? currentUser.name.split(' ')[0] : 'Account') : 'Sign In'}
           </button>
 
           {/* Wishlist Button with Badge Counter */}
@@ -477,19 +507,68 @@ function App() {
           </nav>
         </div>
 
+        {/* Drawer User Card */}
+        <div className="drawer-user-card-wrap">
+          {currentUser ? (
+            <div
+              className="drawer-user-box"
+              onClick={() => { setMobileOpen(false); navigate('/account'); }}
+              role="button"
+              tabIndex={0}
+            >
+              <div className="drawer-user-avatar-circle">
+                {(currentUser.name || 'A')[0].toUpperCase()}
+              </div>
+              <div className="drawer-user-meta">
+                <strong>{currentUser.name || 'Artisan Customer'}</strong>
+                <small>{currentUser.phone || 'Member'}</small>
+              </div>
+              <Icon name="arrow" size={14} />
+            </div>
+          ) : (
+            <div className="drawer-guest-box">
+              <div className="drawer-guest-text">
+                <strong>Welcome to Aanur Textile</strong>
+                <p>Sign in with your mobile phone for instant order tracking and addresses.</p>
+              </div>
+              <button
+                type="button"
+                className="button button-dark mini-btn"
+                onClick={() => { setMobileOpen(false); navigate('/login'); }}
+              >
+                Sign In / OTP Login <Icon name="arrow" size={14} />
+              </button>
+            </div>
+          )}
+        </div>
+
         <div className="drawer-section">
-          <span className="drawer-section-title">SERVICES</span>
+          <span className="drawer-section-title">ACCOUNT & SERVICES</span>
           <nav className="drawer-links">
             <button
+              className={`drawer-link ${path === '/login' || path === '/signup' ? 'is-active' : ''}`}
+              onClick={() => { setMobileOpen(false); navigate('/login'); }}
+            >
+              <span>{currentUser ? 'Switch Account / OTP Login' : 'Sign In / OTP Login'}</span>
+              <Icon name="arrow" size={14} />
+            </button>
+            <button
+              className={`drawer-link ${path === '/account' || path === '/profile' ? 'is-active' : ''}`}
+              onClick={() => { setMobileOpen(false); navigate('/account'); }}
+            >
+              <span>My Profile & Addresses</span>
+              <Icon name="arrow" size={14} />
+            </button>
+            <button
               className={`drawer-link ${path === '/orders' ? 'is-active' : ''}`}
-              onClick={() => navigate('/orders')}
+              onClick={() => { setMobileOpen(false); navigate('/orders'); }}
             >
               <span>Track Orders</span>
               <Icon name="arrow" size={14} />
             </button>
             <button
               className={`drawer-link ${path === '/faq' ? 'is-active' : ''}`}
-              onClick={() => navigate('/faq')}
+              onClick={() => { setMobileOpen(false); navigate('/faq'); }}
             >
               <span>Delivery & FAQs</span>
               <Icon name="arrow" size={14} />
@@ -500,7 +579,7 @@ function App() {
         <div className="drawer-quick-bar">
           <button
             className="drawer-quick-btn"
-            onClick={() => navigate('/wishlist')}
+            onClick={() => { setMobileOpen(false); navigate('/wishlist'); }}
           >
             <div className="quick-btn-icon">
               <Icon name="heart" size={18} />
@@ -510,7 +589,7 @@ function App() {
           </button>
           <button
             className="drawer-quick-btn"
-            onClick={() => navigate('/cart')}
+            onClick={() => { setMobileOpen(false); navigate('/cart'); }}
           >
             <div className="quick-btn-icon">
               <Icon name="bag" size={18} />
@@ -520,12 +599,16 @@ function App() {
           </button>
           <button
             className="drawer-quick-btn"
-            onClick={() => navigate('/account')}
+            onClick={() => {
+              setMobileOpen(false);
+              navigate(currentUser ? '/account' : '/login');
+            }}
           >
             <div className="quick-btn-icon">
               <Icon name="user" size={18} />
+              {currentUser && <span className="drawer-badge" style={{ background: '#2e7d32' }}>✓</span>}
             </div>
-            <span>Account</span>
+            <span>{currentUser ? 'Account' : 'Sign In'}</span>
           </button>
         </div>
 
@@ -1366,6 +1449,7 @@ function AuthPage({ signup, setToast, navigate }) {
           delete updated.membership;
           delete updated.loomCredits;
           localStorage.setItem('aanur_profile_info', JSON.stringify(updated));
+          localStorage.setItem('aanur_is_logged_in', 'true');
         } catch (err) {}
 
         setStep('done');
@@ -1410,6 +1494,38 @@ function AuthPage({ signup, setToast, navigate }) {
                 ? 'Create your account using your mobile phone. We will send a one-time SMS verification code.'
                 : 'Sign in to access your orders, saved addresses, and handcrafted bedsheet collection.'}
             </p>
+
+            {localStorage.getItem('aanur_is_logged_in') === 'true' && (
+              <div className="auth-already-logged" style={{
+                background: 'rgba(183, 107, 82, 0.08)',
+                border: '1px solid rgba(183, 107, 82, 0.25)',
+                padding: '0.75rem 1rem',
+                borderRadius: '6px',
+                marginBottom: '1.25rem',
+                fontSize: '0.88rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '0.75rem'
+              }}>
+                <span>You are currently signed in.</span>
+                <button
+                  type="button"
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    fontWeight: 600,
+                    color: 'var(--clay, #b76b52)',
+                    cursor: 'pointer',
+                    textDecoration: 'underline'
+                  }}
+                  onClick={() => navigate('/profile')}
+                >
+                  View Profile &rarr;
+                </button>
+              </div>
+            )}
 
             {errorMsg && <div className="auth-error-banner">{errorMsg}</div>}
 
@@ -1710,7 +1826,7 @@ function QuickView({ product, initialVariant = 0, onClose, onAdd, onDetails }) {
 }
 
 function Footer({ navigate }) {
-  return <footer className="site-footer"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href="/" onClick={(event) => { event.preventDefault(); navigate('/'); }}><span>Aanur <i>Textile</i></span><small>COMFORT, CONSIDERED.</small></a><p>Home textiles made by Aanur Textile<br />in Nathakadaiyur, Tamil Nadu.<br /><small style={{ opacity: 0.85, display: 'block', marginTop: '0.4rem' }}>Doorstep delivery in 7 to 14 days</small></p><a className="social-link" href={store.phone} aria-label="Call Aanur Textile"><Icon name="phone" /></a></div><div className="footer-links"><div><h3>Find your comfort</h3><button onClick={() => navigate('/shop')}>Collections</button><button onClick={() => navigate('/category/Bedsheets')}>Bedsheets</button><button onClick={() => navigate('/sale')}>Best offers</button></div><div><h3>The useful bits</h3><button onClick={() => navigate('/contact')}>Contact the maker</button><button onClick={() => navigate('/faq')}>FAQs & Delivery</button><button onClick={() => navigate('/orders')}>Orders</button><button onClick={() => navigate('/account')}>Your account</button></div><div><h3>A little more</h3><button onClick={() => navigate('/about')}>Our story</button><button onClick={() => navigate('/wishlist')}>Saved pieces</button><button onClick={() => navigate('/contact')}>Wholesale enquiries</button></div></div><div className="footer-news"><span className="eyebrow">AANUR TEXTILE · EST. 2013</span><h3>Made by skilled<br />local hands.</h3><p>{store.artisans} artisans in Nathakadaiyur. Factory-direct household, wholesale, hotel, and hospital orders welcome. Delivery in 7 to 14 days.</p><a className="text-link" href={store.phone}>Call {store.phoneDisplay} <Icon name="arrow" size={15} /></a></div></div><div className="footer-bottom"><span>© 2026 Aanur Textile, Nathakadaiyur.</span><span>{store.address} · Delivery: 7 to 14 days</span><div><a href={store.map} target="_blank" rel="noreferrer">Find us</a><a href={`mailto:${store.email}`}>Email</a><a href={store.phone}>Call</a></div></div></footer>;
+  return <footer className="site-footer"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href="/" onClick={(event) => { event.preventDefault(); navigate('/'); }}><span>Aanur <i>Textile</i></span><small>COMFORT, CONSIDERED.</small></a><p>Home textiles made by Aanur Textile<br />in Nathakadaiyur, Tamil Nadu.<br /><small style={{ opacity: 0.85, display: 'block', marginTop: '0.4rem' }}>Doorstep delivery in 7 to 14 days</small></p><a className="social-link" href={store.phone} aria-label="Call Aanur Textile"><Icon name="phone" /></a></div><div className="footer-links"><div><h3>Find your comfort</h3><button onClick={() => navigate('/shop')}>Collections</button><button onClick={() => navigate('/category/Bedsheets')}>Bedsheets</button><button onClick={() => navigate('/sale')}>Best offers</button></div><div><h3>The useful bits</h3><button onClick={() => navigate('/login')}>Sign In / OTP Login</button><button onClick={() => navigate('/account')}>Your account</button><button onClick={() => navigate('/orders')}>Track orders</button><button onClick={() => navigate('/contact')}>Contact the maker</button><button onClick={() => navigate('/faq')}>FAQs & Delivery</button></div><div><h3>A little more</h3><button onClick={() => navigate('/about')}>Our story</button><button onClick={() => navigate('/wishlist')}>Saved pieces</button><button onClick={() => navigate('/contact')}>Wholesale enquiries</button></div></div><div className="footer-news"><span className="eyebrow">AANUR TEXTILE · EST. 2013</span><h3>Made by skilled<br />local hands.</h3><p>{store.artisans} artisans in Nathakadaiyur. Factory-direct household, wholesale, hotel, and hospital orders welcome. Delivery in 7 to 14 days.</p><a className="text-link" href={store.phone}>Call {store.phoneDisplay} <Icon name="arrow" size={15} /></a></div></div><div className="footer-bottom"><span>© 2026 Aanur Textile, Nathakadaiyur.</span><span>{store.address} · Delivery: 7 to 14 days</span><div><a href={store.map} target="_blank" rel="noreferrer">Find us</a><a href={`mailto:${store.email}`}>Email</a><a href={store.phone}>Call</a></div></div></footer>;
 }
 
 export default App;

@@ -3673,3 +3673,126 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--clay); width: 
   justify-content: center;
   margin-bottom: 8px;
 }
+
+/* Header Auth Label & Status Indicator */
+.header-auth-label-btn {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--clay, #292721);
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.header-auth-label-btn:hover {
+  background: rgba(183, 107, 82, 0.08);
+  color: var(--terracotta, #b76b52);
+}
+
+.header-auth-label-btn.is-current {
+  color: var(--terracotta, #b76b52);
+  font-weight: 600;
+}
+
+@media (max-width: 980px) {
+  .header-auth-label-btn {
+    display: none !important;
+  }
+}
+
+.account-dot-online {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 7px;
+  height: 7px;
+  background-color: #10b981;
+  border: 1.5px solid var(--paper, #faf7f2);
+  border-radius: 50%;
+}
+
+/* Mobile Drawer User / Guest Cards */
+.drawer-user-card-wrap {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line, #e6ded3);
+  background: rgba(183, 107, 82, 0.04);
+}
+
+.drawer-user-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.drawer-user-box:hover {
+  background: rgba(183, 107, 82, 0.08);
+}
+
+.drawer-user-avatar-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--terracotta, #b76b52);
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.drawer-user-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.drawer-user-meta strong {
+  font-size: 14px;
+  color: var(--clay, #292721);
+}
+
+.drawer-user-meta small {
+  font-size: 11.5px;
+  color: var(--text-muted, #7c7467);
+}
+
+.drawer-guest-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.drawer-guest-text strong {
+  font-size: 13.5px;
+  color: var(--clay, #292721);
+  display: block;
+  margin-bottom: 3px;
+}
+
+.drawer-guest-text p {
+  font-size: 12px;
+  color: var(--text-muted, #7c7467);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.drawer-guest-box .button {
+  width: 100%;
+  justify-content: center;
+  font-size: 12.5px;
+  padding: 8px 14px;
+}
