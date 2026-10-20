@@ -2104,7 +2104,7 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--clay); width: 
 /* Overview: Stats Grid */
 .profile-stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
 }
 
@@ -2271,7 +2271,7 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--clay); width: 
 
 .shortcuts-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 

@@ -541,7 +541,7 @@ export default function ProfilePage({
                 </div>
               </div>
 
-              {/* 4 Stats Cards */}
+              {/* 3 Stats Cards */}
               <div className="profile-stats-grid">
                 <div className="stat-card" onClick={() => setActiveTab('orders')}>
                   <span className="stat-icon">
@@ -579,17 +579,7 @@ export default function ProfilePage({
                   <ProfileIcon name="arrow" size={14} className="stat-arrow" />
                 </div>
 
-                <div className="stat-card" onClick={() => setActiveTab('settings')}>
-                  <span className="stat-icon">
-                    <ProfileIcon name="settings" size={20} />
-                  </span>
-                  <div className="stat-details">
-                    <span className="stat-value">Active</span>
-                    <span className="stat-title">Preferences</span>
-                    <span className="stat-sub">Notifications & Data</span>
-                  </div>
-                  <ProfileIcon name="arrow" size={14} className="stat-arrow" />
-                </div>
+
               </div>
 
 
