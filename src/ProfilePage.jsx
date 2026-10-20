@@ -117,34 +117,19 @@ export default function ProfilePage({
   // ---------------------------------------------------------------------------
   // 03. My Addresses State
   // ---------------------------------------------------------------------------
-  const [addresses, setAddresses] = useState(() =>
-    saved('aanur_profile_addresses', [
-      {
-        id: 'addr-1',
-        type: 'Home',
-        isDefault: true,
-        fullName: 'Priya Sharma',
-        phone: '+91 98427 51234',
-        street: 'Flat 402, Green Meadow Apartments, Palayakottai Road',
-        landmark: 'Near Palayakottai Bus Stop',
-        city: 'Kangayam',
-        state: 'Tamil Nadu',
-        pincode: '638108',
-      },
-      {
-        id: 'addr-2',
-        type: 'Work',
-        isDefault: false,
-        fullName: 'Priya Sharma (Design Studio)',
-        phone: '+91 98427 51234',
-        street: 'Studio 4B, Mill Compound, Avinashi Road',
-        landmark: 'Behind New Bus Stand',
-        city: 'Tiruppur',
-        state: 'Tamil Nadu',
-        pincode: '641602',
-      },
-    ])
-  );
+  const FAKE_ADDR_IDS = ['addr-1', 'addr-2'];
+
+  const [addresses, setAddresses] = useState(() => {
+    const raw = saved('aanur_profile_addresses', []);
+    if (!Array.isArray(raw)) return [];
+    return raw.filter(
+      (a) =>
+        a &&
+        a.id &&
+        !FAKE_ADDR_IDS.includes(a.id) &&
+        !a.fullName?.includes('Priya Sharma')
+    );
+  });
 
   useEffect(() => {
     localStorage.setItem('aanur_profile_addresses', JSON.stringify(addresses));
@@ -153,32 +138,13 @@ export default function ProfilePage({
   // ---------------------------------------------------------------------------
   // 04. Wishlist & Preferences State
   // ---------------------------------------------------------------------------
-  const defaultSavedAccessories = [
-    {
-      id: 'acc-01',
-      name: 'Handcrafted Pure Cotton Bolster Pillows (Set of 2)',
-      category: 'Pillows',
-      price: 449,
-      originalPrice: 599,
-      material: '100% Combed Cotton Casing',
-      image: '/products/p07/folded-1.jpeg',
-      badge: 'Artisan Bolster',
-    },
-    {
-      id: 'acc-02',
-      name: 'Artisan Woven Waffle Bath Towel (Dusty Olive)',
-      category: 'Towels',
-      price: 399,
-      originalPrice: 499,
-      material: 'Ultra-absorbent Waffle Weave',
-      image: '/products/p07/folded-3.jpeg',
-      badge: 'Quick-Dry Waffle',
-    },
-  ];
+  const FAKE_SAVED_ACCESSORY_IDS = ['acc-01', 'acc-02'];
 
-  const [savedAccessories, setSavedAccessories] = useState(() =>
-    saved('aanur_saved_accessories', defaultSavedAccessories)
-  );
+  const [savedAccessories, setSavedAccessories] = useState(() => {
+    const raw = saved('aanur_saved_accessories', []);
+    if (!Array.isArray(raw)) return [];
+    return raw.filter((a) => a && a.id && !FAKE_SAVED_ACCESSORY_IDS.includes(a.id));
+  });
 
   useEffect(() => {
     localStorage.setItem('aanur_saved_accessories', JSON.stringify(savedAccessories));
@@ -309,10 +275,6 @@ export default function ProfilePage({
   };
 
   const handleDeleteAddress = (id) => {
-    if (addresses.length <= 1) {
-      if (setToast) setToast('You must keep at least one delivery address.');
-      return;
-    }
     setAddresses((prev) => {
       const filtered = prev.filter((a) => a.id !== id);
       if (filtered.length > 0 && !filtered.some((a) => a.isDefault)) {
@@ -565,7 +527,11 @@ export default function ProfilePage({
                   <div className="stat-details">
                     <span className="stat-value">{addresses.length}</span>
                     <span className="stat-title">Saved Addresses</span>
-                    <span className="stat-sub">{addresses.find((a) => a.isDefault)?.city || 'Primary'} default</span>
+                    <span className="stat-sub">
+                      {addresses.length > 0
+                        ? `${addresses.find((a) => a.isDefault)?.city || 'Primary'} default`
+                        : 'No addresses saved'}
+                    </span>
                   </div>
                   <ProfileIcon name="arrow" size={14} className="stat-arrow" />
                 </div>
@@ -577,7 +543,9 @@ export default function ProfilePage({
                   <div className="stat-details">
                     <span className="stat-value">{combinedSavedItems.length}</span>
                     <span className="stat-title">Saved Pieces</span>
-                    <span className="stat-sub">Bedsheets & Towels</span>
+                    <span className="stat-sub">
+                      {combinedSavedItems.length > 0 ? 'Bedsheets & Towels' : 'No items saved'}
+                    </span>
                   </div>
                   <ProfileIcon name="arrow" size={14} className="stat-arrow" />
                 </div>
@@ -823,24 +791,38 @@ export default function ProfilePage({
               </div>
 
               {/* Addresses Cards Grid */}
-              <div className="addresses-grid">
-                {addresses.map((addr) => (
-                  <div key={addr.id} className={`address-card ${addr.isDefault ? 'is-default-card' : ''}`}>
-                    <div className="address-card-top">
-                      <div className="address-badges">
-                        <span className="addr-type-pill">{addr.type.toUpperCase()}</span>
-                        {addr.isDefault && <span className="default-pill">DEFAULT ADDRESS</span>}
-                      </div>
-                      <div className="addr-actions-top">
-                        <button
-                          type="button"
-                          className="icon-action-btn"
-                          title="Edit address"
-                          onClick={() => handleOpenAddressModal('edit', addr)}
-                        >
-                          <ProfileIcon name="edit" size={15} />
-                        </button>
-                        {!addr.isDefault && (
+              {addresses.length === 0 ? (
+                <div className="empty-state">
+                  <ProfileIcon name="pin" size={32} />
+                  <h3>No delivery addresses saved yet</h3>
+                  <p>Add your home or workplace delivery address for fast doorstep delivery across India.</p>
+                  <button
+                    type="button"
+                    className="button button-dark"
+                    onClick={() => handleOpenAddressModal('add')}
+                  >
+                    <ProfileIcon name="plus" size={15} />
+                    <span>Add Delivery Address</span>
+                  </button>
+                </div>
+              ) : (
+                <div className="addresses-grid">
+                  {addresses.map((addr) => (
+                    <div key={addr.id} className={`address-card ${addr.isDefault ? 'is-default-card' : ''}`}>
+                      <div className="address-card-top">
+                        <div className="address-badges">
+                          <span className="addr-type-pill">{addr.type.toUpperCase()}</span>
+                          {addr.isDefault && <span className="default-pill">DEFAULT ADDRESS</span>}
+                        </div>
+                        <div className="addr-actions-top">
+                          <button
+                            type="button"
+                            className="icon-action-btn"
+                            title="Edit address"
+                            onClick={() => handleOpenAddressModal('edit', addr)}
+                          >
+                            <ProfileIcon name="edit" size={15} />
+                          </button>
                           <button
                             type="button"
                             className="icon-action-btn delete-btn"
@@ -849,40 +831,40 @@ export default function ProfilePage({
                           >
                             <ProfileIcon name="trash" size={15} />
                           </button>
+                        </div>
+                      </div>
+
+                      <div className="address-body">
+                        <h3>{addr.fullName}</h3>
+                        <p className="addr-phone">
+                          <ProfileIcon name="phone" size={14} /> {addr.phone}
+                        </p>
+                        <p className="addr-street">{addr.street}</p>
+                        {addr.landmark && <p className="addr-landmark">Landmark: {addr.landmark}</p>}
+                        <p className="addr-city-pin">
+                          {addr.city}, {addr.state} — <strong>{addr.pincode}</strong>
+                        </p>
+                      </div>
+
+                      <div className="address-card-footer">
+                        {addr.isDefault ? (
+                          <span className="default-check-text">
+                            <ProfileIcon name="check" size={14} /> Default Delivery Address
+                          </span>
+                        ) : (
+                          <button
+                            type="button"
+                            className="text-link"
+                            onClick={() => handleSetDefaultAddress(addr.id)}
+                          >
+                            Set as default delivery address
+                          </button>
                         )}
                       </div>
                     </div>
-
-                    <div className="address-body">
-                      <h3>{addr.fullName}</h3>
-                      <p className="addr-phone">
-                        <ProfileIcon name="phone" size={14} /> {addr.phone}
-                      </p>
-                      <p className="addr-street">{addr.street}</p>
-                      {addr.landmark && <p className="addr-landmark">Landmark: {addr.landmark}</p>}
-                      <p className="addr-city-pin">
-                        {addr.city}, {addr.state} — <strong>{addr.pincode}</strong>
-                      </p>
-                    </div>
-
-                    <div className="address-card-footer">
-                      {addr.isDefault ? (
-                        <span className="default-check-text">
-                          <ProfileIcon name="check" size={14} /> Default Delivery Address
-                        </span>
-                      ) : (
-                        <button
-                          type="button"
-                          className="text-link"
-                          onClick={() => handleSetDefaultAddress(addr.id)}
-                        >
-                          Set as default delivery address
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
