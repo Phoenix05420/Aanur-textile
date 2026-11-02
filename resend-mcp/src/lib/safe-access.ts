@@ -11,17 +11,16 @@ function isInside(base: string, target: string): boolean {
 
 /**
  * Resolve a caller-supplied path against an allow-list of directories.
- * `undefined` allows any path, an empty list disables local file access, and
- * otherwise the real path (symlinks followed) must sit inside an allowed
- * directory.
+ * Defaults to current working directory if allowedDirs is not explicitly specified,
+ * preventing arbitrary host filesystem access.
  */
 export async function resolveAllowedPath(
   filePath: string,
   allowedDirs?: string[],
 ): Promise<string> {
-  if (!allowedDirs) return filePath;
+  const dirs = allowedDirs ?? [process.cwd()];
 
-  if (allowedDirs.length === 0) {
+  if (dirs.length === 0) {
     throw new Error(
       'Local file access is disabled. Use "content" or "url" instead, or start the server with --allowed-file-dirs.',
     );
@@ -29,7 +28,7 @@ export async function resolveAllowedPath(
 
   const target = await realpath(resolve(filePath)).catch(() => null);
   if (target !== null) {
-    for (const dir of allowedDirs) {
+    for (const dir of dirs) {
       const base = await realpath(resolve(dir)).catch(() => null);
       if (base !== null && isInside(base, target)) return target;
     }

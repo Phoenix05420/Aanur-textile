@@ -1,16 +1,16 @@
-# Graph Report - New folder (2)  (2026-10-21)
+# Graph Report - New folder (2)  (2026-11-02)
 
 ## Corpus Check
-- 117 files · ~600,592 words
+- 150 files · ~653,379 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 960 nodes · 1151 edges · 77 communities (67 shown, 10 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.8)
+- 1174 nodes · 1356 edges · 93 communities (82 shown, 11 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8bb9298b`
+- Built from commit: `2cb3712b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -87,6 +87,22 @@
 - [[_COMMUNITY_Community 74|Community 74]]
 - [[_COMMUNITY_Community 75|Community 75]]
 - [[_COMMUNITY_Community 76|Community 76]]
+- [[_COMMUNITY_Community 77|Community 77]]
+- [[_COMMUNITY_Community 78|Community 78]]
+- [[_COMMUNITY_Community 79|Community 79]]
+- [[_COMMUNITY_Community 80|Community 80]]
+- [[_COMMUNITY_Community 81|Community 81]]
+- [[_COMMUNITY_Community 82|Community 82]]
+- [[_COMMUNITY_Community 83|Community 83]]
+- [[_COMMUNITY_Community 84|Community 84]]
+- [[_COMMUNITY_Community 85|Community 85]]
+- [[_COMMUNITY_Community 86|Community 86]]
+- [[_COMMUNITY_Community 87|Community 87]]
+- [[_COMMUNITY_Community 88|Community 88]]
+- [[_COMMUNITY_Community 89|Community 89]]
+- [[_COMMUNITY_Community 90|Community 90]]
+- [[_COMMUNITY_Community 91|Community 91]]
+- [[_COMMUNITY_Community 92|Community 92]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `createMcpServer()` - 22 edges
@@ -96,11 +112,13 @@
 5. `compilerOptions` - 13 edges
 6. `suspicious` - 11 edges
 7. `Stdio Transport (Default)` - 11 edges
-8. `Remote MCP Server` - 10 edges
-9. `dependencies` - 9 edges
-10. `resolveConfig()` - 9 edges
+8. `Client-Side and Browser Hunting` - 10 edges
+9. `Cloud and Deployment Hunting` - 10 edges
+10. `Desktop, Mobile, and Local IPC Hunting` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `parseArgs()` --calls--> `minimist`  [INFERRED]
+  resend-mcp/src/cli/parse.ts → resend-mcp/package.json
 - `createMcpServer()` --calls--> `addContactPropertyTools()`  [INFERRED]
   resend-mcp/src/server.ts → resend-mcp/src/tools/contactProperties.ts
 - `createMcpServer()` --calls--> `addDomainTools()`  [INFERRED]
@@ -109,22 +127,20 @@
   resend-mcp/src/server.ts → resend-mcp/src/tools/topics.ts
 - `checkMongo()` --calls--> `connectMongoDB()`  [EXTRACTED]
   scripts/check-mongo.js → server/db.js
-- `seedMongo()` --calls--> `connectMongoDB()`  [EXTRACTED]
-  scripts/seed-mongo.js → server/db.js
 
-## Communities (77 total, 10 thin omitted)
+## Communities (93 total, 11 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.07
-Nodes (10): AdminPage(), money(), API_BASE, apiUrl(), CartPage(), Checkout(), money(), ProductCard() (+2 more)
+Cohesion: 0.06
+Nodes (17): initDatabase(), sql, AdminPage(), money(), API_BASE, apiUrl(), CartPage(), Checkout() (+9 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.06
-Nodes (34): bin, resend-mcp, default, devDependencies, @biomejs/biome, @modelcontextprotocol/client, @types/minimist, @types/node (+26 more)
+Cohesion: 0.05
+Nodes (43): bin, resend-mcp, default, dependencies, dotenv, express, minimist, @modelcontextprotocol/express (+35 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.07
-Nodes (37): CLI_STRING_OPTIONS, HELP_TEXT, printHelp(), stderr, getUnknownArgs(), KNOWN_ARG_KEYS, resolveConfigOrExit(), parseAllowedFileDirs() (+29 more)
+Cohesion: 0.1
+Nodes (28): CLI_STRING_OPTIONS, HELP_TEXT, printHelp(), stderr, getUnknownArgs(), KNOWN_ARG_KEYS, resolveConfigOrExit(), parseAllowedFileDirs() (+20 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.08
@@ -235,8 +251,8 @@ Cohesion: 0.17
 Nodes (10): 1. Executive Summary, 2. End-to-End System Architecture, 3. Order Processing Sequence, 4. Key Performance Metrics, 4. Security & Configuration Matrix, 5. Performance Metrics, 6. Graph Artifacts Navigation, 🔍 Aanur Textile — Architecture & System Audit Report (+2 more)
 
 ### Community 31 - "Community 31"
-Cohesion: 0.2
-Nodes (10): code:block27 (git clone https://github.com/resend/resend-mcp.git), code:bash (claude mcp add resend -e RESEND_API_KEY=re_xxxxxxxxx -- node), code:bash (claude mcp add resend --transport http http://127.0.0.1:3000), code:json ({), code:json ({), code:bash (pnpm tsc --watch), code:bash (mkdir -p /tmp/mcp-test), code:json (// /tmp/mcp-test/.mcp.json) (+2 more)
+Cohesion: 0.11
+Nodes (18): Anti-patterns, Core principles, Cost budget, Coverage and prior runs, Full audit planning, Full audit setup, Full audit workflow, Operating modes (+10 more)
 
 ### Community 32 - "Community 32"
 Cohesion: 0.17
@@ -263,24 +279,24 @@ Cohesion: 0.5
 Nodes (3): bcc: manager@example.com, cc: colleague1@example.com, colleague2@example.com, Example of using CC and BCC:
 
 ### Community 51 - "Community 51"
-Cohesion: 0.07
-Nodes (30): adminEmail, autoVerifyAt, autoVerifyTimer, cleanEmail, cleanOtp, configured, enquiry, entry (+22 more)
+Cohesion: 0.04
+Nodes (47): adminEmail, allowedOrigins, autoVerifyAt, autoVerifyTimer, candidateBuffer, cleanEmail, cleanOtp, computedTotal (+39 more)
 
 ### Community 52 - "Community 52"
 Cohesion: 0.2
-Nodes (10): code:bash (node -v), code:bash (git clone https://github.com/Phoenix05420/Aanur-textile.git), code:bash (npm install), code:bash (cd resend-mcp && npm install && npm run build && cd ..), code:bash (# 1. Check MongoDB Atlas connection & collection status), ⚙️ Installation & Local Setup, Step 1: Verify Prerequisites, Step 2: Clone Repository & Enter Directory (+2 more)
+Nodes (10): code:bash (node -v), code:bash (git clone https://github.com/Phoenix05420/Aanur-textile.git), code:bash (cp .env.example .env), code:ini (# ==========================================================), code:bash (# 1. Check MongoDB Atlas connection & collection status), ⚙️ Installation & Local Setup, Step 1: Verify Prerequisites, Step 2: Clone Repository & Enter Directory (+2 more)
 
 ### Community 53 - "Community 53"
-Cohesion: 0.29
-Nodes (4): getSql(), handleApiRequest(), isConfigured(), app
+Cohesion: 0.2
+Nodes (10): Claude Code, code:bash (npx -y resend-mcp --http --port 3000), code:bash (claude mcp add resend --transport http http://127.0.0.1:3000), code:json ({), code:bash (MCP_PORT=3000 npx -y resend-mcp --http), code:ts (import { runHttp } from 'resend-mcp/http';), code:ts (const server = await runHttp({}, 3000, { host: '0.0.0.0' });), Cursor (+2 more)
 
 ### Community 54 - "Community 54"
 Cohesion: 0.27
 Nodes (3): ServerOptions, HttpTransportOptions, sessions
 
 ### Community 55 - "Community 55"
-Cohesion: 0.38
-Nodes (9): run(), sampleOrder, getResendClient(), isResendConfigured(), sendOrderCustomerEmail(), sendOrderEmail(), sendOrderOwnerEmail(), sendOtpEmail() (+1 more)
+Cohesion: 0.28
+Nodes (13): run(), sampleOrder, getSql(), handleApiRequest(), isConfigured(), escapeHtml(), getResendClient(), isResendConfigured() (+5 more)
 
 ### Community 57 - "Community 57"
 Cohesion: 0.15
@@ -299,8 +315,8 @@ Cohesion: 0.22
 Nodes (5): connect(), send, runHttp(), { port }, server
 
 ### Community 61 - "Community 61"
-Cohesion: 0.2
-Nodes (10): Claude Code, code:bash (npx -y resend-mcp --http --port 3000), code:bash (claude mcp add resend --transport http http://127.0.0.1:3000), code:json ({), code:bash (MCP_PORT=3000 npx -y resend-mcp --http), code:ts (import { runHttp } from 'resend-mcp/http';), code:ts (const server = await runHttp({}, 3000, { host: '0.0.0.0' });), Cursor (+2 more)
+Cohesion: 0.12
+Nodes (15): code:text (## Defensive vulnerability-finding method), code:text (Artifact promotion procedure (trusted parent-side code only)), code:text (## Candidate gate), code:json ({), code:json ({), Core hunting method — include in every hunter prompt, Core validation rules — include in every hunter prompt, Coverage-critic waves (+7 more)
 
 ### Community 62 - "Community 62"
 Cohesion: 0.25
@@ -311,8 +327,8 @@ Cohesion: 0.25
 Nodes (8): ⚙️ Administrative Dashboard & Architecture Telemetry, 🤖 AI-Ready Tooling & Architecture Graph, 🧵 Catalog & Fabric Variant Filtering, 🚀 Key Features, 📦 Order Management & Logistics Pipeline, 🛒 Shopping Bag & Dynamic Coupon Engine, 📨 Transactional Notifications & Communication, 🔐 User Authentication & Account Management
 
 ### Community 64 - "Community 64"
-Cohesion: 0.29
-Nodes (6): __dirname, distDir, __filename, indexPath, publicDir, rootDir
+Cohesion: 0.15
+Nodes (7): app, __dirname, distDir, __filename, indexPath, publicDir, rootDir
 
 ### Community 65 - "Community 65"
 Cohesion: 0.47
@@ -323,8 +339,8 @@ Cohesion: 0.33
 Nodes (6): code:bash (# Compile optimized React assets to /dist), code:bash (npm run dev), Option A: Unified Vite Dev Server (Recommended), Option B: Standalone Production Server, Option C: Windows One-Click Quick Launch, Step 6: Launch the Development Server
 
 ### Community 67 - "Community 67"
-Cohesion: 0.21
-Nodes (7): initDatabase(), sql, categories, products, store, money(), ProfilePage()
+Cohesion: 0.2
+Nodes (10): code:block27 (git clone https://github.com/resend/resend-mcp.git), code:bash (claude mcp add resend -e RESEND_API_KEY=re_xxxxxxxxx -- node), code:bash (claude mcp add resend --transport http http://127.0.0.1:3000), code:json ({), code:json ({), code:bash (pnpm tsc --watch), code:bash (mkdir -p /tmp/mcp-test), code:json (// /tmp/mcp-test/.mcp.json) (+2 more)
 
 ### Community 68 - "Community 68"
 Cohesion: 0.2
@@ -335,20 +351,20 @@ Cohesion: 0.4
 Nodes (5): Core Problems Solved, 🎯 Project Overview & Value Proposition, The Context, What is Aanur Textile?, Who It Serves
 
 ### Community 70 - "Community 70"
-Cohesion: 0.4
-Nodes (4): Local MCP Server, MCP Server Tools, Options, Resend MCP Server
+Cohesion: 0.15
+Nodes (12): Candidate-verifier prompt, code:text (You did not write this candidate. Try to refute it from repo), code:text (Artifact promotion procedure (trusted parent-side code only)), code:sh (node <skill-dir>/validate-findings.cjs <output-dir>/findings), `FINDINGS-DETAIL.md`, `NEEDS-VALIDATION.md`, Phase 3: Independently validate every candidate, Phase 4: Write and validate `findings.json` (+4 more)
 
 ### Community 71 - "Community 71"
 Cohesion: 0.22
 Nodes (8): build, buildCommand, builder, deploy, restartPolicyMaxRetries, restartPolicyType, startCommand, $schema
 
 ### Community 72 - "Community 72"
-Cohesion: 0.67
-Nodes (3): code:bash (cp .env.example .env), code:ini (# ==========================================================), Step 4: Environment Variable Configuration
-
-### Community 73 - "Community 73"
 Cohesion: 0.29
 Nodes (7): code:bash (export RESEND_API_KEY=re_your_key_here), code:bash (pnpm inspector), code:bash (node dist/index.js --http --port 3000), code:bash (pnpm inspector), Testing with MCP Inspector, Using HTTP Transport, Using Stdio Transport
+
+### Community 73 - "Community 73"
+Cohesion: 0.17
+Nodes (11): Cloud and Deployment Hunting, code:block1 (- Do not infer a live exposure from a manifest alone. Establ), Configuration and secret lifecycle attack classes (subagent_type: `general`), Container and orchestration attack classes (subagent_type: `general`), Core discipline (include in every agent prompt for this domain), Ingress, network, and control-plane attack classes (subagent_type: `general`), Managed storage, events, and edge attack classes (subagent_type: `general`), Universal moves (apply across the above) (+3 more)
 
 ### Community 74 - "Community 74"
 Cohesion: 0.33
@@ -359,28 +375,88 @@ Cohesion: 0.4
 Nodes (5): addTemplateTools(), create, makeClient(), resend, update
 
 ### Community 76 - "Community 76"
+Cohesion: 0.17
+Nodes (11): Application-state and device-lifecycle attack classes (subagent_type: `general`), code:block1 (- Establish the realistic local or remote-content attacker: ), Core discipline (include in every agent prompt for this domain), Deep-link, callback, and navigation attack classes (subagent_type: `general`), Desktop, Mobile, and Local IPC Hunting, Local IPC and exported-component attack classes (subagent_type: `general`), Privileged-helper and local-file attack classes (subagent_type: `general`), Universal moves (apply across the above) (+3 more)
+
+### Community 77 - "Community 77"
+Cohesion: 0.17
+Nodes (11): Binary loading and runtime attack classes (subagent_type: `general`), Bounds, integer, and representation attack classes (subagent_type: `general`), code:block1 (- Re-derive every bound and lifetime from attacker-controlle), Core discipline (include in every agent prompt for this domain), FFI and ABI attack classes (subagent_type: `general`), Kernel and privileged-interface attack classes (subagent_type: `general`), Lifetime, type, and concurrency attack classes (subagent_type: `general`), Memory Safety, Binary, and Kernel Hunting (+3 more)
+
+### Community 78 - "Community 78"
+Cohesion: 0.17
+Nodes (11): API-key and mTLS attack classes (subagent_type: `general`), Browser-session attack classes (subagent_type: `general`), code:block1 (- Framing and cache findings require two interpretations of ), Core discipline (include in every agent prompt for this domain), Federated-identity attack classes (subagent_type: `general`), HTTP framing and cache attack classes (subagent_type: `general`), HTTP-Protocol and Authentication Hunting, MFA, passkey, and account-transition attack classes (subagent_type: `general`) (+3 more)
+
+### Community 79 - "Community 79"
+Cohesion: 0.17
+Nodes (11): Client-Side and Browser Hunting, code:block1 (- A client-side candidate needs a controllable source and an), Core discipline (include in every agent prompt for this domain), Cross-origin messaging and network attack classes (subagent_type: `general`), Cross-site information leak classes (subagent_type: `general`), DOM and object-state attack classes (subagent_type: `general`), Service-worker and browser-storage attack classes (subagent_type: `general`), UI-redress and navigation attack classes (subagent_type: `general`) (+3 more)
+
+### Community 80 - "Community 80"
+Cohesion: 0.18
+Nodes (10): AI, LLM, and Agent Hunting, code:block1 (- Prompt injection alone is not a finding. Require a code-le), Context, retrieval, and memory attack classes (subagent_type: `general`), Core discipline (include in every agent prompt for this domain), MCP and sub-agent trust classes (subagent_type: `general`), Output and disclosure attack classes (subagent_type: `general`), Tool and action attack classes (subagent_type: `general`), Universal moves (apply across the above) (+2 more)
+
+### Community 81 - "Community 81"
+Cohesion: 0.18
+Nodes (10): code:block1 (- A tenant or owner field on a record is not isolation. Find), Core discipline (include in every agent prompt for this domain), Data Isolation and Lifecycle Hunting, Deletion, revocation, and lifecycle attack classes (subagent_type: `general`), Derived-data and disclosure attack classes (subagent_type: `general`), Export, backup, restore, and migration attack classes (subagent_type: `general`), Tenant and object-isolation attack classes (subagent_type: `general`), Universal moves (apply across the above) (+2 more)
+
+### Community 82 - "Community 82"
+Cohesion: 0.18
+Nodes (10): Broker and queue isolation attack classes (subagent_type: `general`), code:block1 (- "Internal" is not authentication. Name the peer identity a), Core discipline (include in every agent prompt for this domain), Framing, schema, and interpretation attack classes (subagent_type: `general`), Protocols, RPC, and Messaging Hunting, Replay, ordering, and transaction attack classes (subagent_type: `general`), RPC identity and authorization attack classes (subagent_type: `general`), Universal moves (apply across the above) (+2 more)
+
+### Community 83 - "Community 83"
+Cohesion: 0.18
+Nodes (10): code:block1 (- Require an input-to-cost path, a missing effective bound, ), Computational amplification attack classes (subagent_type: `general`), Core discipline (include in every agent prompt for this domain), Failure and recovery attack classes (subagent_type: `general`), Quota and scheduling attack classes (subagent_type: `general`), Resource accumulation attack classes (subagent_type: `general`), Resource Exhaustion and Availability Hunting, Universal moves (apply across the above) (+2 more)
+
+### Community 84 - "Community 84"
+Cohesion: 0.18
+Nodes (10): Architecture summary and companion selection, code:text (Read the target at <target>. Do not use network access. Retu), code:text (Read all source that establishes identity, authorization, is), code:text (Inventory every source-visible place external or lower-trust), code:text (Read tests, build definitions, manifests, packaging, and mai), code:json ({), Deterministic coverage ledger, Phase 1: Map the source and plan coverage (+2 more)
+
+### Community 85 - "Community 85"
+Cohesion: 0.2
+Nodes (9): CI and automation attack classes (subagent_type: `general`), code:block1 (- A mutable or known-vulnerable dependency is not a finding ), Core discipline (include in every agent prompt for this domain), Dependency and build-input attack classes (subagent_type: `general`), Release and update attack classes (subagent_type: `general`), Supply Chain and Release Hunting, Universal moves (apply across the above), Validation rules (apply before reporting ANY finding here) (+1 more)
+
+### Community 86 - "Community 86"
+Cohesion: 0.25
+Nodes (7): computedHash, skillPath, source, sourceType, skills, security-audit, version
+
+### Community 87 - "Community 87"
+Cohesion: 0.47
+Nodes (4): $comment, items, oneOf, type
+
+### Community 89 - "Community 89"
+Cohesion: 0.4
+Nodes (4): Local MCP Server, MCP Server Tools, Options, Resend MCP Server
+
+### Community 90 - "Community 90"
+Cohesion: 0.4
+Nodes (5): checkRateLimit(), generateAuthToken(), now, requireAdmin(), verifyAuthToken()
+
+### Community 91 - "Community 91"
+Cohesion: 0.67
+Nodes (3): code:bash (npm install), code:bash (cd resend-mcp && npm install && npm run build && cd ..), Step 3: Install Node Dependencies
+
+### Community 92 - "Community 92"
 Cohesion: 0.67
 Nodes (3): Authenticating with an API key, code:json ({), code:bash (claude mcp add --transport http resend https://mcp.resend.co)
 
 ## Knowledge Gaps
-- **535 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+530 more)
+- **678 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+673 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `createMcpServer()` connect `Community 8` to `Community 33`, `Community 3`, `Community 68`, `Community 5`, `Community 6`, `Community 9`, `Community 75`, `Community 12`, `Community 13`, `Community 16`, `Community 19`, `Community 20`, `Community 21`, `Community 54`, `Community 26`, `Community 59`?**
-  _High betweenness centrality (0.157) - this node is a cross-community bridge._
+  _High betweenness centrality (0.123) - this node is a cross-community bridge._
+- **Why does `addSuppressionTools()` connect `Community 9` to `Community 8`?**
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **Why does `addEmailTools()` connect `Community 5` to `Community 8`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Why does `addWebhookTools()` connect `Community 6` to `Community 8`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **Are the 18 inferred relationships involving `createMcpServer()` (e.g. with `addEditorTools()` and `addApiKeyTools()`) actually correct?**
   _`createMcpServer()` has 18 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _535 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _678 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.07 - nodes in this community are weakly interconnected._
-- **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.06 - nodes in this community are weakly interconnected._
+- **Should `Community 1` be split into smaller, more focused modules?**
+  _Cohesion score 0.05 - nodes in this community are weakly interconnected._

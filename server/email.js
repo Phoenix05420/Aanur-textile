@@ -16,6 +16,19 @@ export function isResendConfigured() {
   );
 }
 
+/**
+ * Escape HTML entities to prevent Stored HTML / Phishing Injection in email clients
+ */
+export function escapeHtml(str) {
+  if (str == null) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function getResendClient() {
   if (!isResendConfigured()) return null;
   return new Resend(apiKey);
@@ -141,14 +154,25 @@ export async function sendOtpEmail({ email, otp }) {
 export async function sendOrderCustomerEmail(order, confirmUrl) {
   if (!order.email) return { success: false, reason: 'No customer email' };
 
+  const safeOrderRef = escapeHtml(order.orderRef);
+  const safeFirstName = escapeHtml(order.firstName || 'Artisan Customer');
+  const safeLastName = escapeHtml(order.lastName || '');
+  const safeEmail = escapeHtml(order.email);
+  const safePhone = escapeHtml(order.phone || 'Provided at checkout');
+  const safeStreet = escapeHtml(order.street);
+  const safeCity = escapeHtml(order.city);
+  const safePostalCode = escapeHtml(order.postalCode);
+  const safePaymentMethod = escapeHtml(order.paymentMethod || 'Cash on Delivery (COD)');
+  const safeCoupon = escapeHtml(order.couponCode || 'BESTOFFER');
+
   const itemsHtml = (order.items || []).map((item) => `
     <tr style="border-bottom: 1px solid #eaeaea;">
       <td style="padding: 12px 8px; font-weight: 500; color: #222;">
-        ${item.name}
-        <div style="font-size: 12px; color: #777;">Size: ${item.size || 'Standard'} · Qty: ${item.quantity}</div>
+        ${escapeHtml(item.name)}
+        <div style="font-size: 12px; color: #777;">Size: ${escapeHtml(item.size || 'Standard')} · Qty: ${Number(item.quantity || 1)}</div>
       </td>
-      <td style="padding: 12px 8px; text-align: center; color: #555;">${item.quantity}</td>
-      <td style="padding: 12px 8px; text-align: right; font-weight: 600; color: #222;">₹${(item.price * item.quantity).toLocaleString('en-IN')}</td>
+      <td style="padding: 12px 8px; text-align: center; color: #555;">${Number(item.quantity || 1)}</td>
+      <td style="padding: 12px 8px; text-align: right; font-weight: 600; color: #222;">₹${(Number(item.price || 0) * Number(item.quantity || 1)).toLocaleString('en-IN')}</td>
     </tr>
   `).join('');
 
@@ -157,7 +181,7 @@ export async function sendOrderCustomerEmail(order, confirmUrl) {
     <html>
     <head>
       <meta charset="utf-8">
-      <title>Thank you for your order #${order.orderRef}</title>
+      <title>Thank you for your order #${safeOrderRef}</title>
     </head>
     <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f7f5ef; margin: 0; padding: 24px; color: #333;">
       <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid #eee5da;">
@@ -170,7 +194,7 @@ export async function sendOrderCustomerEmail(order, confirmUrl) {
 
         <!-- Body -->
         <div style="padding: 32px 28px;">
-          <h2 style="margin: 0 0 12px; font-size: 22px; color: #1a1a1a;">Thank you for your order, ${order.firstName || 'Artisan Customer'}!</h2>
+          <h2 style="margin: 0 0 12px; font-size: 22px; color: #1a1a1a;">Thank you for your order, ${safeFirstName}!</h2>
           <p style="margin: 0 0 20px; font-size: 15px; color: #555; line-height: 1.5;">
             We've received your order and are preparing your pure cotton bedsheets for factory-direct dispatch from our workshop in Nathakadaiyur, Tamil Nadu.
           </p>
@@ -179,7 +203,7 @@ export async function sendOrderCustomerEmail(order, confirmUrl) {
           ${confirmUrl ? `
           <div style="background: linear-gradient(135deg, #fbf7f4 0%, #f4ede4 100%); border: 1.5px solid #d4c5b3; border-radius: 10px; padding: 22px; text-align: center; margin-bottom: 26px;">
             <div style="font-size: 15px; font-weight: 600; color: #292721; margin-bottom: 12px;">Final Step: Please Confirm Your Order</div>
-            <a href="${confirmUrl}" style="background-color: #2c4226; color: #ffffff; padding: 13px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; display: inline-block; box-shadow: 0 3px 10px rgba(44,66,38,0.25);">
+            <a href="${encodeURI(confirmUrl)}" style="background-color: #2c4226; color: #ffffff; padding: 13px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; display: inline-block; box-shadow: 0 3px 10px rgba(44,66,38,0.25);">
               ✓ Confirm Order Now
             </a>
             <div style="font-size: 12.5px; color: #777; margin-top: 12px; line-height: 1.4;">
@@ -197,14 +221,14 @@ export async function sendOrderCustomerEmail(order, confirmUrl) {
           <!-- Order Summary Details -->
           <div style="background-color: #fafafa; border: 1px solid #eaeaea; border-radius: 8px; padding: 18px; margin-bottom: 24px;">
             <div style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Order Details</div>
-            <div style="font-size: 16px; font-weight: 600; color: #111; margin-bottom: 12px;">Reference: #${order.orderRef}</div>
+            <div style="font-size: 16px; font-weight: 600; color: #111; margin-bottom: 12px;">Reference: #${safeOrderRef}</div>
             
             <div style="font-size: 14px; color: #444; line-height: 1.6;">
-              <strong>Customer:</strong> ${order.firstName} ${order.lastName || ''}<br>
-              <strong>Email:</strong> ${order.email}<br>
-              <strong>Phone:</strong> ${order.phone || 'Provided at checkout'}<br>
-              <strong>Shipping Address:</strong> ${order.street}, ${order.city} - ${order.postalCode}<br>
-              <strong>Payment Method:</strong> ${order.paymentMethod || 'Cash on Delivery (COD)'}
+              <strong>Customer:</strong> ${safeFirstName} ${safeLastName}<br>
+              <strong>Email:</strong> ${safeEmail}<br>
+              <strong>Phone:</strong> ${safePhone}<br>
+              <strong>Shipping Address:</strong> ${safeStreet}, ${safeCity} - ${safePostalCode}<br>
+              <strong>Payment Method:</strong> ${safePaymentMethod}
             </div>
           </div>
 
@@ -224,7 +248,7 @@ export async function sendOrderCustomerEmail(order, confirmUrl) {
             <tfoot>
               ${order.discount ? `
               <tr>
-                <td colspan="2" style="padding: 8px; text-align: right; color: #b76b52; font-weight: 600;">Coupon (${order.couponCode || 'BESTOFFER'}):</td>
+                <td colspan="2" style="padding: 8px; text-align: right; color: #b76b52; font-weight: 600;">Coupon (${safeCoupon}):</td>
                 <td style="padding: 8px; text-align: right; color: #b76b52; font-weight: 600;">-₹${Number(order.discount).toLocaleString('en-IN')}</td>
               </tr>
               ` : ''}
@@ -242,7 +266,7 @@ export async function sendOrderCustomerEmail(order, confirmUrl) {
           <!-- Support Notice -->
           <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #eaeaea; font-size: 13px; color: #666; line-height: 1.6;">
             <strong>Need assistance with your order?</strong><br>
-            Aanur Textile Workshop · ${store.address}
+            Aanur Textile Workshop · ${escapeHtml(store.address)}
           </div>
         </div>
 
@@ -257,7 +281,7 @@ export async function sendOrderCustomerEmail(order, confirmUrl) {
 
   return sendSafeEmail({
     to: order.email,
-    subject: `Thank you for your order #${order.orderRef} — Aanur Textile`,
+    subject: `Thank you for your order #${safeOrderRef} — Aanur Textile`,
     html: htmlContent,
   });
 }
@@ -268,22 +292,32 @@ export async function sendOrderCustomerEmail(order, confirmUrl) {
 export async function sendOrderOwnerEmail(order, updateType = 'new') {
   if (!adminEmail) return { success: false, reason: 'No admin email configured' };
 
-  let subject = `🔔 New Order Received: #${order.orderRef} - ₹${order.total}`;
+  const safeOrderRef = escapeHtml(order.orderRef);
+  const safeFirstName = escapeHtml(order.firstName || '');
+  const safeLastName = escapeHtml(order.lastName || '');
+  const safeEmail = escapeHtml(order.email || 'N/A');
+  const safePhone = escapeHtml(order.phone || 'N/A');
+  const safeStreet = escapeHtml(order.street || '');
+  const safeCity = escapeHtml(order.city || '');
+  const safePostalCode = escapeHtml(order.postalCode || '');
+  const safePaymentMethod = escapeHtml(order.paymentMethod || 'Cash on Delivery');
+
+  let subject = `🔔 New Order Received: #${safeOrderRef} - ₹${Number(order.total || 0).toLocaleString('en-IN')}`;
   let statusBanner = 'Awaiting Customer Confirmation (or 30m Auto-Verification)';
   let bannerColor = '#b76b52';
 
   if (updateType === 'customer_confirmed') {
-    subject = `✅ Order Confirmed by Customer: #${order.orderRef} (Priority Weaving)`;
+    subject = `✅ Order Confirmed by Customer: #${safeOrderRef} (Priority Weaving)`;
     statusBanner = '✓ Verified by Customer (Click Confirmed)';
     bannerColor = '#2c4226';
   } else if (updateType === 'auto_verified') {
-    subject = `⏰ Order Auto-Verified (30m): #${order.orderRef} (Scheduled for Dispatch)`;
+    subject = `⏰ Order Auto-Verified (30m): #${safeOrderRef} (Scheduled for Dispatch)`;
     statusBanner = '✓ Auto-Verified after 30 minutes (Scheduled for Loom Dispatch)';
     bannerColor = '#2c4226';
   }
 
   const itemsList = (order.items || []).map((i) => `
-    <li><strong>${i.name}</strong> (Size: ${i.size || 'Standard'}, Qty: ${i.quantity}) — ₹${(i.price * i.quantity).toLocaleString('en-IN')}</li>
+    <li><strong>${escapeHtml(i.name)}</strong> (Size: ${escapeHtml(i.size || 'Standard')}, Qty: ${Number(i.quantity || 1)}) — ₹${(Number(i.price || 0) * Number(i.quantity || 1)).toLocaleString('en-IN')}</li>
   `).join('');
 
   const htmlContent = `
@@ -296,19 +330,19 @@ export async function sendOrderOwnerEmail(order, updateType = 'new') {
         <div style="font-size: 12px; font-weight: 700; color: #b76b52; letter-spacing: 1px; text-transform: uppercase;">
           Aanur Textile Workshop Order System
         </div>
-        <h2 style="margin: 8px 0 16px; color: #111;">${subject}</h2>
+        <h2 style="margin: 8px 0 16px; color: #111;">${escapeHtml(subject)}</h2>
 
         <div style="background-color: ${bannerColor}; color: #fff; padding: 10px 16px; border-radius: 6px; font-weight: 600; font-size: 14px; margin-bottom: 20px;">
-          ${statusBanner}
+          ${escapeHtml(statusBanner)}
         </div>
 
         <div style="background: #faf7f2; border: 1px solid #e6ded3; border-radius: 8px; padding: 16px; margin-bottom: 20px; font-size: 14px; line-height: 1.6;">
-          <strong>Order Reference:</strong> #${order.orderRef}<br>
-          <strong>Customer Name:</strong> ${order.firstName} ${order.lastName || ''}<br>
-          <strong>Email:</strong> ${order.email || 'N/A'}<br>
-          <strong>Phone:</strong> ${order.phone || 'N/A'}<br>
-          <strong>Delivery Address:</strong> ${order.street}, ${order.city} - ${order.postalCode}<br>
-          <strong>Payment:</strong> ${order.paymentMethod || 'Cash on Delivery'}<br>
+          <strong>Order Reference:</strong> #${safeOrderRef}<br>
+          <strong>Customer Name:</strong> ${safeFirstName} ${safeLastName}<br>
+          <strong>Email:</strong> ${safeEmail}<br>
+          <strong>Phone:</strong> ${safePhone}<br>
+          <strong>Delivery Address:</strong> ${safeStreet}, ${safeCity} - ${safePostalCode}<br>
+          <strong>Payment:</strong> ${safePaymentMethod}<br>
           <strong>Total Amount:</strong> ₹${Number(order.total || 0).toLocaleString('en-IN')}
         </div>
 

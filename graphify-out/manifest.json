@@ -9,6 +9,11 @@
     "ast_hash": "a4aa13ba9a51b6ce2c72352a939157e9",
     "semantic_hash": ""
   },
+  "X:\\New folder (2)\\skills-lock.json": {
+    "mtime": 1793640010.3544095,
+    "ast_hash": "1b2513c2e2bf8015ba4b1debcf34a39e",
+    "semantic_hash": ""
+  },
   "X:\\New folder (2)\\vercel.json": {
     "mtime": 1792523186.9024246,
     "ast_hash": "f730cd09ce2fb9826d77a67787a15039",
@@ -29,6 +34,11 @@
     "ast_hash": "b90851cf2e874f11fd29bdf2383b4924",
     "semantic_hash": ""
   },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\report-schema.json": {
+    "mtime": 1793640008.8193226,
+    "ast_hash": "e705ada366ad4025f55f943c95d9f590",
+    "semantic_hash": ""
+  },
   "X:\\New folder (2)\\.agents\\skills\\graphify\\scripts\\open-graph.ps1": {
     "mtime": 1791987585.558763,
     "ast_hash": "94e166a7e6dbf7c6ed337767910caca4",
@@ -37,6 +47,11 @@
   "X:\\New folder (2)\\.agents\\skills\\graphify\\scripts\\update-graph.ps1": {
     "mtime": 1791987576.6804447,
     "ast_hash": "b90851cf2e874f11fd29bdf2383b4924",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\report-schema.json": {
+    "mtime": 1793640008.8193226,
+    "ast_hash": "e705ada366ad4025f55f943c95d9f590",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\resend-mcp\\.mcp.json": {
@@ -145,8 +160,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\resend-mcp\\src\\lib\\safe-access.ts": {
-    "mtime": 1791922779.8269253,
-    "ast_hash": "213a07a102e3938751d9a69bb095584a",
+    "mtime": 1793641422.1532912,
+    "ast_hash": "1e611e20228bb96683c1cead2f1323ee",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\resend-mcp\\src\\lib\\url-parser.ts": {
@@ -175,8 +190,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\resend-mcp\\src\\tools\\contactImports.ts": {
-    "mtime": 1791922779.8342917,
-    "ast_hash": "3fe323cd228c85765fa7fe5b065f0ed3",
+    "mtime": 1793641464.8235185,
+    "ast_hash": "b701537d89852272765fb81a3ebaaee4",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\resend-mcp\\src\\tools\\contactProperties.ts": {
@@ -415,8 +430,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\app.js": {
-    "mtime": 1792521672.665869,
-    "ast_hash": "748cc7b092f4e83fd14df2bb392738b8",
+    "mtime": 1793641182.994378,
+    "ast_hash": "907f009fc54451ca4e1c37fb4a710fc4",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\db.js": {
@@ -425,8 +440,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\email.js": {
-    "mtime": 1792516526.0461206,
-    "ast_hash": "a640eb253bd626a753317923feb2061c",
+    "mtime": 1793641271.0580337,
+    "ast_hash": "b020f325aaf38b6f95a6e12a7ff06d1c",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\server.js": {
@@ -450,8 +465,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\AdminPage.jsx": {
-    "mtime": 1792520175.5835109,
-    "ast_hash": "3e69d2e3e09a2a09ea08ed8ea1fb21d5",
+    "mtime": 1793641315.7113366,
+    "ast_hash": "d388394679c69433e827b72176fabd0d",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\api.js": {
@@ -460,8 +475,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\App.jsx": {
-    "mtime": 1792520329.5016441,
-    "ast_hash": "be49f2c95888de623253cdc7598212cc",
+    "mtime": 1793641382.721914,
+    "ast_hash": "fcfe7b5cf552e18ec6c76096d4de38eb",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\data.js": {
@@ -524,6 +539,81 @@
     "ast_hash": "221a094a0fa3d295034590624516d568",
     "semantic_hash": ""
   },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\AI-AND-LLM.md": {
+    "mtime": 1793640008.7843032,
+    "ast_hash": "c5abfaece0f58d5d5058fa07b29791ad",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\ATTACK-CLASSES.md": {
+    "mtime": 1793640008.786533,
+    "ast_hash": "b33b760ff50ffdc0eda5d928f80fb107",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\CLIENT-SIDE.md": {
+    "mtime": 1793640008.7906358,
+    "ast_hash": "f535193f9c655e348e5b904f7f67d34e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\CLOUD-AND-DEPLOYMENT.md": {
+    "mtime": 1793640008.7916408,
+    "ast_hash": "3396934a06bfa86a84596e661f875300",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\DATA-ISOLATION-AND-LIFECYCLE.md": {
+    "mtime": 1793640008.793169,
+    "ast_hash": "33d0561cb12415d388a6449d90d2ff3f",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\DESKTOP-MOBILE-AND-LOCAL-IPC.md": {
+    "mtime": 1793640008.7962809,
+    "ast_hash": "f0d96ab77876c447d64ba1cef6f3da5e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\HUNTING.md": {
+    "mtime": 1793640008.7983568,
+    "ast_hash": "5cb64bcc2971ceb4a7f955ffd741d25f",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\MEMORY-SAFETY-AND-BINARY.md": {
+    "mtime": 1793640008.8002603,
+    "ast_hash": "8d3d5783e9710a299c2c1cbef8ca7463",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\PROTOCOLS-RPC-AND-MESSAGING.md": {
+    "mtime": 1793640008.80221,
+    "ast_hash": "5137eb203d4b236a081210bb77b21131",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\RECONNAISSANCE.md": {
+    "mtime": 1793640008.803954,
+    "ast_hash": "95ea170b99be883a9f704bfee29b9443",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\RESOURCE-EXHAUSTION-AND-AVAILABILITY.md": {
+    "mtime": 1793640008.8060474,
+    "ast_hash": "92a3e104467a5fc71a6ba34bf97828ef",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\SKILL.md": {
+    "mtime": 1793640008.8071957,
+    "ast_hash": "cec212c92a709bfffce1cbb1daca0df1",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\SUPPLY-CHAIN-AND-RELEASE.md": {
+    "mtime": 1793640008.809969,
+    "ast_hash": "ea6e73711ef3d3acc1201633a172d4b0",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\VALIDATION-AND-REPORTING.md": {
+    "mtime": 1793640008.8157375,
+    "ast_hash": "df9bbf7f5058f0f7eaba098b4ce830a2",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\security-audit\\WEB-PROTOCOL-AND-AUTH.md": {
+    "mtime": 1793640008.8172908,
+    "ast_hash": "53943d99f2a3484ce8f37de2be783f8b",
+    "semantic_hash": ""
+  },
   "X:\\New folder (2)\\.agent\\workflows\\graphify.md": {
     "mtime": 1791987685.2550378,
     "ast_hash": "cd0351c013c1dd37a3e2cb20b7275047",
@@ -557,6 +647,81 @@
   "X:\\New folder (2)\\.agents\\skills\\graphify\\references\\query_cookbook.md": {
     "mtime": 1792468608.8165152,
     "ast_hash": "221a094a0fa3d295034590624516d568",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\AI-AND-LLM.md": {
+    "mtime": 1793640008.7843032,
+    "ast_hash": "c5abfaece0f58d5d5058fa07b29791ad",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\ATTACK-CLASSES.md": {
+    "mtime": 1793640008.786533,
+    "ast_hash": "b33b760ff50ffdc0eda5d928f80fb107",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\CLIENT-SIDE.md": {
+    "mtime": 1793640008.7906358,
+    "ast_hash": "f535193f9c655e348e5b904f7f67d34e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\CLOUD-AND-DEPLOYMENT.md": {
+    "mtime": 1793640008.7916408,
+    "ast_hash": "3396934a06bfa86a84596e661f875300",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\DATA-ISOLATION-AND-LIFECYCLE.md": {
+    "mtime": 1793640008.793169,
+    "ast_hash": "33d0561cb12415d388a6449d90d2ff3f",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\DESKTOP-MOBILE-AND-LOCAL-IPC.md": {
+    "mtime": 1793640008.7962809,
+    "ast_hash": "f0d96ab77876c447d64ba1cef6f3da5e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\HUNTING.md": {
+    "mtime": 1793640008.7983568,
+    "ast_hash": "5cb64bcc2971ceb4a7f955ffd741d25f",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\MEMORY-SAFETY-AND-BINARY.md": {
+    "mtime": 1793640008.8002603,
+    "ast_hash": "8d3d5783e9710a299c2c1cbef8ca7463",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\PROTOCOLS-RPC-AND-MESSAGING.md": {
+    "mtime": 1793640008.80221,
+    "ast_hash": "5137eb203d4b236a081210bb77b21131",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\RECONNAISSANCE.md": {
+    "mtime": 1793640008.803954,
+    "ast_hash": "95ea170b99be883a9f704bfee29b9443",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\RESOURCE-EXHAUSTION-AND-AVAILABILITY.md": {
+    "mtime": 1793640008.8060474,
+    "ast_hash": "92a3e104467a5fc71a6ba34bf97828ef",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\SKILL.md": {
+    "mtime": 1793640008.8071957,
+    "ast_hash": "cec212c92a709bfffce1cbb1daca0df1",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\SUPPLY-CHAIN-AND-RELEASE.md": {
+    "mtime": 1793640008.809969,
+    "ast_hash": "ea6e73711ef3d3acc1201633a172d4b0",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\VALIDATION-AND-REPORTING.md": {
+    "mtime": 1793640008.8157375,
+    "ast_hash": "df9bbf7f5058f0f7eaba098b4ce830a2",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\security-audit\\WEB-PROTOCOL-AND-AUTH.md": {
+    "mtime": 1793640008.8172908,
+    "ast_hash": "53943d99f2a3484ce8f37de2be783f8b",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\.agents\\workflows\\graphify.md": {

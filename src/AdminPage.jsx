@@ -154,17 +154,31 @@ export default function AdminPage({
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [statusUpdating, setStatusUpdating] = useState(false);
 
+  // Helper to obtain authenticated Bearer token header
+  const getAuthHeaders = () => {
+    const token = localStorage.getItem('aanur_auth_token') || currentUser?.token;
+    return token ? { Authorization: `Bearer ${token}` } : {};
+  };
+
   // Fetch orders & stats from backend
   const fetchAdminData = async (showToast = false) => {
     setRefreshing(true);
     try {
+      const authHeaders = getAuthHeaders();
+
       // 1. Fetch Orders
-      const ordRes = await fetch(apiUrl('/api/admin/orders'));
+      const ordRes = await fetch(apiUrl('/api/admin/orders'), {
+        headers: { ...authHeaders },
+      });
       if (ordRes.ok) {
         const ordData = await ordRes.json();
         if (ordData.success && Array.isArray(ordData.orders)) {
           setOrders(ordData.orders);
         }
+      } else if (ordRes.status === 401 || ordRes.status === 403) {
+        if (setToast) setToast('Admin session expired or access unauthorized. Please re-login.');
+        const local = JSON.parse(localStorage.getItem('aanur_profile_orders') || '[]');
+        setOrders(local);
       } else {
         // Fallback to local storage if API is unreachable
         const local = JSON.parse(localStorage.getItem('aanur_profile_orders') || '[]');
@@ -172,7 +186,9 @@ export default function AdminPage({
       }
 
       // 2. Fetch Stats
-      const statRes = await fetch(apiUrl('/api/admin/stats'));
+      const statRes = await fetch(apiUrl('/api/admin/stats'), {
+        headers: { ...authHeaders },
+      });
       if (statRes.ok) {
         const statData = await statRes.json();
         if (statData.success && statData.stats) {
@@ -206,7 +222,10 @@ export default function AdminPage({
     try {
       const res = await fetch(apiUrl(`/api/admin/orders/${orderRef}/status`), {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...getAuthHeaders(),
+        },
         body: JSON.stringify({ deliveryStatus: newStatus }),
       });
       const data = await res.json();
@@ -232,6 +251,8 @@ export default function AdminPage({
   const handleAdminLogout = () => {
     try {
       localStorage.removeItem('aanur_is_logged_in');
+      localStorage.removeItem('aanur_auth_token');
+      localStorage.removeItem('aanur_profile_info');
     } catch {}
     if (setCurrentUser) setCurrentUser(null);
     if (setToast) setToast('Admin signed out safely.');

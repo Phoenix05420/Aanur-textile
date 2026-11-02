@@ -170,6 +170,22 @@ export function addContactImportTools(
       if (filePath !== undefined) {
         fileData = await readAllowedFile(filePath, allowedFileDirs);
       } else if (url !== undefined) {
+        const parsedUrl = new URL(url);
+        if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
+          throw new Error('Only HTTP and HTTPS protocols are supported for CSV URLs.');
+        }
+        const hostname = parsedUrl.hostname.toLowerCase();
+        if (
+          hostname === 'localhost' ||
+          hostname === '127.0.0.1' ||
+          hostname === '::1' ||
+          hostname.startsWith('10.') ||
+          hostname.startsWith('192.168.') ||
+          hostname.startsWith('169.254.') ||
+          /^172\.(1[6-9]|2\d|3[0-1])\./.test(hostname)
+        ) {
+          throw new Error('Access to private or local network addresses is forbidden (SSRF protection).');
+        }
         const res = await fetch(url);
         if (!res.ok) {
           throw new Error(

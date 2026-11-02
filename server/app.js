@@ -19,10 +19,34 @@ dotenv.config();
 
 export const app = express();
 
-// Core Express middleware (CORS enabled for Vercel, Railway, and localhost)
+// Secure CORS configuration: allow specific trusted domains & local development
+const allowedOrigins = [
+  process.env.APP_URL,
+  process.env.PUBLIC_URL,
+  process.env.FRONTEND_URL,
+  'http://localhost:5173',
+  'http://localhost:5000',
+  'http://localhost:3000',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:5000',
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: true,
+    origin: (origin, callback) => {
+      // Allow server-to-server or non-browser tools (no origin header)
+      if (!origin) return callback(null, true);
+      if (
+        allowedOrigins.includes(origin) ||
+        origin.endsWith('.railway.app') ||
+        origin.endsWith('.vercel.app') ||
+        origin.endsWith('.render.com') ||
+        origin.endsWith('.aanurtextile.com')
+      ) {
+        return callback(null, true);
+      }
+      return callback(new Error('Blocked by CORS policy'));
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -44,10 +68,100 @@ app.use('/api', async (req, res, next) => {
 });
 
 // =============================================================================
-// IN-MEMORY STORES (For instant OTP & local development fallback)
+// AUTHENTICATION & SECURITY HELPERS
 // =============================================================================
-const otpStore = new Map(); // email.toLowerCase() -> { otp, expiresAt, name, phone }
-const localOrdersStore = new Map(); // orderRef -> orderObject
+const SESSION_SECRET = process.env.SESSION_SECRET || 'aanur-textile-secure-secret-key-2026';
+
+export function generateAuthToken(user) {
+  const payload = Buffer.from(
+    JSON.stringify({
+      email: user.email,
+      role: user.role,
+      isAdmin: Boolean(user.isAdmin),
+      name: user.name,
+      exp: Date.now() + 7 * 24 * 60 * 60 * 1000, // 7 days expiration
+    })
+  ).toString('base64url');
+  const signature = crypto.createHmac('sha256', SESSION_SECRET).update(payload).digest('base64url');
+  return `${payload}.${signature}`;
+}
+
+export function verifyAuthToken(token) {
+  if (!token || typeof token !== 'string' || !token.includes('.')) return null;
+  const [payload, signature] = token.split('.');
+  if (!payload || !signature) return null;
+  const expectedSig = crypto.createHmac('sha256', SESSION_SECRET).update(payload).digest('base64url');
+  try {
+    if (!crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSig))) {
+      return null;
+    }
+    const data = JSON.parse(Buffer.from(payload, 'base64url').toString('utf8'));
+    if (!data.exp || Date.now() > data.exp) return null;
+    return data;
+  } catch {
+    return null;
+  }
+}
+
+export function requireAdmin(req, res, next) {
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.startsWith('Bearer ') ? authHeader.slice(7).trim() : null;
+  const user = verifyAuthToken(token);
+  const adminEmail = (process.env.STORE_ADMIN_EMAIL || process.env.VITE_STORE_ADMIN_EMAIL || '').trim().toLowerCase();
+
+  const isUserAdmin = Boolean(
+    user && (user.isAdmin || user.role === 'admin' || (adminEmail && user.email?.toLowerCase() === adminEmail))
+  );
+
+  if (!isUserAdmin) {
+    return res.status(403).json({
+      success: false,
+      error: 'Access denied. Administrator authentication required.',
+    });
+  }
+  req.user = user;
+  next();
+}
+
+// =============================================================================
+// IN-MEMORY STORES & RATE LIMITING (With TTL and capacity caps)
+// =============================================================================
+const otpStore = new Map(); // email.toLowerCase() -> { otp, expiresAt, name, phone, attempts }
+const otpRateLimit = new Map(); // key -> [timestamps]
+const localOrdersStore = new Map(); // orderRef -> orderObject (capped at 500)
+
+function checkRateLimit(key, maxRequests = 5, windowMs = 10 * 60 * 1000) {
+  const now = Date.now();
+  const timestamps = (otpRateLimit.get(key) || []).filter((t) => now - t < windowMs);
+  if (timestamps.length >= maxRequests) {
+    return false;
+  }
+  timestamps.push(now);
+  otpRateLimit.set(key, timestamps);
+  return true;
+}
+
+// Memory bounded setter for local orders (max 500 items FIFO)
+function saveLocalOrder(ref, data) {
+  if (localOrdersStore.size >= 500) {
+    const oldest = localOrdersStore.keys().next().value;
+    if (oldest) localOrdersStore.delete(oldest);
+  }
+  localOrdersStore.set(ref, data);
+}
+
+// Periodic cleanup every 2 minutes for expired OTPs and stale rate-limit trackers
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, val] of otpStore.entries()) {
+    if (now > val.expiresAt) otpStore.delete(key);
+  }
+  for (const [key, timestamps] of otpRateLimit.entries()) {
+    const fresh = timestamps.filter((t) => now - t < 15 * 60 * 1000);
+    if (fresh.length === 0) otpRateLimit.delete(key);
+    else otpRateLimit.set(key, fresh);
+  }
+}, 2 * 60 * 1000).unref();
 
 // =============================================================================
 // 1. HEALTH & STATUS CHECK (For Render, Railway & Monitoring)
@@ -101,7 +215,7 @@ app.get('/api/status', async (req, res) => {
 // =============================================================================
 
 /**
- * Send 6-Digit OTP to Gmail / Email
+ * Send 6-Digit OTP to Gmail / Email with Rate Limiting and Secure PRNG
  */
 app.post('/api/auth/send-otp', async (req, res) => {
   const { email, name, phone } = req.body || {};
@@ -111,7 +225,18 @@ app.post('/api/auth/send-otp', async (req, res) => {
   }
 
   const cleanEmail = email.trim().toLowerCase();
-  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+  // Rate limit: max 5 requests per 10 minutes per email, 10 per IP
+  const clientIp = req.ip || req.headers['x-forwarded-for'] || 'client';
+  if (!checkRateLimit(`ip:${clientIp}`, 10) || !checkRateLimit(`email:${cleanEmail}`, 5)) {
+    return res.status(429).json({
+      success: false,
+      error: 'Too many verification code requests. Please wait a few minutes before trying again.',
+    });
+  }
+
+  // Cryptographically secure 6-digit OTP
+  const otp = crypto.randomInt(100000, 1000000).toString();
   const expiresAt = Date.now() + 10 * 60 * 1000; // 10 minutes
 
   otpStore.set(cleanEmail, {
@@ -119,9 +244,10 @@ app.post('/api/auth/send-otp', async (req, res) => {
     expiresAt,
     name: name || '',
     phone: phone || '',
+    attempts: 0,
   });
 
-  console.log(`[Gmail OTP] 🔑 Verification code generated for ${cleanEmail}: ${otp}`);
+  console.log(`[Gmail OTP] 🔑 Verification code generated and dispatched to: ${cleanEmail}`);
 
   // Send real email via Resend
   let emailSent = false;
@@ -143,7 +269,7 @@ app.post('/api/auth/send-otp', async (req, res) => {
 });
 
 /**
- * Verify 6-Digit OTP & Authenticate User
+ * Verify 6-Digit OTP & Authenticate User with Attempt Lockout & Signed Token
  */
 app.post('/api/auth/verify-otp', async (req, res) => {
   const { email, otp, name, phone } = req.body || {};
@@ -171,10 +297,26 @@ app.post('/api/auth/verify-otp', async (req, res) => {
     });
   }
 
-  if (entry.otp !== cleanOtp) {
+  // Brute force protection: max 5 failed attempts
+  if ((entry.attempts || 0) >= 5) {
+    otpStore.delete(cleanEmail);
+    return res.status(429).json({
+      success: false,
+      error: 'Too many incorrect attempts. For security, this code was invalidated. Please request a new code.',
+    });
+  }
+
+  // Timing-safe comparison to prevent side-channel timing attacks
+  const expectedBuffer = Buffer.from(entry.otp.padStart(6, '0'));
+  const candidateBuffer = Buffer.from(cleanOtp.padStart(6, '0'));
+  const isMatch = expectedBuffer.length === candidateBuffer.length && crypto.timingSafeEqual(expectedBuffer, candidateBuffer);
+
+  if (!isMatch) {
+    entry.attempts = (entry.attempts || 0) + 1;
+    const remaining = 5 - entry.attempts;
     return res.status(400).json({
       success: false,
-      error: 'Invalid 6-digit verification code. Please check and try again.',
+      error: `Invalid 6-digit verification code. (${remaining} attempts remaining before lockout)`,
     });
   }
 
@@ -196,15 +338,31 @@ app.post('/api/auth/verify-otp', async (req, res) => {
     avatarBg: isAdmin ? '#8B1E0F' : '#b76b52',
   };
 
+  const token = generateAuthToken(user);
+
   return res.json({
     success: true,
     message: isAdmin
       ? 'Admin verification successful! Accessing Artisan Admin Control Center...'
       : 'Verification successful. Welcome to Aanur Textile!',
     user,
+    token,
     isAdmin,
     redirect: isAdmin ? '/admin' : '/profile',
   });
+});
+
+/**
+ * Verify Current Session / Token
+ */
+app.get('/api/auth/me', (req, res) => {
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.startsWith('Bearer ') ? authHeader.slice(7).trim() : null;
+  const user = verifyAuthToken(token);
+  if (!user) {
+    return res.status(401).json({ success: false, error: 'Not authenticated or token expired.' });
+  }
+  return res.json({ success: true, user });
 });
 
 // =============================================================================
@@ -286,44 +444,89 @@ app.get('/api/products/:id', async (req, res) => {
 // =============================================================================
 
 /**
- * Create Order with Verification Token & 30-Minute Auto-Verify Window
+ * Create Order with Server-Side Price Verification, Token & 30-Minute Auto-Verify Window
  */
 app.post('/api/orders', async (req, res) => {
   const body = req.body || {};
-  const orderRef = body.orderRef || `AT-${Math.floor(100000 + Math.random() * 900000)}`;
-  const verificationToken = crypto.randomBytes(16).toString('hex');
+  const orderRef = (typeof body.orderRef === 'string' && body.orderRef.trim()) || `AT-${crypto.randomInt(100000, 1000000)}`;
+  const verificationToken = crypto.randomBytes(24).toString('hex');
   const autoVerifyAt = new Date(Date.now() + 30 * 60 * 1000); // 30 minutes from now
 
   const rawItems = Array.isArray(body.items) ? body.items : [];
-  const formattedItems = rawItems.map((item) => ({
-    productId: item.productId || item.product?.id || item.id || 'item',
-    name: item.name || item.product?.name || 'Handcrafted Bedsheet',
-    price: Number(item.price || item.product?.price || 0),
-    quantity: Number(item.quantity || 1),
-    size: item.size || 'Standard',
-    colorIndex: Number(item.colorIndex ?? 0),
-    variantImage: item.variantImage || item.product?.image || item.image || '',
-    lineTotal: Number((item.price || item.product?.price || 0) * (item.quantity || 1)),
-  }));
+  if (rawItems.length === 0) {
+    return res.status(400).json({ success: false, error: 'Order must contain at least one product.' });
+  }
+
+  // Pre-load canonical products to prevent client-side price tampering
+  const productIds = rawItems.map((item) => String(item.productId || item.product?.id || item.id || '').trim()).filter(Boolean);
+  let dbProducts = [];
+  if (isMongoConfigured() && mongoose.connection.readyState === 1) {
+    try {
+      dbProducts = await Product.find({ id: { $in: productIds } }).lean();
+    } catch (err) {
+      console.warn('MongoDB products lookup failed, falling back to local catalog:', err.message);
+    }
+  }
+
+  // Authoritative server-side price computation
+  const formattedItems = [];
+  let computedSubtotal = 0;
+
+  for (const item of rawItems) {
+    const pid = String(item.productId || item.product?.id || item.id || '').trim();
+    const canonical = dbProducts.find((p) => p.id === pid) || fallbackProducts.find((p) => p.id === pid);
+
+    if (!canonical) {
+      console.warn(`Product ID "${pid}" not found in catalog, using fallback price check.`);
+    }
+
+    const verifiedPrice = Number(canonical ? canonical.price : (item.price || 0));
+    const verifiedQty = Math.max(1, Math.min(100, Math.floor(Number(item.quantity) || 1)));
+    const lineTotal = verifiedPrice * verifiedQty;
+    computedSubtotal += lineTotal;
+
+    formattedItems.push({
+      productId: pid || 'item',
+      name: canonical?.name || item.name || 'Handcrafted Bedsheet',
+      price: verifiedPrice,
+      quantity: verifiedQty,
+      size: typeof item.size === 'string' ? item.size : 'Standard',
+      colorIndex: Number(item.colorIndex ?? 0),
+      variantImage: typeof item.variantImage === 'string' ? item.variantImage : (canonical?.image || ''),
+      lineTotal,
+    });
+  }
+
+  // Server-side discount coupon validation
+  let computedDiscount = 0;
+  const rawCode = typeof body.couponCode === 'string' ? body.couponCode.trim().toUpperCase() : '';
+  if (rawCode === 'BESTOFFER' || rawCode === 'BESTOFFERS' || rawCode === 'SECRET15') {
+    computedDiscount = Math.round(computedSubtotal * 0.15);
+  } else if (rawCode === 'AANUR10' || rawCode === 'SECRET10') {
+    computedDiscount = Math.round(computedSubtotal * 0.10);
+  } else if (rawCode === 'OFFER50') {
+    computedDiscount = Math.min(50, computedSubtotal);
+  }
+  const computedTotal = Math.max(0, computedSubtotal - computedDiscount);
 
   const orderData = {
     orderRef,
     customer: {
-      firstName: body.firstName || '',
-      lastName: body.lastName || '',
-      email: (body.email || '').trim().toLowerCase(),
-      phone: body.phone || '',
-      street: body.street || '',
-      city: body.city || '',
-      postalCode: body.postalCode || '',
+      firstName: String(body.firstName || '').trim(),
+      lastName: String(body.lastName || '').trim(),
+      email: String(body.email || '').trim().toLowerCase(),
+      phone: String(body.phone || '').trim(),
+      street: String(body.street || '').trim(),
+      city: String(body.city || '').trim(),
+      postalCode: String(body.postalCode || '').trim(),
     },
     items: formattedItems,
-    subtotal: Number(body.subtotal || body.total || 0),
-    discount: Number(body.discount || 0),
-    couponCode: body.couponCode || '',
-    total: Number(body.total || 0),
+    subtotal: computedSubtotal,
+    discount: computedDiscount,
+    couponCode: rawCode,
+    total: computedTotal,
     deliveryStatus: 'Processing · 7-14 days',
-    paymentMethod: body.paymentMethod || 'Cash on Delivery (COD)',
+    paymentMethod: String(body.paymentMethod || 'Cash on Delivery (COD)').trim(),
     paymentStatus: 'Pending',
     isVerified: false,
     verificationToken,
@@ -332,8 +535,8 @@ app.post('/api/orders', async (req, res) => {
     createdAt: new Date(),
   };
 
-  // Save in local memory registry
-  localOrdersStore.set(orderRef, { ...orderData });
+  // Save in bounded local memory registry (max 500 items)
+  saveLocalOrder(orderRef, { ...orderData });
 
   let savedToMongo = false;
   let orderDocId = null;
@@ -352,10 +555,17 @@ app.post('/api/orders', async (req, res) => {
     }
   }
 
-  // Determine base URL for email confirm button
-  const reqHost = req.get('host') || 'localhost:5173';
-  const reqProtocol = req.protocol || 'http';
-  const baseUrl = req.get('origin') || `${reqProtocol}://${reqHost}`;
+  // Safe host resolution to prevent Host/Origin Header Poisoning
+  const configuredAppUrl = (process.env.APP_URL || process.env.PUBLIC_URL || '').trim().replace(/\/$/, '');
+  let baseUrl = configuredAppUrl;
+  if (!baseUrl) {
+    const rawHost = req.get('host') || 'localhost:5173';
+    // Validate host against regex allowlist to prevent host header injection
+    const isValidHost = /^([a-zA-Z0-9-]+\.)*(localhost(:\d+)?|127\.0\.0\.1(:\d+)?|railway\.app|vercel\.app|render\.com|aanurtextile\.com)$/i.test(rawHost);
+    const safeHost = isValidHost ? rawHost : 'localhost:5173';
+    const proto = req.secure || req.headers['x-forwarded-proto'] === 'https' ? 'https' : 'http';
+    baseUrl = `${proto}://${safeHost}`;
+  }
   const confirmUrl = `${baseUrl}/verify-order?orderRef=${encodeURIComponent(orderRef)}&token=${encodeURIComponent(verificationToken)}`;
 
   // 1. Send Customer Email with Confirm Button & 30-min notice
@@ -364,19 +574,19 @@ app.post('/api/orders', async (req, res) => {
     const custRes = await sendOrderCustomerEmail(
       {
         orderRef,
-        firstName: body.firstName,
-        lastName: body.lastName,
-        email: body.email,
-        phone: body.phone,
-        street: body.street,
-        city: body.city,
-        postalCode: body.postalCode,
-        subtotal: body.subtotal,
-        discount: body.discount,
-        couponCode: body.couponCode,
-        total: body.total,
+        firstName: orderData.customer.firstName,
+        lastName: orderData.customer.lastName,
+        email: orderData.customer.email,
+        phone: orderData.customer.phone,
+        street: orderData.customer.street,
+        city: orderData.customer.city,
+        postalCode: orderData.customer.postalCode,
+        subtotal: orderData.subtotal,
+        discount: orderData.discount,
+        couponCode: orderData.couponCode,
+        total: orderData.total,
         items: formattedItems,
-        paymentMethod: body.paymentMethod,
+        paymentMethod: orderData.paymentMethod,
       },
       confirmUrl
     );
@@ -390,16 +600,16 @@ app.post('/api/orders', async (req, res) => {
     await sendOrderOwnerEmail(
       {
         orderRef,
-        firstName: body.firstName,
-        lastName: body.lastName,
-        email: body.email,
-        phone: body.phone,
-        street: body.street,
-        city: body.city,
-        postalCode: body.postalCode,
-        total: body.total,
+        firstName: orderData.customer.firstName,
+        lastName: orderData.customer.lastName,
+        email: orderData.customer.email,
+        phone: orderData.customer.phone,
+        street: orderData.customer.street,
+        city: orderData.customer.city,
+        postalCode: orderData.customer.postalCode,
+        total: orderData.total,
         items: formattedItems,
-        paymentMethod: body.paymentMethod,
+        paymentMethod: orderData.paymentMethod,
       },
       'new'
     );
@@ -417,36 +627,39 @@ app.post('/api/orders', async (req, res) => {
     confirmUrl,
     customerEmailSent,
     autoVerifyAt,
+    subtotal: computedSubtotal,
+    discount: computedDiscount,
+    total: computedTotal,
   });
 });
 
 /**
- * Verify Order (User clicks email confirm button)
+ * Verify Order (User clicks email confirm button with valid verificationToken)
  */
 app.all('/api/orders/verify', async (req, res) => {
-  const orderRef = req.query.orderRef || req.body?.orderRef;
-  const token = req.query.token || req.body?.token;
+  const rawOrderRef = req.query.orderRef || req.body?.orderRef;
+  const rawToken = req.query.token || req.body?.token;
 
-  if (!orderRef) {
-    return res.status(400).json({ success: false, error: 'orderRef is required.' });
+  if (!rawOrderRef || typeof rawOrderRef !== 'string') {
+    return res.status(400).json({ success: false, error: 'Valid orderRef string is required.' });
   }
+  if (!rawToken || typeof rawToken !== 'string') {
+    return res.status(400).json({ success: false, error: 'Verification token is required.' });
+  }
+
+  const orderRef = rawOrderRef.trim();
+  const token = rawToken.trim();
 
   let order = localOrdersStore.get(orderRef);
   let updatedInMongo = false;
+  let mongoDoc = null;
 
   if (isMongoConfigured()) {
     try {
       await connectMongoDB();
-      const doc = await Order.findOne({ orderRef });
-      if (doc) {
-        order = doc.toObject();
-        if (!doc.isVerified) {
-          doc.isVerified = true;
-          doc.verifiedAt = new Date();
-          doc.verificationType = 'customer_confirmed';
-          await doc.save();
-          updatedInMongo = true;
-        }
+      mongoDoc = await Order.findOne({ orderRef });
+      if (mongoDoc) {
+        order = mongoDoc.toObject();
       }
     } catch (err) {
       console.warn('MongoDB order query error:', err.message);
@@ -457,12 +670,39 @@ app.all('/api/orders/verify', async (req, res) => {
     return res.status(404).json({ success: false, error: `Order #${orderRef} not found.` });
   }
 
+  // Validate verification token against expected stored token
+  const expectedToken = String(order.verificationToken || '').trim();
+  if (!expectedToken) {
+    return res.status(403).json({ success: false, error: 'Order does not have a valid verification token recorded.' });
+  }
+
+  const tokenBuffer = Buffer.from(token);
+  const expectedBuffer = Buffer.from(expectedToken);
+  const isTokenValid = tokenBuffer.length === expectedBuffer.length && crypto.timingSafeEqual(tokenBuffer, expectedBuffer);
+
+  if (!isTokenValid) {
+    return res.status(403).json({ success: false, error: 'Invalid verification token. Verification rejected.' });
+  }
+
+  // Update in MongoDB
+  if (mongoDoc && !mongoDoc.isVerified) {
+    try {
+      mongoDoc.isVerified = true;
+      mongoDoc.verifiedAt = new Date();
+      mongoDoc.verificationType = 'customer_confirmed';
+      await mongoDoc.save();
+      updatedInMongo = true;
+    } catch (err) {
+      console.warn('MongoDB save verification error:', err.message);
+    }
+  }
+
   // Update in local memory
   const wasAlreadyVerified = order.isVerified;
   order.isVerified = true;
   order.verifiedAt = new Date();
   order.verificationType = 'customer_confirmed';
-  localOrdersStore.set(orderRef, order);
+  saveLocalOrder(orderRef, order);
 
   // Send update notification to owner if freshly verified
   if (!wasAlreadyVerified) {
@@ -490,7 +730,7 @@ app.all('/api/orders/verify', async (req, res) => {
   }
 
   if (req.headers.accept && req.headers.accept.includes('text/html')) {
-    return res.redirect(`/verify-order?orderRef=${encodeURIComponent(orderRef)}&token=${encodeURIComponent(token || '')}`);
+    return res.redirect(`/verify-order?orderRef=${encodeURIComponent(orderRef)}&token=${encodeURIComponent(token)}`);
   }
 
   return res.json({
@@ -550,9 +790,9 @@ app.get('/api/orders/status/:orderRef', async (req, res) => {
 // =============================================================================
 
 /**
- * Fetch all orders for Admin Dashboard (MongoDB + In-Memory)
+ * Fetch all orders for Admin Dashboard (MongoDB + In-Memory) - Protected by requireAdmin
  */
-app.get('/api/admin/orders', async (req, res) => {
+app.get('/api/admin/orders', requireAdmin, async (req, res) => {
   try {
     let ordersList = [];
     if (isMongoConfigured() && mongoose.connection.readyState === 1) {
@@ -585,9 +825,9 @@ app.get('/api/admin/orders', async (req, res) => {
 });
 
 /**
- * Update Order Status (Processing, Shipped, Delivered, Cancelled)
+ * Update Order Status (Processing, Shipped, Delivered, Cancelled) - Protected by requireAdmin
  */
-app.patch('/api/admin/orders/:orderRef/status', async (req, res) => {
+app.patch('/api/admin/orders/:orderRef/status', requireAdmin, async (req, res) => {
   const { orderRef } = req.params;
   const { deliveryStatus, isVerified, notes } = req.body || {};
 
@@ -599,7 +839,7 @@ app.patch('/api/admin/orders/:orderRef/status', async (req, res) => {
       if (deliveryStatus) order.deliveryStatus = deliveryStatus;
       if (typeof isVerified === 'boolean') order.isVerified = isVerified;
       if (notes) order.notes = notes;
-      localOrdersStore.set(orderRef, order);
+      saveLocalOrder(orderRef, order);
       updatedOrder = order;
     }
 
@@ -630,9 +870,9 @@ app.patch('/api/admin/orders/:orderRef/status', async (req, res) => {
 });
 
 /**
- * Get Admin Overview Statistics
+ * Get Admin Overview Statistics - Protected by requireAdmin
  */
-app.get('/api/admin/stats', async (req, res) => {
+app.get('/api/admin/stats', requireAdmin, async (req, res) => {
   try {
     let ordersList = [];
     if (isMongoConfigured() && mongoose.connection.readyState === 1) {

@@ -231,9 +231,35 @@ function App() {
     }
   }, [route]);
 
+  // Validate session token with backend on mount
+  useEffect(() => {
+    const token = localStorage.getItem('aanur_auth_token');
+    if (token) {
+      fetch(apiUrl('/api/auth/me'), {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (data?.success && data.user) {
+            setCurrentUser(data.user);
+            localStorage.setItem('aanur_is_logged_in', 'true');
+            localStorage.setItem('aanur_profile_info', JSON.stringify(data.user));
+          } else {
+            localStorage.removeItem('aanur_auth_token');
+            localStorage.removeItem('aanur_is_logged_in');
+            localStorage.removeItem('aanur_profile_info');
+            setCurrentUser(null);
+          }
+        })
+        .catch(() => {});
+    }
+  }, []);
+
   const handleQuickLogout = (source = 'button') => {
     try {
       localStorage.removeItem('aanur_is_logged_in');
+      localStorage.removeItem('aanur_auth_token');
+      localStorage.removeItem('aanur_profile_info');
     } catch {}
     setCurrentUser(null);
     setToast(
@@ -254,6 +280,8 @@ function App() {
         e.preventDefault();
         try {
           localStorage.removeItem('aanur_is_logged_in');
+          localStorage.removeItem('aanur_auth_token');
+          localStorage.removeItem('aanur_profile_info');
         } catch {}
         setCurrentUser(null);
         setToast('Shortcut (Alt+L): You have been signed out.');
@@ -1765,6 +1793,10 @@ function AuthPage({
 
       if (data.success && data.user) {
         const user = data.user;
+        if (data.token) {
+          localStorage.setItem('aanur_auth_token', data.token);
+          user.token = data.token;
+        }
         localStorage.setItem('aanur_profile_info', JSON.stringify(user));
         localStorage.setItem('aanur_is_logged_in', 'true');
 
