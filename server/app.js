@@ -928,6 +928,113 @@ app.get('/api/admin/stats', requireAdmin, async (req, res) => {
 });
 
 /**
+ * Update Product Details (Price, Original Price, Badge, Stock, Name) - Protected by requireAdmin
+ */
+app.patch('/api/admin/products/:id', requireAdmin, async (req, res) => {
+  const { id } = req.params;
+  const { price, originalPrice, badge, inStock, name, description } = req.body || {};
+
+  try {
+    let updatedProduct = null;
+
+    if (isMongoConfigured() && mongoose.connection.readyState === 1) {
+      await connectMongoDB();
+      const updateData = {};
+      if (price !== undefined && !Number.isNaN(Number(price))) updateData.price = Number(price);
+      if (originalPrice !== undefined) updateData.originalPrice = originalPrice ? Number(originalPrice) : null;
+      if (badge !== undefined) updateData.badge = String(badge).trim();
+      if (typeof inStock === 'boolean') updateData.inStock = inStock;
+      if (name) updateData.name = String(name).trim();
+      if (description !== undefined) updateData.description = String(description).trim();
+
+      const doc = await Product.findOneAndUpdate(
+        { id },
+        { $set: updateData },
+        { new: true }
+      ).lean();
+
+      if (doc) {
+        updatedProduct = doc;
+      }
+    }
+
+    // Also update in-memory fallback catalog
+    const fallbackIndex = fallbackProducts.findIndex((p) => p.id === id);
+    if (fallbackIndex !== -1) {
+      if (price !== undefined && !Number.isNaN(Number(price))) fallbackProducts[fallbackIndex].price = Number(price);
+      if (originalPrice !== undefined) fallbackProducts[fallbackIndex].originalPrice = originalPrice ? Number(originalPrice) : null;
+      if (badge !== undefined) fallbackProducts[fallbackIndex].badge = String(badge).trim();
+      if (typeof inStock === 'boolean') fallbackProducts[fallbackIndex].inStock = inStock;
+      if (name) fallbackProducts[fallbackIndex].name = String(name).trim();
+      if (description !== undefined) fallbackProducts[fallbackIndex].description = String(description).trim();
+      if (!updatedProduct) {
+        updatedProduct = fallbackProducts[fallbackIndex];
+      }
+    }
+
+    if (!updatedProduct) {
+      return res.status(404).json({ success: false, error: `Product with ID "${id}" not found.` });
+    }
+
+    return res.json({
+      success: true,
+      message: `Product "${updatedProduct.name || id}" successfully updated in catalog.`,
+      product: updatedProduct,
+    });
+  } catch (err) {
+    console.error('Error updating product:', err);
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * Create New Product in Catalog - Protected by requireAdmin
+ */
+app.post('/api/admin/products', requireAdmin, async (req, res) => {
+  const { name, price, originalPrice, category, badge, image, material, sizes, description } = req.body || {};
+
+  if (!name || price === undefined || Number.isNaN(Number(price))) {
+    return res.status(400).json({ success: false, error: 'Product name and valid price are required.' });
+  }
+
+  const generatedId = `p${Date.now().toString().slice(-6)}`;
+  const newProduct = {
+    id: generatedId,
+    name: String(name).trim(),
+    price: Number(price),
+    originalPrice: originalPrice ? Number(originalPrice) : null,
+    category: category ? String(category).trim() : 'Bedsheets',
+    badge: badge ? String(badge).trim() : 'Artisan Weave',
+    image: image ? String(image).trim() : '/products/p01/variant-1.jpeg',
+    images: [image ? String(image).trim() : '/products/p01/variant-1.jpeg'],
+    material: material ? String(material).trim() : '100% Pure Long-Staple Combed Cotton',
+    sizes: Array.isArray(sizes) && sizes.length > 0 ? sizes : ['Single (60" x 90")', 'Double (90" x 100")', 'Queen (90" x 108")', 'King (108" x 108")'],
+    colors: ['#233240', '#4a3b32', '#782323', '#2d3b2d'],
+    colorNames: ['Indigo Night', 'Bark Earth', 'Madder Rust', 'Olive Fern'],
+    description: description ? String(description).trim() : 'Handcrafted pure cotton bedsheet woven on traditional looms in Nathakadaiyur, Tamil Nadu.',
+    inStock: true,
+  };
+
+  try {
+    if (isMongoConfigured()) {
+      await connectMongoDB();
+      const doc = new Product(newProduct);
+      await doc.save();
+    }
+    fallbackProducts.push(newProduct);
+
+    return res.status(201).json({
+      success: true,
+      message: `Product "${newProduct.name}" created successfully.`,
+      product: newProduct,
+    });
+  } catch (err) {
+    console.error('Error creating product:', err);
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
  * Automation: Check and Auto-Verify Orders after 30 Minutes
  */
 async function autoVerifyPendingOrders() {

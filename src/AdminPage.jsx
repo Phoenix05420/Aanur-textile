@@ -154,6 +154,60 @@ export default function AdminPage({
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [statusUpdating, setStatusUpdating] = useState(false);
 
+  // Product Catalog Management State
+  const [editingProduct, setEditingProduct] = useState(null);
+  const [editPrice, setEditPrice] = useState('');
+  const [editOriginalPrice, setEditOriginalPrice] = useState('');
+  const [editBadge, setEditBadge] = useState('');
+  const [editInStock, setEditInStock] = useState(true);
+  const [savingProduct, setSavingProduct] = useState(false);
+  const [productSearch, setProductSearch] = useState('');
+
+  const openEditProduct = (prod) => {
+    setEditingProduct(prod);
+    setEditPrice(String(prod.price || ''));
+    setEditOriginalPrice(prod.originalPrice ? String(prod.originalPrice) : '');
+    setEditBadge(prod.badge || prod.tag || '');
+    setEditInStock(prod.inStock !== false);
+  };
+
+  const handleSaveProduct = async (e) => {
+    e.preventDefault();
+    if (!editingProduct) return;
+    setSavingProduct(true);
+    try {
+      const res = await fetch(apiUrl(`/api/admin/products/${editingProduct.id}`), {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          ...getAuthHeaders(),
+        },
+        body: JSON.stringify({
+          price: Number(editPrice),
+          originalPrice: editOriginalPrice ? Number(editOriginalPrice) : null,
+          badge: editBadge,
+          inStock: editInStock,
+        }),
+      });
+      const data = await res.json();
+      setSavingProduct(false);
+      if (data.success && data.product) {
+        if (setProducts) {
+          setProducts((prev) =>
+            prev.map((p) => (p.id === editingProduct.id ? { ...p, ...data.product } : p))
+          );
+        }
+        if (setToast) setToast(`Product "${data.product.name}" updated in MongoDB Atlas!`);
+        setEditingProduct(null);
+      } else {
+        if (setToast) setToast(data.error || 'Failed to update product');
+      }
+    } catch (err) {
+      setSavingProduct(false);
+      if (setToast) setToast('Network error updating product');
+    }
+  };
+
   // Helper to obtain authenticated Bearer token header
   const getAuthHeaders = () => {
     const token = localStorage.getItem('aanur_auth_token') || currentUser?.token;
@@ -729,27 +783,55 @@ export default function AdminPage({
             <div className="admin-subhead">
               <div>
                 <h2>Store Catalog & Inventory ({products.length})</h2>
-                <p>Manage product pricing, stock availability, and thread count details.</p>
+                <p>Manage product pricing, discounts, stock availability, and loom assignments.</p>
               </div>
-              <button
-                type="button"
-                className="button button-dark"
-                onClick={() => {
-                  if (setToast) setToast('Catalog is actively synchronized with MongoDB Atlas.');
-                }}
-              >
-                <span>Synchronized with Database</span>
-              </button>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+                <input
+                  type="text"
+                  placeholder="Filter products..."
+                  value={productSearch}
+                  onChange={(e) => setProductSearch(e.target.value)}
+                  style={{
+                    padding: '8px 14px',
+                    borderRadius: '8px',
+                    border: '1px solid #d1ccc1',
+                    background: '#fff',
+                    fontSize: '13.5px',
+                    color: '#292721',
+                    minWidth: '180px',
+                  }}
+                />
+                <button
+                  type="button"
+                  className="button button-dark"
+                  onClick={() => {
+                    fetch(apiUrl('/api/products'))
+                      .then((r) => r.json())
+                      .then((d) => {
+                        if (d?.products && setProducts) setProducts(d.products);
+                        if (setToast) setToast('Catalog actively re-synced from MongoDB Atlas.');
+                      })
+                      .catch(() => {
+                        if (setToast) setToast('Catalog synchronized.');
+                      });
+                  }}
+                >
+                  <AdminIcon name="refresh" size={14} />
+                  <span>Sync Catalog</span>
+                </button>
+              </div>
             </div>
 
             <div className="admin-products-grid">
-              {products.map((prod) => (
-                <article key={prod.id} className="admin-product-card">
+              {products
+                .filter((p) => !productSearch || p.name.toLowerCase().includes(productSearch.toLowerCase()) || (p.badge || '').toLowerCase().includes(productSearch.toLowerCase()))
+                .map((prod) => (
+                <article key={prod.id} className="admin-product-card" style={{ display: 'flex', flexDirection: 'column' }}>
                   <div className="admin-product-img">
                     <img src={prod.image} alt={prod.name} />
-                    <span className="prod-badge-mini">{prod.tag || 'Handloom'}</span>
+                    <span className="prod-badge-mini">{prod.badge || prod.tag || 'Handloom'}</span>
                   </div>
-                  <div className="admin-product-content">
+                  <div className="admin-product-content" style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                     <h4>{prod.name}</h4>
                     <p className="prod-meta-line">
                       <span>Thread Count: <strong>{prod.threadCount || 300} TC</strong></span>
@@ -759,10 +841,19 @@ export default function AdminPage({
                       <strong>{money(prod.price)}</strong>
                       {prod.originalPrice > prod.price && <del>{money(prod.originalPrice)}</del>}
                     </div>
-                    <div className="prod-stock-indicator">
-                      <span className="stock-dot in-stock" />
-                      <span>In Stock & Ready on the Loom</span>
+                    <div className="prod-stock-indicator" style={{ marginBottom: '12px' }}>
+                      <span className={`stock-dot ${prod.inStock !== false ? 'in-stock' : 'out-of-stock'}`} />
+                      <span>{prod.inStock !== false ? 'In Stock & Ready on the Loom' : 'Temporarily Out of Stock'}</span>
                     </div>
+                    <button
+                      type="button"
+                      className="button button-dark button-sm"
+                      style={{ marginTop: 'auto', width: '100%', fontSize: '0.84rem', padding: '0.55rem', borderRadius: '6px' }}
+                      onClick={() => openEditProduct(prod)}
+                    >
+                      <AdminIcon name="dashboard" size={13} style={{ marginRight: '6px' }} />
+                      Edit Pricing & Stock
+                    </button>
                   </div>
                 </article>
               ))}
@@ -931,6 +1022,109 @@ export default function AdminPage({
                 Close Inspector
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* =================================================================== */}
+      {/* MODAL: PRODUCT PRICING & INVENTORY EDITOR                           */}
+      {/* =================================================================== */}
+      {editingProduct && (
+        <div className="admin-modal-backdrop" onClick={() => setEditingProduct(null)}>
+          <div className="admin-modal" style={{ maxWidth: '520px' }} onClick={(e) => e.stopPropagation()}>
+            <div className="admin-modal-header">
+              <div>
+                <span className="modal-eyebrow">CATALOG MANAGEMENT</span>
+                <h3>Edit {editingProduct.name}</h3>
+              </div>
+              <button
+                type="button"
+                className="admin-modal-close"
+                onClick={() => setEditingProduct(null)}
+              >
+                <AdminIcon name="close" size={18} />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveProduct} className="admin-modal-body" style={{ padding: '24px' }}>
+              <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginBottom: '20px', background: '#faf8f5', padding: '12px', borderRadius: '8px', border: '1px solid #eee5da' }}>
+                <img
+                  src={editingProduct.image}
+                  alt={editingProduct.name}
+                  style={{ width: '64px', height: '64px', borderRadius: '8px', objectFit: 'cover' }}
+                />
+                <div>
+                  <strong style={{ fontSize: '15px' }}>{editingProduct.name}</strong>
+                  <div style={{ fontSize: '12.5px', color: '#666', marginTop: '2px' }}>ID: {editingProduct.id} · {editingProduct.category || 'Bedsheets'}</div>
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '16px' }}>
+                <label style={{ display: 'flex', flexDirection: 'column', fontSize: '13px', fontWeight: 600, color: '#333' }}>
+                  Current Price (₹)
+                  <input
+                    type="number"
+                    required
+                    min="1"
+                    value={editPrice}
+                    onChange={(e) => setEditPrice(e.target.value)}
+                    style={{ padding: '9px 12px', marginTop: '6px', borderRadius: '6px', border: '1px solid #ccc', fontSize: '14px' }}
+                  />
+                </label>
+                <label style={{ display: 'flex', flexDirection: 'column', fontSize: '13px', fontWeight: 600, color: '#333' }}>
+                  Original / Strikethrough Price (₹)
+                  <input
+                    type="number"
+                    placeholder="Optional (e.g. 799)"
+                    value={editOriginalPrice}
+                    onChange={(e) => setEditOriginalPrice(e.target.value)}
+                    style={{ padding: '9px 12px', marginTop: '6px', borderRadius: '6px', border: '1px solid #ccc', fontSize: '14px' }}
+                  />
+                </label>
+              </div>
+
+              <div style={{ marginBottom: '16px' }}>
+                <label style={{ display: 'flex', flexDirection: 'column', fontSize: '13px', fontWeight: 600, color: '#333' }}>
+                  Badge Tag Label
+                  <input
+                    type="text"
+                    placeholder="e.g. Artisan Check, Bestseller, 25% Off"
+                    value={editBadge}
+                    onChange={(e) => setEditBadge(e.target.value)}
+                    style={{ padding: '9px 12px', marginTop: '6px', borderRadius: '6px', border: '1px solid #ccc', fontSize: '14px' }}
+                  />
+                </label>
+              </div>
+
+              <div style={{ marginBottom: '22px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', fontSize: '14px', fontWeight: 500, color: '#333' }}>
+                  <input
+                    type="checkbox"
+                    checked={editInStock}
+                    onChange={(e) => setEditInStock(e.target.checked)}
+                    style={{ width: '18px', height: '18px' }}
+                  />
+                  <span>Product is in stock & available for loom weaving</span>
+                </label>
+              </div>
+
+              <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', borderTop: '1px solid #eee', paddingTop: '16px' }}>
+                <button
+                  type="button"
+                  className="button button-outline"
+                  onClick={() => setEditingProduct(null)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="button button-dark"
+                  disabled={savingProduct}
+                >
+                  {savingProduct ? 'Saving...' : 'Save to MongoDB Atlas'}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

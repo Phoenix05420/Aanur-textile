@@ -430,8 +430,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\app.js": {
-    "mtime": 1793643202.7685425,
-    "ast_hash": "ebb1c68044e649340906242d109c0414",
+    "mtime": 1793644363.674956,
+    "ast_hash": "c3bd4c5e9c0cb629e3a434ae5440f20a",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\db.js": {
@@ -465,8 +465,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\AdminPage.jsx": {
-    "mtime": 1793641315.7113366,
-    "ast_hash": "d388394679c69433e827b72176fabd0d",
+    "mtime": 1793644560.1522803,
+    "ast_hash": "6e04820263a68ded76371b22c4a90adf",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\api.js": {
@@ -475,8 +475,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\App.jsx": {
-    "mtime": 1793641382.721914,
-    "ast_hash": "fcfe7b5cf552e18ec6c76096d4de38eb",
+    "mtime": 1793644441.9754927,
+    "ast_hash": "8bd1709a7ff5b3e1bd33e3f7d86a18f8",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\data.js": {
@@ -495,8 +495,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\index.html": {
-    "mtime": 1791918957.684825,
-    "ast_hash": "f72773eda3817aa4bd2656d86cdbcdd8",
+    "mtime": 1793644822.47581,
+    "ast_hash": "12a11c7ef8d5a203335e4add222de965",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\README.md": {
@@ -505,8 +505,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\render.yaml": {
-    "mtime": 1792520906.812415,
-    "ast_hash": "4d31373fdec1426ffaaa10f3a8678c33",
+    "mtime": 1793644675.9597974,
+    "ast_hash": "4f9dd90c3a5adf0fedbab3f4d8c61493",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\.agent\\rules\\graphify.md": {
@@ -727,6 +727,61 @@
   "X:\\New folder (2)\\.agents\\workflows\\graphify.md": {
     "mtime": 1791987685.2550378,
     "ast_hash": "cd0351c013c1dd37a3e2cb20b7275047",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.playwright-mcp\\page-2026-11-02T18-25-18-540Z.yml": {
+    "mtime": 1793643918.547691,
+    "ast_hash": "056053b63ae2bbad48d15c3c60f21a0a",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.playwright-mcp\\page-2026-11-02T18-25-46-040Z.yml": {
+    "mtime": 1793643946.0463908,
+    "ast_hash": "c6fa74b411429f10f79fbabaca2fd3e1",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.playwright-mcp\\page-2026-11-02T18-26-04-789Z.yml": {
+    "mtime": 1793643964.7966242,
+    "ast_hash": "06c14e0addd0750e404fbd036e54f757",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.playwright-mcp\\page-2026-11-02T18-26-26-434Z.yml": {
+    "mtime": 1793643986.440489,
+    "ast_hash": "8f3fee1dad568a1d3216020c88be8baa",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.playwright-mcp\\page-2026-11-02T18-26-58-806Z.yml": {
+    "mtime": 1793644018.809847,
+    "ast_hash": "d39022b065313ec9313aa8d983ebc4c8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.playwright-mcp\\page-2026-11-02T18-27-10-184Z.yml": {
+    "mtime": 1793644030.1880107,
+    "ast_hash": "0ffd26aec10b63c8f6a0d65ce9296dee",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.playwright-mcp\\page-2026-11-02T18-27-23-012Z.yml": {
+    "mtime": 1793644043.0167162,
+    "ast_hash": "a263ebd7710d987d9858b9921321a007",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.playwright-mcp\\page-2026-11-02T18-27-35-033Z.yml": {
+    "mtime": 1793644055.0363426,
+    "ast_hash": "eaa43f722af62696f251bb359139665d",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.playwright-mcp\\page-2026-11-02T18-27-59-934Z.yml": {
+    "mtime": 1793644079.9383347,
+    "ast_hash": "720911cd3f644b217784a18cf1b25e1b",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.playwright-mcp\\page-2026-11-02T18-28-10-672Z.yml": {
+    "mtime": 1793644090.675879,
+    "ast_hash": "ed3ed734c0ad080ffb3681ccebfd48c5",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.playwright-mcp\\page-2026-11-02T18-28-28-901Z.yml": {
+    "mtime": 1793644108.9045198,
+    "ast_hash": "60989e6c14ee431a6d6aa16adde7716c",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\.vibe-wise\\profile.md": {
@@ -977,6 +1032,11 @@
   "X:\\New folder (2)\\image\\product 6\\WhatsApp Image 2026-10-14 at 21.30.57.jpeg": {
     "mtime": 1792422189.9792511,
     "ast_hash": "bb6158bc45a1e6d4630c48316cb14ca2",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\public\\favicon.svg": {
+    "mtime": 1793644691.401071,
+    "ast_hash": "19d03c82b6722c611259e785f670c7bb",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\public\\products\\autumn-check-throw.jpg": {

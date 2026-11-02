@@ -45,3 +45,6 @@ Thumbs.db
 
 # Graphify cache
 graphify-out/cache/
+
+# Playwright temporary snapshots & traces
+.playwright-mcp/

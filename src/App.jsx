@@ -313,7 +313,7 @@ function App() {
     }
     if (path.startsWith('/product/') && product) return <ProductDetail product={product} onAdd={addToCart} onWish={toggleWishlist} wished={wishlist.includes(product.id)} navigate={navigate} allProducts={products} />;
     if (path === '/cart') return <CartPage cart={cart} setCart={setCart} onAdd={addToCart} navigate={navigate} products={products} coupon={coupon} setCoupon={setCoupon} setToast={setToast} />;
-    if (path === '/checkout') return <Checkout cart={cart} setCart={setCart} navigate={navigate} products={products} coupon={coupon} setCoupon={setCoupon} />;
+    if (path === '/checkout') return <Checkout cart={cart} setCart={setCart} navigate={navigate} products={products} coupon={coupon} setCoupon={setCoupon} currentUser={currentUser} setToast={setToast} />;
     if (path === '/wishlist') return <WishlistPage wishlist={wishlist} onWish={toggleWishlist} onAdd={addToCart} navigate={navigate} products={products} />;
     if (path === '/verify-order') return <VerifyOrderPage navigate={navigate} setToast={setToast} />;
     if (path === '/admin') {
@@ -1464,9 +1464,23 @@ function CartPage({ cart, setCart, onAdd, navigate, products = initialProducts, 
   </div>;
 }
 
-function Checkout({ cart, setCart, navigate, products = initialProducts, coupon, setCoupon }) {
+function Checkout({ cart, setCart, navigate, products = initialProducts, coupon, setCoupon, currentUser, setToast }) {
   const [step, setStep] = useState(1);
-  const [customer, setCustomer] = useState({});
+  const [customer, setCustomer] = useState(() => {
+    if (!currentUser) return {};
+    const nameParts = (currentUser.name || '').trim().split(' ');
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+    return {
+      firstName,
+      lastName,
+      email: currentUser.email || '',
+      phone: currentUser.phone || '',
+      city: currentUser.city || 'Tiruppur',
+      street: currentUser.street || '',
+      postalCode: currentUser.postalCode || '',
+    };
+  });
   const [orderRef, setOrderRef] = useState('');
   const [placedItems, setPlacedItems] = useState([]);
   const [placedTotal, setPlacedTotal] = useState(0);
@@ -1487,7 +1501,8 @@ function Checkout({ cart, setCart, navigate, products = initialProducts, coupon,
   const advance = (event) => {
     event.preventDefault();
     if (step === 1) {
-      setCustomer(Object.fromEntries(new FormData(event.currentTarget)));
+      const formData = Object.fromEntries(new FormData(event.currentTarget));
+      setCustomer((prev) => ({ ...prev, ...formData }));
       setStep(2);
     } else if (step === 2) {
       setStep(3);

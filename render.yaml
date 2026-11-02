@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: aanur-textile-backend
+    name: aanur-textile
     runtime: node
     plan: free
     buildCommand: npm install
@@ -16,4 +16,10 @@ services:
       - key: RESEND_FROM_EMAIL
         value: Aanur Textile <onboarding@resend.dev>
       - key: STORE_ADMIN_EMAIL
+        sync: false
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_APP_PASSWORD
+        sync: false
+      - key: APP_URL
         sync: false
