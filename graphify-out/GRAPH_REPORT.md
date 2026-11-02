@@ -1,16 +1,16 @@
 # Graph Report - New folder (2)  (2026-11-02)
 
 ## Corpus Check
-- 150 files · ~653,379 words
+- 150 files · ~653,582 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1174 nodes · 1356 edges · 93 communities (82 shown, 11 thin omitted)
+- 1178 nodes · 1366 edges · 88 communities (77 shown, 11 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2cb3712b`
+- Built from commit: `53ea8f85`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -75,14 +75,11 @@
 - [[_COMMUNITY_Community 62|Community 62]]
 - [[_COMMUNITY_Community 63|Community 63]]
 - [[_COMMUNITY_Community 64|Community 64]]
-- [[_COMMUNITY_Community 65|Community 65]]
 - [[_COMMUNITY_Community 66|Community 66]]
-- [[_COMMUNITY_Community 67|Community 67]]
 - [[_COMMUNITY_Community 68|Community 68]]
 - [[_COMMUNITY_Community 69|Community 69]]
 - [[_COMMUNITY_Community 70|Community 70]]
 - [[_COMMUNITY_Community 71|Community 71]]
-- [[_COMMUNITY_Community 72|Community 72]]
 - [[_COMMUNITY_Community 73|Community 73]]
 - [[_COMMUNITY_Community 74|Community 74]]
 - [[_COMMUNITY_Community 75|Community 75]]
@@ -99,16 +96,14 @@
 - [[_COMMUNITY_Community 86|Community 86]]
 - [[_COMMUNITY_Community 87|Community 87]]
 - [[_COMMUNITY_Community 88|Community 88]]
-- [[_COMMUNITY_Community 89|Community 89]]
 - [[_COMMUNITY_Community 90|Community 90]]
 - [[_COMMUNITY_Community 91|Community 91]]
-- [[_COMMUNITY_Community 92|Community 92]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `createMcpServer()` - 22 edges
 2. `ResendEditorClient` - 16 edges
-3. `scripts` - 13 edges
-4. `dependencies` - 13 edges
+3. `dependencies` - 14 edges
+4. `scripts` - 13 edges
 5. `compilerOptions` - 13 edges
 6. `suspicious` - 11 edges
 7. `Stdio Transport (Default)` - 11 edges
@@ -128,7 +123,7 @@
 - `checkMongo()` --calls--> `connectMongoDB()`  [EXTRACTED]
   scripts/check-mongo.js → server/db.js
 
-## Communities (93 total, 11 thin omitted)
+## Communities (88 total, 11 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.06
@@ -143,8 +138,8 @@ Cohesion: 0.1
 Nodes (28): CLI_STRING_OPTIONS, HELP_TEXT, printHelp(), stderr, getUnknownArgs(), KNOWN_ARG_KEYS, resolveConfigOrExit(), parseAllowedFileDirs() (+20 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.08
-Nodes (28): BranchingStep, hasBranches(), LinearStep, sdkResponseToWorkflow(), { connections }, original, roundTripped, steps (+20 more)
+Cohesion: 0.07
+Nodes (32): allowedDashboardHosts(), DEFAULT_DASHBOARD_HOSTS, extractIdFromUrl(), SUPPORTED_RESOURCES, BranchingStep, hasBranches(), LinearStep, sdkResponseToWorkflow() (+24 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.04
@@ -160,7 +155,7 @@ Nodes (24): addWebhookTools(), CREATE_WEBHOOK_TOOL, GET_WEBHOOK_EVENT_TOOL, GET_
 
 ### Community 7 - "Community 7"
 Cohesion: 0.06
-Nodes (33): dependencies, axios, cors, dotenv, express, gsap, @gsap/react, mongoose (+25 more)
+Nodes (34): dependencies, axios, cors, dotenv, express, gsap, @gsap/react, mongoose (+26 more)
 
 ### Community 8 - "Community 8"
 Cohesion: 0.15
@@ -187,8 +182,8 @@ Cohesion: 0.22
 Nodes (8): Build and Deployment, Components, Data and Trust Boundaries, Main Flow, Project Map, Purpose, Requirements, Unknowns
 
 ### Community 15 - "Community 15"
-Cohesion: 0.1
-Nodes (21): Claude Code, Claude Desktop, code:bash (npx add-mcp resend-mcp --name resend --env "RESEND_API_KEY=r), code:bash (claude mcp add resend -e RESEND_API_KEY=re_xxxxxxxxx -- npx ), code:bash (codex mcp add resend \), code:json ({), code:json ({), code:json ({) (+13 more)
+Cohesion: 0.06
+Nodes (33): Claude Code, Claude Code, Claude Desktop, code:bash (npx add-mcp resend-mcp --name resend --env "RESEND_API_KEY=r), code:bash (claude mcp add resend -e RESEND_API_KEY=re_xxxxxxxxx -- npx ), code:bash (codex mcp add resend \), code:json ({), code:json ({) (+25 more)
 
 ### Community 16 - "Community 16"
 Cohesion: 0.14
@@ -239,8 +234,8 @@ Cohesion: 0.13
 Nodes (17): 1. Directory Layout & Module Roles, 2. Component Hierarchy in `src/App.jsx`, 3. Server API Routes (`server/api.js`), 3. Server API Routes (`server/app.js`), 4. MongoDB Atlas Mongoose Schemas (`server/models/`), 4. Neon Database Schema (`scripts/init-db.js`), Aanur Textile — Codebase Architecture Reference, code:text (aanur-textile/) (+9 more)
 
 ### Community 28 - "Community 28"
-Cohesion: 0.12
-Nodes (16): Claude, Claude Code, code:block1 (https://mcp.resend.com/mcp), code:bash (claude mcp add --transport http resend https://mcp.resend.co), code:block3 (https://mcp.resend.com/mcp), code:json ({), code:bash (codex mcp add resend --url https://mcp.resend.com/mcp), code:json ({) (+8 more)
+Cohesion: 0.05
+Nodes (38): Authenticating with an API key, Claude, Claude Code, code:block1 (https://mcp.resend.com/mcp), code:json ({), code:bash (claude mcp add --transport http resend https://mcp.resend.co), code:block27 (git clone https://github.com/resend/resend-mcp.git), code:bash (claude mcp add resend -e RESEND_API_KEY=re_xxxxxxxxx -- node) (+30 more)
 
 ### Community 29 - "Community 29"
 Cohesion: 0.14
@@ -287,16 +282,16 @@ Cohesion: 0.2
 Nodes (10): code:bash (node -v), code:bash (git clone https://github.com/Phoenix05420/Aanur-textile.git), code:bash (cp .env.example .env), code:ini (# ==========================================================), code:bash (# 1. Check MongoDB Atlas connection & collection status), ⚙️ Installation & Local Setup, Step 1: Verify Prerequisites, Step 2: Clone Repository & Enter Directory (+2 more)
 
 ### Community 53 - "Community 53"
-Cohesion: 0.2
-Nodes (10): Claude Code, code:bash (npx -y resend-mcp --http --port 3000), code:bash (claude mcp add resend --transport http http://127.0.0.1:3000), code:json ({), code:bash (MCP_PORT=3000 npx -y resend-mcp --http), code:ts (import { runHttp } from 'resend-mcp/http';), code:ts (const server = await runHttp({}, 3000, { host: '0.0.0.0' });), Cursor (+2 more)
+Cohesion: 0.29
+Nodes (4): getSql(), handleApiRequest(), isConfigured(), app
 
 ### Community 54 - "Community 54"
 Cohesion: 0.27
 Nodes (3): ServerOptions, HttpTransportOptions, sessions
 
 ### Community 55 - "Community 55"
-Cohesion: 0.28
-Nodes (13): run(), sampleOrder, getSql(), handleApiRequest(), isConfigured(), escapeHtml(), getResendClient(), isResendConfigured() (+5 more)
+Cohesion: 0.3
+Nodes (13): run(), sampleOrder, escapeHtml(), getGmailTransporter(), getResendClient(), isEmailConfigured(), isGmailConfigured(), isResendConfigured() (+5 more)
 
 ### Community 57 - "Community 57"
 Cohesion: 0.15
@@ -327,20 +322,12 @@ Cohesion: 0.25
 Nodes (8): ⚙️ Administrative Dashboard & Architecture Telemetry, 🤖 AI-Ready Tooling & Architecture Graph, 🧵 Catalog & Fabric Variant Filtering, 🚀 Key Features, 📦 Order Management & Logistics Pipeline, 🛒 Shopping Bag & Dynamic Coupon Engine, 📨 Transactional Notifications & Communication, 🔐 User Authentication & Account Management
 
 ### Community 64 - "Community 64"
-Cohesion: 0.15
-Nodes (7): app, __dirname, distDir, __filename, indexPath, publicDir, rootDir
-
-### Community 65 - "Community 65"
-Cohesion: 0.47
-Nodes (4): allowedDashboardHosts(), DEFAULT_DASHBOARD_HOSTS, extractIdFromUrl(), SUPPORTED_RESOURCES
+Cohesion: 0.29
+Nodes (6): __dirname, distDir, __filename, indexPath, publicDir, rootDir
 
 ### Community 66 - "Community 66"
 Cohesion: 0.33
 Nodes (6): code:bash (# Compile optimized React assets to /dist), code:bash (npm run dev), Option A: Unified Vite Dev Server (Recommended), Option B: Standalone Production Server, Option C: Windows One-Click Quick Launch, Step 6: Launch the Development Server
-
-### Community 67 - "Community 67"
-Cohesion: 0.2
-Nodes (10): code:block27 (git clone https://github.com/resend/resend-mcp.git), code:bash (claude mcp add resend -e RESEND_API_KEY=re_xxxxxxxxx -- node), code:bash (claude mcp add resend --transport http http://127.0.0.1:3000), code:json ({), code:json ({), code:bash (pnpm tsc --watch), code:bash (mkdir -p /tmp/mcp-test), code:json (// /tmp/mcp-test/.mcp.json) (+2 more)
 
 ### Community 68 - "Community 68"
 Cohesion: 0.2
@@ -357,10 +344,6 @@ Nodes (12): Candidate-verifier prompt, code:text (You did not write this candida
 ### Community 71 - "Community 71"
 Cohesion: 0.22
 Nodes (8): build, buildCommand, builder, deploy, restartPolicyMaxRetries, restartPolicyType, startCommand, $schema
-
-### Community 72 - "Community 72"
-Cohesion: 0.29
-Nodes (7): code:bash (export RESEND_API_KEY=re_your_key_here), code:bash (pnpm inspector), code:bash (node dist/index.js --http --port 3000), code:bash (pnpm inspector), Testing with MCP Inspector, Using HTTP Transport, Using Stdio Transport
 
 ### Community 73 - "Community 73"
 Cohesion: 0.17
@@ -422,10 +405,6 @@ Nodes (7): computedHash, skillPath, source, sourceType, skills, security-audit, 
 Cohesion: 0.47
 Nodes (4): $comment, items, oneOf, type
 
-### Community 89 - "Community 89"
-Cohesion: 0.4
-Nodes (4): Local MCP Server, MCP Server Tools, Options, Resend MCP Server
-
 ### Community 90 - "Community 90"
 Cohesion: 0.4
 Nodes (5): checkRateLimit(), generateAuthToken(), now, requireAdmin(), verifyAuthToken()
@@ -434,12 +413,8 @@ Nodes (5): checkRateLimit(), generateAuthToken(), now, requireAdmin(), verifyAut
 Cohesion: 0.67
 Nodes (3): code:bash (npm install), code:bash (cd resend-mcp && npm install && npm run build && cd ..), Step 3: Install Node Dependencies
 
-### Community 92 - "Community 92"
-Cohesion: 0.67
-Nodes (3): Authenticating with an API key, code:json ({), code:bash (claude mcp add --transport http resend https://mcp.resend.co)
-
 ## Knowledge Gaps
-- **678 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+673 more)
+- **679 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+674 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -447,15 +422,15 @@ Nodes (3): Authenticating with an API key, code:json ({), code:bash (claude mcp 
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `createMcpServer()` connect `Community 8` to `Community 33`, `Community 3`, `Community 68`, `Community 5`, `Community 6`, `Community 9`, `Community 75`, `Community 12`, `Community 13`, `Community 16`, `Community 19`, `Community 20`, `Community 21`, `Community 54`, `Community 26`, `Community 59`?**
-  _High betweenness centrality (0.123) - this node is a cross-community bridge._
+  _High betweenness centrality (0.118) - this node is a cross-community bridge._
 - **Why does `addSuppressionTools()` connect `Community 9` to `Community 8`?**
   _High betweenness centrality (0.025) - this node is a cross-community bridge._
-- **Why does `addEmailTools()` connect `Community 5` to `Community 8`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+- **Why does `addWebhookTools()` connect `Community 6` to `Community 8`?**
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **Are the 18 inferred relationships involving `createMcpServer()` (e.g. with `addEditorTools()` and `addApiKeyTools()`) actually correct?**
   _`createMcpServer()` has 18 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _678 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _679 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.06 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**

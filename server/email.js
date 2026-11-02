@@ -1,4 +1,5 @@
 import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import { store } from '../src/data.js';
 
@@ -8,12 +9,29 @@ const apiKey = process.env.RESEND_API_KEY;
 const fromEmail = process.env.RESEND_FROM_EMAIL || 'Aanur Textile <onboarding@resend.dev>';
 const adminEmail = process.env.STORE_ADMIN_EMAIL;
 
+const gmailUser = process.env.GMAIL_USER;
+const gmailPass = process.env.GMAIL_APP_PASSWORD;
+
+export function isGmailConfigured() {
+  return Boolean(
+    gmailUser &&
+    gmailPass &&
+    gmailUser.includes('@') &&
+    gmailPass.trim().length >= 8 &&
+    !gmailPass.includes('your-16-char-app-password')
+  );
+}
+
 export function isResendConfigured() {
   return Boolean(
     apiKey &&
     apiKey.trim().startsWith('re_') &&
     !apiKey.includes('YOUR_API_KEY')
   );
+}
+
+export function isEmailConfigured() {
+  return isGmailConfigured() || isResendConfigured();
 }
 
 /**
@@ -29,25 +47,63 @@ export function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
+let cachedGmailTransporter = null;
+function getGmailTransporter() {
+  if (!isGmailConfigured()) return null;
+  if (!cachedGmailTransporter) {
+    cachedGmailTransporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: gmailUser.trim(),
+        pass: gmailPass.replace(/\s+/g, '').trim(),
+      },
+    });
+  }
+  return cachedGmailTransporter;
+}
+
 function getResendClient() {
   if (!isResendConfigured()) return null;
   return new Resend(apiKey);
 }
 
 /**
- * Helper to safely send email with Resend, falling back to registered testing email
- * if running under Resend Free tier restrictions.
+ * Universal email dispatcher:
+ * 1. Prioritizes Gmail SMTP (Nodemailer) if configured in .env -> Delivers directly to ANY recipient worldwide!
+ * 2. Falls back to Resend API (with sandbox recipient fallback if running unverified domain).
  */
 async function sendSafeEmail({ to, subject, html }) {
-  const resend = getResendClient();
-  if (!resend) {
-    console.log('[Resend] ⚠️ RESEND_API_KEY is not configured in .env.');
-    return { success: false, reason: 'RESEND_API_KEY not configured' };
-  }
-
   const recipients = Array.isArray(to) ? to.filter(Boolean) : [to].filter(Boolean);
   if (recipients.length === 0) {
     return { success: false, reason: 'No recipients provided' };
+  }
+
+  // 1. Gmail SMTP (Nodemailer) - Production real-world delivery to ANY email address
+  if (isGmailConfigured()) {
+    try {
+      const transporter = getGmailTransporter();
+      const senderAddress = `"Aanur Textile" <${gmailUser.trim()}>`;
+
+      const info = await transporter.sendMail({
+        from: senderAddress,
+        to: recipients.join(', '),
+        subject,
+        html,
+      });
+
+      console.log(`[Gmail SMTP] ✅ Email delivered to ${recipients.join(', ')}! MessageID: ${info.messageId}`);
+      return { success: true, id: info.messageId, provider: 'gmail' };
+    } catch (err) {
+      console.error('[Gmail SMTP Exception]:', err.message);
+      // If Gmail fails, fall through to try Resend
+    }
+  }
+
+  // 2. Resend API
+  const resend = getResendClient();
+  if (!resend) {
+    console.log('[Email] ⚠️ Neither GMAIL_APP_PASSWORD nor RESEND_API_KEY is configured in .env.');
+    return { success: false, reason: 'No email service configured' };
   }
 
   try {
@@ -75,14 +131,14 @@ async function sendSafeEmail({ to, subject, html }) {
 
         if (fallback.data?.id) {
           console.log('[Resend] ✅ Delivered via fallback! ID:', fallback.data.id);
-          return { success: true, id: fallback.data.id, deliveredTo: targetEmail };
+          return { success: true, id: fallback.data.id, deliveredTo: targetEmail, provider: 'resend_sandbox' };
         }
       }
       return { success: false, error: result.error.message };
     }
 
     console.log('[Resend] ✅ Email sent! ID:', result.data?.id);
-    return { success: true, id: result.data?.id };
+    return { success: true, id: result.data?.id, provider: 'resend' };
   } catch (err) {
     console.error('[Resend Exception]:', err.message);
     return { success: false, error: err.message };

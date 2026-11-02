@@ -13,6 +13,7 @@ import {
   sendOrderCustomerEmail,
   sendOrderOwnerEmail,
   isResendConfigured,
+  isGmailConfigured,
 } from './email.js';
 
 dotenv.config();
@@ -182,6 +183,8 @@ app.get('/api/status', async (req, res) => {
       stack: 'MERN',
       message: 'MONGODB_URI not configured in .env. Using local catalog fallback.',
       resendConfigured: isResendConfigured(),
+      gmailConfigured: isGmailConfigured(),
+      emailProvider: isGmailConfigured() ? 'gmail' : (isResendConfigured() ? 'resend' : 'none'),
     });
   }
 
@@ -204,6 +207,8 @@ app.get('/api/status', async (req, res) => {
         enquiries: enquiriesCount,
       },
       resendConfigured: isResendConfigured(),
+      gmailConfigured: isGmailConfigured(),
+      emailProvider: isGmailConfigured() ? 'gmail' : (isResendConfigured() ? 'resend' : 'none'),
     });
   } catch (err) {
     return res.status(500).json({ error: err.message, configured: false, stack: 'MERN' });
