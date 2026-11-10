@@ -48,3 +48,9 @@ graphify-out/cache/
 
 # Playwright temporary snapshots & traces
 .playwright-mcp/
+
+# Temporary test files & previews
+test*.pdf
+test*.html
+test_*.pdf
+scripts/*_previews/

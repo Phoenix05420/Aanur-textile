@@ -1,132 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { apiUrl } from './api.js';
-
-// Format INR currency
-const money = (val) =>
-  new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    maximumFractionDigits: 0,
-  }).format(val || 0);
-
-function AdminIcon({ name, size = 18, ...props }) {
-  const paths = {
-    dashboard: (
-      <>
-        <rect x="3" y="3" width="7" height="9" rx="1" />
-        <rect x="14" y="3" width="7" height="5" rx="1" />
-        <rect x="14" y="12" width="7" height="9" rx="1" />
-        <rect x="3" y="16" width="7" height="5" rx="1" />
-      </>
-    ),
-    box: (
-      <>
-        <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-        <path d="m3.3 7 8.7 5 8.7-5" />
-        <path d="M12 12v10" />
-      </>
-    ),
-    tag: (
-      <>
-        <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
-        <path d="M7 7h.01" />
-      </>
-    ),
-    mail: (
-      <>
-        <rect x="3" y="5" width="18" height="14" rx="2" />
-        <path d="m4 7 8 6 8-6" />
-      </>
-    ),
-    refresh: (
-      <>
-        <polyline points="23 4 23 10 17 10" />
-        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
-      </>
-    ),
-    search: (
-      <>
-        <circle cx="11" cy="11" r="7" />
-        <path d="m20 20-4-4" />
-      </>
-    ),
-    check: <path d="m5 12 4 4L19 6" />,
-    close: (
-      <>
-        <path d="m6 6 12 12" />
-        <path d="M18 6 6 18" />
-      </>
-    ),
-    arrow: (
-      <>
-        <path d="M4 12h15" />
-        <path d="m13 5 7 7-7 7" />
-      </>
-    ),
-    external: (
-      <>
-        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-        <polyline points="15 3 21 3 21 9" />
-        <line x1="10" y1="14" x2="21" y2="3" />
-      </>
-    ),
-    shield: (
-      <>
-        <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z" />
-        <path d="m9 12 2 2 4-4" />
-      </>
-    ),
-    truck: (
-      <>
-        <path d="M3 6h11v11H3z" />
-        <path d="M14 10h4l3 3v4h-7" />
-        <circle cx="7.5" cy="18" r="1.5" />
-        <circle cx="17.5" cy="18" r="1.5" />
-      </>
-    ),
-    user: (
-      <>
-        <circle cx="12" cy="8" r="3.5" />
-        <path d="M5 20a7 7 0 0 1 14 0" />
-      </>
-    ),
-    logout: (
-      <>
-        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-        <polyline points="16 17 21 12 16 7" />
-        <line x1="21" y1="12" x2="9" y2="12" />
-      </>
-    ),
-    copy: (
-      <>
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-      </>
-    ),
-    phone: (
-      <>
-        <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z" />
-      </>
-    ),
-  };
-
-  return (
-    <svg
-      aria-hidden="true"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      {paths[name] || paths.dashboard}
-    </svg>
-  );
-}
+import { money } from './utils/format.js';
+import { authStorage } from './utils/storage.js';
+import { Icon } from './components/common/Icon.jsx';
 
 export default function AdminPage({
   currentUser,
@@ -231,12 +107,8 @@ export default function AdminPage({
         }
       } else if (ordRes.status === 401 || ordRes.status === 403) {
         if (setToast) setToast('Admin session expired or access unauthorized. Please re-login.');
-        const local = JSON.parse(localStorage.getItem('aanur_profile_orders') || '[]');
-        setOrders(local);
       } else {
-        // Fallback to local storage if API is unreachable
-        const local = JSON.parse(localStorage.getItem('aanur_profile_orders') || '[]');
-        setOrders(local);
+        if (setToast) setToast('Could not retrieve orders from server.');
       }
 
       // 2. Fetch Stats
@@ -253,9 +125,7 @@ export default function AdminPage({
         setToast('Admin records synchronized with server.');
       }
     } catch (err) {
-      console.warn('Admin fetch error, reading local orders:', err);
-      const local = JSON.parse(localStorage.getItem('aanur_profile_orders') || '[]');
-      setOrders(local);
+      console.warn('Admin fetch error:', err);
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -303,11 +173,7 @@ export default function AdminPage({
 
   // Sign out admin
   const handleAdminLogout = () => {
-    try {
-      localStorage.removeItem('aanur_is_logged_in');
-      localStorage.removeItem('aanur_auth_token');
-      localStorage.removeItem('aanur_profile_info');
-    } catch {}
+    authStorage.clearAuth();
     if (setCurrentUser) setCurrentUser(null);
     if (setToast) setToast('Admin signed out safely.');
     navigate('/login');
@@ -354,7 +220,7 @@ export default function AdminPage({
       <header className="admin-topbar">
         <div className="admin-topbar-brand">
           <span className="admin-shield-icon">
-            <AdminIcon name="shield" size={19} />
+            <Icon name="shield" size={19} />
           </span>
           <div>
             <h1>Aanur Textile <span>Artisan Control Center</span></h1>
@@ -364,7 +230,7 @@ export default function AdminPage({
 
         <div className="admin-topbar-actions">
           <span className="admin-user-tag" title={`Logged in as ${currentUser?.email}`}>
-            <AdminIcon name="user" size={14} />
+            <Icon name="user" size={14} />
             <strong>{currentUser?.email || 'Admin'}</strong>
           </span>
 
@@ -375,7 +241,7 @@ export default function AdminPage({
             disabled={refreshing}
             title="Refresh Orders & Stats"
           >
-            <AdminIcon name="refresh" size={15} className={refreshing ? 'admin-spin' : ''} />
+            <Icon name="refresh" size={15} className={refreshing ? 'admin-spin' : ''} />
             <span>{refreshing ? 'Syncing...' : 'Sync Data'}</span>
           </button>
 
@@ -385,7 +251,7 @@ export default function AdminPage({
             onClick={() => navigate('/shop')}
             title="View live storefront"
           >
-            <AdminIcon name="external" size={14} />
+            <Icon name="external" size={14} />
             <span>View Storefront</span>
           </button>
 
@@ -395,7 +261,7 @@ export default function AdminPage({
             onClick={handleAdminLogout}
             title="Sign out of Admin Dashboard"
           >
-            <AdminIcon name="logout" size={15} />
+            <Icon name="logout" size={15} />
             <span>Sign Out</span>
           </button>
         </div>
@@ -410,7 +276,7 @@ export default function AdminPage({
             className={`admin-nav-tab ${activeTab === 'orders' ? 'is-active' : ''}`}
             onClick={() => setActiveTab('orders')}
           >
-            <AdminIcon name="box" size={16} />
+            <Icon name="box" size={16} />
             <span>Live Orders</span>
             <span className="admin-tab-count">{orders.length}</span>
           </button>
@@ -420,7 +286,7 @@ export default function AdminPage({
             className={`admin-nav-tab ${activeTab === 'overview' ? 'is-active' : ''}`}
             onClick={() => setActiveTab('overview')}
           >
-            <AdminIcon name="dashboard" size={16} />
+            <Icon name="dashboard" size={16} />
             <span>Workshop Metrics</span>
           </button>
 
@@ -429,7 +295,7 @@ export default function AdminPage({
             className={`admin-nav-tab ${activeTab === 'products' ? 'is-active' : ''}`}
             onClick={() => setActiveTab('products')}
           >
-            <AdminIcon name="tag" size={16} />
+            <Icon name="tag" size={16} />
             <span>Catalog & Inventory</span>
             <span className="admin-tab-count">{products.length}</span>
           </button>
@@ -439,7 +305,7 @@ export default function AdminPage({
             className={`admin-nav-tab ${activeTab === 'resend' ? 'is-active' : ''}`}
             onClick={() => setActiveTab('resend')}
           >
-            <AdminIcon name="mail" size={16} />
+            <Icon name="mail" size={16} />
             <span>Resend & Automation</span>
             <span className="admin-tab-status-dot" />
           </button>
@@ -453,7 +319,7 @@ export default function AdminPage({
             {/* Filter and Search Bar */}
             <div className="admin-orders-controls">
               <div className="admin-search-wrap">
-                <AdminIcon name="search" size={16} />
+                <Icon name="search" size={16} />
                 <input
                   type="text"
                   placeholder="Search by Order #, Customer Name, Email, Phone, or City..."
@@ -462,7 +328,7 @@ export default function AdminPage({
                 />
                 {searchQuery && (
                   <button type="button" className="admin-clear-search" onClick={() => setSearchQuery('')}>
-                    <AdminIcon name="close" size={14} />
+                    <Icon name="close" size={14} />
                   </button>
                 )}
               </div>
@@ -496,7 +362,7 @@ export default function AdminPage({
               </div>
             ) : filteredOrders.length === 0 ? (
               <div className="admin-empty-pane">
-                <AdminIcon name="box" size={40} />
+                <Icon name="box" size={40} />
                 <h3>No Orders Found</h3>
                 <p>
                   {searchQuery || statusFilter !== 'all'
@@ -550,7 +416,7 @@ export default function AdminPage({
                               title="Copy Order Ref"
                               onClick={() => copyText(ord.orderRef, 'Order Ref')}
                             >
-                              <AdminIcon name="copy" size={12} />
+                              <Icon name="copy" size={12} />
                             </button>
                           </td>
 
@@ -577,7 +443,7 @@ export default function AdminPage({
                               </a>
                             </div>
                             <div className="cell-sub-phone">
-                              <AdminIcon name="phone" size={11} />
+                              <Icon name="phone" size={11} />
                               <a href={`tel:${ord.customer?.phone}`}>{ord.customer?.phone}</a>
                             </div>
                           </td>
@@ -614,11 +480,11 @@ export default function AdminPage({
                           <td className="cell-verify">
                             {isCustomerConfirmed ? (
                               <span className="verify-pill pill-confirmed" title="Customer clicked Confirm in email">
-                                <AdminIcon name="check" size={12} /> Confirmed by Email
+                                <Icon name="check" size={12} /> Confirmed by Email
                               </span>
                             ) : isAutoVerified ? (
                               <span className="verify-pill pill-autoverified" title="Auto-verified after 30 minutes">
-                                <AdminIcon name="check" size={12} /> Auto-Verified (30m)
+                                <Icon name="check" size={12} /> Auto-Verified (30m)
                               </span>
                             ) : (
                               <span className="verify-pill pill-pending" title="Awaiting 30-min window or customer confirmation">
@@ -683,7 +549,7 @@ export default function AdminPage({
 
               <div className="kpi-card">
                 <span className="kpi-icon-wrap" style={{ background: '#fef3ec', color: '#b76b52' }}>
-                  <AdminIcon name="box" size={20} />
+                  <Icon name="box" size={20} />
                 </span>
                 <div className="kpi-info">
                   <span className="kpi-label">Total Orders Placed</span>
@@ -694,7 +560,7 @@ export default function AdminPage({
 
               <div className="kpi-card">
                 <span className="kpi-icon-wrap" style={{ background: '#edf4fb', color: '#1976d2' }}>
-                  <AdminIcon name="check" size={20} />
+                  <Icon name="check" size={20} />
                 </span>
                 <div className="kpi-info">
                   <span className="kpi-label">Verified & Confirmed</span>
@@ -707,7 +573,7 @@ export default function AdminPage({
 
               <div className="kpi-card">
                 <span className="kpi-icon-wrap" style={{ background: '#fdf0ed', color: '#8B1E0F' }}>
-                  <AdminIcon name="tag" size={20} />
+                  <Icon name="tag" size={20} />
                 </span>
                 <div className="kpi-info">
                   <span className="kpi-label">Catalog Products</span>
@@ -816,7 +682,7 @@ export default function AdminPage({
                       });
                   }}
                 >
-                  <AdminIcon name="refresh" size={14} />
+                  <Icon name="refresh" size={14} />
                   <span>Sync Catalog</span>
                 </button>
               </div>
@@ -851,7 +717,7 @@ export default function AdminPage({
                       style={{ marginTop: 'auto', width: '100%', fontSize: '0.84rem', padding: '0.55rem', borderRadius: '6px' }}
                       onClick={() => openEditProduct(prod)}
                     >
-                      <AdminIcon name="dashboard" size={13} style={{ marginRight: '6px' }} />
+                      <Icon name="dashboard" size={13} style={{ marginRight: '6px' }} />
                       Edit Pricing & Stock
                     </button>
                   </div>
@@ -928,7 +794,7 @@ export default function AdminPage({
                 className="admin-modal-close"
                 onClick={() => setSelectedOrder(null)}
               >
-                <AdminIcon name="close" size={18} />
+                <Icon name="close" size={18} />
               </button>
             </div>
 
@@ -1042,7 +908,7 @@ export default function AdminPage({
                 className="admin-modal-close"
                 onClick={() => setEditingProduct(null)}
               >
-                <AdminIcon name="close" size={18} />
+                <Icon name="close" size={18} />
               </button>
             </div>
 

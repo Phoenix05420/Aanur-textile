@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\skills-lock.json": {
-    "mtime": 1793640010.3544095,
-    "ast_hash": "1b2513c2e2bf8015ba4b1debcf34a39e",
+    "mtime": 1793705247.9652386,
+    "ast_hash": "3a4517cd039d46596908279fb26adad3",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\vercel.json": {
@@ -34,9 +34,99 @@
     "ast_hash": "b90851cf2e874f11fd29bdf2383b4924",
     "semantic_hash": ""
   },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\scripts\\command-metadata.json": {
+    "mtime": 1793689666.764247,
+    "ast_hash": "25890108c53a3cbc0cb35fe19974fbf6",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\scripts\\impeccable": {
+    "mtime": 1793689666.7785995,
+    "ast_hash": "a2403d4f1953c6f3ad1746dfc4125d67",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\scripts\\live-browser-dom.js": {
+    "mtime": 1793689666.7806187,
+    "ast_hash": "b4388522022e65dc3c1da80468ae4be8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\scripts\\live-browser-ignores.js": {
+    "mtime": 1793689666.7816205,
+    "ast_hash": "4dd211f0e313ef2e68ecb9cebb5139fa",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\scripts\\live-browser-session.js": {
+    "mtime": 1793689666.7836156,
+    "ast_hash": "04f86d2abf096aef2422b69ddf9f9df7",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\scripts\\live-browser.js": {
+    "mtime": 1793689666.7901309,
+    "ast_hash": "9c11ddef50d3f2108680414cd602f755",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\scripts\\modern-screenshot.umd.js": {
+    "mtime": 1793689666.792842,
+    "ast_hash": "c6afaf6ebceb162206f6a2e5b0ed653c",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\scripts\\data\\font-index-failures.json": {
+    "mtime": 1793689666.7649415,
+    "ast_hash": "5b4fd9d1631c390b9c5883d951b03983",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\scripts\\data\\font-index.json": {
+    "mtime": 1793689666.7757273,
+    "ast_hash": "4a4426c85ec12df1d9a487a39d656ff4",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\pdf\\scripts\\check_bounding_boxes.py": {
+    "mtime": 1793686851.2205822,
+    "ast_hash": "9ab55fc4cd2082641fdebda3866371ac",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\pdf\\scripts\\check_fillable_fields.py": {
+    "mtime": 1793686851.2217326,
+    "ast_hash": "28e26c214bee178c166cbfcc1cae017a",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\pdf\\scripts\\convert_pdf_to_images.py": {
+    "mtime": 1793686851.222896,
+    "ast_hash": "3291b3cb048d3cbb081aeea0a4f82e70",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\pdf\\scripts\\create_validation_image.py": {
+    "mtime": 1793686851.2240179,
+    "ast_hash": "7c0fae6c2839e189e7f47b9e266d305e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\pdf\\scripts\\extract_form_field_info.py": {
+    "mtime": 1793686851.225178,
+    "ast_hash": "285308f8690e16404562d2fdea8cf5e9",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\pdf\\scripts\\extract_form_structure.py": {
+    "mtime": 1793686851.2263033,
+    "ast_hash": "5b1297993e80415376ee17a72ba5c573",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\pdf\\scripts\\fill_fillable_fields.py": {
+    "mtime": 1793686851.2268832,
+    "ast_hash": "88e38e501f0b4ed7b8476883aaf28879",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\pdf\\scripts\\fill_pdf_form_with_annotations.py": {
+    "mtime": 1793686851.2280128,
+    "ast_hash": "55e4b1777a927ecf556a554e6ed1d69c",
+    "semantic_hash": ""
+  },
   "X:\\New folder (2)\\.agent\\skills\\security-audit\\report-schema.json": {
     "mtime": 1793640008.8193226,
     "ast_hash": "e705ada366ad4025f55f943c95d9f590",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\user-story\\scripts\\user-story-template.py": {
+    "mtime": 1793705246.671714,
+    "ast_hash": "46fed3c74cda61102b73741b2137d7fd",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\.agents\\skills\\graphify\\scripts\\open-graph.ps1": {
@@ -49,9 +139,99 @@
     "ast_hash": "b90851cf2e874f11fd29bdf2383b4924",
     "semantic_hash": ""
   },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\scripts\\command-metadata.json": {
+    "mtime": 1793689666.764247,
+    "ast_hash": "25890108c53a3cbc0cb35fe19974fbf6",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\scripts\\impeccable": {
+    "mtime": 1793689666.7785995,
+    "ast_hash": "a2403d4f1953c6f3ad1746dfc4125d67",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\scripts\\live-browser-dom.js": {
+    "mtime": 1793689666.7806187,
+    "ast_hash": "b4388522022e65dc3c1da80468ae4be8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\scripts\\live-browser-ignores.js": {
+    "mtime": 1793689666.7816205,
+    "ast_hash": "4dd211f0e313ef2e68ecb9cebb5139fa",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\scripts\\live-browser-session.js": {
+    "mtime": 1793689666.7836156,
+    "ast_hash": "04f86d2abf096aef2422b69ddf9f9df7",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\scripts\\live-browser.js": {
+    "mtime": 1793689666.7901309,
+    "ast_hash": "9c11ddef50d3f2108680414cd602f755",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\scripts\\modern-screenshot.umd.js": {
+    "mtime": 1793689666.792842,
+    "ast_hash": "c6afaf6ebceb162206f6a2e5b0ed653c",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\scripts\\data\\font-index-failures.json": {
+    "mtime": 1793689666.7649415,
+    "ast_hash": "5b4fd9d1631c390b9c5883d951b03983",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\scripts\\data\\font-index.json": {
+    "mtime": 1793689666.7757273,
+    "ast_hash": "4a4426c85ec12df1d9a487a39d656ff4",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\pdf\\scripts\\check_bounding_boxes.py": {
+    "mtime": 1793686851.2205822,
+    "ast_hash": "9ab55fc4cd2082641fdebda3866371ac",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\pdf\\scripts\\check_fillable_fields.py": {
+    "mtime": 1793686851.2217326,
+    "ast_hash": "28e26c214bee178c166cbfcc1cae017a",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\pdf\\scripts\\convert_pdf_to_images.py": {
+    "mtime": 1793686851.222896,
+    "ast_hash": "3291b3cb048d3cbb081aeea0a4f82e70",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\pdf\\scripts\\create_validation_image.py": {
+    "mtime": 1793686851.2240179,
+    "ast_hash": "7c0fae6c2839e189e7f47b9e266d305e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\pdf\\scripts\\extract_form_field_info.py": {
+    "mtime": 1793686851.225178,
+    "ast_hash": "285308f8690e16404562d2fdea8cf5e9",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\pdf\\scripts\\extract_form_structure.py": {
+    "mtime": 1793686851.2263033,
+    "ast_hash": "5b1297993e80415376ee17a72ba5c573",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\pdf\\scripts\\fill_fillable_fields.py": {
+    "mtime": 1793686851.2268832,
+    "ast_hash": "88e38e501f0b4ed7b8476883aaf28879",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\pdf\\scripts\\fill_pdf_form_with_annotations.py": {
+    "mtime": 1793686851.2280128,
+    "ast_hash": "55e4b1777a927ecf556a554e6ed1d69c",
+    "semantic_hash": ""
+  },
   "X:\\New folder (2)\\.agents\\skills\\security-audit\\report-schema.json": {
     "mtime": 1793640008.8193226,
     "ast_hash": "e705ada366ad4025f55f943c95d9f590",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\user-story\\scripts\\user-story-template.py": {
+    "mtime": 1793705246.671714,
+    "ast_hash": "46fed3c74cda61102b73741b2137d7fd",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\api\\index.js": {
@@ -414,9 +594,24 @@
     "ast_hash": "1911c09ff87038bceb163261e76f44a3",
     "semantic_hash": ""
   },
+  "X:\\New folder (2)\\scripts\\generate-usability-report-pdf.mjs": {
+    "mtime": 1793708392.460125,
+    "ast_hash": "fbd66bdbe7bfc1f27ca55ca78c59b657",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\generate-user-stories-pdf.mjs": {
+    "mtime": 1793707225.4839442,
+    "ast_hash": "7e28b6c28d2cbe8761d8daa2e50fbca3",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\generate-ux-architecture-pdf.mjs": {
+    "mtime": 1793707248.509051,
+    "ast_hash": "dd918d8087cec4c6a88ec31ac9ed49ea",
+    "semantic_hash": ""
+  },
   "X:\\New folder (2)\\scripts\\seed-mongo.js": {
-    "mtime": 1792424623.4490354,
-    "ast_hash": "122172519f55e7e3146cb27f4a6b3f5b",
+    "mtime": 1794327626.722682,
+    "ast_hash": "7552d788b78bceee362be6c55deced7f",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\scripts\\test-api.js": {
@@ -429,14 +624,19 @@
     "ast_hash": "34b7a643e0c58677fd545155e2cfc477",
     "semantic_hash": ""
   },
-  "X:\\New folder (2)\\server\\api.js": {
-    "mtime": 1792423824.2658348,
-    "ast_hash": "a261a508e7fe13a82abee936ba8f97be",
+  "X:\\New folder (2)\\scripts\\test_mermaid.mjs": {
+    "mtime": 1793691779.1080978,
+    "ast_hash": "a39f9038833bcf35816143fbe85e7ad9",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\test_pages.mjs": {
+    "mtime": 1793707020.12968,
+    "ast_hash": "59c6987afc4b2a081b6c376e77e2efcc",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\app.js": {
-    "mtime": 1793644363.674956,
-    "ast_hash": "c3bd4c5e9c0cb629e3a434ae5440f20a",
+    "mtime": 1794328200.4048638,
+    "ast_hash": "a07639a860f16d8054bbd97b90168f56",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\db.js": {
@@ -445,13 +645,18 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\email.js": {
-    "mtime": 1793643165.0191526,
-    "ast_hash": "87ef882ceee7cd23b805d1879b048f8c",
+    "mtime": 1794327620.5326717,
+    "ast_hash": "0cf3a4139e718ac4ea54569b934b4279",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\server.js": {
     "mtime": 1792424551.1963096,
     "ast_hash": "033c10c91c28024be79dc3943e8a7886",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\server\\middleware\\auth.js": {
+    "mtime": 1794327692.4359288,
+    "ast_hash": "9ee26e58db07c2728b4eddd876b971b2",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\server\\models\\Enquiry.js": {
@@ -469,9 +674,69 @@
     "ast_hash": "0538a98e348a20cae1599d7d40bfa430",
     "semantic_hash": ""
   },
+  "X:\\New folder (2)\\server\\repositories\\enquiryRepository.js": {
+    "mtime": 1794325994.7907708,
+    "ast_hash": "7be8a787f96e7f2d2ff32d86d490ecf9",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\server\\repositories\\orderRepository.js": {
+    "mtime": 1794325987.5423498,
+    "ast_hash": "424fbb6a5ab60c5f97d51f5a183e38a1",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\server\\repositories\\productRepository.js": {
+    "mtime": 1794327616.108029,
+    "ast_hash": "cdf5665791bb413c237f82f5465a7e85",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\server\\routes\\admin.js": {
+    "mtime": 1794326135.411495,
+    "ast_hash": "af17b4788d815e6c0e8baded0312dc37",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\server\\routes\\auth.js": {
+    "mtime": 1794327710.11368,
+    "ast_hash": "f00ede2bd72bf4368b6bae99483618b3",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\server\\routes\\enquiries.js": {
+    "mtime": 1794326077.811792,
+    "ast_hash": "73f2ed07cbf429387b9b9b0233b53e84",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\server\\routes\\health.js": {
+    "mtime": 1794326003.5912113,
+    "ast_hash": "257a952ecbba0779996548e89f7d8439",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\server\\routes\\orders.js": {
+    "mtime": 1794327642.4285553,
+    "ast_hash": "585b6988092878492d739c8d2dd175e9",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\server\\routes\\products.js": {
+    "mtime": 1794326031.573189,
+    "ast_hash": "96a2e0cfc3fb2d2849778fa7c212f3c3",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\server\\services\\automation.js": {
+    "mtime": 1794326086.9446483,
+    "ast_hash": "0f4e57671be2475a18fef891dac456c0",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\shared\\catalog.js": {
+    "mtime": 1792516168.215914,
+    "ast_hash": "aea3503e10a2fd1f79e482013b48c56a",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\shared\\coupons.js": {
+    "mtime": 1794327603.0585752,
+    "ast_hash": "d57289036c2653ffdaed77d9d6f6cb30",
+    "semantic_hash": ""
+  },
   "X:\\New folder (2)\\src\\AdminPage.jsx": {
-    "mtime": 1793644560.1522803,
-    "ast_hash": "6e04820263a68ded76371b22c4a90adf",
+    "mtime": 1794327825.909039,
+    "ast_hash": "7fad54396c076170a124c3503e040ba8",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\api.js": {
@@ -480,13 +745,13 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\App.jsx": {
-    "mtime": 1793644441.9754927,
-    "ast_hash": "8bd1709a7ff5b3e1bd33e3f7d86a18f8",
+    "mtime": 1794328117.8618624,
+    "ast_hash": "6454ca154ddd6751e455b976944541b5",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\data.js": {
-    "mtime": 1792516168.215914,
-    "ast_hash": "aea3503e10a2fd1f79e482013b48c56a",
+    "mtime": 1794327596.4822028,
+    "ast_hash": "1d5934ea7ef64ce1c2bdbd77ae58ab54",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\main.jsx": {
@@ -495,8 +760,123 @@
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\src\\ProfilePage.jsx": {
-    "mtime": 1792518097.6349607,
-    "ast_hash": "0b3573079de6de9d38ee5f3f9eeaaf3f",
+    "mtime": 1794327961.4863474,
+    "ast_hash": "c371a40cb016e263e9f0bb608d7387ac",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\components\\Footer.jsx": {
+    "mtime": 1794326445.7811422,
+    "ast_hash": "7197789332b3a1d99a1de092e84b2e64",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\components\\ProductCard.jsx": {
+    "mtime": 1794328033.0779786,
+    "ast_hash": "5068c68a237cce4d3124081ffe692825",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\components\\ProductGrid.jsx": {
+    "mtime": 1794326403.282526,
+    "ast_hash": "2700258c4d08a3b6b2938db5366e4ec5",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\components\\QuickView.jsx": {
+    "mtime": 1794328052.019593,
+    "ast_hash": "e9fcdee0c1ff015aa36074800034d480",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\components\\SectionTitle.jsx": {
+    "mtime": 1794326375.3248477,
+    "ast_hash": "fbd2e5c806f5f1d160239ac3466272f3",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\components\\common\\Icon.jsx": {
+    "mtime": 1794325930.3473942,
+    "ast_hash": "ad618ff5f230bf6cf6335ff2a1d6d9c1",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\AboutPage.jsx": {
+    "mtime": 1794326460.424675,
+    "ast_hash": "b310d77a2b1748dd5fefa8026c84caee",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\AuthPage.jsx": {
+    "mtime": 1794327736.142052,
+    "ast_hash": "9286bf3cb2b3565d4c0e97e360ec5637",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\BestOffersPage.jsx": {
+    "mtime": 1794326533.0697074,
+    "ast_hash": "084a92e2924b03292a78c2c2cafa35ea",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\CartPage.jsx": {
+    "mtime": 1794328096.562784,
+    "ast_hash": "9c6f84041e2caf238d85fb024e291941",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\Catalog.jsx": {
+    "mtime": 1794326541.730851,
+    "ast_hash": "787f7b83a5b9749f9a0cdd895661e390",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\Checkout.jsx": {
+    "mtime": 1794327762.8946362,
+    "ast_hash": "1f525280cc382dbeafb1d8d3e1a79372",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\ContactPage.jsx": {
+    "mtime": 1794327768.5645933,
+    "ast_hash": "2c10f7a59a81c2bb86c5d491f9f7aba3",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\FaqPage.jsx": {
+    "mtime": 1794326483.2255423,
+    "ast_hash": "986c18716980088181e8b1c849735eef",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\Home.jsx": {
+    "mtime": 1794326515.0278122,
+    "ast_hash": "e6973c5d2908c0f3cfbca358c4f47bfb",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\NotFound.jsx": {
+    "mtime": 1794326489.0491714,
+    "ast_hash": "94639ebd69934459cfc1f7f94e62068d",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\ProductDetail.jsx": {
+    "mtime": 1794328066.7906759,
+    "ast_hash": "06c7f64244bf690e1c04ded6e18e8251",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\VerifyOrderPage.jsx": {
+    "mtime": 1794326673.3202941,
+    "ast_hash": "3e5898082dcfd0861d7ec826a9ab4309",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\pages\\WishlistPage.jsx": {
+    "mtime": 1794326555.255572,
+    "ast_hash": "d738312974f827ccae93634d539c418f",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\utils\\coupons.js": {
+    "mtime": 1794327607.3028555,
+    "ast_hash": "1a6ccf0fefbe7541e1bb605193c2e2a2",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\utils\\format.js": {
+    "mtime": 1794325876.4855287,
+    "ast_hash": "c551d79931a3d95d75ff0a00751f6d87",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\utils\\product.js": {
+    "mtime": 1794328024.8761742,
+    "ast_hash": "d9c90f8534ad81f1148c83d55a1dc2cf",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\src\\utils\\storage.js": {
+    "mtime": 1794327680.7432182,
+    "ast_hash": "166f8df064fae79ad2c719dfeaf0e9fc",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\index.html": {
@@ -514,9 +894,39 @@
     "ast_hash": "4f9dd90c3a5adf0fedbab3f4d8c61493",
     "semantic_hash": ""
   },
+  "X:\\New folder (2)\\test.html": {
+    "mtime": 1793687149.3913891,
+    "ast_hash": "f7a254b68d4fa2fb4f11580e0f526c63",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\test_check.html": {
+    "mtime": 1793687071.8495693,
+    "ast_hash": "34cd6701432a113a915a60db43f7ecdd",
+    "semantic_hash": ""
+  },
   "X:\\New folder (2)\\.agent\\rules\\graphify.md": {
     "mtime": 1791987504.0517461,
     "ast_hash": "56d322bc02e948acf8a5abc7fd5d20ff",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\better-layout\\grouping-and-alignment.md": {
+    "mtime": 1793690465.4711065,
+    "ast_hash": "6a8906e9f6fec40be971143023903437",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\better-layout\\SKILL.md": {
+    "mtime": 1793690465.4681082,
+    "ast_hash": "b7964cbd826009ccafe81c87519c1e6e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\better-layout\\spacing-and-adaptivity.md": {
+    "mtime": 1793690465.4721007,
+    "ast_hash": "8bc304ea20b70ba8463448a57c62ea19",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\better-layout\\agents\\openai.yaml": {
+    "mtime": 1793690465.4701097,
+    "ast_hash": "9b88824226eead4b364106517ece4847",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\.agent\\skills\\graphify\\SKILL.md": {
@@ -542,6 +952,266 @@
   "X:\\New folder (2)\\.agent\\skills\\graphify\\references\\query_cookbook.md": {
     "mtime": 1792468608.8165152,
     "ast_hash": "221a094a0fa3d295034590624516d568",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\SKILL.md": {
+    "mtime": 1793689666.6994653,
+    "ast_hash": "91fd5b90e99aab1c996f245e168f9633",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\agents\\openai.yaml": {
+    "mtime": 1793689666.7069764,
+    "ast_hash": "adbb734384c2dec0ad8cd25f21da2578",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\adapt.md": {
+    "mtime": 1793689666.708977,
+    "ast_hash": "a2edd83bc4279cece58e8a17c65ed4ea",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\adapt.native.md": {
+    "mtime": 1793689666.7109768,
+    "ast_hash": "b358ba372da9d34ad574c6994446caa2",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\android.md": {
+    "mtime": 1793689666.7121623,
+    "ast_hash": "23f1706399d0efe4093f98c8df19edb8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\animate.md": {
+    "mtime": 1793689666.7138662,
+    "ast_hash": "0da30ea3dc408e0ed6a5510f6aa12d4a",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\audit.md": {
+    "mtime": 1793689666.71612,
+    "ast_hash": "bc9eaa983e18063fba727ff84324b059",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\audit.native.md": {
+    "mtime": 1793689666.7172554,
+    "ast_hash": "acad44e92fc8416f3508338d8c477b94",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\bolder.md": {
+    "mtime": 1793689666.7189686,
+    "ast_hash": "1dab3093da1c6921c33d221479d97b66",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\clarify.md": {
+    "mtime": 1793689666.7198842,
+    "ast_hash": "2f84bd6e658824d2b1219cd1f8c82946",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\colorize.md": {
+    "mtime": 1793689666.7211032,
+    "ast_hash": "d6fbe400fcb6610199813179cefda4ca",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\component-review.md": {
+    "mtime": 1793689666.7223473,
+    "ast_hash": "964439c79af7525594c6d4b4c08963b7",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\craft-floor.md": {
+    "mtime": 1793689666.7233639,
+    "ast_hash": "d9427669fa79ca04abb129624a3905e0",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\craft.md": {
+    "mtime": 1793689666.724362,
+    "ast_hash": "d27896066a5b2752e31873c3772e2803",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\critique.md": {
+    "mtime": 1793689666.7253642,
+    "ast_hash": "b90929556a15e8bf1377901a4bd1eb0f",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\delight.md": {
+    "mtime": 1793689666.733198,
+    "ast_hash": "7ca435a19cb82c7d8cafb2c594772969",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\distill.md": {
+    "mtime": 1793689666.73421,
+    "ast_hash": "3f1f3e0cc8e34ce62e4f3eee755d5a88",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\doctor.md": {
+    "mtime": 1793689666.7352104,
+    "ast_hash": "22946ee946a6319a0a8eec39a7dd2425",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\document.md": {
+    "mtime": 1793689666.736209,
+    "ast_hash": "0c6fb643596c2e267aba8060941c06d5",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\extract.md": {
+    "mtime": 1793689666.7372212,
+    "ast_hash": "6ab1d2484946a7f87b34508f36a5c7ff",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\generate.md": {
+    "mtime": 1793689666.7382224,
+    "ast_hash": "7d329e73d039253c73fb383c2d9b58c8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\harden.md": {
+    "mtime": 1793689666.7402096,
+    "ast_hash": "2aa6565e36bf2c7c60b3c62a7370a2d0",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\hooks.md": {
+    "mtime": 1793689666.7412183,
+    "ast_hash": "10f33011e156d5c5acefdc473b5f0f6c",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\init.md": {
+    "mtime": 1793689666.74255,
+    "ast_hash": "13c8b345861649d4c325da67a5384b6b",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\ios.md": {
+    "mtime": 1793689666.7437186,
+    "ast_hash": "91ad1ec9152100168db6ec1079c0ad6b",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\layout.md": {
+    "mtime": 1793689666.7442544,
+    "ast_hash": "b471d163829307d1c283504763b11373",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\live-setup.md": {
+    "mtime": 1793689666.7463765,
+    "ast_hash": "d40cc15546126c277e6a8aa16c26ed28",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\live.md": {
+    "mtime": 1793689666.7473783,
+    "ast_hash": "d7892a16c5b2b27996db02bd9926c451",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\mode-operate.md": {
+    "mtime": 1793689666.7473783,
+    "ast_hash": "a45e62e783aba3f0e096975c87b90635",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\mode-persuade.md": {
+    "mtime": 1793689666.7485664,
+    "ast_hash": "7edde066e47e10064df70747ecd4a3d7",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\mode-read.md": {
+    "mtime": 1793689666.749774,
+    "ast_hash": "f79c4fea9de2c26da6d3bc7d78bc98dd",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\new-work.md": {
+    "mtime": 1793689666.7517762,
+    "ast_hash": "9f9a9724a0fe0e6c948e9c1a981ccef8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\onboard.md": {
+    "mtime": 1793689666.752771,
+    "ast_hash": "7084ce8df29b413297dc359b3610a9c8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\operate.md": {
+    "mtime": 1793689666.7537725,
+    "ast_hash": "e1c02f0c6823fef3c2a7b0c50aa9da04",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\optimize.md": {
+    "mtime": 1793689666.7544582,
+    "ast_hash": "22ad5c99859d663359c4b5dd35911fae",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\overdrive.md": {
+    "mtime": 1793689666.7554805,
+    "ast_hash": "70785cec98034677c5cf88611aaaeb66",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\polish.md": {
+    "mtime": 1793689666.7564783,
+    "ast_hash": "df36be44b3e4dbf73997aa0aa1beef45",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\quieter.md": {
+    "mtime": 1793689666.7564783,
+    "ast_hash": "8da770e8e935f93dc8cbeeb37bff8361",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\region-map.md": {
+    "mtime": 1793689666.7579832,
+    "ast_hash": "eeeaf969f4885ba331d386bce8618e5e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\routing.md": {
+    "mtime": 1793689666.7579832,
+    "ast_hash": "808abdaadddd593e2eef13622ae13e2d",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\shape.md": {
+    "mtime": 1793689666.759485,
+    "ast_hash": "6fdc5a047039048759c1c40d21297f37",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\typeset.md": {
+    "mtime": 1793689666.7605958,
+    "ast_hash": "d3a7b0419cc9cb01638e75e117acb7bf",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\visualize.md": {
+    "mtime": 1793689666.7617376,
+    "ast_hash": "258f8265e347a6df529821532da9e4ff",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\degraded\\asset-producer.md": {
+    "mtime": 1793689666.7278736,
+    "ast_hash": "21de7a4037d8871d309027dd6617f987",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\degraded\\documenter.md": {
+    "mtime": 1793689666.7289028,
+    "ast_hash": "1f7a6b45edec4a3f71475133ea674c7d",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\degraded\\finish-reviewer.md": {
+    "mtime": 1793689666.7302039,
+    "ast_hash": "8855a1f44b4494a9b0d59c0d1497196f",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\reference\\degraded\\manual-edit-applier.md": {
+    "mtime": 1793689666.7322478,
+    "ast_hash": "27e2283390fd87235247beee3e66aa7e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\impeccable\\scripts\\engine-checksums.txt": {
+    "mtime": 1793689666.777213,
+    "ast_hash": "484ab34ed43ad92b91a0a5aa50f5585d",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\pdf\\forms.md": {
+    "mtime": 1793686851.2176876,
+    "ast_hash": "6e2413286cceefab10fab9cd1cb59c97",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\pdf\\LICENSE.txt": {
+    "mtime": 1793686851.2150786,
+    "ast_hash": "03077c38ac09b5515927eb4d5cf12484",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\pdf\\reference.md": {
+    "mtime": 1793686851.2188404,
+    "ast_hash": "e648d10ba8cb9629ed12312b6da4279e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\pdf\\SKILL.md": {
+    "mtime": 1793686851.2165883,
+    "ast_hash": "8609b5c38f8cc19061b2a459080b5b43",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\.agent\\skills\\security-audit\\AI-AND-LLM.md": {
@@ -619,6 +1289,31 @@
     "ast_hash": "53943d99f2a3484ce8f37de2be783f8b",
     "semantic_hash": ""
   },
+  "X:\\New folder (2)\\.agent\\skills\\untangle-codebase\\SKILL.md": {
+    "mtime": 1794324388.3637464,
+    "ast_hash": "6477bcb7ed0e029d3474fcf087bec43b",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\user-story\\SKILL.md": {
+    "mtime": 1793705246.6654854,
+    "ast_hash": "5ea962a9b0bdacb254d28b7f07eddfb0",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\user-story\\template.md": {
+    "mtime": 1793705246.6727128,
+    "ast_hash": "32f346a0a264a30407a7caf5addf17c8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\user-story\\examples\\sample-industrial.md": {
+    "mtime": 1793705246.6664927,
+    "ast_hash": "7c267a880cbd06731beb08864a4a0abe",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agent\\skills\\user-story\\examples\\sample.md": {
+    "mtime": 1793705246.6686919,
+    "ast_hash": "9093889fcffc6b2ebcc8cca16af6cf86",
+    "semantic_hash": ""
+  },
   "X:\\New folder (2)\\.agent\\workflows\\graphify.md": {
     "mtime": 1791987685.2550378,
     "ast_hash": "cd0351c013c1dd37a3e2cb20b7275047",
@@ -627,6 +1322,26 @@
   "X:\\New folder (2)\\.agents\\rules\\graphify.md": {
     "mtime": 1791987504.0517461,
     "ast_hash": "56d322bc02e948acf8a5abc7fd5d20ff",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\better-layout\\grouping-and-alignment.md": {
+    "mtime": 1793690465.4711065,
+    "ast_hash": "6a8906e9f6fec40be971143023903437",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\better-layout\\SKILL.md": {
+    "mtime": 1793690465.4681082,
+    "ast_hash": "b7964cbd826009ccafe81c87519c1e6e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\better-layout\\spacing-and-adaptivity.md": {
+    "mtime": 1793690465.4721007,
+    "ast_hash": "8bc304ea20b70ba8463448a57c62ea19",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\better-layout\\agents\\openai.yaml": {
+    "mtime": 1793690465.4701097,
+    "ast_hash": "9b88824226eead4b364106517ece4847",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\.agents\\skills\\graphify\\SKILL.md": {
@@ -652,6 +1367,266 @@
   "X:\\New folder (2)\\.agents\\skills\\graphify\\references\\query_cookbook.md": {
     "mtime": 1792468608.8165152,
     "ast_hash": "221a094a0fa3d295034590624516d568",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\SKILL.md": {
+    "mtime": 1793689666.6994653,
+    "ast_hash": "91fd5b90e99aab1c996f245e168f9633",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\agents\\openai.yaml": {
+    "mtime": 1793689666.7069764,
+    "ast_hash": "adbb734384c2dec0ad8cd25f21da2578",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\adapt.md": {
+    "mtime": 1793689666.708977,
+    "ast_hash": "a2edd83bc4279cece58e8a17c65ed4ea",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\adapt.native.md": {
+    "mtime": 1793689666.7109768,
+    "ast_hash": "b358ba372da9d34ad574c6994446caa2",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\android.md": {
+    "mtime": 1793689666.7121623,
+    "ast_hash": "23f1706399d0efe4093f98c8df19edb8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\animate.md": {
+    "mtime": 1793689666.7138662,
+    "ast_hash": "0da30ea3dc408e0ed6a5510f6aa12d4a",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\audit.md": {
+    "mtime": 1793689666.71612,
+    "ast_hash": "bc9eaa983e18063fba727ff84324b059",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\audit.native.md": {
+    "mtime": 1793689666.7172554,
+    "ast_hash": "acad44e92fc8416f3508338d8c477b94",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\bolder.md": {
+    "mtime": 1793689666.7189686,
+    "ast_hash": "1dab3093da1c6921c33d221479d97b66",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\clarify.md": {
+    "mtime": 1793689666.7198842,
+    "ast_hash": "2f84bd6e658824d2b1219cd1f8c82946",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\colorize.md": {
+    "mtime": 1793689666.7211032,
+    "ast_hash": "d6fbe400fcb6610199813179cefda4ca",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\component-review.md": {
+    "mtime": 1793689666.7223473,
+    "ast_hash": "964439c79af7525594c6d4b4c08963b7",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\craft-floor.md": {
+    "mtime": 1793689666.7233639,
+    "ast_hash": "d9427669fa79ca04abb129624a3905e0",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\craft.md": {
+    "mtime": 1793689666.724362,
+    "ast_hash": "d27896066a5b2752e31873c3772e2803",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\critique.md": {
+    "mtime": 1793689666.7253642,
+    "ast_hash": "b90929556a15e8bf1377901a4bd1eb0f",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\delight.md": {
+    "mtime": 1793689666.733198,
+    "ast_hash": "7ca435a19cb82c7d8cafb2c594772969",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\distill.md": {
+    "mtime": 1793689666.73421,
+    "ast_hash": "3f1f3e0cc8e34ce62e4f3eee755d5a88",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\doctor.md": {
+    "mtime": 1793689666.7352104,
+    "ast_hash": "22946ee946a6319a0a8eec39a7dd2425",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\document.md": {
+    "mtime": 1793689666.736209,
+    "ast_hash": "0c6fb643596c2e267aba8060941c06d5",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\extract.md": {
+    "mtime": 1793689666.7372212,
+    "ast_hash": "6ab1d2484946a7f87b34508f36a5c7ff",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\generate.md": {
+    "mtime": 1793689666.7382224,
+    "ast_hash": "7d329e73d039253c73fb383c2d9b58c8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\harden.md": {
+    "mtime": 1793689666.7402096,
+    "ast_hash": "2aa6565e36bf2c7c60b3c62a7370a2d0",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\hooks.md": {
+    "mtime": 1793689666.7412183,
+    "ast_hash": "10f33011e156d5c5acefdc473b5f0f6c",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\init.md": {
+    "mtime": 1793689666.74255,
+    "ast_hash": "13c8b345861649d4c325da67a5384b6b",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\ios.md": {
+    "mtime": 1793689666.7437186,
+    "ast_hash": "91ad1ec9152100168db6ec1079c0ad6b",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\layout.md": {
+    "mtime": 1793689666.7442544,
+    "ast_hash": "b471d163829307d1c283504763b11373",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\live-setup.md": {
+    "mtime": 1793689666.7463765,
+    "ast_hash": "d40cc15546126c277e6a8aa16c26ed28",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\live.md": {
+    "mtime": 1793689666.7473783,
+    "ast_hash": "d7892a16c5b2b27996db02bd9926c451",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\mode-operate.md": {
+    "mtime": 1793689666.7473783,
+    "ast_hash": "a45e62e783aba3f0e096975c87b90635",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\mode-persuade.md": {
+    "mtime": 1793689666.7485664,
+    "ast_hash": "7edde066e47e10064df70747ecd4a3d7",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\mode-read.md": {
+    "mtime": 1793689666.749774,
+    "ast_hash": "f79c4fea9de2c26da6d3bc7d78bc98dd",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\new-work.md": {
+    "mtime": 1793689666.7517762,
+    "ast_hash": "9f9a9724a0fe0e6c948e9c1a981ccef8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\onboard.md": {
+    "mtime": 1793689666.752771,
+    "ast_hash": "7084ce8df29b413297dc359b3610a9c8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\operate.md": {
+    "mtime": 1793689666.7537725,
+    "ast_hash": "e1c02f0c6823fef3c2a7b0c50aa9da04",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\optimize.md": {
+    "mtime": 1793689666.7544582,
+    "ast_hash": "22ad5c99859d663359c4b5dd35911fae",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\overdrive.md": {
+    "mtime": 1793689666.7554805,
+    "ast_hash": "70785cec98034677c5cf88611aaaeb66",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\polish.md": {
+    "mtime": 1793689666.7564783,
+    "ast_hash": "df36be44b3e4dbf73997aa0aa1beef45",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\quieter.md": {
+    "mtime": 1793689666.7564783,
+    "ast_hash": "8da770e8e935f93dc8cbeeb37bff8361",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\region-map.md": {
+    "mtime": 1793689666.7579832,
+    "ast_hash": "eeeaf969f4885ba331d386bce8618e5e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\routing.md": {
+    "mtime": 1793689666.7579832,
+    "ast_hash": "808abdaadddd593e2eef13622ae13e2d",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\shape.md": {
+    "mtime": 1793689666.759485,
+    "ast_hash": "6fdc5a047039048759c1c40d21297f37",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\typeset.md": {
+    "mtime": 1793689666.7605958,
+    "ast_hash": "d3a7b0419cc9cb01638e75e117acb7bf",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\visualize.md": {
+    "mtime": 1793689666.7617376,
+    "ast_hash": "258f8265e347a6df529821532da9e4ff",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\degraded\\asset-producer.md": {
+    "mtime": 1793689666.7278736,
+    "ast_hash": "21de7a4037d8871d309027dd6617f987",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\degraded\\documenter.md": {
+    "mtime": 1793689666.7289028,
+    "ast_hash": "1f7a6b45edec4a3f71475133ea674c7d",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\degraded\\finish-reviewer.md": {
+    "mtime": 1793689666.7302039,
+    "ast_hash": "8855a1f44b4494a9b0d59c0d1497196f",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\reference\\degraded\\manual-edit-applier.md": {
+    "mtime": 1793689666.7322478,
+    "ast_hash": "27e2283390fd87235247beee3e66aa7e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\impeccable\\scripts\\engine-checksums.txt": {
+    "mtime": 1793689666.777213,
+    "ast_hash": "484ab34ed43ad92b91a0a5aa50f5585d",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\pdf\\forms.md": {
+    "mtime": 1793686851.2176876,
+    "ast_hash": "6e2413286cceefab10fab9cd1cb59c97",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\pdf\\LICENSE.txt": {
+    "mtime": 1793686851.2150786,
+    "ast_hash": "03077c38ac09b5515927eb4d5cf12484",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\pdf\\reference.md": {
+    "mtime": 1793686851.2188404,
+    "ast_hash": "e648d10ba8cb9629ed12312b6da4279e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\pdf\\SKILL.md": {
+    "mtime": 1793686851.2165883,
+    "ast_hash": "8609b5c38f8cc19061b2a459080b5b43",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\.agents\\skills\\security-audit\\AI-AND-LLM.md": {
@@ -727,6 +1702,31 @@
   "X:\\New folder (2)\\.agents\\skills\\security-audit\\WEB-PROTOCOL-AND-AUTH.md": {
     "mtime": 1793640008.8172908,
     "ast_hash": "53943d99f2a3484ce8f37de2be783f8b",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\untangle-codebase\\SKILL.md": {
+    "mtime": 1794324388.3637464,
+    "ast_hash": "6477bcb7ed0e029d3474fcf087bec43b",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\user-story\\SKILL.md": {
+    "mtime": 1793705246.6654854,
+    "ast_hash": "5ea962a9b0bdacb254d28b7f07eddfb0",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\user-story\\template.md": {
+    "mtime": 1793705246.6727128,
+    "ast_hash": "32f346a0a264a30407a7caf5addf17c8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\user-story\\examples\\sample-industrial.md": {
+    "mtime": 1793705246.6664927,
+    "ast_hash": "7c267a880cbd06731beb08864a4a0abe",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\.agents\\skills\\user-story\\examples\\sample.md": {
+    "mtime": 1793705246.6686919,
+    "ast_hash": "9093889fcffc6b2ebcc8cca16af6cf86",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\.agents\\workflows\\graphify.md": {
@@ -872,6 +1872,26 @@
   "X:\\New folder (2)\\resend-mcp\\.github\\workflows\\sync-prs-to-linear.yml": {
     "mtime": 1791922779.8079088,
     "ast_hash": "7e648f07c00eee3339567ad57c7e0948",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\test_22_pages.pdf": {
+    "mtime": 1793706952.8643365,
+    "ast_hash": "ebf244b9855d9e196bdac520fabcb9d9",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\test_clean_22.pdf": {
+    "mtime": 1793707034.9135704,
+    "ast_hash": "b022e8b74c78ff7aaf7f52c603617f87",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\test_fixed_pages.pdf": {
+    "mtime": 1793706844.022002,
+    "ast_hash": "e5b91f4e59f51cb3d76431a545396619",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\test_untrimmed.pdf": {
+    "mtime": 1793706807.0490024,
+    "ast_hash": "204e4b37dbbeb122592fd0dd56b28f88",
     "semantic_hash": ""
   },
   "X:\\New folder (2)\\image\\WhatsApp Image 2026-10-13 at 19.51.32 (1).jpeg": {
@@ -1307,6 +2327,246 @@
   "X:\\New folder (2)\\public\\products\\p07\\variant-9.jpeg": {
     "mtime": 1792425354.4116771,
     "ast_hash": "b5405c376f211e9bdf61d20ec54fb547",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_01.png": {
+    "mtime": 1793690780.8797655,
+    "ast_hash": "05416a3f083423badaaecb015d24b29a",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_02.png": {
+    "mtime": 1793690780.9260259,
+    "ast_hash": "c04be9442a00c2949d62f14bfa738243",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_03.png": {
+    "mtime": 1793690780.965265,
+    "ast_hash": "ad53ad20d7755ce568d420d40d01c03b",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_04.png": {
+    "mtime": 1793690780.9983833,
+    "ast_hash": "cf9104c33aba477f35b6b3edebeaf998",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_05.png": {
+    "mtime": 1793690781.0271444,
+    "ast_hash": "1a57cc46918edad1f18fdb0e26aa2994",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_06.png": {
+    "mtime": 1793690781.0569963,
+    "ast_hash": "73d23bbc256cb4b3013777f56f566b81",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_07.png": {
+    "mtime": 1793690781.093095,
+    "ast_hash": "e112a44dcf368275d11f95911e02ec22",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_08.png": {
+    "mtime": 1793690781.120654,
+    "ast_hash": "beacc16bdadf5d990057e75c5e7ef4d9",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_09.png": {
+    "mtime": 1793690781.1484392,
+    "ast_hash": "67c3994ebb22ed8f3a062e430985f441",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_10.png": {
+    "mtime": 1793690781.1715107,
+    "ast_hash": "846b0a47097666dd5e8da3de591ec547",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_11.png": {
+    "mtime": 1793690781.2389345,
+    "ast_hash": "7349b735fcefd80b15c38ac31a96bcb7",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_12.png": {
+    "mtime": 1793690781.3134918,
+    "ast_hash": "426ac976a9595e88707d1c489a8f2760",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_12_check.png": {
+    "mtime": 1793705094.5853407,
+    "ast_hash": "854e1e3d6c08d8660b82b41224f3211a",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_12_fixed.png": {
+    "mtime": 1793691289.6523664,
+    "ast_hash": "1830dc3a37ba13885419a51873493d9c",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_12_v2.png": {
+    "mtime": 1793691692.1326842,
+    "ast_hash": "81490543865d05565e544c1b1589908a",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_13.png": {
+    "mtime": 1793690781.3879232,
+    "ast_hash": "1051c210adabf8dd77e72cd395eb4f3e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_13_check.png": {
+    "mtime": 1793705094.6866055,
+    "ast_hash": "7f539383bbafe76dede39b77d5fb26f8",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_13_fixed.png": {
+    "mtime": 1793691289.741568,
+    "ast_hash": "e04be0a1465945a6ab92a58a6edff5f6",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_13_v2.png": {
+    "mtime": 1793691692.2391686,
+    "ast_hash": "6087cc8df2d590762418340f438b8249",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_14.png": {
+    "mtime": 1793690781.4215763,
+    "ast_hash": "36b9e02d2012f9f62bf369f458a98ed9",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_14_check.png": {
+    "mtime": 1793705094.7867765,
+    "ast_hash": "05246203405eb342e0fa74758d3bcaf6",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_14_fixed.png": {
+    "mtime": 1793691289.8147836,
+    "ast_hash": "c66a4959e3336fdcea41bdff4b522acc",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_14_v2.png": {
+    "mtime": 1793691692.345005,
+    "ast_hash": "9bdf2add451b5239e5b554b39a34ae2b",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_15.png": {
+    "mtime": 1793690781.4855614,
+    "ast_hash": "ef2aeab764ee674270a9c0cc9470bd14",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_15_check.png": {
+    "mtime": 1793705094.887139,
+    "ast_hash": "50353b70c8b3101e0c6db80ec386c4f4",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_15_fixed.png": {
+    "mtime": 1793691289.876534,
+    "ast_hash": "f3cb9fd893c04b470aad8a1417ed189e",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_15_v2.png": {
+    "mtime": 1793691692.4504352,
+    "ast_hash": "cbb4971a831c8eeab7bb2ba93a6608c0",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_16.png": {
+    "mtime": 1793690781.5470972,
+    "ast_hash": "e0216682806792eb4d773d4aed19eff4",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_17.png": {
+    "mtime": 1793690781.5986161,
+    "ast_hash": "1bb7b032f65d3cca0cdbc7afbae504f6",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_18.png": {
+    "mtime": 1793690781.6558962,
+    "ast_hash": "1a00c65892c5bfe96001c580128e1207",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_19.png": {
+    "mtime": 1793690781.686268,
+    "ast_hash": "56e9bae90ff882840ff7a98a24342907",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\page_previews\\page_20.png": {
+    "mtime": 1793690781.729514,
+    "ast_hash": "5b9af218ab395d11364b88e65a31d133",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\usability_report_previews\\page_01.png": {
+    "mtime": 1793708441.1922143,
+    "ast_hash": "48624563e845fb6861ba3cddcdf9da84",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\usability_report_previews\\page_02.png": {
+    "mtime": 1793708441.317071,
+    "ast_hash": "fb42b072642082aa3d0ae3dad965a377",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\usability_report_previews\\page_03.png": {
+    "mtime": 1793708441.4340124,
+    "ast_hash": "ffb216b16cca2d258b13dc9f95ee86f4",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\usability_report_previews\\page_04.png": {
+    "mtime": 1793708441.5569758,
+    "ast_hash": "57ec17c58039c99948ddbfd8b47a76c0",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\user_stories_previews\\page_01.png": {
+    "mtime": 1793705559.767123,
+    "ast_hash": "e5840380a952ea15f611aa34be90d358",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\user_stories_previews\\page_02.png": {
+    "mtime": 1793705559.8336475,
+    "ast_hash": "5c19c61d8d84339a61c6e6279aa5a4dc",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\user_stories_previews\\page_07.png": {
+    "mtime": 1793705559.9041858,
+    "ast_hash": "672ce532a244b5599e4fd9f53d7235dc",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\user_stories_previews\\page_08.png": {
+    "mtime": 1793705559.9732294,
+    "ast_hash": "d16eb1b9624a244a5518c4c68259a582",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\user_stories_previews\\page_09.png": {
+    "mtime": 1793705560.0460548,
+    "ast_hash": "b95e0395ab9668effdbe9ca2a05a188c",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\user_stories_previews\\page_10.png": {
+    "mtime": 1793705560.1130478,
+    "ast_hash": "222406af6365f0319b7c162fb5d7bf8f",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\user_stories_previews\\page_13.png": {
+    "mtime": 1793705560.1697109,
+    "ast_hash": "da1aa719f37a557b82c75d3f3246a56d",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\user_stories_previews\\page_14.png": {
+    "mtime": 1793705560.2252736,
+    "ast_hash": "b9f4aaf4dcd689e7ff050aaa570c7758",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\user_stories_previews\\page_15.png": {
+    "mtime": 1793705560.2811356,
+    "ast_hash": "3433c1b6c04e193cfed21ed201829585",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\user_stories_previews\\page_17.png": {
+    "mtime": 1793705560.4001727,
+    "ast_hash": "0cae1448958d00883dc92a52385131b7",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\user_stories_previews\\page_20.png": {
+    "mtime": 1793705560.4515038,
+    "ast_hash": "8e071c593e076b9d8d401525f493d168",
+    "semantic_hash": ""
+  },
+  "X:\\New folder (2)\\scripts\\user_stories_previews\\page_22.png": {
+    "mtime": 1793705560.5027628,
+    "ast_hash": "896ff838f3d120598151733330f25a3d",
     "semantic_hash": ""
   }
 }

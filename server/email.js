@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
-import { store } from '../src/data.js';
+import { store } from '../shared/catalog.js';
 
 dotenv.config();
 

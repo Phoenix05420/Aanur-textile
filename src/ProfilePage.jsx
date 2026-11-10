@@ -1,57 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { store } from './data.js';
-
-const money = (value) => `₹${Number(value).toLocaleString('en-IN')}`;
-
-const saved = (key, fallback) => {
-  try {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : fallback;
-  } catch (error) {
-    return fallback;
-  }
-};
-
-function ProfileIcon({ name, size = 18, ...props }) {
-  const paths = {
-    user: <><circle cx="12" cy="8" r="3.5" /><path d="M5 20a7 7 0 0 1 14 0" /></>,
-    box: <><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 12v10" /></>,
-    pin: <><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></>,
-    heart: <path d="M20.8 8.8c0 4.5-8.8 10-8.8 10s-8.8-5.5-8.8-10A4.5 4.5 0 0 1 12 6.2a4.5 4.5 0 0 1 8.8 2.6Z" />,
-    settings: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" /></>,
-    edit: <><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></>,
-    trash: <><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></>,
-    check: <path d="m5 12 4 4L19 6" />,
-    close: <><path d="m6 6 12 12" /><path d="M18 6 6 18" /></>,
-    arrow: <><path d="M4 12h15" /><path d="m13 5 7 7-7 7" /></>,
-    plus: <><path d="M12 5v14" /><path d="M5 12h14" /></>,
-    truck: <><path d="M3 6h11v11H3z" /><path d="M14 10h4l3 3v4h-7" /><circle cx="7.5" cy="18" r="1.5" /><circle cx="17.5" cy="18" r="1.5" /></>,
-    shield: <><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z" /><path d="m9 12 2 2 4-4" /></>,
-    refresh: <><polyline points="23 4 23 10 17 10" /><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" /></>,
-    bag: <><path d="M5 8h14l1 13H4L5 8Z" /><path d="M9 8a3 3 0 0 1 6 0" /></>,
-    lock: <><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></>,
-    download: <><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></>,
-    logout: <><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></>,
-    phone: <><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z" /></>,
-    mail: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></>,
-  };
-  return (
-    <svg
-      aria-hidden="true"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      {paths[name] || paths.check}
-    </svg>
-  );
-}
+import { money } from './utils/format.js';
+import { saved, authStorage, ordersStorage, STORAGE_KEYS } from './utils/storage.js';
+import { Icon } from './components/common/Icon.jsx';
 
 export default function ProfilePage({
   initialTab = 'overview',
@@ -102,48 +53,32 @@ export default function ProfilePage({
   // ---------------------------------------------------------------------------
   // 02. My Orders State
   // ---------------------------------------------------------------------------
-  const FAKE_ORDER_REFS = ['AT-892415', 'AT-742918', 'AT-619024', 'AT-501239'];
-
   const [orders, setOrders] = useState(() => {
-    const raw = saved('aanur_profile_orders', []);
-    if (!Array.isArray(raw)) return [];
-    return raw.filter((o) => o && o.orderRef && !FAKE_ORDER_REFS.includes(o.orderRef));
+    return ordersStorage.getOrders().filter((o) => o && o.orderRef);
   });
 
   useEffect(() => {
-    localStorage.setItem('aanur_profile_orders', JSON.stringify(orders));
+    localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(orders));
   }, [orders]);
 
   // ---------------------------------------------------------------------------
   // 03. My Addresses State
   // ---------------------------------------------------------------------------
-  const FAKE_ADDR_IDS = ['addr-1', 'addr-2'];
-
   const [addresses, setAddresses] = useState(() => {
-    const raw = saved('aanur_profile_addresses', []);
-    if (!Array.isArray(raw)) return [];
-    return raw.filter(
-      (a) =>
-        a &&
-        a.id &&
-        !FAKE_ADDR_IDS.includes(a.id) &&
-        !a.fullName?.includes('Priya Sharma')
-    );
+    const raw = saved(STORAGE_KEYS.ADDRESSES, []);
+    return Array.isArray(raw) ? raw.filter((a) => a && a.id) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem('aanur_profile_addresses', JSON.stringify(addresses));
+    localStorage.setItem(STORAGE_KEYS.ADDRESSES, JSON.stringify(addresses));
   }, [addresses]);
 
   // ---------------------------------------------------------------------------
   // 04. Wishlist & Preferences State
   // ---------------------------------------------------------------------------
-  const FAKE_SAVED_ACCESSORY_IDS = ['acc-01', 'acc-02'];
-
   const [savedAccessories, setSavedAccessories] = useState(() => {
     const raw = saved('aanur_saved_accessories', []);
-    if (!Array.isArray(raw)) return [];
-    return raw.filter((a) => a && a.id && !FAKE_SAVED_ACCESSORY_IDS.includes(a.id));
+    return Array.isArray(raw) ? raw.filter((a) => a && a.id) : [];
   });
 
   useEffect(() => {
@@ -350,9 +285,7 @@ export default function ProfilePage({
   };
 
   const handleLogout = () => {
-    try {
-      localStorage.removeItem('aanur_is_logged_in');
-    } catch {}
+    authStorage.clearAuth();
     if (setCurrentUser) setCurrentUser(null);
     setLogoutModalOpen(false);
     if (setToast) setToast('You have been securely signed out.');
@@ -396,15 +329,15 @@ export default function ProfilePage({
           </div>
           <p className="profile-contact-meta">
             <span>
-              <ProfileIcon name="mail" size={14} /> {profile.email}
+              <Icon name="mail" size={14} /> {profile.email}
             </span>
             <span className="dot-sep">·</span>
             <span>
-              <ProfileIcon name="phone" size={14} /> {profile.phone}
+              <Icon name="phone" size={14} /> {profile.phone}
             </span>
             <span className="dot-sep">·</span>
             <span>
-              <ProfileIcon name="pin" size={14} /> {profile.city}, {profile.state}
+              <Icon name="pin" size={14} /> {profile.city}, {profile.state}
             </span>
           </p>
         </div>
@@ -418,7 +351,7 @@ export default function ProfilePage({
               setEditProfileOpen(true);
             }}
           >
-            <ProfileIcon name="edit" size={15} />
+            <Icon name="edit" size={15} />
             <span>Edit Profile</span>
           </button>
           <button
@@ -427,7 +360,7 @@ export default function ProfilePage({
             onClick={handleLogout}
             title="Sign out of account (Shortcut: Alt+L)"
           >
-            <ProfileIcon name="logout" size={15} />
+            <Icon name="logout" size={15} />
             <span>Sign Out</span>
           </button>
         </div>
@@ -442,7 +375,7 @@ export default function ProfilePage({
             className={`profile-nav-btn ${activeTab === 'overview' ? 'is-active' : ''}`}
             onClick={() => setActiveTab('overview')}
           >
-            <ProfileIcon name="user" size={17} />
+            <Icon name="user" size={17} />
             <span>01. Profile Overview</span>
           </button>
 
@@ -451,7 +384,7 @@ export default function ProfilePage({
             className={`profile-nav-btn ${activeTab === 'orders' ? 'is-active' : ''}`}
             onClick={() => setActiveTab('orders')}
           >
-            <ProfileIcon name="box" size={17} />
+            <Icon name="box" size={17} />
             <span>02. My Orders</span>
             {activeOrdersCount > 0 && <span className="nav-badge">{activeOrdersCount} active</span>}
           </button>
@@ -461,7 +394,7 @@ export default function ProfilePage({
             className={`profile-nav-btn ${activeTab === 'addresses' ? 'is-active' : ''}`}
             onClick={() => setActiveTab('addresses')}
           >
-            <ProfileIcon name="pin" size={17} />
+            <Icon name="pin" size={17} />
             <span>03. My Addresses</span>
             <span className="nav-count">{addresses.length}</span>
           </button>
@@ -471,7 +404,7 @@ export default function ProfilePage({
             className={`profile-nav-btn ${activeTab === 'wishlist' ? 'is-active' : ''}`}
             onClick={() => setActiveTab('wishlist')}
           >
-            <ProfileIcon name="heart" size={17} />
+            <Icon name="heart" size={17} />
             <span>04. Wishlist & Preferences</span>
             <span className="nav-count">{combinedSavedItems.length}</span>
           </button>
@@ -481,7 +414,7 @@ export default function ProfilePage({
             className={`profile-nav-btn ${activeTab === 'settings' ? 'is-active' : ''}`}
             onClick={() => setActiveTab('settings')}
           >
-            <ProfileIcon name="settings" size={17} />
+            <Icon name="settings" size={17} />
             <span>05. Account Settings</span>
           </button>
 
@@ -493,7 +426,7 @@ export default function ProfilePage({
             onClick={handleLogout}
             title="Sign out of account (Shortcut: Alt+L)"
           >
-            <ProfileIcon name="logout" size={17} />
+            <Icon name="logout" size={17} />
             <span>Sign Out</span>
             <kbd className="profile-kbd-hint">Alt+L</kbd>
           </button>
@@ -510,19 +443,19 @@ export default function ProfilePage({
               <div className="profile-stats-grid">
                 <div className="stat-card" onClick={() => setActiveTab('orders')}>
                   <span className="stat-icon">
-                    <ProfileIcon name="box" size={20} />
+                    <Icon name="box" size={20} />
                   </span>
                   <div className="stat-details">
                     <span className="stat-value">{orders.length}</span>
                     <span className="stat-title">Total Orders</span>
                     <span className="stat-sub">{activeOrdersCount > 0 ? `${activeOrdersCount} in progress` : 'No active orders'}</span>
                   </div>
-                  <ProfileIcon name="arrow" size={14} className="stat-arrow" />
+                  <Icon name="arrow" size={14} className="stat-arrow" />
                 </div>
 
                 <div className="stat-card" onClick={() => setActiveTab('addresses')}>
                   <span className="stat-icon">
-                    <ProfileIcon name="pin" size={20} />
+                    <Icon name="pin" size={20} />
                   </span>
                   <div className="stat-details">
                     <span className="stat-value">{addresses.length}</span>
@@ -533,12 +466,12 @@ export default function ProfilePage({
                         : 'No addresses saved'}
                     </span>
                   </div>
-                  <ProfileIcon name="arrow" size={14} className="stat-arrow" />
+                  <Icon name="arrow" size={14} className="stat-arrow" />
                 </div>
 
                 <div className="stat-card" onClick={() => setActiveTab('wishlist')}>
                   <span className="stat-icon">
-                    <ProfileIcon name="heart" size={20} />
+                    <Icon name="heart" size={20} />
                   </span>
                   <div className="stat-details">
                     <span className="stat-value">{combinedSavedItems.length}</span>
@@ -547,7 +480,7 @@ export default function ProfilePage({
                       {combinedSavedItems.length > 0 ? 'Bedsheets & Towels' : 'No items saved'}
                     </span>
                   </div>
-                  <ProfileIcon name="arrow" size={14} className="stat-arrow" />
+                  <Icon name="arrow" size={14} className="stat-arrow" />
                 </div>
 
 
@@ -571,7 +504,7 @@ export default function ProfilePage({
                       className="button button-dark"
                       onClick={() => setTrackingOrder(orders.find((o) => o.status === 'processing'))}
                     >
-                      <ProfileIcon name="truck" size={15} />
+                      <Icon name="truck" size={15} />
                       <span>Track Order</span>
                     </button>
                   </div>
@@ -597,19 +530,19 @@ export default function ProfilePage({
                 <h3>Quick Shortcuts</h3>
                 <div className="shortcuts-grid">
                   <button type="button" onClick={() => setActiveTab('orders')}>
-                    <ProfileIcon name="box" size={16} />
+                    <Icon name="box" size={16} />
                     <span>View all orders & invoices</span>
                   </button>
                   <button type="button" onClick={() => handleOpenAddressModal('add')}>
-                    <ProfileIcon name="plus" size={16} />
+                    <Icon name="plus" size={16} />
                     <span>Add a new delivery address</span>
                   </button>
                   <button type="button" onClick={() => setActiveTab('wishlist')}>
-                    <ProfileIcon name="heart" size={16} />
+                    <Icon name="heart" size={16} />
                     <span>Manage favorite fabrics & colors</span>
                   </button>
                   <button type="button" onClick={() => setActiveTab('settings')}>
-                    <ProfileIcon name="settings" size={16} />
+                    <Icon name="settings" size={16} />
                     <span>Notification & privacy preferences</span>
                   </button>
                 </div>
@@ -630,7 +563,7 @@ export default function ProfilePage({
                 </div>
                 <button type="button" className="button button-outline" onClick={() => navigate('/shop')}>
                   <span>Shop New Arrivals</span>
-                  <ProfileIcon name="arrow" size={14} />
+                  <Icon name="arrow" size={14} />
                 </button>
               </div>
 
@@ -658,7 +591,7 @@ export default function ProfilePage({
               <div className="orders-cards-list">
                 {filteredOrders.length === 0 ? (
                   <div className="empty-state">
-                    <ProfileIcon name="box" size={32} />
+                    <Icon name="box" size={32} />
                     <h3>{orderFilter === 'all' ? 'No orders placed yet' : `No ${orderFilter} orders found`}</h3>
                     <p>
                       {orderFilter === 'all'
@@ -704,7 +637,7 @@ export default function ProfilePage({
                                 className="button button-outline mini-btn"
                                 onClick={() => handleBuyAgain(item)}
                               >
-                                <ProfileIcon name="refresh" size={13} />
+                                <Icon name="refresh" size={13} />
                                 <span>Buy Again</span>
                               </button>
                             </div>
@@ -714,7 +647,7 @@ export default function ProfilePage({
 
                       <div className="order-card-footer">
                         <div className="order-delivery-status">
-                          <ProfileIcon name="truck" size={16} />
+                          <Icon name="truck" size={16} />
                           <div>
                             <strong>{order.courier}</strong>
                             <span>
@@ -734,7 +667,7 @@ export default function ProfilePage({
                               className="button button-dark mini-btn"
                               onClick={() => setTrackingOrder(order)}
                             >
-                              <ProfileIcon name="truck" size={14} />
+                              <Icon name="truck" size={14} />
                               <span>Track Order</span>
                             </button>
                           )}
@@ -773,14 +706,14 @@ export default function ProfilePage({
                   className="button button-dark"
                   onClick={() => handleOpenAddressModal('add')}
                 >
-                  <ProfileIcon name="plus" size={15} />
+                  <Icon name="plus" size={15} />
                   <span>Add a New Address</span>
                 </button>
               </div>
 
               {/* Delivery Serviceability Callout */}
               <div className="delivery-pincode-banner">
-                <ProfileIcon name="shield" size={18} />
+                <Icon name="shield" size={18} />
                 <div>
                   <strong>Factory-Direct Delivery Coverage (7 to 14 Days)</strong>
                   <p>
@@ -793,7 +726,7 @@ export default function ProfilePage({
               {/* Addresses Cards Grid */}
               {addresses.length === 0 ? (
                 <div className="empty-state">
-                  <ProfileIcon name="pin" size={32} />
+                  <Icon name="pin" size={32} />
                   <h3>No delivery addresses saved yet</h3>
                   <p>Add your home or workplace delivery address for fast doorstep delivery across India.</p>
                   <button
@@ -801,7 +734,7 @@ export default function ProfilePage({
                     className="button button-dark"
                     onClick={() => handleOpenAddressModal('add')}
                   >
-                    <ProfileIcon name="plus" size={15} />
+                    <Icon name="plus" size={15} />
                     <span>Add Delivery Address</span>
                   </button>
                 </div>
@@ -821,7 +754,7 @@ export default function ProfilePage({
                             title="Edit address"
                             onClick={() => handleOpenAddressModal('edit', addr)}
                           >
-                            <ProfileIcon name="edit" size={15} />
+                            <Icon name="edit" size={15} />
                           </button>
                           <button
                             type="button"
@@ -829,7 +762,7 @@ export default function ProfilePage({
                             title="Delete address"
                             onClick={() => handleDeleteAddress(addr.id)}
                           >
-                            <ProfileIcon name="trash" size={15} />
+                            <Icon name="trash" size={15} />
                           </button>
                         </div>
                       </div>
@@ -837,7 +770,7 @@ export default function ProfilePage({
                       <div className="address-body">
                         <h3>{addr.fullName}</h3>
                         <p className="addr-phone">
-                          <ProfileIcon name="phone" size={14} /> {addr.phone}
+                          <Icon name="phone" size={14} /> {addr.phone}
                         </p>
                         <p className="addr-street">{addr.street}</p>
                         {addr.landmark && <p className="addr-landmark">Landmark: {addr.landmark}</p>}
@@ -849,7 +782,7 @@ export default function ProfilePage({
                       <div className="address-card-footer">
                         {addr.isDefault ? (
                           <span className="default-check-text">
-                            <ProfileIcon name="check" size={14} /> Default Delivery Address
+                            <Icon name="check" size={14} /> Default Delivery Address
                           </span>
                         ) : (
                           <button
@@ -886,13 +819,13 @@ export default function ProfilePage({
                 <div className="sub-section-head">
                   <h3>Saved Pillows, Towels & Bedsheets ({combinedSavedItems.length})</h3>
                   <button type="button" className="text-link" onClick={() => navigate('/shop')}>
-                    Browse Full Catalog <ProfileIcon name="arrow" size={13} />
+                    Browse Full Catalog <Icon name="arrow" size={13} />
                   </button>
                 </div>
 
                 {combinedSavedItems.length === 0 ? (
                   <div className="empty-state">
-                    <ProfileIcon name="heart" size={32} />
+                    <Icon name="heart" size={32} />
                     <h3>Your saved collection is empty</h3>
                     <p>Explore our pure cotton bedsheets and waffle towels, and save your favorite pieces here.</p>
                     <button type="button" className="button button-dark" onClick={() => navigate('/shop')}>
@@ -912,7 +845,7 @@ export default function ProfilePage({
                             title="Remove from saved"
                             onClick={() => handleRemoveSaved(item)}
                           >
-                            <ProfileIcon name="close" size={14} />
+                            <Icon name="close" size={14} />
                           </button>
                         </div>
                         <div className="saved-item-info">
@@ -927,7 +860,7 @@ export default function ProfilePage({
                             className="button button-dark full-width mini-btn"
                             onClick={() => handleMoveWishlistToCart(item)}
                           >
-                            <ProfileIcon name="bag" size={14} />
+                            <Icon name="bag" size={14} />
                             <span>Move to Bag</span>
                           </button>
                         </div>
@@ -964,7 +897,7 @@ export default function ProfilePage({
                               className={`pref-chip ${isSelected ? 'is-selected' : ''}`}
                               onClick={() => handleTogglePreference('sizes', sz)}
                             >
-                              {isSelected && <ProfileIcon name="check" size={13} />}
+                              {isSelected && <Icon name="check" size={13} />}
                               <span>{sz}</span>
                             </button>
                           );
@@ -992,7 +925,7 @@ export default function ProfilePage({
                             className={`pref-chip ${isSelected ? 'is-selected' : ''}`}
                             onClick={() => handleTogglePreference('materials', mat)}
                           >
-                            {isSelected && <ProfileIcon name="check" size={13} />}
+                            {isSelected && <Icon name="check" size={13} />}
                             <span>{mat}</span>
                           </button>
                         );
@@ -1021,7 +954,7 @@ export default function ProfilePage({
                             onClick={() => handleTogglePreference('colors', color)}
                           >
                             <span className="color-swatch-circle" style={{ backgroundColor: color }}>
-                              {isSelected && <ProfileIcon name="check" size={12} style={{ color: '#fff' }} />}
+                              {isSelected && <Icon name="check" size={12} style={{ color: '#fff' }} />}
                             </span>
                             <span>{label}</span>
                           </button>
@@ -1051,7 +984,7 @@ export default function ProfilePage({
                 {/* 1. Notification Preferences */}
                 <div className="settings-card">
                   <div className="settings-card-header">
-                    <ProfileIcon name="mail" size={20} />
+                    <Icon name="mail" size={20} />
                     <div>
                       <h3>Notification Preferences</h3>
                       <p>Control what updates and messages you receive from the factory team.</p>
@@ -1100,7 +1033,7 @@ export default function ProfilePage({
                 {/* 3. Logout */}
                 <div className="settings-card danger-card">
                   <div className="settings-card-header">
-                    <ProfileIcon name="logout" size={20} />
+                    <Icon name="logout" size={20} />
                     <div>
                       <div className="settings-card-title-row">
                         <h3>Sign Out</h3>
@@ -1114,7 +1047,7 @@ export default function ProfilePage({
                     className="button button-outline danger-btn mini-btn"
                     onClick={() => setLogoutModalOpen(true)}
                   >
-                    <ProfileIcon name="logout" size={14} />
+                    <Icon name="logout" size={14} />
                     <span>Log Out of Account</span>
                   </button>
                 </div>
@@ -1133,7 +1066,7 @@ export default function ProfilePage({
             <div className="modal-header">
               <h3>Edit Profile Information</h3>
               <button type="button" className="modal-close-btn" onClick={() => setEditProfileOpen(false)}>
-                <ProfileIcon name="close" size={18} />
+                <Icon name="close" size={18} />
               </button>
             </div>
             <form onSubmit={handleEditProfileSubmit}>
@@ -1212,7 +1145,7 @@ export default function ProfilePage({
                 className="modal-close-btn"
                 onClick={() => setAddressModal({ isOpen: false, mode: 'add', data: null })}
               >
-                <ProfileIcon name="close" size={18} />
+                <Icon name="close" size={18} />
               </button>
             </div>
             <form onSubmit={handleSaveAddress}>
@@ -1388,7 +1321,7 @@ export default function ProfilePage({
                 </span>
               </div>
               <button type="button" className="modal-close-btn" onClick={() => setTrackingOrder(null)}>
-                <ProfileIcon name="close" size={18} />
+                <Icon name="close" size={18} />
               </button>
             </div>
 
@@ -1396,7 +1329,7 @@ export default function ProfilePage({
               <div className="tracking-timeline-v">
                 <div className="timeline-step is-complete">
                   <div className="step-bullet">
-                    <ProfileIcon name="check" size={12} />
+                    <Icon name="check" size={12} />
                   </div>
                   <div className="step-content">
                     <strong>1. Order Confirmed</strong>
@@ -1406,7 +1339,7 @@ export default function ProfilePage({
 
                 <div className={`timeline-step ${trackingOrder.status !== 'cancelled' ? 'is-complete' : ''}`}>
                   <div className="step-bullet">
-                    <ProfileIcon name="check" size={12} />
+                    <Icon name="check" size={12} />
                   </div>
                   <div className="step-content">
                     <strong>2. Loom Weaving & Inspection</strong>
@@ -1421,7 +1354,7 @@ export default function ProfilePage({
                 >
                   <div className="step-bullet">
                     {trackingOrder.status === 'shipped' || trackingOrder.status === 'delivered' ? (
-                      <ProfileIcon name="check" size={12} />
+                      <Icon name="check" size={12} />
                     ) : (
                       '3'
                     )}
@@ -1433,7 +1366,7 @@ export default function ProfilePage({
                 </div>
 
                 <div className={`timeline-step ${trackingOrder.status === 'delivered' ? 'is-complete' : ''}`}>
-                  <div className="step-bullet">{trackingOrder.status === 'delivered' ? <ProfileIcon name="check" size={12} /> : '4'}</div>
+                  <div className="step-bullet">{trackingOrder.status === 'delivered' ? <Icon name="check" size={12} /> : '4'}</div>
                   <div className="step-content">
                     <strong>4. Out for Delivery</strong>
                     <span>Courier out for doorstep verification</span>
@@ -1441,7 +1374,7 @@ export default function ProfilePage({
                 </div>
 
                 <div className={`timeline-step ${trackingOrder.status === 'delivered' ? 'is-complete' : ''}`}>
-                  <div className="step-bullet">{trackingOrder.status === 'delivered' ? <ProfileIcon name="check" size={12} /> : '5'}</div>
+                  <div className="step-bullet">{trackingOrder.status === 'delivered' ? <Icon name="check" size={12} /> : '5'}</div>
                   <div className="step-content">
                     <strong>5. Doorstep Delivery</strong>
                     <span>
@@ -1475,7 +1408,7 @@ export default function ProfilePage({
                 <span className="modal-sub">Order {returnOrder.orderRef} · 7-Day Hassle-Free Factory Exchange</span>
               </div>
               <button type="button" className="modal-close-btn" onClick={() => setReturnOrder(null)}>
-                <ProfileIcon name="close" size={18} />
+                <Icon name="close" size={18} />
               </button>
             </div>
 
@@ -1518,7 +1451,7 @@ export default function ProfilePage({
                 </label>
 
                 <div className="pickup-callout">
-                  <ProfileIcon name="truck" size={18} />
+                  <Icon name="truck" size={18} />
                   <div>
                     <strong>Complimentary Doorstep Factory Pickup</strong>
                     <p>Our courier partner will pick up the item securely from your default address within 48 hours.</p>
@@ -1548,7 +1481,7 @@ export default function ProfilePage({
             <div className="modal-header">
               <h3>Sign Out of Aanur Textile?</h3>
               <button type="button" className="modal-close-btn" onClick={() => setLogoutModalOpen(false)}>
-                <ProfileIcon name="close" size={18} />
+                <Icon name="close" size={18} />
               </button>
             </div>
             <div className="modal-body">

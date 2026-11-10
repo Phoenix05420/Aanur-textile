@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { products } from '../src/data.js';
+import { products } from '../shared/catalog.js';
 import { Product } from '../server/models/Product.js';
 import { connectMongoDB } from '../server/db.js';
 
